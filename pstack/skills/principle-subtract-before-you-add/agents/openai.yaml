@@ -1,0 +1,5 @@
+interface:
+  display_name: "Principle Subtract Before You Add"
+  short_description: "Apply when sequencing an addition, refactor, or rewrite. Remove dead code, redundant validators, and stub references first, then build on the simpler base."
+policy:
+  allow_implicit_invocation: false

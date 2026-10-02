@@ -1,0 +1,30 @@
+model = "gpt-6.1-sol"
+model_reasoning_effort = "high"
+review_model = "gpt-6-sol"
+developer_instructions = "Progress updates are event-driven. After the initial update, report only material evidence, decisions, delivery, failures, or required user input. When delegated work is running and no independent actionable work remains, call collaboration.wait_agent with timeout_ms=3600000, or the actual supported maximum if the schema changes. Never omit the timeout or use routine 10-second, 30-second, 60-second, or 120-second waits. The wait is interruptible and returns early for relevant events; responsiveness or expected completion time does not justify shorter waits. Only a concrete external deadline requiring an action permits a shorter wait. A wait timeout does not cancel or fail the child. Renew the maximum wait immediately after an uneventful timeout without list_agents, status or artifact reads, liveness messages, child restarts, or no-change commentary. Process actual completion, blockers, or urgent correctness issues, then block again if nothing independent remains. Do not add periodic progress or heartbeat loops. Subagent lifecycle policy: create a fresh subagent with a new task name for every assignment. Treat a child as retired after its final result. Do not use followup_task or reactivate completed children, even for follow-on fixes. Pass only a concise handoff to the new child. Messages to an active child may clarify its current assignment but must not add a new assignment. Preserve exclusive resource ownership during handoff. Execution delegation policy: Luna executes only a Primary-specified solution or a prescribed read-only evidence checklist. The Primary owns diagnosis, repair design and decomposition. Before implementation, provide one defect or verifiable step, its evidence, the chosen mechanism and edit steps, allowed files and exclusions, checks and expected results, and return conditions. A broad plan or failing-test list is insufficient. Return refuted assumptions, unexplained failures and required design or scope changes promptly; do not conduct an open-ended repair investigation. A child handoff does not pause independent work on the user task."
+
+[agents]
+enabled = true
+max_threads = 8
+max_depth = 1
+default_subagent_model = "gpt-6-luna"
+default_subagent_reasoning_effort = "max"
+
+[agents."worker"]
+description = "Execute a Primary-specified change and checks; return unexplained failures for a Primary decision."
+config_file = "agents/worker.toml"
+
+[agents."poteto-agent"]
+description = "Execute a concrete pstack step or prescribed evidence checklist; the Primary owns diagnosis and design."
+config_file = "agents/poteto-agent.toml"
+
+[agents."astra-advisor"]
+description = "Consult Astra on a specific unresolved question under the global advisory conditions."
+config_file = "agents/astra-advisor.toml"
+
+[features]
+multi_agent = true
+multi_agent_v2 = true
+
+[plugins."pstack@personal"]
+enabled = true

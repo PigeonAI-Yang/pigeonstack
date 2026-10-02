@@ -1,0 +1,5 @@
+interface:
+  display_name: "Principle Make Operations Idempotent"
+  short_description: "Apply when designing commands, lifecycle steps, or processing loops that run amid crashes, restarts, and retries. Converge to the same end state regardless of partial prior runs."
+policy:
+  allow_implicit_invocation: false

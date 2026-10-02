@@ -1,0 +1,5 @@
+interface:
+  display_name: "Principle Guard The Context Window"
+  short_description: "Apply when context is filling up: large outputs, long files, repeated reads, fan-out planning. Route bulk to subagents; keep summaries in the main thread, not raw payloads."
+policy:
+  allow_implicit_invocation: false

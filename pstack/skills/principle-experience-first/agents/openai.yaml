@@ -1,0 +1,5 @@
+interface:
+  display_name: "Principle Experience First"
+  short_description: "Apply when product, UX, or feature-scope tradeoffs come up. Choose user delight over implementation convenience; ship fewer polished features over more rough ones."
+policy:
+  allow_implicit_invocation: false

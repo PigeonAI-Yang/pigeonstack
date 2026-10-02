@@ -1,0 +1,5 @@
+interface:
+  display_name: "Principle Sequence Verifiable Units"
+  short_description: "Apply to multi-step work (sweeps, migrations, runs of similar edits) and to how you stack commits and PRs. Break work into small units that each end in a verifiable state, check each before the next, and order delivery so the sequence pr..."
+policy:
+  allow_implicit_invocation: false

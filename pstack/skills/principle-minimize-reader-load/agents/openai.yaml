@@ -1,0 +1,5 @@
+interface:
+  display_name: "Principle Minimize Reader Load"
+  short_description: "Apply when reviewing or shaping code that's hard to trace. Count layers between question and answer, and hidden state in the reader's head; collapse one-caller wrappers and shrink mutable scope."
+policy:
+  allow_implicit_invocation: false

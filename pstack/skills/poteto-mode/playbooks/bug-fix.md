@@ -1,0 +1,10 @@
+### Bug fix
+
+The Primary owns diagnosis, repair design, decomposition and acceptance. Apply CODEX.md and global AGENTS.md before these steps.
+
+1. Obtain a reproduction or sufficient code, log or runtime evidence through the relevant existing entry point. Assign named independent read-only checks to Luna, or bounded investigation needing sustained judgment to Astra under CODEX.md. Record any reproduction gap.
+2. The Primary interprets decisive evidence, identifies the failing mechanism and rules out material alternatives. A specific unresolved question may go to the read-only Astra advisor. Luna does not choose the hypothesis or repair.
+3. Choose the smallest repair that covers the producer, caller and state transition. Identify the expected behavior and verification before changing code. Split independent defects into separate steps.
+4. Delegate implementation by default. Give Luna the complete CODEX.md execution brief for one chosen step; use Astra's supported general/default role with explicit model and effort only when the work needs sustained judgment, following CODEX.md boundaries. Dispatch independent ready steps as soon as each is specified and newly unlocked steps as results arrive; only real dependencies or resource, permission and tool limits serialize them. Work directly only when the user explicitly asks or a non-model capability/resource restriction prevents delegation, and state the reason. A subsystem goal or bundle of unexplained test failures is not a valid Luna assignment. Refuted assumptions or unexplained failures return to the Primary promptly.
+5. The Primary reviews the diff and decisive direct evidence. Assign any missing verification of the original failure through the relevant production entry point to an appropriate child. Preserve required identity, input release and user control. Do not repeat delegated checks without an evidence gap or contradiction. A build or helper test alone does not prove the user workflow.
+6. Report the change, actual checks and remaining gaps. Use the existing work record. Commit, PR and publication steps require their own task authorization.

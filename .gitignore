@@ -1,0 +1,9 @@
+work/
+outputs/
+__pycache__/
+*.pyc
+.env
+.env.*
+auth.json
+config.local.toml
+.DS_Store

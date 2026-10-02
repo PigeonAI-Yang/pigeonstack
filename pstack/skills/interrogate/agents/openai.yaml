@@ -1,0 +1,5 @@
+interface:
+  display_name: "Interrogate"
+  short_description: "Use for \"interrogate\", \"adversarial review\", \"multi-model review\", \"challenge this\", \"stress test this code\", \"find blind spots\", or \"tear this apart\". Multiple LLM reviewers challenge changes from independent angles."
+policy:
+  allow_implicit_invocation: false
