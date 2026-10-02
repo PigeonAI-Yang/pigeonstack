@@ -151,14 +151,17 @@ def patch_config(raw, desired):
             lines[assignments[path]] = line
         else:
             insertions.setdefault(path[:-1], []).append(line)
-    edits = []
+    edits = {}
     for section, additions in insertions.items():
+        index = sections[section][1] if section in sections else len(lines)
+        edit = edits.setdefault(index, {'existing': [], 'tables': []})
         if section in sections:
-            edits.append((sections[section][1], ''.join(additions)))
+            edit['existing'].append(''.join(additions))
         else:
             header = '[' + '.'.join(json.dumps(key) for key in section) + ']' + newline
-            edits.append((len(lines), newline + header + ''.join(additions)))
-    for index, addition in sorted(edits, reverse=True):
+            edit['tables'].append(newline + header + ''.join(additions))
+    for index in sorted(edits, reverse=True):
+        addition = ''.join(edits[index]['existing'] + edits[index]['tables'])
         if index and not lines[index - 1].endswith(('\n', '\r')):
             lines[index - 1] += newline
         lines.insert(index, addition)

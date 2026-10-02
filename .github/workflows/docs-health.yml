@@ -1,0 +1,47 @@
+name: Documentation health
+
+on:
+  schedule:
+    - cron: "17 3 * * 1"
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "docs/**"
+      - "scripts/check_site.py"
+      - ".github/workflows/docs-health.yml"
+  pull_request:
+    branches: [main]
+    paths:
+      - "docs/**"
+      - "scripts/check_site.py"
+      - ".github/workflows/docs-health.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  health:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+      - name: Check documentation
+        env:
+          RUN_LIVE: ${{ github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' }}
+        run: |
+          if [ "$RUN_LIVE" = "true" ]; then
+            python scripts/check_site.py --live --output "$RUNNER_TEMP/discovery-health.json"
+          else
+            python scripts/check_site.py --output "$RUNNER_TEMP/discovery-health.json"
+          fi
+      - name: Upload discovery health receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: discovery-health
+          path: ${{ runner.temp }}/discovery-health.json
+          if-no-files-found: warn
+          retention-days: 90

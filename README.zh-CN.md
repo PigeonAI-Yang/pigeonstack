@@ -1,16 +1,30 @@
-# PigeonStack · 鸽栈
+# PigeonStack · 鸽栈：Codex 多 Agent 协作工作流
 
 首先致敬并感谢 [Lauren Tan（poteto）](https://github.com/poteto)，[pstack](https://github.com/cursor/plugins/tree/f5bdd6826fd0a0d9cbc4347134c3a74a200b9d9d/pstack) 的原作者。PigeonStack 基于她的工作，为这套 Codex 协作流程做了定制适配。
 
 [English](README.md) | 简体中文
 
-**为 Codex 打造的多 Agent 协作工作流：高智能 Sol 主控，顶级 Astra 顾问，低成本 Luna 执行。**
+[文档](https://pigeonai-yang.github.io/pigeonstack/zh/) | [快速开始](https://pigeonai-yang.github.io/pigeonstack/zh/getting-started/) | [常见问题](#faq) | [问题反馈](https://github.com/PigeonAI-Yang/pigeonstack/issues)
+
+**一套 Codex 协作流程：Sol 负责决策，Astra 回答尚未解决的问题，Luna 执行范围明确的实现任务。**
 
 PigeonStack 是 PigeonYang 维护的一套 Codex 工作配置，将全局规则、Lauren Tan 的 pstack 定制版、Agent 角色定义、选定的配置项和本地同步脚本放在同一个源码仓库里。模型职责与实际安装的指令因此有了统一的维护入口。
 
 它追求高性能、高性价比的协作。Sol 对任务和决策负责，Astra 在疑难问题上提供更深入的判断，Luna 执行范围明确的小任务。把昂贵的推理用在需要它的决策上，再将已确定的方案写成其他 Agent 可以直接执行的任务说明。
 
 仓库交付的是指令、打包好的 Codex 插件和部署工具，不提供 MCP 服务或独立的自动调度器。安装不会启动定时任务、常驻 Agent、钩子或远程服务。
+
+## 从这里开始
+
+PigeonStack 将 Codex 全局规则、Agent 角色、配置和适配后的 pstack 插件保存在 Git 中，再同步到 Codex 宿主。
+
+首次检查时，先看[独立目录预览](#在独立目录中预览)，或阅读[快速开始指南](https://pigeonai-yang.github.io/pigeonstack/zh/getting-started/)。
+
+已验证的宿主是 Windows 与 PowerShell，同步脚本要求 Python 3.11 或更高版本。真正安装插件还需要兼容的 Codex CLI，以及已有的、能解析 `pstack@personal` 的本地插件市场注册。
+
+- 在 Git 中维护 Codex 全局规则，并与源码一起审查改动。
+- 由 Sol 选定修复方案，再把明确的代码改动交给 Luna。
+- 保持维护中的源码、运行时文件和带版本的插件缓存同步。
 
 ## 为什么这样分工
 
@@ -56,7 +70,7 @@ Sol 无须每次都咨询 Astra。只有现有证据仍不足以解决一个重�
 
 按清单采集只读证据可以先于诊断。此类任务明确指定搜索或观察内容，由主控解释结果。Luna 不接收开放式架构决策，也不接收一批原因未明的失败并自行修复。
 
-调度以实际就绪状态为准。独立任务一起派发，有任务完成后立即推进新解锁的工作。冲突写入、共用实例操作和真实依赖需要串行。每次任务都创建新的子 Agent，已完成的子 Agent 不再复用。没有独立工作可做时，使用宿主支持的最大可中断等待，当前为 `3600000` 毫秒，避免反复查询未变化的状态。不强制组织模型评审团，也不为了填满并发槽而制造任务。
+调度以实际就绪状态为准。独立任务一起派发，有任务完成后立即推进新解锁的工作。冲突写入、共用实例操作和真实依赖需要串行。每次任务都创建新的子 Agent，已完成的子 Agent 不再复用。没有独立工作可做时，使用宿主支持的最大可中断等待，当前为 `3600000` 毫秒，避免反复查询未变化的状态。不强制组织模型评审团，也不为了填满并发槽而制造任务。Primary 与子 Agent 之间的生图、图像编辑、查看、视觉分析及相关传输需要串行，一次只处理一项。
 
 例如，用户可以提出：
 
@@ -174,6 +188,26 @@ J:/PigeonYang/pigeonstack
 围绕已观察到的问题或当前需求修改。复用已有源码与验证入口，保留无关改动，并说明支持修改的证据。中英文介绍应保持一致。
 
 全局指令、角色定义和规则更新保持英文，中文 README 属于公开项目介绍。修改架构、契约或实现计划时，遵循权威技术文档的角色分工。保留上游署名，在 [ADAPTATION.md](pstack/ADAPTATION.md) 中记录适配变更。
+
+<a id="faq"></a>
+
+## 常见问题
+
+### PigeonStack 是 MCP 服务、Skill 还是 Agent？
+
+它是包含 Codex 插件及配套指令、工具的仓库。插件打包选定的 pstack 技能和 Codex 适配层；全局规则、角色定义、配置与同步脚本则在仓库中与插件分别维护。它不运行 MCP 服务或自主调度器。
+
+### PigeonStack 与 pstack 有什么区别？
+
+PigeonStack 将 Lauren Tan 的 pstack 适配到 Codex，增加 Codex 专用全局规则、宿主适配器，以及面向运行时文件和插件缓存的版本化同步。仓库保留对 Lauren Tan 的作者署名与致谢。详见[上游来源与许可](#上游来源与许可)。
+
+### 可以在不改动 `.codex` 目录的情况下预览吗？
+
+可以。按照上面的独立目录预览步骤，指定 `.codex` 目录之外的新 `--codex-home` 路径，并加上 `--skip-plugin-install`。脚本只会在该目标中写入受管理文件和合并后的配置，不会安装插件或更改日常使用的 Codex 宿主；因此这次检查不能证明模型协作行为已经生效。
+
+### PigeonStack 能让 Codex 更快或更省钱吗？
+
+目前没有发布速度或成本基准测试。以更节省成本的方式协作是设计目标，不是实测结论。可用模型和原生子 Agent 工具取决于 Codex 宿主与账号。
 
 ## 上游来源与许可
 

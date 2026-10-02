@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>PigeonStack | Codex multi-agent workflows and global rules</title>
+	<meta name="description" content="PigeonStack is PigeonYang's Codex setup for clear multi-agent work, with global rules, an adapted pstack plugin, role definitions, selected configuration, and a local sync script.">
+	<link rel="canonical" href="https://pigeonai-yang.github.io/pigeonstack/">
+	<link rel="alternate" hreflang="en" href="https://pigeonai-yang.github.io/pigeonstack/">
+	<link rel="alternate" hreflang="zh-Hans" href="https://pigeonai-yang.github.io/pigeonstack/zh/">
+	<link rel="alternate" hreflang="x-default" href="https://pigeonai-yang.github.io/pigeonstack/">
+	<link rel="stylesheet" href="/pigeonstack/assets/site.css">
+	<meta property="og:title" content="PigeonStack | Codex multi-agent workflows and global rules">
+	<meta property="og:description" content="A Codex setup for clear multi-agent work, with global rules, an adapted pstack plugin, role definitions, and a local sync script.">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="https://pigeonai-yang.github.io/pigeonstack/">
+	<meta name="twitter:card" content="summary">
+	<script type="application/ld+json">
+	{
+		"@context": "https://schema.org",
+		"@type": "SoftwareSourceCode",
+		"name": "PigeonStack",
+		"description": "PigeonYang's Codex setup for multi-agent workflows, global rules, selected configuration, and local synchronization.",
+		"codeRepository": "https://github.com/PigeonAI-Yang/pigeonstack",
+		"programmingLanguage": "Python",
+		"author": {
+			"@type": "Person",
+			"name": "PigeonYang",
+			"url": "https://github.com/PigeonAI-Yang"
+		},
+		"isBasedOn": "https://github.com/cursor/plugins/tree/f5bdd6826fd0a0d9cbc4347134c3a74a200b9d9d/pstack"
+	}
+	</script>
+</head>
+<body>
+	<header class="site-header">
+		<div class="shell header-inner">
+			<a class="wordmark" href="/pigeonstack/" aria-label="PigeonStack home">PigeonStack<span>Codex workflow</span></a>
+			<nav class="main-nav" aria-label="Main navigation">
+				<a aria-current="page" href="/pigeonstack/">Overview</a>
+				<a href="/pigeonstack/getting-started/">Get started</a>
+				<a class="language-link" href="/pigeonstack/zh/" lang="zh-Hans">简体中文</a>
+			</nav>
+		</div>
+	</header>
+	<main class="shell page-main">
+		<section class="hero">
+			<p class="eyebrow">A Codex multi-agent workflow</p>
+			<h1>PigeonStack: a Codex multi-agent workflow</h1>
+			<p class="attribution">First, credit and thanks to <a href="https://github.com/poteto">Lauren Tan (poteto)</a>, the original author of <a href="https://github.com/cursor/plugins/tree/f5bdd6826fd0a0d9cbc4347134c3a74a200b9d9d/pstack">pstack</a>. PigeonStack adapts her work for this Codex workflow.</p>
+			<p class="lead">PigeonStack is PigeonYang's maintained Codex setup. It brings global rules, an adapted pstack plugin, agent-role definitions, selected configuration, and a local sync script into one source repository. Sol owns decisions, Astra advises on unresolved questions, and Luna executes specified work.</p>
+			<div class="hero-actions">
+				<a class="button button-primary" href="/pigeonstack/getting-started/">Preview or install</a>
+				<a class="button button-secondary" href="https://github.com/PigeonAI-Yang/pigeonstack/blob/main/README.md">Read the source README</a>
+			</div>
+			<p class="hero-note">The aim is capable, cost-aware collaboration. The repository makes no measured speed, savings, or benchmark-superiority claim.</p>
+		</section>
+
+		<section class="content-section" aria-labelledby="roles-title">
+			<div class="section-heading">
+				<p class="eyebrow">A bounded handoff</p>
+				<h2 id="roles-title">One Primary owns the decisions</h2>
+				<p>The Primary checks the evidence, chooses a solution, and accepts the result. Agents receive a concrete task and return changes, observations, or a blocker.</p>
+			</div>
+			<div class="table-wrap">
+				<table>
+					<thead><tr><th scope="col">Role</th><th scope="col">Work</th></tr></thead>
+					<tbody>
+						<tr><th scope="row">Sol Primary</th><td>Owns the goal, diagnosis, key decisions, task breakdown, agent assignments, integration direction, and final acceptance.</td></tr>
+						<tr><th scope="row">Astra advisor</th><td>Answers one unresolved question from decisive evidence. The advisor is read-only and returns uncertainty plus a bounded verification path.</td></tr>
+						<tr><th scope="row">Astra author or investigator</th><td>Uses a separate execution role for authoritative technical documents, or investigates one unresolved question read-only.</td></tr>
+						<tr><th scope="row">Luna executor</th><td>Implements a Primary-selected repair or accepted design step, follows a named read-only checklist, or runs assigned checks. Luna returns unexplained failures to the Primary.</td></tr>
+					</tbody>
+				</table>
+			</div>
+			<p class="section-note">These are the repository's role conventions. Task size alone does not move implementation to Astra. The Primary selects the design, and Luna executes the scoped step. Actual model access and routing depend on the Codex host and account. An explicit user model choice takes precedence over a preferred default.</p>
+			<div class="fact-grid">
+				<article class="fact-card">
+					<h3>Run independent work together</h3>
+					<p>Text and code tasks can run in parallel when they have no shared writes or dependencies. Image generation, editing, viewing, and transfer run one at a time.</p>
+				</article>
+				<article class="fact-card">
+					<h3>Use the tools you already have</h3>
+					<p>PigeonStack packages instructions, a Codex plugin, configuration, and deployment tooling. It does not provide an MCP server or a separate autonomous scheduler.</p>
+				</article>
+			</div>
+		</section>
+
+		<section class="content-section split-section" aria-labelledby="fit-title">
+			<div>
+				<p class="eyebrow">Who it helps</p>
+				<h2 id="fit-title">For Codex users who need clear handoffs</h2>
+				<p>Use PigeonStack when you want an agent workflow with named decision ownership, scoped execution, and evidence-based acceptance.</p>
+				<p>Its cost-performance goal is a work strategy, not a benchmark. Model IDs, access, supported reasoning effort, and cost depend on your account and Codex client.</p>
+			</div>
+			<aside class="requirements-card" aria-labelledby="requirements-title">
+				<h3 id="requirements-title">Current host requirements</h3>
+				<ul>
+					<li>The maintained setup has been validated on Windows with PowerShell.</li>
+					<li>The sync script requires Python 3.11 or newer.</li>
+					<li>Plugin installation requires a compatible Codex CLI and an existing local marketplace entry for <code>pstack@personal</code>.</li>
+					<li>Multi-agent work requires native child-agent tools and access to the selected models.</li>
+				</ul>
+			</aside>
+		</section>
+
+		<section class="content-section faq-section" aria-labelledby="faq-title">
+			<div class="section-heading">
+				<p class="eyebrow">Questions and limits</p>
+				<h2 id="faq-title">What to expect from PigeonStack</h2>
+			</div>
+			<div class="faq-list">
+				<article class="faq-item">
+					<h3>What is PigeonStack?</h3>
+					<p>PigeonStack is PigeonYang's maintained set of Codex global rules, agent-role definitions, selected configuration, a customized pstack plugin, and a local synchronization script.</p>
+				</article>
+				<article class="faq-item">
+					<h3>How does PigeonStack relate to pstack?</h3>
+					<p>PigeonStack adapts Lauren Tan's pstack workflows for Codex and adds repository-specific rules and deployment configuration. It does not claim to be superior to the upstream project. The site links to the pinned upstream source and preserves its attribution.</p>
+				</article>
+				<article class="faq-item">
+					<h3>Is it a plugin, an MCP server, or a skill?</h3>
+					<p>PigeonStack is a repository and deployment setup that includes an adapted Codex plugin and selected skills. It does not include an MCP server, timers, hooks, or a background scheduler.</p>
+				</article>
+				<article class="faq-item">
+					<h3>Can I choose other models?</h3>
+					<p>Model choices are configured in the repository, and the local rules give explicit user selection priority. Your Codex host and account must expose the model and agent tools you choose. The repository does not verify a provider's internal model mapping.</p>
+				</article>
+				<article class="faq-item">
+					<h3>What is the difference between a preview and an installation?</h3>
+					<p>An isolated preview uses <code>--codex-home</code> with <code>--skip-plugin-install</code> to check copied files and merged configuration. It does not activate the plugin or rewrite machine-specific paths embedded in instructions. The <a href="/pigeonstack/getting-started/">getting started guide</a> shows both routes.</p>
+				</article>
+				<article class="faq-item">
+					<h3>What has been verified?</h3>
+					<p>A successful sync check establishes that managed files and configuration align on disk. A new Codex session is needed to verify instruction loading and actual model routing. Publishing this site does not prove search indexing or rankings.</p>
+				</article>
+			</div>
+		</section>
+
+		<section class="closing-panel">
+			<div>
+				<p class="eyebrow">Start with a safe target</p>
+				<h2>Preview the files before changing a live Codex home</h2>
+				<p>The guide shows the isolated preview commands, their exit codes, and the maintainer-host deployment boundary.</p>
+			</div>
+			<a class="button button-light" href="/pigeonstack/getting-started/">Open the getting started guide</a>
+		</section>
+	</main>
+	<footer class="site-footer">
+		<div class="shell footer-inner">
+			<div><a class="footer-brand" href="/pigeonstack/">PigeonStack</a><p>Maintained by PigeonYang. Built on Lauren Tan's pstack workflows.</p><p class="review-note">Content reviewed 2026-10-03.</p></div>
+			<nav class="footer-links" aria-label="Footer navigation">
+				<a href="/pigeonstack/">English overview</a>
+				<a href="/pigeonstack/getting-started/">Getting started</a>
+				<a href="/pigeonstack/zh/" lang="zh-Hans">简体中文总览</a>
+				<a href="/pigeonstack/zh/getting-started/" lang="zh-Hans">简体中文指南</a>
+				<a href="https://github.com/PigeonAI-Yang/pigeonstack/blob/main/README.md">GitHub README</a>
+				<a href="https://github.com/PigeonAI-Yang/pigeonstack/issues">GitHub issues</a>
+				<a href="/pigeonstack/sitemap.xml">Sitemap</a>
+			</nav>
+		</div>
+	</footer>
+</body>
+</html>

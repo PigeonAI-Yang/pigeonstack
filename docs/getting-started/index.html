@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Get started with PigeonStack | Preview and install</title>
+	<meta name="description" content="Clone PigeonStack, preview its managed files in an isolated directory, and review the host requirements before installing the Codex plugin.">
+	<link rel="canonical" href="https://pigeonai-yang.github.io/pigeonstack/getting-started/">
+	<link rel="alternate" hreflang="en" href="https://pigeonai-yang.github.io/pigeonstack/getting-started/">
+	<link rel="alternate" hreflang="zh-Hans" href="https://pigeonai-yang.github.io/pigeonstack/zh/getting-started/">
+	<link rel="alternate" hreflang="x-default" href="https://pigeonai-yang.github.io/pigeonstack/getting-started/">
+	<link rel="stylesheet" href="/pigeonstack/assets/site.css">
+	<meta property="og:title" content="Get started with PigeonStack | Preview and install">
+	<meta property="og:description" content="Clone the source, inspect an isolated preview, and check the Codex host requirements before a live installation.">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="https://pigeonai-yang.github.io/pigeonstack/getting-started/">
+	<meta name="twitter:card" content="summary">
+</head>
+<body>
+	<header class="site-header">
+		<div class="shell header-inner">
+			<a class="wordmark" href="/pigeonstack/" aria-label="PigeonStack home">PigeonStack<span>Codex workflow</span></a>
+			<nav class="main-nav" aria-label="Main navigation">
+				<a href="/pigeonstack/">Overview</a>
+				<a aria-current="page" href="/pigeonstack/getting-started/">Get started</a>
+				<a class="language-link" href="/pigeonstack/zh/getting-started/" lang="zh-Hans">简体中文</a>
+			</nav>
+		</div>
+	</header>
+	<main class="shell page-main guide-main">
+		<section class="page-intro">
+			<p class="eyebrow">A host-specific setup</p>
+			<h1>Preview PigeonStack before installation</h1>
+			<p class="lead">The source reflects a personal Windows and PowerShell setup. Start with an isolated target to inspect the managed files and configuration without touching your live Codex home.</p>
+			<p class="notice"><strong>Do not copy the live-host commands on another machine.</strong> The default paths and some instruction files name the maintainer's directories. Adapt them before targeting another real Codex home.</p>
+		</section>
+
+		<section class="guide-section" aria-labelledby="requirements-title">
+			<p class="step-label">Before you start</p>
+			<h2 id="requirements-title">Check the current host requirements</h2>
+			<ul class="check-list">
+				<li>The currently validated host is Windows with PowerShell.</li>
+				<li>The synchronization script requires Python 3.11 or newer.</li>
+				<li>Installing the plugin requires a compatible Codex CLI and an existing local marketplace registration that resolves <code>pstack@personal</code>.</li>
+				<li>Multi-agent work requires native child-agent tools and account access to the selected models.</li>
+			</ul>
+		</section>
+
+		<section class="guide-section" aria-labelledby="clone-title">
+			<p class="step-label">Step 1</p>
+			<h2 id="clone-title">Clone the source</h2>
+			<p>Run these commands in PowerShell from the directory where you keep source repositories.</p>
+			<pre><code>git clone https://github.com/PigeonAI-Yang/pigeonstack.git
+Set-Location pigeonstack</code></pre>
+		</section>
+
+		<section class="guide-section" aria-labelledby="preview-title">
+			<p class="step-label">Step 2</p>
+			<h2 id="preview-title">Preview in a new sibling directory</h2>
+			<p>These commands copy the managed files and merge the selected configuration in <code>../pigeonstack-preview-codex</code>. The initial check normally exits with code <code>1</code> because that directory is empty. The final check exits with code <code>0</code> when the files and configuration align.</p>
+			<pre><code>python scripts/sync.py check --codex-home ../pigeonstack-preview-codex --skip-plugin-install
+python scripts/sync.py deploy --codex-home ../pigeonstack-preview-codex --skip-plugin-install
+python scripts/sync.py check --codex-home ../pigeonstack-preview-codex --skip-plugin-install</code></pre>
+			<div class="callout-grid">
+				<aside class="callout">
+					<h3>What this preview checks</h3>
+					<p>It checks the managed file copy and configuration merge in the isolated target. Invalid input or an operational error exits with code <code>2</code>.</p>
+				</aside>
+				<aside class="callout callout-muted">
+					<h3>What it does not check</h3>
+					<p>The preview skips plugin installation and installed-cache checks. It does not activate the plugin or rewrite machine-specific paths embedded in instructions.</p>
+				</aside>
+			</div>
+			<p>For a nondefault target, keep <code>--skip-plugin-install</code>. The script rejects source and target paths that overlap.</p>
+		</section>
+
+		<section class="guide-section" aria-labelledby="adapt-title">
+			<p class="step-label">Before a real install elsewhere</p>
+			<h2 id="adapt-title">Review the paths and settings</h2>
+			<p>The default sync target points to <code>J:/Users/yangda01/.codex</code>. The repository also contains owner-specific paths in the global rules, the Codex host guide, and the <code>poteto-agent.toml</code> role file.</p>
+			<div class="table-wrap source-table-wrap">
+				<table>
+					<thead><tr><th scope="col">Review</th><th scope="col">Why it matters</th></tr></thead>
+					<tbody>
+						<tr><th scope="row"><a href="https://github.com/PigeonAI-Yang/pigeonstack/blob/main/scripts/sync.py"><code>scripts/sync.py</code></a></th><td><code>DEFAULT_HOME</code> selects the maintainer's current Codex directory. A <code>--codex-home</code> override does not rewrite embedded paths.</td></tr>
+						<tr><th scope="row"><a href="https://github.com/PigeonAI-Yang/pigeonstack/blob/main/AGENTS.md"><code>AGENTS.md</code></a>, <a href="https://github.com/PigeonAI-Yang/pigeonstack/blob/main/pstack/CODEX.md"><code>pstack/CODEX.md</code></a>, and <a href="https://github.com/PigeonAI-Yang/pigeonstack/blob/main/agents/poteto-agent.toml"><code>agents/poteto-agent.toml</code></a></th><td>These files include source or runtime paths used on the maintainer's machine.</td></tr>
+						<tr><th scope="row"><a href="https://github.com/PigeonAI-Yang/pigeonstack/blob/main/config/workflow.toml"><code>config/workflow.toml</code></a></th><td>Review the model defaults, agent settings, role files, and plugin enablement before deployment.</td></tr>
+						<tr><th scope="row"><a href="https://github.com/PigeonAI-Yang/pigeonstack/blob/main/pstack/MODELS.md"><code>pstack/MODELS.md</code></a></th><td>Read the model IDs, preferred routing, reasoning effort, and agent-creation conventions.</td></tr>
+					</tbody>
+				</table>
+			</div>
+			<p>The script does not register a plugin marketplace. Adapt the source and confirm that the local marketplace can resolve <code>pstack@personal</code> before a real installation on another host.</p>
+		</section>
+
+		<section class="guide-section live-guide" aria-labelledby="owner-title">
+			<p class="step-label">Maintainer host only</p>
+			<h2 id="owner-title">Deploy on the configured host</h2>
+			<p>These commands target the maintainer's configured live Codex home. Review the intended changes and marketplace registration before running them.</p>
+			<pre><code>Set-Location J:/PigeonYang/pigeonstack
+python scripts/sync.py check
+python scripts/sync.py deploy
+python scripts/sync.py check</code></pre>
+			<p>When deployment changes existing managed files, the script keeps backups under <code>&lt;codex-home&gt;/backups/pigeonstack/</code>. Plugin installation can fail after runtime files are written, so a failure is not an automatic rollback.</p>
+		</section>
+
+		<section class="guide-section" aria-labelledby="example-title">
+			<p class="step-label">An example task</p>
+			<h2 id="example-title">Give the Primary a concrete outcome</h2>
+			<p>For example, ask Codex:</p>
+			<blockquote>Fix the export error when a report has no rows. Preserve the current file format and verify the normal export path too.</blockquote>
+			<p>This is an illustration, not a recorded run. The Primary checks the evidence, selects a repair, and gives Luna a bounded implementation and verification brief. The Primary consults Astra only if a consequential question remains unresolved.</p>
+		</section>
+
+		<section class="guide-section source-notes" aria-labelledby="sources-title">
+			<p class="step-label">Source and attribution</p>
+			<h2 id="sources-title">Read the maintained source and upstream notices</h2>
+			<p>PigeonStack is maintained by PigeonYang. The adapted pstack workflows are Lauren Tan's work, pinned to <a href="https://github.com/cursor/plugins/tree/f5bdd6826fd0a0d9cbc4347134c3a74a200b9d9d/pstack">this upstream revision</a>.</p>
+			<p>The upstream notices remain in <a href="https://github.com/PigeonAI-Yang/pigeonstack/blob/main/pstack/LICENSE"><code>pstack/LICENSE</code></a> and <a href="https://github.com/PigeonAI-Yang/pigeonstack/blob/main/pstack/CURSOR-TEAM-KIT-LICENSE"><code>pstack/CURSOR-TEAM-KIT-LICENSE</code></a>. Those notices apply to their respective upstream materials. The repository has no separate root license for all original PigeonStack content.</p>
+			<p>Read the <a href="https://github.com/PigeonAI-Yang/pigeonstack/blob/main/README.md">English README</a>, <a href="https://github.com/PigeonAI-Yang/pigeonstack/blob/main/README.zh-CN.md">中文 README</a>, or <a href="https://github.com/PigeonAI-Yang/pigeonstack/issues">open GitHub issues</a>.</p>
+		</section>
+	</main>
+	<footer class="site-footer">
+		<div class="shell footer-inner">
+			<div><a class="footer-brand" href="/pigeonstack/">PigeonStack</a><p>Maintained by PigeonYang. Built on Lauren Tan's pstack workflows.</p><p class="review-note">Content reviewed 2026-10-03.</p></div>
+			<nav class="footer-links" aria-label="Footer navigation">
+				<a href="/pigeonstack/">English overview</a>
+				<a href="/pigeonstack/getting-started/">Getting started</a>
+				<a href="/pigeonstack/zh/" lang="zh-Hans">简体中文总览</a>
+				<a href="/pigeonstack/zh/getting-started/" lang="zh-Hans">简体中文指南</a>
+				<a href="https://github.com/PigeonAI-Yang/pigeonstack/blob/main/README.md">GitHub README</a>
+				<a href="https://github.com/PigeonAI-Yang/pigeonstack/issues">GitHub issues</a>
+				<a href="/pigeonstack/sitemap.xml">Sitemap</a>
+			</nav>
+		</div>
+	</footer>
+</body>
+</html>

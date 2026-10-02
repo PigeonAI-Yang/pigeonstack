@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>PigeonStack：Codex 多 Agent 协作与全局规则</title>
+	<meta name="description" content="PigeonStack 是 PigeonYang 维护的 Codex 工作配置，包含全局规则、适配后的 pstack 插件、Agent 角色、选定配置和本地同步脚本。">
+	<link rel="canonical" href="https://pigeonai-yang.github.io/pigeonstack/zh/">
+	<link rel="alternate" hreflang="en" href="https://pigeonai-yang.github.io/pigeonstack/">
+	<link rel="alternate" hreflang="zh-Hans" href="https://pigeonai-yang.github.io/pigeonstack/zh/">
+	<link rel="alternate" hreflang="x-default" href="https://pigeonai-yang.github.io/pigeonstack/">
+	<link rel="stylesheet" href="/pigeonstack/assets/site.css">
+	<meta property="og:title" content="PigeonStack：Codex 多 Agent 协作与全局规则">
+	<meta property="og:description" content="面向 Codex 的工作配置，包含多 Agent 协作规则、适配后的 pstack 插件、角色定义和本地同步脚本。">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="https://pigeonai-yang.github.io/pigeonstack/zh/">
+	<meta name="twitter:card" content="summary">
+	<script type="application/ld+json">
+	{
+		"@context": "https://schema.org",
+		"@type": "SoftwareSourceCode",
+		"name": "PigeonStack",
+		"description": "PigeonYang 维护的 Codex 多 Agent 工作流、全局规则、配置与本地同步工具。",
+		"codeRepository": "https://github.com/PigeonAI-Yang/pigeonstack",
+		"programmingLanguage": "Python",
+		"author": {
+			"@type": "Person",
+			"name": "PigeonYang",
+			"url": "https://github.com/PigeonAI-Yang"
+		},
+		"isBasedOn": "https://github.com/cursor/plugins/tree/f5bdd6826fd0a0d9cbc4347134c3a74a200b9d9d/pstack"
+	}
+	</script>
+</head>
+<body>
+	<header class="site-header">
+		<div class="shell header-inner">
+			<a class="wordmark" href="/pigeonstack/" aria-label="PigeonStack 首页">PigeonStack<span>Codex 工作流</span></a>
+			<nav class="main-nav" aria-label="主导航">
+				<a aria-current="page" href="/pigeonstack/zh/">总览</a>
+				<a href="/pigeonstack/zh/getting-started/">开始使用</a>
+				<a class="language-link" href="/pigeonstack/" lang="en">English</a>
+			</nav>
+		</div>
+	</header>
+	<main class="shell page-main">
+		<section class="hero">
+			<p class="eyebrow">Codex 多 Agent 协作工作流</p>
+			<h1>PigeonStack：Codex 多 Agent 协作工作流</h1>
+			<p class="attribution">首先致敬并感谢 <a href="https://github.com/poteto">Lauren Tan（poteto）</a>，她是 <a href="https://github.com/cursor/plugins/tree/f5bdd6826fd0a0d9cbc4347134c3a74a200b9d9d/pstack">pstack</a> 的原作者。PigeonStack 基于她的工作，为 Codex 流程做了适配。</p>
+			<p class="lead">PigeonStack 是 PigeonYang 维护的 Codex 工作配置，包含全局规则、适配后的 pstack 插件、Agent 角色定义、选定配置和本地同步脚本。Sol 负责决策，Astra 提供疑难问题建议，Luna 执行明确的任务。</p>
+			<div class="hero-actions">
+				<a class="button button-primary" href="/pigeonstack/zh/getting-started/">预览或安装</a>
+				<a class="button button-secondary" href="https://github.com/PigeonAI-Yang/pigeonstack/blob/main/README.zh-CN.md">阅读中文 README</a>
+			</div>
+			<p class="hero-note">目标是兼顾能力与成本的协作方式。仓库没有经过测量的速度、节省金额或跑分领先承诺。</p>
+		</section>
+
+		<section class="content-section" aria-labelledby="roles-title">
+			<div class="section-heading">
+				<p class="eyebrow">明确交接边界</p>
+				<h2 id="roles-title">由一位主控负责决策</h2>
+				<p>主控检查证据、选择方案并验收结果。子 Agent 接收范围明确的任务，带回改动、观察结果或阻塞原因。</p>
+			</div>
+			<div class="table-wrap">
+				<table>
+					<thead><tr><th scope="col">角色</th><th scope="col">职责</th></tr></thead>
+					<tbody>
+						<tr><th scope="row">Sol 主控</th><td>负责理解目标、诊断、关键决策、任务拆分、子 Agent 调度、集成安排和最终验收。</td></tr>
+						<tr><th scope="row">Astra 顾问</th><td>根据关键证据回答一个尚未解决的问题。顾问只读，并给出不确定性和有限的验证路径。</td></tr>
+						<tr><th scope="row">Astra 文档作者或调查者</th><td>使用单独的执行角色撰写权威技术文档，或对一个未解决问题开展只读调查。</td></tr>
+						<tr><th scope="row">Luna 执行者</th><td>实现主控选定的修复或已认可的设计步骤，按明确清单只读采集证据，或运行指定检查。无法解释的失败交回主控。</td></tr>
+					</tbody>
+				</table>
+			</div>
+			<p class="section-note">这些是仓库中的角色约定。任务规模本身不会把实现工作转给 Astra。主控先选定方案，再由 Luna 执行范围明确的步骤。实际模型路由和可用性取决于 Codex 宿主与账号；用户明确选择的模型优先于默认值。</p>
+			<div class="fact-grid">
+				<article class="fact-card">
+					<h3>并行执行彼此独立的工作</h3>
+					<p>没有共用写入或依赖的文字与代码任务可以并行。生图、图片编辑、查看和传输一次只处理一项。</p>
+				</article>
+				<article class="fact-card">
+					<h3>使用 Codex 已有的能力</h3>
+					<p>PigeonStack 打包了指令、Codex 插件、配置和部署工具。它不提供 MCP 服务或单独的自主调度器。</p>
+				</article>
+			</div>
+		</section>
+
+		<section class="content-section split-section" aria-labelledby="fit-title">
+			<div>
+				<p class="eyebrow">适用人群</p>
+				<h2 id="fit-title">适合需要清晰交接的 Codex 用户</h2>
+				<p>如果你需要明确的决策负责人、范围清楚的执行任务和基于证据的验收，可以了解 PigeonStack。</p>
+				<p>兼顾成本与能力是工作策略，不是跑分结论。模型 ID、账号权限、支持的推理强度和费用取决于你的账号与 Codex 客户端。</p>
+			</div>
+			<aside class="requirements-card" aria-labelledby="requirements-title">
+				<h3 id="requirements-title">当前宿主要求</h3>
+				<ul>
+					<li>维护中的配置已在 Windows 与 PowerShell 环境验证。</li>
+					<li>同步脚本要求 Python 3.11 或更高版本。</li>
+					<li>安装插件需要兼容的 Codex CLI，以及已注册并能解析 <code>pstack@personal</code> 的本地插件市场。</li>
+					<li>多 Agent 工作需要宿主提供原生子 Agent 工具，并且账号可使用所选模型。</li>
+				</ul>
+			</aside>
+		</section>
+
+		<section class="content-section faq-section" aria-labelledby="faq-title">
+			<div class="section-heading">
+				<p class="eyebrow">常见问题与边界</p>
+				<h2 id="faq-title">使用前需要了解什么</h2>
+			</div>
+			<div class="faq-list">
+				<article class="faq-item">
+					<h3>PigeonStack 是什么？</h3>
+					<p>PigeonStack 是 PigeonYang 维护的一套 Codex 全局规则、Agent 角色定义、选定配置、定制版 pstack 插件和本地同步脚本。</p>
+				</article>
+				<article class="faq-item">
+					<h3>PigeonStack 与 pstack 有什么关系？</h3>
+					<p>PigeonStack 将 Lauren Tan 的 pstack 工作流适配到 Codex，并加入本仓库的规则和部署配置。它不宣称优于上游项目。页面链接到固定版本的上游源码，并保留原作者署名。</p>
+				</article>
+				<article class="faq-item">
+					<h3>它是插件、MCP 服务还是 Skill？</h3>
+					<p>PigeonStack 是一个代码仓库和部署配置，内含适配后的 Codex 插件与选定技能。它不提供 MCP 服务、定时任务、钩子或后台调度器。</p>
+				</article>
+				<article class="faq-item">
+					<h3>可以选择其他模型吗？</h3>
+					<p>仓库支持配置模型选项，本地规则也规定用户明确选择优先。你的 Codex 宿主和账号必须提供所选模型与 Agent 工具。仓库不验证服务商内部的模型映射。</p>
+				</article>
+				<article class="faq-item">
+					<h3>预览和安装有什么区别？</h3>
+					<p>独立预览使用 <code>--codex-home</code> 和 <code>--skip-plugin-install</code> 检查文件副本与配置合并。它不会激活插件，也不会改写指令中机器专属的路径。请看<a href="/pigeonstack/zh/getting-started/">开始使用指南</a>了解两种流程。</p>
+				</article>
+				<article class="faq-item">
+					<h3>哪些结果经过验证？</h3>
+					<p>同步检查成功表示受管理文件与配置在磁盘上保持一致。要确认指令已加载和实际模型路由，还需在新的 Codex 会话中验证。发布本网站不能证明搜索引擎已收录或页面获得排名。</p>
+				</article>
+			</div>
+		</section>
+
+		<section class="closing-panel">
+			<div>
+				<p class="eyebrow">从隔离目录开始</p>
+				<h2>先预览，再考虑改动真实 Codex 目录</h2>
+				<p>指南列出了隔离预览命令、退出码，以及维护者宿主上的部署边界。</p>
+			</div>
+			<a class="button button-light" href="/pigeonstack/zh/getting-started/">打开开始使用指南</a>
+		</section>
+	</main>
+	<footer class="site-footer">
+		<div class="shell footer-inner">
+			<div><a class="footer-brand" href="/pigeonstack/zh/">PigeonStack</a><p>由 PigeonYang 维护，基于 Lauren Tan 的 pstack 工作流。</p><p class="review-note">内容复核于 2026-10-03。</p></div>
+			<nav class="footer-links" aria-label="页脚导航">
+				<a href="/pigeonstack/">English overview</a>
+				<a href="/pigeonstack/getting-started/">Getting started</a>
+				<a href="/pigeonstack/zh/" lang="zh-Hans">简体中文总览</a>
+				<a href="/pigeonstack/zh/getting-started/" lang="zh-Hans">简体中文指南</a>
+				<a href="https://github.com/PigeonAI-Yang/pigeonstack/blob/main/README.zh-CN.md">GitHub 中文 README</a>
+				<a href="https://github.com/PigeonAI-Yang/pigeonstack/issues">GitHub issues</a>
+				<a href="/pigeonstack/sitemap.xml">Sitemap</a>
+			</nav>
+		</div>
+	</footer>
+</body>
+</html>

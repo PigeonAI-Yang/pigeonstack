@@ -1,16 +1,30 @@
-# PigeonStack
+# PigeonStack: Codex Multi-Agent Workflow
 
 First, credit and thanks to [Lauren Tan (poteto)](https://github.com/poteto), the original author of [pstack](https://github.com/cursor/plugins/tree/f5bdd6826fd0a0d9cbc4347134c3a74a200b9d9d/pstack). PigeonStack builds on her work and adapts it for this Codex workflow.
 
 English | [简体中文](README.zh-CN.md)
 
-**A Codex workflow built around a capable Sol primary, a top-tier Astra advisor, and lower-cost Luna execution.**
+[Documentation](https://pigeonai-yang.github.io/pigeonstack/) | [Getting started](https://pigeonai-yang.github.io/pigeonstack/getting-started/) | [FAQ](#faq) | [Issues](https://github.com/PigeonAI-Yang/pigeonstack/issues)
+
+**A Codex workflow with Sol for decisions, Astra for unresolved questions, and Luna for specified implementation work.**
 
 PigeonStack, or 鸽栈, is PigeonYang's maintained collection of global Codex rules, a customized version of Lauren Tan's pstack, agent-role definitions, selected configuration, and a local synchronization script. It brings those parts into one source repository so that model responsibilities and installed instructions stay consistent.
 
 The aim is high performance with cost-efficient collaboration. Sol owns the task and its decisions. Astra contributes deeper judgment where an unresolved question warrants it. Luna carries out small, well-specified assignments. Expensive reasoning goes to decisions that need it, and accepted decisions become concrete execution briefs that other agents can reuse.
 
 This is a set of instructions, a packaged Codex plugin, and deployment tooling. It does not provide an MCP server or a separate autonomous scheduler. Installing it activates no timers, background agents, hooks, or remote services.
+
+## Start here
+
+PigeonStack keeps global Codex rules, agent roles, configuration, and the adapted pstack plugin in Git, then synchronizes them to a Codex host.
+
+For a safe first check, use [Preview in an isolated target](#preview-in-an-isolated-target) or follow the [getting started guide](https://pigeonai-yang.github.io/pigeonstack/getting-started/).
+
+The verified host is Windows with PowerShell, and the sync script requires Python 3.11 or newer. Real plugin installation also requires a compatible Codex CLI and an existing local marketplace registration for `pstack@personal`.
+
+- Maintain global Codex rules in Git and review them with the source.
+- Let Sol choose the repair, then delegate the specified code change to Luna.
+- Keep the maintained source, runtime files, and versioned plugin cache in sync.
 
 ## Why this division of work
 
@@ -56,7 +70,7 @@ Before assigning implementation to Luna, the Primary supplies the following brie
 
 A prescribed read-only collection task can precede diagnosis. It names the searches or observations to collect, and the Primary interprets the result. Luna does not receive open-ended architecture work or a batch of unexplained failures to repair.
 
-Scheduling follows actual readiness. Dispatch independent assignments together, then dispatch newly unblocked work as results arrive. Serialize conflicting writes, shared-instance operations, and real dependencies. Each assignment gets a fresh child; a completed child is retired. When all useful work is delegated, use the host's maximum interruptible wait, currently `3600000` ms, instead of polling unchanged status. There are no mandatory model panels or tasks invented to fill slots.
+Scheduling follows actual readiness. Dispatch independent assignments together, then dispatch newly unblocked work as results arrive. Serialize conflicting writes, shared-instance operations, and real dependencies. Each assignment gets a fresh child; a completed child is retired. When all useful work is delegated, use the host's maximum interruptible wait, currently `3600000` ms, instead of polling unchanged status. There are no mandatory model panels or tasks invented to fill slots. Keep image generation, editing, viewing, visual analysis, and related transfers serial across the Primary and its children.
 
 For example, a user might ask:
 
@@ -174,6 +188,26 @@ These are agent instructions and configuration conventions. They are not runtime
 Keep changes focused on an observed problem or current requirement. Use the existing source and verification entry points, preserve unrelated work, and describe the evidence for the change. Keep the English and Chinese introductions aligned.
 
 Global instructions, role definitions, and rule updates remain in English. The Chinese README is public documentation. Follow the authoritative-document policy when changing architecture, contracts, or implementation plans. Preserve upstream attribution and record adapter changes in [ADAPTATION.md](pstack/ADAPTATION.md).
+
+<a id="faq"></a>
+
+## FAQ
+
+### Is PigeonStack an MCP server, a skill, or an agent?
+
+It is a repository containing a Codex plugin and the instructions and tools that support it. The plugin bundles selected pstack skills and the Codex adapter; global rules, role definitions, configuration, and the synchronization script live alongside it in the repository. It does not run an MCP server or an autonomous scheduler.
+
+### How does PigeonStack differ from pstack?
+
+PigeonStack adapts Lauren Tan's pstack for Codex. It adds Codex-specific global rules, a host adapter, and versioned synchronization for runtime files and the plugin cache. Lauren Tan remains the credited original author. See [Attribution and licenses](#attribution-and-licenses).
+
+### Can I preview PigeonStack without changing my `.codex` directory?
+
+Yes. Follow the isolated-target preview above with a new `--codex-home` path outside your live `.codex` directory and `--skip-plugin-install`. The script writes managed files and merged configuration only to that target. It does not install the plugin in or change your live Codex home, and it cannot prove model behavior.
+
+### Does PigeonStack make Codex faster or cheaper?
+
+No speed or cost benchmarks are published. Cost-efficient collaboration is a design goal, not a measured result. Model access and native child-agent support depend on your Codex host and account.
 
 ## Attribution and licenses
 
