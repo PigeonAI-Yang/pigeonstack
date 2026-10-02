@@ -1,5 +1,7 @@
 # PigeonStack
 
+First, credit and thanks to [Lauren Tan (poteto)](https://github.com/poteto), the original author of [pstack](https://github.com/cursor/plugins/tree/f5bdd6826fd0a0d9cbc4347134c3a74a200b9d9d/pstack). PigeonStack builds on her work and adapts it for this Codex workflow.
+
 English | [简体中文](README.zh-CN.md)
 
 **A Codex workflow built around a capable Sol primary, a top-tier Astra advisor, and lower-cost Luna execution.**
@@ -20,7 +22,7 @@ PigeonStack gives one Primary responsibility for decisions and final acceptance.
 | --- | --- | --- |
 | Sol Primary | Understand the goal, diagnose, plan, select the solution, decompose work, dispatch children, direct integration, and accept the result. | Preferred `gpt-6-sol`, `high` |
 | Astra advisor | Answer one difficult unresolved question using decisive evidence. Return a judgment, uncertainty, and a bounded verification path. The advisor is read-only. | `gpt-6-astra`, `high` |
-| Astra author or executor | Write or review authoritative technical documents, investigate a bounded question, or perform complex execution that needs sustained judgment. Use a separate general execution role with explicit scope and permissions. | `gpt-6-astra`, `high` |
+| Astra author or executor | Write or review authoritative technical documents, or investigate one unresolved question read-only. Use a separate general execution role with explicit scope and permissions. | `gpt-6-astra`, `high` |
 | Luna executor | Implement one Primary-specified repair or accepted design step, collect evidence through a prescribed read-only checklist, and run assigned checks. Return unexplained failures to the Primary. | `gpt-6-luna`, `max` |
 
 These names express this project's model strategy and local configuration. Availability, model IDs, supported effort, and cost depend on your account and Codex client. This repository makes no measured speed, savings, or benchmark-superiority claim.
@@ -42,7 +44,7 @@ flowchart TD
 
 Sol does not need an Astra consultation for every task. It consults the read-only advisor when the available evidence still leaves a consequential question unresolved. Authoritative architecture documents, technical designs, implementation plans, contracts, ADRs, and specifications have a separate rule: Astra at `high`, or a stronger model explicitly selected by the user, authors and reviews them. That work uses a general execution role with permission to write. The advisor role remains read-only, and Luna does not change contracts to make an implementation pass.
 
-Routine authorized ZIP uploads and publishing, Git operations, installation, repository creation, established platform procedures, and ordinary public README prose use Luna at `max`. Provide an operation brief with the artifact, destination, authorized steps, success readback, and stop conditions. Astra handles authoritative technical documents and work that needs sustained judgment. Publication, unfamiliar tools, or an operational failure alone do not trigger Astra.
+Routine authorized ZIP uploads and publishing, Git operations, installation, repository creation, established platform procedures, and ordinary public README prose use Luna at `max`. Provide an operation brief with the artifact, destination, authorized steps, success readback, and stop conditions. Astra handles authoritative technical documents and bounded read-only unresolved questions. Webpage implementation and refactoring return to Luna after Sol selects the solution; task size and visual complexity do not justify Astra execution. Other Astra execution requires an explicit task-specific user selection. Publication, unfamiliar tools, or an operational failure alone do not trigger Astra.
 
 Before assigning implementation to Luna, the Primary supplies the following brief:
 

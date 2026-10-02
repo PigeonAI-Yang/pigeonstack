@@ -57,3 +57,11 @@ The user reserves architecture and technical-design documents, implementation pl
 ## Routine operation routing on 2026-10-02
 
 Global `AGENTS.md`, `CODEX.md`, and `MODELS.md` route authorized routine operations, established platform procedures, and ordinary public README prose to Luna at `max`. Platform, publication status, unfamiliar tooling, or an operational error alone does not trigger Astra. Astra remains responsible for authoritative technical documents and work that needs sustained judgment. This changes disk instructions only; behavior in a new session is untested.
+
+## Bounded Astra routing on 2026-10-03
+
+This revision supersedes the earlier default authorization for complex Astra execution. Implementation and refactoring use Luna after Primary solution selection. Astra handles bounded read-only unresolved questions and authoritative technical documents; other execution requires explicit task-specific user model selection. Webpage scope, file count, visual complexity, and incomplete decomposition do not expand Astra authority. New-session routing behavior has not been tested.
+
+## Serial image operations on 2026-10-03
+
+The user requires image generation, editing, viewing, visual analysis, and associated transfers to run serially to protect uplink bandwidth. The Primary schedules at most one such operation across itself and its children. This overrides generic parallelism for image work while preserving parallel progress on unrelated tasks. The change adds instructions, not runtime enforcement; bandwidth and new-session behavior have not been measured.
