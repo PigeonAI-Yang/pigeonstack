@@ -64,3 +64,15 @@ Search ranking and AI citation uplift remain unverified. This record remains the
 - No authenticated Google Search Console or Bing Webmaster property was inspected. Search impressions, query positions and AI citation reports therefore remain unavailable.
 
 Next evidence reviews: 2026-10-10 and 2026-10-31 (Asia/Shanghai). Preserve this baseline and record observed changes before inferring impact. The experiment remains active; publication success is not the full ranking objective.
+
+## Discovery follow-up: 2026-10-03
+
+The metrics capture script and its first snapshot were published in commit [`6cb56cc`](https://github.com/PigeonAI-Yang/pigeonstack/commit/6cb56cc64a0c70d4d2d1661113df189b2d9b801b). The [snapshot](discovery-metrics/2026-10-02T21-01-44Z.json) records three successful GitHub API responses: one star, zero forks, and zero views and clones in the reported 14-day window. All daily observations are preserved. These values do not establish search positions, AI citations, or causal improvement.
+
+At each review, run `python scripts/capture_discovery_metrics.py --output .ai/discovery-metrics/<UTC-timestamp>.json` with a new filename and the existing authorized GitHub account. The script refuses overwrites and stops on API errors. Do not sum overlapping 14-day snapshots. This is an on-demand measurement command, not scheduled traffic collection. The existing weekly workflow checks documentation health only.
+
+The [IndexNow FAQ](https://www.indexnow.org/faq) directs site owners to use sitemaps for updates made before IndexNow setup. No IndexNow setup or submission has been performed. Do not submit the already-published pages as new updates merely to obtain a receipt. Revisit IndexNow when future substantive content changes justify notifications. A submission receipt would prove receipt only, not crawling, indexing, ranking, or citation.
+
+The selected change is to add accurate `lastmod` values to the existing four-entry sitemap. The [Google sitemap guidance](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap) requires the date of the last significant page update. The overview content was published at `2026-10-03T04:37:25+08:00`; both onboarding pages received their verified preview content at `2026-10-03T04:47:50+08:00`. Use those page-specific commit timestamps. On future substantive page changes, update the affected entry after reviewing the content diff. Do not refresh all dates during a build, a stylesheet edit, or a metrics capture. Acceptance requires the existing local site check and the published sitemap to contain these four URL/date pairs.
+
+Search Console and Bing Webmaster property access remain unverified. No search-engine submission or ranking improvement is claimed. Do not manufacture repeated edits or query traffic while waiting for the scheduled evidence reviews.
