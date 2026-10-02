@@ -28,13 +28,13 @@ Selected changes: improve the two READMEs; publish four small static HTML pages 
 
 ## Work and acceptance
 
-- [ ] Publish accurate bilingual README improvements, preserving the original author's opening credit.
-- [ ] Publish all four documentation pages and stylesheet; verify HTTP responses and readable content, not just deployment receipts.
-- [ ] Verify unique titles/descriptions, canonical and language links, local links/assets, sitemap and absence of `noindex`.
-- [ ] Set and read back accurate repository topics, description and homepage.
+- [x] Publish accurate bilingual README improvements, preserving the original author's opening credit.
+- [x] Publish all four documentation pages and stylesheet; verify HTTP responses and readable content, not just deployment receipts.
+- [x] Verify unique titles/descriptions, canonical and language links, local links/assets, sitemap and absence of `noindex`.
+- [x] Set and read back accurate repository topics, description and homepage.
 - [x] Execute the documented isolated preview and record its actual boundary: file/config sync only.
-- [ ] Run the docs health workflow on GitHub and verify its receipt; retain the weekly schedule for regressions.
-- [ ] Record post-publication evidence, remaining measurement gaps and the next review.
+- [x] Run the docs health workflow on GitHub and verify its receipt; retain the weekly schedule for regressions.
+- [x] Record post-publication evidence, remaining measurement gaps and the next review.
 
 ## Measurement and follow-up
 
@@ -46,10 +46,21 @@ Review new evidence after seven days and after 28 days. Change content to answer
 
 ## Current state
 
-First implementation round in progress. Repository description and 11 accurate topics have been updated and read back. The README and four-page site are drafted; publication follows acceptance checks. Both languages were rendered in Chromium: all four desktop pages plus both mobile overview pages loaded their stylesheet and expected headings without horizontal overflow, console errors or failed requests. The Primary inspected English desktop and Chinese mobile screenshots sequentially.
+The first implementation round was published in commit [`41f7dce`](https://github.com/PigeonAI-Yang/pigeonstack/commit/41f7dcef3a3a242ac417e2cebe76929eca45c842). Repository description and 11 accurate topics were updated and read back. The homepage now points to https://pigeonai-yang.github.io/pigeonstack/. GitHub Pages reports `built`, serving `main:/docs` with HTTPS. Both languages were rendered in Chromium: all four desktop pages plus both mobile overview pages loaded their stylesheet and expected headings without horizontal overflow, console errors or failed requests. The Primary inspected English desktop and Chinese mobile screenshots sequentially.
 
 Acceptance uncovered and repaired a real onboarding defect: `patch_config` failed for an empty destination because multiple insertions at the same source offset could place a new TOML table before root assignments. A minimal empty-config reproduction and a comment-only reproduction both failed before any write. The repair groups insertions by source offset, placing existing-section additions before new table blocks. Four regression tests passed, covering parsed root/table scope, unmanaged-value preservation, BOM/line endings, repeat-call idempotence and the multiline guard. A new isolated CLI target then returned expected drift (exit 1), successful deployment (exit 0; 217 writes including configuration), and an aligned check (exit 0). No live Codex directory was modified. This repair makes the documented preview usable; it does not change installation scope or promise automatic marketplace setup.
 
 The first docs checker was also corrected before release: GitHub repository identity was compared with inconsistent path case, and the implementation included unused general-purpose validation. The accepted direction is a small checker for the four actual pages, with fixture failures for missing canonical links and broken assets.
 
 Search ranking and AI citation uplift remain unverified. This record remains the task's authoritative plan and evidence index.
+
+## Publication observations: 2026-10-03
+
+- Local site checks: 14 passed. Combined local and live checks: 24 passed, including four HTTP pages, sitemap, stylesheet and metadata checks. The live receipt checks do not simulate a search engine's indexing pipeline.
+- [Push health run](https://github.com/PigeonAI-Yang/pigeonstack/actions/runs/37061797879) and [manual live health run](https://github.com/PigeonAI-Yang/pigeonstack/actions/runs/37062006260) succeeded. The downloaded artifact has `passed=true` and `source_mode=local+live`.
+- The existing health workflow runs on relevant pushes/PRs and weekly on Monday at 03:17 UTC (11:17 Asia/Shanghai), retaining receipts for 90 days. It verifies technical health; it does not autonomously claim or optimize rankings.
+- A post-publication sample of the four recorded queries still did not return the exact repository or Pages URL. The third query surfaced other pstack ports. No exact search position is inferred from these partial results.
+- The web research tool returned an internal fetch error for both new overview URLs. Independent HTTP checks on the local machine and GitHub Actions passed. The research-tool error is an unresolved tool observation, not proof of an origin outage, crawler denial or index exclusion.
+- No authenticated Google Search Console or Bing Webmaster property was inspected. Search impressions, query positions and AI citation reports therefore remain unavailable.
+
+Next evidence reviews: 2026-10-10 and 2026-10-31 (Asia/Shanghai). Preserve this baseline and record observed changes before inferring impact. The experiment remains active; publication success is not the full ranking objective.

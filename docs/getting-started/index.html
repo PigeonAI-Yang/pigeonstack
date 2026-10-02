@@ -103,6 +103,14 @@ python scripts/sync.py check</code></pre>
 			<p>When deployment changes existing managed files, the script keeps backups under <code>&lt;codex-home&gt;/backups/pigeonstack/</code>. Plugin installation can fail after runtime files are written, so a failure is not an automatic rollback.</p>
 		</section>
 
+		<section class="guide-section" aria-labelledby="verified-preview-title">
+			<p class="step-label">Observed run</p>
+			<h2 id="verified-preview-title">Verified isolated preview</h2>
+			<p>Reviewed 2026-10-03 against <a href="https://github.com/PigeonAI-Yang/pigeonstack/commit/41f7dcef3a3a242ac417e2cebe76929eca45c842">release commit 41f7dce</a>. The actual empty-target check returned code <code>1</code> for drift. Deployment returned code <code>0</code> after 217 writes to managed files and configuration. The final check returned code <code>0</code> with the files and configuration aligned.</p>
+			<p>Run <code>python -m unittest discover -s scripts -p test_sync.py</code> to repeat the four configuration regression tests in <a href="https://github.com/PigeonAI-Yang/pigeonstack/blob/main/scripts/test_sync.py"><code>scripts/test_sync.py</code></a>. They verify root and table scope, preservation of unmanaged values, repeat-call idempotence, and the multiline-value guard.</p>
+			<p>The <a href="https://github.com/PigeonAI-Yang/pigeonstack/actions/workflows/docs-health.yml">Documentation health workflow</a> runs ongoing site checks. These checks do not establish plugin activation, model routing, or cost savings.</p>
+		</section>
+
 		<section class="guide-section" aria-labelledby="example-title">
 			<p class="step-label">An example task</p>
 			<h2 id="example-title">Give the Primary a concrete outcome</h2>

@@ -103,6 +103,14 @@ python scripts/sync.py check</code></pre>
 			<p>部署覆盖现有受管理文件时，会在 <code>&lt;codex-home&gt;/backups/pigeonstack/</code> 保存备份。插件安装可能发生在运行时文件写入之后，因此安装失败不会自动回滚。</p>
 		</section>
 
+		<section class="guide-section" aria-labelledby="verified-preview-title">
+			<p class="step-label">实测结果</p>
+			<h2 id="verified-preview-title">已验证的隔离预览</h2>
+			<p>本节于 2026-10-03 根据<a href="https://github.com/PigeonAI-Yang/pigeonstack/commit/41f7dcef3a3a242ac417e2cebe76929eca45c842">发布提交 41f7dce</a>复核。实际空目标检查发现预期差异，返回代码 <code>1</code>。部署向受管理文件和配置写入 217 项，返回代码 <code>0</code>。最终检查确认文件和配置一致，返回代码 <code>0</code>。</p>
+			<p>在仓库目录运行 <code>python -m unittest discover -s scripts -p test_sync.py</code>，可重跑 <a href="https://github.com/PigeonAI-Yang/pigeonstack/blob/main/scripts/test_sync.py"><code>scripts/test_sync.py</code></a> 中的 4 项配置回归测试。测试覆盖根级和表级作用域、未管理值保留、重复调用幂等，以及多行值限制。</p>
+			<p><a href="https://github.com/PigeonAI-Yang/pigeonstack/actions/workflows/docs-health.yml">Documentation health 工作流</a>会持续运行站点检查。这些检查不证明插件已激活、模型路由有效或节省了成本。</p>
+		</section>
+
 		<section class="guide-section" aria-labelledby="example-title">
 			<p class="step-label">任务示例</p>
 			<h2 id="example-title">给主控一个具体结果</h2>
