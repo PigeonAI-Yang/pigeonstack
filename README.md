@@ -35,16 +35,16 @@ PigeonStack gives one Primary responsibility for decisions and final acceptance.
 
 | Role | Responsibility | Local model and effort example |
 | --- | --- | --- |
-| Sol Primary | Own the goal, constraints, day-to-day decisions, coordination, and final acceptance. | Preferred `gpt-6-sol`, `high` |
+| Sol Primary | Own the goal, constraints, day-to-day decisions, coordination, and final acceptance. | `gpt-6.1-sol`, `high` |
 | Luna Executor | Complete routine scoped implementation, follow a prescribed read-only checklist, or run assigned checks. Return the completed result and evidence to the Primary. | `gpt-6-luna`, `max` |
-| Sol Senior Executor | Take over an unresolved Luna problem, choose the technical solution, implement necessary changes, and verify a complete result. This is a new child and does not switch the active Primary. | `gpt-6-sol`, `xhigh` |
+| Sol Senior Executor | Take over an unresolved Luna problem, choose the technical solution, implement necessary changes, and verify a complete result. This is a new child and does not switch the active Primary. | `gpt-6.1-sol`, `xhigh` |
 | Astra Expert | Author authoritative technical documents directly, or take over an unresolved problem after the Senior Executor. Choose, implement, and verify the solution, then return the completed result and evidence to the Primary. Escalate one effort at a time: `high`, `xhigh`, `max`, then `ultra`. | `gpt-6-astra`, `high` first |
 
 Optional read-only consultation can use the existing `astra-advisor` compatibility role at `high`. Takeovers use the general execution role with an explicit model and effort. This keeps the current role IDs and runtime permissions unchanged.
 
 These names express this project's model strategy and local configuration. Availability, model IDs, supported effort, and cost depend on your account and Codex client. This repository makes no measured speed, savings, or benchmark-superiority claim.
 
-[MODELS.md](pstack/MODELS.md) defines the preferred routing. The checked-in [configuration](config/workflow.toml) currently selects `gpt-6.1-sol` at `high` for the Primary. An explicit user selection takes precedence over the preferred `gpt-6-sol` default. A Senior Executor is a separate `gpt-6-sol` child at `xhigh`; it does not switch the active Primary. Editing a file does not switch a running Primary, and a model label does not establish the server's internal model mapping.
+[MODELS.md](pstack/MODELS.md) and the checked-in [configuration](config/workflow.toml) select `gpt-6.1-sol` at `high` as the default Primary. An explicit user selection takes precedence. A Senior Executor is a separate `gpt-6.1-sol` child at `xhigh`; it does not switch the active Primary. Editing a file does not switch a running Primary, and a model label does not establish the server's internal model mapping.
 
 ## How a task moves through Codex
 
@@ -52,7 +52,7 @@ These names express this project's model strategy and local configuration. Avail
 flowchart TD
 	U["User goal and authorization"] --> P["Sol Primary: ordinary decisions and final acceptance"]
 	P -->|"Routine scoped work"| L["Luna Executor: gpt-6-luna, max"]
-	L -->|"Unable to solve, or unresolved at this tier's 30-minute assessment"| S["Fresh Sol child: Senior Executor, gpt-6-sol, xhigh"]
+	L -->|"Unable to solve, or unresolved at this tier's 30-minute assessment"| S["Fresh Sol child: Senior Executor, gpt-6.1-sol, xhigh"]
 	S -->|"Unable to solve, or unresolved at this tier's 30-minute assessment"| A["Astra Expert: gpt-6-astra, high"]
 	A -->|"Unable to solve, or unresolved at this tier's assessment: one effort higher"| H["Fresh Astra Expert child: xhigh, max, then ultra"]
 	L -->|"Completed result and evidence"| P
