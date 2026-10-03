@@ -1,6 +1,6 @@
 # Model selection for this host
 
-Updated 2026-10-02. Global `AGENTS.md` is authoritative for Primary responsibility, delegation and scheduling. `CODEX.md` supplies host mechanics; this file owns model IDs and reasoning effort. Upstream role defaults do not apply.
+Updated 2026-10-03. Global `AGENTS.md` is authoritative for Primary responsibility, delegation and scheduling. `CODEX.md` supplies host mechanics; this file owns model IDs and reasoning effort. Upstream role defaults do not apply.
 
 ## Active routing
 
@@ -11,13 +11,13 @@ Updated 2026-10-02. Global `AGENTS.md` is authoritative for Primary responsibili
 | Routine authorized operations and ordinary public prose without authoritative design decisions | `gpt-6-luna`, `max` |
 | Authoritative technical-document authorship, restructuring, substantive revision and review | `gpt-6-astra`, `high`, or a stronger model explicitly selected by the user; never Luna |
 | Bounded read-only investigation of one unresolved question | `gpt-6-astra`, `high` |
-| A specific read-only advisory question | `gpt-6-astra`, `high` |
+| A specific read-only advisory question | `gpt-6-astra`, `high`; unresolved advisory attempts escalate to `xhigh`, then `max`, then `ultra` under global `AGENTS.md` |
 
 Implementation and refactoring, including webpage work, default to Luna after the Primary selects the solution. An unresolved question permits only bounded read-only Astra investigation, followed by a return to Luna for implementation. Other Astra execution requires the user's explicit task-specific model selection and a general/default execution role. Complexity labels, task size, and incomplete decomposition are not exceptions.
 
 Route by required judgment, not by platform, publication status, file type, or operation count, as stated in global `AGENTS.md`.
 
-The user explicitly selects high for Sol and Astra, including the read-only advisor, and max for every Luna assignment, including small evidence-collection tasks and checks. Do not change these efforts for routine cost or speed judgments; use a different supported effort only when the user explicitly requests it. Luna does not support ultra.
+The user selects `high` by default for Sol and Astra, and `max` for every Luna assignment, including evidence collection and checks. The user also authorizes increasing Astra's advisory effort after an unresolved attempt, as defined in global `AGENTS.md`. This exception keeps the same model and read-only scope. Do not change other efforts for routine cost or speed judgments. Luna does not support `ultra`.
 
 ## Active configuration and availability
 
@@ -32,8 +32,9 @@ GPT-6 Sol and Luna are exposed by the updated client. Verify actual session rout
 - Luna implements one Primary-specified repair or accepted design step, or follows a prescribed read-only evidence checklist. Apply the authoritative technical-document policy in global `AGENTS.md` before routing document work. The brief in CODEX.md applies to Luna implementation; a checklist may be assigned before cause or repair is known. Do not give Luna open-ended diagnosis, architecture choices or a batch of unexplained failures.
 - For ordinary children, pass `model: "gpt-6-luna"` and `reasoning_effort: "max"`. Every Luna call uses `max`; routine task-specific cost or speed judgments do not override this user requirement. These match the active global child defaults.
 - For Astra authorship, substantive revision or review of authoritative technical documents, bounded read-only investigation of one unresolved question, use the supported general/default role with explicit `model: "gpt-6-astra"` and `reasoning_effort: "high"`. Define the objective, decisive context, resources, permissions, exclusions, acceptance evidence and return conditions. Keep major scope, product and architecture decisions and final acceptance with the Primary. Do not use `worker` or `poteto-agent` for these assignments because their contracts are limited to a prescribed implementation or read-only checklist.
-- For a specific read-only advisory question, use `astra-advisor`, `model: "gpt-6-astra"`, and `reasoning_effort: "high"`. Never use the advisor role for writes or open-ended investigation.
+- For a specific read-only advisory question at `high`, use `astra-advisor`, which pins `gpt-6-astra` and `high`. Never use the advisor role for writes or open-ended investigation.
+- When that advisor cannot resolve the question or remains unresolved at its 30-minute assessment, use a fresh general/default child with `model: "gpt-6-astra"` and `reasoning_effort: "xhigh"`. Subsequent unresolved advisory attempts advance to `max`, then `ultra`. State the same read-only advisory contract explicitly: one question, existing evidence and failed approaches, no source or shared-state writes, no children, and findings for Primary acceptance. Keep one active advisor per question. The dedicated role's pinned effort cannot be overridden. If the required level is unsupported or unavailable, report that limit without a silent downgrade. At unresolved `ultra`, return the blocker or missing evidence rather than starting another cycle.
 - Use `fork_turns: "none"` or necessary finite history when selecting a model or effort. Do not use full-history inheritance with an override.
-- Custom agent files may override explicit spawn choices. The ordinary worker and poteto-agent files intentionally omit model and effort so the active defaults or explicit assignment can select them. The dedicated advisor intentionally pins Astra and high effort.
+- Custom agent files may override explicit spawn choices. The ordinary worker and poteto-agent files intentionally omit model and effort so the active defaults or explicit assignment can select them. The dedicated advisor intentionally pins Astra and high effort; authorized higher-effort advisors therefore use the general/default role above.
 - Explicit task-specific user choices take precedence within tool and access limits. If a selected model is unavailable, use another currently authorized model only if it fits the assignment boundaries; if none does, report a blocker. Do not silently use another generation or provider.
 - Do not create extra planners, synthesizers, or model panels to duplicate Primary responsibility. Advisory findings inform the Primary's decision; they do not transfer final acceptance.

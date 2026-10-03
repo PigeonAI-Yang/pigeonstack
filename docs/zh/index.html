@@ -84,6 +84,9 @@
 					<p>PigeonStack 打包了指令、Codex 插件、配置和部署工具。它不提供 MCP 服务或单独的自主调度器。</p>
 				</article>
 			</div>
+			<p class="section-note">没有其他独立工作可做时，主控会等待委派任务，最长 30 分钟。等待可中断，收到事件后会提前返回。首次委派满 30 分钟时，主控会对未解决工作做一次评估。更换执行者不会重置计时。</p>
+			<p class="section-note">执行者报告无法解决任务时，主控会让一位新的 Astra 顾问以 high 推理强度只读调查一个问题。30 分钟评估发现任务仍未解决时，主控也会这样做。顾问报告无法解决，或在其自己的 30 分钟评估时问题仍未解决，主控会启动一位新的顾问，并提高到下一级推理强度。Astra 模型保持不变，推理强度依次为 high、xhigh、max、ultra。顾问只读并提出方案。主控接受方案后，才交由 Luna 执行。所需推理强度不可用时，主控会报告限制，不会静默降级。若 ultra 仍无法解决，则返回具体阻塞原因或缺失证据。已确认健康的长时间命令继续按现有观察循环运行。凭据、访问、权限或服务不可用属于外部阻塞，不是推理失败。模型 ID 和角色详情见 <a href="https://github.com/PigeonAI-Yang/pigeonstack/blob/main/pstack/MODELS.md">MODELS.md</a>。</p>
+			<p class="section-note">只有在已确认当前问题或存在明确的当前要求时，才添加校验门。修复场景要先确认并诊断问题；仅凭未来可能失败的猜测不够。校验门应限于受影响的操作和边界。验证它能捕获已确认的问题或落实当前要求，同时不无故阻断正常操作。</p>
 		</section>
 
 		<section class="content-section split-section" aria-labelledby="fit-title">
