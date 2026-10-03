@@ -48,7 +48,7 @@
 			<p class="eyebrow">A Codex multi-agent workflow</p>
 			<h1>PigeonStack: a Codex multi-agent workflow</h1>
 			<p class="attribution">First, credit and thanks to <a href="https://github.com/poteto">Lauren Tan (poteto)</a>, the original author of <a href="https://github.com/cursor/plugins/tree/f5bdd6826fd0a0d9cbc4347134c3a74a200b9d9d/pstack">pstack</a>. PigeonStack adapts her work for this Codex workflow.</p>
-			<p class="lead">PigeonStack is PigeonYang's maintained Codex setup. It brings global rules, an adapted pstack plugin, agent-role definitions, selected configuration, and a local sync script into one source repository. Sol owns decisions, Astra advises on unresolved questions, and Luna executes specified work.</p>
+			<p class="lead">PigeonStack is PigeonYang's maintained Codex setup. It brings global rules, an adapted pstack plugin, agent-role definitions, selected configuration, and a local sync script into one source repository. Sol remains the Primary, Luna handles routine execution, a separate Sol child handles the next reasoning tier, and Astra is the Expert for hard problems.</p>
 			<div class="hero-actions">
 				<a class="button button-primary" href="/pigeonstack/getting-started/">Preview or install</a>
 				<a class="button button-secondary" href="https://github.com/PigeonAI-Yang/pigeonstack/blob/main/README.md">Read the source README</a>
@@ -66,14 +66,14 @@
 				<table>
 					<thead><tr><th scope="col">Role</th><th scope="col">Work</th></tr></thead>
 					<tbody>
-						<tr><th scope="row">Sol Primary</th><td>Owns the goal, diagnosis, key decisions, task breakdown, agent assignments, integration direction, and final acceptance.</td></tr>
-						<tr><th scope="row">Astra advisor</th><td>Answers one unresolved question from decisive evidence. The advisor is read-only and returns uncertainty plus a bounded verification path.</td></tr>
-						<tr><th scope="row">Astra author or investigator</th><td>Uses a separate execution role for authoritative technical documents, or investigates one unresolved question read-only.</td></tr>
-						<tr><th scope="row">Luna executor</th><td>Implements a Primary-selected repair or accepted design step, follows a named read-only checklist, or runs assigned checks. Luna returns unexplained failures to the Primary.</td></tr>
+						<tr><th scope="row">Sol Primary</th><td>Owns the goal, constraints, day-to-day decisions, coordination, and final acceptance.</td></tr>
+						<tr><th scope="row">Luna Executor</th><td>Handles routine scoped implementation at gpt-6-luna, max. It returns the completed result and evidence to the Primary.</td></tr>
+						<tr><th scope="row">Sol Senior Executor</th><td>Takes over unresolved Luna work at gpt-6-sol, xhigh, as a fresh child. It chooses, implements, and verifies the solution without switching the active Primary.</td></tr>
+						<tr><th scope="row">Astra Expert</th><td>Writes authoritative technical documents directly or takes over after the Senior Executor. It chooses, implements, and verifies a complete result, starting at gpt-6-astra, high, then xhigh, max, and ultra as needed.</td></tr>
 					</tbody>
 				</table>
 			</div>
-			<p class="section-note">These are the repository's role conventions. Task size alone does not move implementation to Astra. The Primary selects the design, and Luna executes the scoped step. Actual model access and routing depend on the Codex host and account. An explicit user model choice takes precedence over a preferred default.</p>
+			<p class="section-note">The three execution tiers are Luna at max, a new Sol child at xhigh, and Astra Expert at high, then xhigh, max, and ultra. Optional read-only consultation keeps the existing astra-advisor compatibility role at high. Takeovers use the general execution role with an explicit model and effort. No role IDs or runtime permissions change. Actual model access depends on the Codex host and account. The Senior Executor is a new child and does not switch the active Primary.</p>
 			<div class="fact-grid">
 				<article class="fact-card">
 					<h3>Run independent work together</h3>
@@ -84,8 +84,9 @@
 					<p>PigeonStack packages instructions, a Codex plugin, configuration, and deployment tooling. It does not provide an MCP server or a separate autonomous scheduler.</p>
 				</article>
 			</div>
-			<p class="section-note">When no independent work remains, the Primary waits for delegated work for up to 30 minutes. The wait is interruptible and returns early when an event arrives. The Primary assesses unresolved work once at 30 minutes after the first delegation. A fresh executor does not reset that clock.</p>
-			<p class="section-note">When an executor reports that it cannot solve the task, the Primary asks a fresh Astra advisor to investigate one question read-only at high effort. The Primary does the same if the 30-minute assessment finds the work unresolved. If the advisor cannot resolve the question or remains unresolved at its own 30-minute assessment, the Primary starts a fresh advisor at the next effort. The Astra model stays the same, and effort rises from high to xhigh, max, then ultra. Advisors return a read-only solution proposal. The Primary accepts it before Luna implements it. The Primary reports an unavailable effort without silently using a lower one. An unresolved ultra attempt returns the concrete blocker or missing evidence. A confirmed healthy long-running command continues through its existing observation loop. Credentials, access, permissions, and unavailable services are external blockers, not reasoning failures. See <a href="https://github.com/PigeonAI-Yang/pigeonstack/blob/main/pstack/MODELS.md">MODELS.md</a> for model IDs and role details.</p>
+			<p class="section-note">A reported inability triggers immediate escalation. Otherwise, the Primary assesses unresolved work 30 minutes after first dispatch at each model and effort tier. A retry or replacement at the same tier does not reset its clock. Carry evidence, failed attempts, and total elapsed time across upgrades. Existing waits are interruptible; 30 minutes is an assessment point, not a hard delay.</p>
+			<p class="section-note">The escalation path is Luna max, a fresh Sol Senior Executor at xhigh, then Astra Expert at high, xhigh, max, and ultra. The Senior Executor and Expert choose, implement, and verify a complete solution, then return the result and evidence to the Primary for final acceptance. An Expert implements only on an assigned takeover or when the user explicitly authorizes the task. Ordinary webpage work and refactoring remain with Luna regardless of size. Report unsupported models or efforts, or the concrete blocker or missing evidence when ultra remains unresolved. A confirmed healthy long-running command continues through its existing observation loop. Credentials, access, permissions, and unavailable services are external blockers. See <a href="https://github.com/PigeonAI-Yang/pigeonstack/blob/main/pstack/MODELS.md">MODELS.md</a> for model IDs and role details.</p>
+			<p class="section-note">ComputerUse actions stay with the Primary because child tools do not expose ComputerUse. Do not delegate actions requiring ComputerUse. A Senior Executor or Expert may request a named UI action and its observed result, then continue the same problem. This asks the Primary for an observation, not for a solution. Text, code, CLI, and API work remain delegable. The rule adds no tools or permission flow.</p>
 			<p class="section-note">Add a validation gate only for a confirmed current problem or an explicit current requirement. For a repair, confirm and diagnose the problem first. A possible future failure alone is not enough. Scope the gate to the affected action and boundary. Verify that it catches the confirmed failure or enforces the requirement without unnecessarily blocking valid work.</p>
 		</section>
 

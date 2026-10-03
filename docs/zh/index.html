@@ -48,7 +48,7 @@
 			<p class="eyebrow">Codex 多 Agent 协作工作流</p>
 			<h1>PigeonStack：Codex 多 Agent 协作工作流</h1>
 			<p class="attribution">首先致敬并感谢 <a href="https://github.com/poteto">Lauren Tan（poteto）</a>，她是 <a href="https://github.com/cursor/plugins/tree/f5bdd6826fd0a0d9cbc4347134c3a74a200b9d9d/pstack">pstack</a> 的原作者。PigeonStack 基于她的工作，为 Codex 流程做了适配。</p>
-			<p class="lead">PigeonStack 是 PigeonYang 维护的 Codex 工作配置，包含全局规则、适配后的 pstack 插件、Agent 角色定义、选定配置和本地同步脚本。Sol 负责决策，Astra 提供疑难问题建议，Luna 执行明确的任务。</p>
+			<p class="lead">PigeonStack 是 PigeonYang 维护的 Codex 工作配置，包含全局规则、适配后的 pstack 插件、Agent 角色定义、选定配置和本地同步脚本。Sol 继续担任主控，Luna 处理常规执行，新的 Sol 子 Agent 负责更高一级，Astra 专家处理疑难问题。</p>
 			<div class="hero-actions">
 				<a class="button button-primary" href="/pigeonstack/zh/getting-started/">预览或安装</a>
 				<a class="button button-secondary" href="https://github.com/PigeonAI-Yang/pigeonstack/blob/main/README.zh-CN.md">阅读中文 README</a>
@@ -66,14 +66,14 @@
 				<table>
 					<thead><tr><th scope="col">角色</th><th scope="col">职责</th></tr></thead>
 					<tbody>
-						<tr><th scope="row">Sol 主控</th><td>负责理解目标、诊断、关键决策、任务拆分、子 Agent 调度、集成安排和最终验收。</td></tr>
-						<tr><th scope="row">Astra 顾问</th><td>根据关键证据回答一个尚未解决的问题。顾问只读，并给出不确定性和有限的验证路径。</td></tr>
-						<tr><th scope="row">Astra 文档作者或调查者</th><td>使用单独的执行角色撰写权威技术文档，或对一个未解决问题开展只读调查。</td></tr>
-						<tr><th scope="row">Luna 执行者</th><td>实现主控选定的修复或已认可的设计步骤，按明确清单只读采集证据，或运行指定检查。无法解释的失败交回主控。</td></tr>
+						<tr><th scope="row">Sol 主控</th><td>负责目标、约束、日常决策、协同和最终验收。</td></tr>
+						<tr><th scope="row">Luna 执行者</th><td>以 gpt-6-luna、max 处理常规的范围明确的实现，并将完成结果和证据交回主控。</td></tr>
+						<tr><th scope="row">Sol 高级执行者</th><td>以 gpt-6-sol、xhigh 接手 Luna 未解决的问题。它是新的子 Agent，会自主选择、实施和验证方案，不会切换正在运行的主控。</td></tr>
+						<tr><th scope="row">Astra 专家</th><td>直接撰写权威技术文档，或在高级执行者之后接手问题。它自主选择、实施和验证完整方案，先用 gpt-6-astra、high，仍未解决时再升到 xhigh、max、ultra。</td></tr>
 					</tbody>
 				</table>
 			</div>
-			<p class="section-note">这些是仓库中的角色约定。任务规模本身不会把实现工作转给 Astra。主控先选定方案，再由 Luna 执行范围明确的步骤。实际模型路由和可用性取决于 Codex 宿主与账号；用户明确选择的模型优先于默认值。</p>
+			<p class="section-note">三个执行层级依次是 max 强度的 Luna、xhigh 强度的新 Sol 子 Agent，以及先用 high、再按需升级到 xhigh、max、ultra 的 Astra 专家。可选只读咨询仍使用现有 astra-advisor 兼容角色 ID，强度为 high；接管时使用通用执行角色，并明确指定模型和强度。现有角色 ID 和运行时权限不变。高级执行者是新建的子 Agent，不会切换正在运行的主控。实际模型可用性取决于 Codex 宿主与账号。</p>
 			<div class="fact-grid">
 				<article class="fact-card">
 					<h3>并行执行彼此独立的工作</h3>
@@ -84,8 +84,9 @@
 					<p>PigeonStack 打包了指令、Codex 插件、配置和部署工具。它不提供 MCP 服务或单独的自主调度器。</p>
 				</article>
 			</div>
-			<p class="section-note">没有其他独立工作可做时，主控会等待委派任务，最长 30 分钟。等待可中断，收到事件后会提前返回。首次委派满 30 分钟时，主控会对未解决工作做一次评估。更换执行者不会重置计时。</p>
-			<p class="section-note">执行者报告无法解决任务时，主控会让一位新的 Astra 顾问以 high 推理强度只读调查一个问题。30 分钟评估发现任务仍未解决时，主控也会这样做。顾问报告无法解决，或在其自己的 30 分钟评估时问题仍未解决，主控会启动一位新的顾问，并提高到下一级推理强度。Astra 模型保持不变，推理强度依次为 high、xhigh、max、ultra。顾问只读并提出方案。主控接受方案后，才交由 Luna 执行。所需推理强度不可用时，主控会报告限制，不会静默降级。若 ultra 仍无法解决，则返回具体阻塞原因或缺失证据。已确认健康的长时间命令继续按现有观察循环运行。凭据、访问、权限或服务不可用属于外部阻塞，不是推理失败。模型 ID 和角色详情见 <a href="https://github.com/PigeonAI-Yang/pigeonstack/blob/main/pstack/MODELS.md">MODELS.md</a>。</p>
+			<p class="section-note">执行者报告无法解决时立即升级。否则，在该模型和强度层级首次派发满 30 分钟后评估未解决工作。同层级重试或替换执行者不会重置计时。升级时保留证据、失败尝试和累计耗时。现有等待可以中断；30 分钟是评估时点，不是强制等待时间。</p>
+			<p class="section-note">路径为 Luna max、新建的 Sol 高级执行者 xhigh，再到 Astra 专家 high、xhigh、max、ultra。高级执行者和专家自主选择、实施和验证完整方案，再将结果和证据交回主控最终验收。专家只有在接管已分配的问题，或用户明确授权当前任务时，才能实施修改。无论任务规模如何，普通网页实现和重构仍由 Luna 处理。模型或强度不受支持时应报告；若 ultra 后仍未解决，也要说明具体阻塞或缺失证据。已确认健康的长时间命令继续现有观察流程。凭据、访问、权限或服务不可用属于外部阻塞。模型 ID 和角色详情见 <a href="https://github.com/PigeonAI-Yang/pigeonstack/blob/main/pstack/MODELS.md">MODELS.md</a>。</p>
+			<p class="section-note">需要 ComputerUse 的操作只由主控执行，因为子 Agent 没有这些工具。不要把需要 ComputerUse 的操作委派给子 Agent。高级执行者或专家可以请主控执行一项明确的 UI 操作并报告观察结果，然后继续处理同一个问题。这是请求观察结果，不是让主控决定解决方案。文字、代码、CLI 和 API 工作仍可委派。这条规则不增加工具或权限流程。</p>
 			<p class="section-note">只有在已确认当前问题或存在明确的当前要求时，才添加校验门。修复场景要先确认并诊断问题；仅凭未来可能失败的猜测不够。校验门应限于受影响的操作和边界。验证它能捕获已确认的问题或落实当前要求，同时不无故阻断正常操作。</p>
 		</section>
 
