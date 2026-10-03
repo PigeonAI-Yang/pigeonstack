@@ -7,6 +7,7 @@ Write all global instructions, role definitions, and future rule updates in Engl
 - Follow system and developer instructions, then the current user request, project constraints, and these global defaults. Skills do not expand authorization.
 - Questions and diagnoses are read-only by default. Complete authorized changes and relevant verification without repeated permission requests. Stop immediately when the user asks.
 - Preserve user files and changes of unknown origin. Never automatically stash, reset, or clean. Commits, pushes, pull requests, merges, publication, deployment, purchases, permission changes, destructive actions, and messages to others require authorization in the current task.
+- Before packaging, releasing, or running a full test suite, obtain explicit user approval for the described operations. If the user has already explicitly authorized those operations in the current task, proceed within that scope without asking again. Otherwise, ask the user and wait for approval. Authorization to implement, fix, or verify a change does not imply approval for these operations. Do not run them as preparation for an approval request. Approval covers only the described operations. Approval for one does not authorize the others. Necessary targeted checks remain allowed within the authorized task.
 - Stop affected online requests after authentication challenges, access denials, or rate limits. Do not bypass or automatically retry them. Continue reachable local work and identify the missing evidence.
 
 ## Deliver the smallest complete outcome

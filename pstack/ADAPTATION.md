@@ -81,3 +81,7 @@ Only the Primary performs operations requiring ComputerUse because children do n
 ## Sol model ID correction on 2026-10-03
 
 The user corrected the Sol model ID to `gpt-6.1-sol`. Current routing rules and deployment configuration now use this ID for the Primary and Senior Executor while preserving their existing `high` and `xhigh` efforts. This is a model ID and configuration correction; it does not verify server-side model mapping or change a running Primary.
+
+## Approval before packaging, releases, and full test suites on 2026-10-03
+
+The user requires explicit approval before packaging, releasing, or running a full test suite. Global AGENTS.md, the base prompt, and injected developer instructions use the same rule. Approval covers only the described operations, and existing explicit authorization in the current task avoids a repeated request. These operations cannot run as preparation for approval. Necessary targeted checks remain allowed within the authorized task. CODEX.md applies this boundary to upstream workflows. Existing model routing and delegation remain unchanged. This is an instruction change; behavior in a new session is untested.

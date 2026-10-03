@@ -59,7 +59,7 @@ Each model-and-effort tier gets a 30-minute assessment window from its first del
 
 ## Apply authorization and verification boundaries
 
-Apply global `AGENTS.md` to reproduction evidence, repair scope, permissions, and verification. Upstream autonomy, PR, merge, external-message, and broken-skill repair steps do not expand authorization. Finish the authorized local result before reporting a remaining external action.
+Apply global `AGENTS.md` to reproduction evidence, repair scope, permissions, and verification. Upstream autonomy, PR, merge, external-message, and broken-skill repair steps do not expand authorization. Finish the authorized local result before reporting a remaining external action. Apply its explicit approval rule before packaging, releasing, or running a full test suite, including preparation requested by an upstream workflow.
 
 Use existing verification entry points. Create a verification skill or feature map only when the current task needs a reusable entry point that does not exist. Project verification skills belong in `.agents/skills/verify-<app>/`. Run a newly created skill on a real feature before calling it verified. Such artifacts are not prerequisites for ordinary changes.
 
