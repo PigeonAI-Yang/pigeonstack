@@ -25,7 +25,7 @@ English | [简体中文](README.zh-CN.md)
 
 PigeonStack, or 鸽栈, is PigeonYang's maintained collection of global Codex rules, a customized version of Lauren Tan's pstack, agent-role definitions, selected configuration, and a local synchronization script. It brings those parts into one source repository so that model responsibilities and installed instructions stay consistent.
 
-Sol remains the Primary for day-to-day judgment and final acceptance. The three execution tiers are Luna at max, a new Sol child at xhigh, and Astra at high, then xhigh, max, or ultra if the problem remains unresolved.
+Sol remains the Primary for day-to-day judgment and final acceptance. The three execution tiers are Luna at max, a new Sol child at xhigh, and Astra at high, then xhigh as the automatic escalation limit if the problem remains unresolved.
 The aim remains high performance with cost-efficient collaboration.
 
 This is a set of instructions, a packaged Codex plugin, and deployment tooling. It does not provide an MCP server or a separate autonomous scheduler. Installing it activates no timers, background agents, hooks, or remote services.
@@ -53,13 +53,13 @@ PigeonStack gives one Primary responsibility for decisions and final acceptance.
 | Sol Primary | Own the goal, constraints, day-to-day decisions, coordination, and final acceptance. | `gpt-6.1-sol`, `high` |
 | Luna Executor | Complete routine scoped implementation, follow a prescribed read-only checklist, or run assigned checks. Return the completed result and evidence to the Primary. | `gpt-6-luna`, `max` |
 | Sol Senior Executor | Take over an unresolved Luna problem, choose the technical solution, implement necessary changes, and verify a complete result. This is a new child and does not switch the active Primary. | `gpt-6.1-sol`, `xhigh` |
-| Astra Expert | Author authoritative technical documents directly, or take over an unresolved problem after the Senior Executor. Choose, implement, and verify the solution, then return the completed result and evidence to the Primary. Escalate one effort at a time: `high`, `xhigh`, `max`, then `ultra`. | `gpt-6-astra`, `high` first |
+| Astra Expert | Author authoritative technical documents directly, or take over an unresolved problem after the Senior Executor. Choose, implement, and verify the solution, then return the completed result and evidence to the Primary. Start at `high`; unresolved work can transfer to a fresh Expert at `xhigh`, the automatic escalation limit. | `gpt-6-astra`, `high` first |
 
 Optional read-only consultation can use the existing `astra-advisor` compatibility role at `high`. Takeovers use the general execution role with an explicit model and effort. This keeps the current role IDs and runtime permissions unchanged.
 
 These names express this project's model strategy and local configuration. Availability, model IDs, supported effort, and cost depend on your account and Codex client. This repository makes no measured speed, savings, or benchmark-superiority claim.
 
-[MODELS.md](pstack/MODELS.md) and the checked-in [configuration](config/workflow.toml) select `gpt-6.1-sol` at `high` as the default Primary. An explicit user selection takes precedence. A Senior Executor is a separate `gpt-6.1-sol` child at `xhigh`; it does not switch the active Primary. Editing a file does not switch a running Primary, and a model label does not establish the server's internal model mapping.
+[MODELS.md](pstack/MODELS.md) and the checked-in [configuration](config/workflow.toml) select `gpt-6.1-sol` at `high` as the default Primary. An explicit task-specific user model and effort selection takes precedence over these defaults; the cap governs automatic escalation. A Senior Executor is a separate `gpt-6.1-sol` child at `xhigh`; it does not switch the active Primary. Editing a file does not switch a running Primary, and a model label does not establish the server's internal model mapping.
 
 ## How a task moves through Codex
 
@@ -69,11 +69,13 @@ flowchart TD
 	P -->|"Routine scoped work"| L["Luna Executor: gpt-6-luna, max"]
 	L -->|"Unable to solve, or unresolved at this tier's 30-minute assessment"| S["Fresh Sol child: Senior Executor, gpt-6.1-sol, xhigh"]
 	S -->|"Unable to solve, or unresolved at this tier's 30-minute assessment"| A["Astra Expert: gpt-6-astra, high"]
-	A -->|"Unable to solve, or unresolved at this tier's assessment: one effort higher"| H["Fresh Astra Expert child: xhigh, max, then ultra"]
+	A -->|"Unable to solve, or unresolved at this tier's 30-minute assessment"| H["Fresh Astra Expert child: xhigh, automatic limit"]
 	L -->|"Completed result and evidence"| P
 	S -->|"Completed result and evidence"| P
 	A -->|"Completed result and evidence"| P
 	H -->|"Completed result and evidence"| P
+	H -->|"Unable to solve, or unresolved at this tier's 30-minute assessment"| E["Stop escalation; report the actual limit or evidence gap"]
+	E --> P
 	P -.->|"Optional read-only consultation"| C["astra-advisor compatibility role, high"]
 	C -.-> P
 	P -->|"Accepted result"| D["Deliver the result and remaining limits"]
@@ -97,7 +99,7 @@ For a takeover, give the Senior Executor or Expert the goal, constraints, eviden
 
 Scheduling follows actual readiness. Dispatch independent assignments together, then dispatch newly unblocked work as results arrive. Serialize conflicting writes, shared-instance operations, and real dependencies. Each assignment gets a fresh child; a completed child is retired. When no independent work remains, use the default 30-minute interruptible wait (`1800000` ms); it returns early on new input or child events. There are no mandatory model panels or tasks invented to fill slots. Keep image generation, editing, viewing, visual analysis, and related transfers serial across the Primary and its children.
 
-Escalate one tier immediately when an executor reports that it cannot solve the problem. Otherwise, assess unresolved work 30 minutes after the first dispatch at each model and effort tier. A same-tier retry or replacement does not reset that tier's clock. Carry evidence, failed attempts, and total elapsed time across upgrades. The path is Luna at `max`, a fresh Sol Senior Executor at `xhigh`, then Astra Expert at `high`, `xhigh`, `max`, and `ultra`. Report an unsupported model or effort, or the concrete blocker or missing evidence if `ultra` remains unresolved. A confirmed healthy long-running build, download, or training run continues through its existing observation loop. Credential, access, permission, and unavailable-service blockers are external blockers, not reasoning failures. These assessments use existing waits and task context; they are not automatic timers.
+Below the automatic escalation limit, escalate one tier immediately when an executor reports that it cannot solve the problem. Otherwise, assess unresolved work 30 minutes after the first dispatch at each model and effort tier. A same-tier retry or replacement does not reset that tier's clock. Carry evidence, failed attempts, and total elapsed time across upgrades. The path is Luna at `max`, a fresh Sol Senior Executor at `xhigh`, then Astra Expert at `high` and a fresh Astra child at `xhigh`. If the required model or effort is unavailable, or Astra at `xhigh` cannot resolve the problem or remains unresolved at its 30-minute assessment, stop escalation and report the actual limit or missing evidence. Do not automatically escalate Astra to `max` or `ultra`, or restart the cycle. A confirmed healthy long-running build, download, or training run continues through its existing observation loop. Credential, access, permission, and unavailable-service blockers are external blockers, not reasoning failures. These assessments use existing waits and task context; they are not automatic timers.
 
 ComputerUse actions stay with the Primary because child tools do not expose ComputerUse. Do not delegate actions requiring ComputerUse. A Senior Executor or Expert may request a named UI action and its observed result, then continue the same problem. The request asks for an observation, not a solution decision. Text, code, CLI, and API work remain delegable. This rule adds no tools or permission flow.
 

@@ -10,11 +10,13 @@ Updated 2026-10-04. Before using this file, read [CODEX.md](CODEX.md) and the gl
 | Luna Executor | `gpt-6-luna` | `max` |
 | Sol Senior Executor takeover | `gpt-6.1-sol` | `xhigh` |
 | Initial Astra Expert takeover | `gpt-6-astra` | `high` |
-| Further unresolved Astra attempts, in order | `gpt-6-astra` | `xhigh`, then `max`, then `ultra` |
+| Final automatic Astra escalation, using a fresh child | `gpt-6-astra` | `xhigh` |
 | Authoritative technical-document authorship, substantive revision, restructuring, or review | `gpt-6-astra` | `high` |
 | Initial bounded read-only Astra investigation or consultation | `gpt-6-astra` | `high` |
 
-Explicit task-specific user model selection takes precedence within actual tool and access limits. The document policy permits a stronger model explicitly selected by the user. These defaults do not switch the active Primary. Luna does not support `ultra`.
+Automatic Astra escalation stops at `xhigh`. If that attempt cannot resolve the problem or remains unresolved at its 30-minute assessment, report the actual limit or evidence gap and stop escalation. Do not automatically use `max` or `ultra`, or restart the escalation cycle.
+
+Explicit task-specific user model and effort selection takes precedence within actual tool and access limits. The cap governs automatic escalation, not an explicit task-specific selection. The document policy permits a stronger model explicitly selected by the user. These defaults do not switch the active Primary. Luna does not support `ultra`.
 
 For explicit spawn arguments, pass the table's ID as `model` and its effort as `reasoning_effort`. Follow the role and history constraints in `CODEX.md`. Global `AGENTS.md` authorizes the takeover sequence and defines when it stops; this table grants no additional escalation or mutation authority.
 

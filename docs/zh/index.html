@@ -69,11 +69,11 @@
 						<tr><th scope="row">Sol 主控</th><td>负责目标、约束、日常决策、协同和最终验收。</td></tr>
 						<tr><th scope="row">Luna 执行者</th><td>以 gpt-6-luna、max 处理常规的范围明确的实现，并将完成结果和证据交回主控。</td></tr>
 						<tr><th scope="row">Sol 高级执行者</th><td>以 gpt-6.1-sol、xhigh 接手 Luna 未解决的问题。它是新的子 Agent，会自主选择、实施和验证方案，不会切换正在运行的主控。</td></tr>
-						<tr><th scope="row">Astra 专家</th><td>直接撰写权威技术文档，或在高级执行者之后接手问题。它自主选择、实施和验证完整方案，先用 gpt-6-astra、high，仍未解决时再升到 xhigh、max、ultra。</td></tr>
+						<tr><th scope="row">Astra 专家</th><td>直接撰写权威技术文档，或在高级执行者之后接手问题。它自主选择、实施和验证完整方案，先用 gpt-6-astra、high，仍未解决时交给新的 xhigh 专家子 Agent，自动升级到此为止。</td></tr>
 					</tbody>
 				</table>
 			</div>
-			<p class="section-note">三个执行层级依次是 max 强度的 Luna、xhigh 强度的新 Sol 子 Agent，以及先用 high、再按需升级到 xhigh、max、ultra 的 Astra 专家。可选只读咨询仍使用现有 astra-advisor 兼容角色 ID，强度为 high；接管时使用通用执行角色，并明确指定模型和强度。现有角色 ID 和运行时权限不变。高级执行者是新建的子 Agent，不会切换正在运行的主控。实际模型可用性取决于 Codex 宿主与账号。</p>
+			<p class="section-note">三个执行层级依次是 max 强度的 Luna、xhigh 强度的新 Sol 子 Agent，以及先用 high、仍未解决时升到 xhigh 为止的 Astra 专家。用户针对当前任务明确选择的模型和强度仍然优先。可选只读咨询仍使用现有 astra-advisor 兼容角色 ID，强度为 high；接管时使用通用执行角色，并明确指定模型和强度。现有角色 ID 和运行时权限不变。高级执行者是新建的子 Agent，不会切换正在运行的主控。实际模型可用性取决于 Codex 宿主与账号。</p>
 			<div class="fact-grid">
 				<article class="fact-card">
 					<h3>并行执行彼此独立的工作</h3>
@@ -84,8 +84,8 @@
 					<p>PigeonStack 打包了指令、Codex 插件、配置和部署工具。它不提供 MCP 服务或单独的自主调度器。</p>
 				</article>
 			</div>
-			<p class="section-note">执行者报告无法解决时立即升级。否则，在该模型和强度层级首次派发满 30 分钟后评估未解决工作。同层级重试或替换执行者不会重置计时。升级时保留证据、失败尝试和累计耗时。现有等待可以中断；30 分钟是评估时点，不是强制等待时间。</p>
-			<p class="section-note">路径为 Luna max、新建的 Sol 高级执行者 xhigh，再到 Astra 专家 high、xhigh、max、ultra。高级执行者和专家自主选择、实施和验证完整方案，再将结果和证据交回主控最终验收。专家只有在接管已分配的问题，或用户明确授权当前任务时，才能实施修改。无论任务规模如何，普通网页实现和重构仍由 Luna 处理。模型或强度不受支持时应报告；若 ultra 后仍未解决，也要说明具体阻塞或缺失证据。已确认健康的长时间命令继续现有观察流程。凭据、访问、权限或服务不可用属于外部阻塞。模型 ID 和角色详情见 <a href="https://github.com/PigeonAI-Yang/pigeonstack/blob/main/pstack/MODELS.md">MODELS.md</a>。</p>
+			<p class="section-note">尚未达到自动升级上限时，执行者报告无法解决就立即升级。否则，在该模型和强度层级首次派发满 30 分钟后评估未解决工作。同层级重试或替换执行者不会重置计时。升级时保留证据、失败尝试和累计耗时。现有等待可以中断；30 分钟是评估时点，不是强制等待时间。</p>
+			<p class="section-note">路径为 Luna max、新建的 Sol 高级执行者 xhigh，再到 high 强度的 Astra 专家，最后是新的 xhigh Astra 子 Agent。高级执行者和专家自主选择、实施和验证完整方案，再将结果和证据交回主控最终验收。专家只有在接管已分配的问题，或用户明确授权当前任务时，才能实施修改。无论任务规模如何，普通网页实现和重构仍由 Luna 处理。所需模型或强度不可用，或 xhigh 专家报告无法解决、在本层级 30 分钟评估时仍未解决，就停止升级并报告实际限制或证据缺口。不自动升到 Astra max、ultra，也不重启升级循环。已确认健康的长时间命令继续现有观察流程。凭据、访问、权限或服务不可用属于外部阻塞。模型 ID 和角色详情见 <a href="https://github.com/PigeonAI-Yang/pigeonstack/blob/main/pstack/MODELS.md">MODELS.md</a>。</p>
 			<p class="section-note">需要 ComputerUse 的操作只由主控执行，因为子 Agent 没有这些工具。不要把需要 ComputerUse 的操作委派给子 Agent。高级执行者或专家可以请主控执行一项明确的 UI 操作并报告观察结果，然后继续处理同一个问题。这是请求观察结果，不是让主控决定解决方案。文字、代码、CLI 和 API 工作仍可委派。这条规则不增加工具或权限流程。</p>
 			<p class="section-note">只有在已确认当前问题或存在明确的当前要求时，才添加校验门。修复场景要先确认并诊断问题；仅凭未来可能失败的猜测不够。校验门应限于受影响的操作和边界。验证它能捕获已确认的问题或落实当前要求，同时不无故阻断正常操作。</p>
 		</section>

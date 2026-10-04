@@ -89,3 +89,7 @@ The user requires explicit approval before packaging, releasing, or running a fu
 ## Instruction consolidation on 2026-10-04
 
 This revision removes repeated policy text across the global AGENTS.md and host CODEX.md/MODELS.md, keeping global policy authoritative, host mechanics in CODEX.md, and model identifiers and effort in MODELS.md. The accepted routing, authorization, takeover, and verification rules were clarified without changing active model defaults, runtime configuration, or adding runtime enforcement. Deployment and behavior in a new session require separate verification.
+
+## Automatic Expert escalation cap on 2026-10-04
+
+The user caps automatic Astra Expert escalation at `xhigh`. An unresolved `high` attempt transfers to a fresh `xhigh` child. If that child cannot resolve the problem or remains unresolved at its 30-minute assessment, stop escalation and report the actual limit or evidence gap. Do not automatically escalate Astra to `max` or `ultra`, or restart the cycle. This supersedes the earlier escalation sequences recorded above. Explicit task-specific user model and effort selections remain authoritative. Luna stays at `max`, the Sol Senior Executor stays at `gpt-6.1-sol` and `xhigh`, and the active Primary and initial Astra `high` defaults remain unchanged. Global rules, the base prompt, injected developer instructions, MODELS.md, bilingual introductions, and workflow diagrams now state this cap. These are source instruction changes; deployment and behavior in a new session require separate verification.
