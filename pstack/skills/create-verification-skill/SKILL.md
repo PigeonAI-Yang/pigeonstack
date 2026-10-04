@@ -2,8 +2,7 @@
 name: "create-verification-skill"
 description: "Generate a project-local verification skill that drives your app the way a user does — any language, framework, or platform. Use for /create-verification-skill, \"make a control skill for this repo\", or when a project has no scripted way to prove UI/CLI/service behavior."
 ---
-> Codex entry: Apply [../../CODEX.md](../../CODEX.md) for workflow activation, delegation, authorization, and verification on this host. Use [../../MODELS.md](../../MODELS.md) for model IDs when delegation is needed. Reuse instructions already read in this session if unchanged. Follow the procedures below only within the scope selected by the host adapter.
-
+> Codex host: Read [../../CODEX.md](../../CODEX.md) before execution and [../../MODELS.md](../../MODELS.md) before assigning roles. Apply the upstream procedure below within that host contract.
 
 # Create a verification skill
 

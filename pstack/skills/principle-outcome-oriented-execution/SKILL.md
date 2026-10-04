@@ -2,8 +2,7 @@
 name: "principle-outcome-oriented-execution"
 description: "Apply during planned rewrites and migrations with explicit phase boundaries. Converge on the target architecture; don't preserve smooth intermediate states with throwaway compatibility code."
 ---
-> Codex entry: Apply [../../CODEX.md](../../CODEX.md) for workflow activation, delegation, authorization, and verification on this host. Use [../../MODELS.md](../../MODELS.md) for model IDs when delegation is needed. Reuse instructions already read in this session if unchanged. Follow the procedures below only within the scope selected by the host adapter.
-
+> Codex host: Read [../../CODEX.md](../../CODEX.md) before execution and [../../MODELS.md](../../MODELS.md) before assigning roles. Apply the upstream procedure below within that host contract.
 
 # Outcome-Oriented Execution
 
@@ -14,7 +13,6 @@ Optimize for the intended, verifiable end state rather than preserving smooth in
 **Core rule:**
 - Prioritize end-state integrity over transitional stability
 - Intermediate breakage is acceptable when it is planned, scoped, and reversible
-- Always run final verification before declaring done
 
 **Guardrails:**
 - Use this for planned rewrites and migrations with explicit phase boundaries

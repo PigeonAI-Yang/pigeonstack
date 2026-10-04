@@ -1,10 +1,21 @@
 ### Feature
 
-The Primary owns the design, decomposition, integration and acceptance. Apply CODEX.md and global AGENTS.md before these steps.
+**You own the design. Plan, review, verify.** Delegate implementation. Stay in the lead.
 
-1. Inspect the relevant existing entry points and constraints, using Luna for named independent read-only checks or Astra for bounded investigation as needed. The Primary resolves the design decisions needed for the requested behavior.
-2. Select the data shape, interfaces and behavior before delegating implementation. Use the host's advisory process only for material unresolved choices.
-3. Split the result into independently verifiable steps. Keep a coupled producer/caller change together, give shared resources one owner and serialize dependent steps. Record only the coordination the current work needs.
-4. Delegate implementation by default. Give Luna the CODEX.md brief for one decided step; use Astra's supported general/default role with explicit model and effort only when work needs sustained judgment, following CODEX.md boundaries. Dispatch ready independent steps as soon as each is specified and newly unlocked steps as results arrive, keeping unrelated work moving; serialize only real dependencies or resource, permission and tool limits. Work directly only when the user explicitly asks or a non-model capability/resource restriction prevents delegation, and state the reason. Do not delegate implementation while its design remains unresolved or authorize a child to split work among more agents.
-5. The Primary reviews the change and decisive direct evidence. If an assumption fails or a new design choice appears, the Primary settles it before assigning another step. Do not repeat delegated checks without an evidence gap or contradiction.
-6. Verify the requested workflow through its existing surface; a mock, build or command receipt alone does not prove the real workflow. Report what is complete and what remains unverified. Commit, PR and publication steps require their own task authorization.
+1. `how` over the affected subsystem.
+2. `architect` for parallel design exploration.
+3. Write the throughput checkpoint as four todo items. A dimension that genuinely does not apply (single file, no fan-out) keeps its item with `n/a: <reason>` rather than being dropped:
+   - **Blocking first steps.** Gates run before fan-out.
+   - **Independent workstreams.** Disjoint files, services, or layers parallelize. Shared writes serialize.
+   - **Shared mutable state.** Default to splitting the target (the **separate-before-serializing-shared-state** principle skill). Serialize only for real invariants.
+   - **Smallest safe decomposition.** If one worker is best, name why.
+4. Delegate code-writing to a subagent using your configured feature model (see `MODELS.md`) with a specific scope (file paths, named data shape and its organizing structure per **principle-model-the-domain**, a state machine over scattered booleans, a table/registry over branching, a typed model over repeated shape assumptions, chosen before the delegate writes logic, and success criteria). When multiple valid shapes leave a material design decision unresolved, use the **arena** candidate procedure only within an explicitly selected comparison under `CODEX.md`. Otherwise the Primary selects the shape before the execution brief. Record any missing independent verdict instead of simulating review. A subagent forbidden to spawn satisfies this by owning the diff directly with the same review separation. No "standing by" reply that waits on a nested agent. Comments per **Comments**. Surgical edits, re-ground against the source for upstream-derived files. Port shared-primitive improvements to all consumers and verify each. Commit liberally.
+5. Verify on the matching surface. "Inconclusive" or wrong-surface is not a pass. Flag it.
+6. Rebase into small, ordered commits. Stack follow-ups.
+   Use the **sequence-verifiable-units** principle skill, building, verifying, and committing each small unit before the next.
+7. If the design is contested, `interrogate` before shipping.
+8. Run **Opening a PR**.
+
+Code-coupled work (one feature, one migration) goes to a single owner with the checkpoint inline. That owner fans out internally after the blocking phase. Parent-level fan-out is for slices that produce independent artifacts (audits, cross-subsystem investigations, competing experiments). Rewrite the checkpoint at phase boundaries. Spawn a fresh owner rather than chaining interrupts.
+
+**Reply:** what you built, what you chose and why, the throughput checkpoint, open decisions. Tables for design alternatives.

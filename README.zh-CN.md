@@ -1,6 +1,6 @@
 # PigeonStack · 鸽栈：Codex 多 Agent 协作工作流
 
-首先致敬并感谢 [Lauren Tan（poteto）](https://github.com/poteto)，[pstack](https://github.com/cursor/plugins/tree/f5bdd6826fd0a0d9cbc4347134c3a74a200b9d9d/pstack) 的原作者。PigeonStack 基于她的工作，为这套 Codex 协作流程做了定制适配。
+首先致敬并感谢 [Lauren Tan（poteto）](https://github.com/poteto)，[pstack](https://github.com/cursor/plugins/tree/e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a/pstack) 的原作者。PigeonStack 基于她的工作，为这套 Codex 协作流程做了定制适配。
 
 [English](README.md) | 简体中文
 
@@ -244,7 +244,9 @@ PigeonStack 将 Lauren Tan 的 pstack 适配到 Codex，增加 Codex 专用全�
 
 ## 上游来源与许可
 
-PigeonStack 由 PigeonYang 维护，底层 pstack 工作流来自 Lauren Tan。仓库基于 pstack `0.15.2` 的[固定上游版本](https://github.com/cursor/plugins/tree/f5bdd6826fd0a0d9cbc4347134c3a74a200b9d9d/pstack)适配，对应提交 `f5bdd6826fd0a0d9cbc4347134c3a74a200b9d9d`。选入的控制与代码清理技能来自同一版本中的 Cursor Team Kit。
+PigeonStack 由 PigeonYang 维护，底层 pstack 工作流来自 Lauren Tan。仓库基于 pstack `0.15.9` 的[固定上游版本](https://github.com/cursor/plugins/tree/e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a/pstack)适配，对应提交 `e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a`。选入的控制与代码清理技能来自同一版本中的 Cursor Team Kit。
+
+基于 pstack 0.15.9，包含用于处理反复出现的 Agent 错误的 `/correct`、用于提供性能证据的 `/benchmark-checklist`，以及用于解释测量数据的 `/principle-explain-the-number`。上游工作流已适配到 Codex；模型选择和升级路径遵循本项目的 GPT 配置。
 
 [provenance.json](pstack/provenance.json) 记录导入文件及其源文件哈希，[ADAPTATION.md](pstack/ADAPTATION.md) 记录 Codex 适配及变更历史。原有许可声明保留在 [pstack/LICENSE](pstack/LICENSE) 和 [pstack/CURSOR-TEAM-KIT-LICENSE](pstack/CURSOR-TEAM-KIT-LICENSE)。
 

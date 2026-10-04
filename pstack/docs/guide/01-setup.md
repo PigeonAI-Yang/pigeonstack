@@ -1,3 +1,5 @@
+> Codex adapter: This is the upstream guide. Apply [../../CODEX.md](../../CODEX.md) for installation, GPT routing, permissions, and supported host tools. Cursor-specific commands are reference examples.
+
 # Set up pstack
 
 In this page you install the plugin, pick which models pstack uses, and run your first task. Setup is one command plus a short conversation.
@@ -12,19 +14,13 @@ In a Cursor chat, run:
 
 Cursor confirms the plugin is installed.
 
-## Pick your models
+## Pick your models on Codex
 
-Run:
+Run `/setup-pstack` to inspect the existing GPT role mapping in [MODELS.md](../../MODELS.md). Setup changes only requested roles and efforts in the maintained source. It preserves the active Primary and never restores upstream Grok or Claude defaults. Model IDs and reasoning efforts are separate host arguments.
 
-```text
-/setup-pstack
-```
+`auto` and `inherit-parent` resolve to the actual active parent's model and effort. Omitting a model can select the configured Luna child default on this host; it does not prove inheritance. `MODELS.md` defines supported resolution and missing-evidence behavior.
 
-[`/setup-pstack`](../../skills/setup-pstack/SKILL.md) detects the models you have access to, shows you each role (code delegates, judgment, the review panels), and asks what you want. Answer the questions. It writes [MODELS.md](../../MODELS.md), a small rule every pstack skill reads.
-
-You only override what you care about. A role with no line in the rule keeps the skill's default. To restore a default later, delete that role's line, or just run `/setup-pstack` again.
-
-You might be wondering what happens if you use Auto. Set a role to `inherit-parent` or `auto` and pstack omits the subagent `model` field, so the subagent inherits your parent chat model. Both values mean the same thing, and neither is a model slug. For a panel role the value is a list, and one subagent runs per entry, so the list length sets the panel size. Setup also configures `swarm workers`, the default model for every `/swarm` worker unless a race names a model for each arm.
+Source changes and deployment are separate. Follow [CODEX.md](../../CODEX.md) for installation and report routing verified in a new session separately.
 
 ## Accept the verification offer, or don't
 

@@ -1,6 +1,6 @@
 # PigeonStack: Codex Multi-Agent Workflow
 
-First, credit and thanks to [Lauren Tan (poteto)](https://github.com/poteto), the original author of [pstack](https://github.com/cursor/plugins/tree/f5bdd6826fd0a0d9cbc4347134c3a74a200b9d9d/pstack). PigeonStack builds on her work and adapts it for this Codex workflow.
+First, credit and thanks to [Lauren Tan (poteto)](https://github.com/poteto), the original author of [pstack](https://github.com/cursor/plugins/tree/e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a/pstack). PigeonStack builds on her work and adapts it for this Codex workflow.
 
 English | [简体中文](README.zh-CN.md)
 
@@ -244,7 +244,9 @@ No speed or cost benchmarks are published. Cost-efficient collaboration is a des
 
 ## Attribution and licenses
 
-PigeonStack is maintained by PigeonYang. The underlying pstack workflows are Lauren Tan's work. This repository adapts pstack `0.15.2` from [the pinned upstream source](https://github.com/cursor/plugins/tree/f5bdd6826fd0a0d9cbc4347134c3a74a200b9d9d/pstack), commit `f5bdd6826fd0a0d9cbc4347134c3a74a200b9d9d`. Selected control and cleanup skills come from Cursor Team Kit in that same checkout.
+PigeonStack is maintained by PigeonYang. The underlying pstack workflows are Lauren Tan's work. This repository adapts pstack `0.15.9` from [the pinned upstream source](https://github.com/cursor/plugins/tree/e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a/pstack), commit `e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a`. Selected control and cleanup skills come from Cursor Team Kit in that same checkout.
+
+Based on pstack 0.15.9, including `/correct` for recurring agent mistakes, `/benchmark-checklist` for performance evidence, and `/principle-explain-the-number` for explaining measurements. Upstream workflows are adapted to Codex; model selection and escalation follow this project's GPT configuration.
 
 [provenance.json](pstack/provenance.json) records imported files and source hashes. [ADAPTATION.md](pstack/ADAPTATION.md) records the Codex changes and their history. The original notices remain in [pstack/LICENSE](pstack/LICENSE) and [pstack/CURSOR-TEAM-KIT-LICENSE](pstack/CURSOR-TEAM-KIT-LICENSE).
 

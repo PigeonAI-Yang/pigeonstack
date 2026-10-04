@@ -22,7 +22,7 @@ Write global instructions, role definitions, and rule updates in English. Reply 
 
 ## Use pstack selectively
 
-Use Lauren Tan's pstack for substantive work. Before applying it, read `J:/PigeonYang/pigeonstack/pstack/CODEX.md` when maintaining this source repository; otherwise read the deployed entry at `J:/Users/yangda01/.codex/local-plugins/pstack/CODEX.md`. That entry owns workflow activation, host tool conversion, and assignment briefs. Its `MODELS.md` owns model IDs and reasoning effort; read it before selecting a model or effort. Original skills supply procedures for selected steps. Reuse unchanged instructions already read in this session and load only material needed for the current decision. Casual conversation and direct factual answers need no workflow.
+Use Lauren Tan's pstack for substantive work. Before applying it, read `J:/PigeonYang/pigeonstack/pstack/CODEX.md` when maintaining this source repository; otherwise read the deployed entry at `J:/Users/yangda01/.codex/local-plugins/pstack/CODEX.md`. That entry owns workflow activation, host tool conversion, and assignment briefs. Its `MODELS.md` owns model IDs and reasoning effort; read it before selecting a model or effort. Use the selected upstream workflow phases and procedures, with CODEX.md translating host tools and permissions and MODELS.md translating role responsibilities. Upstream family defaults, budget presets, and fallback models do not override the user's GPT configuration. Reuse unchanged instructions already read in this session and load only material needed for the current decision. Casual conversation and direct factual answers need no workflow.
 
 ## Diagnose and verify against the promise
 

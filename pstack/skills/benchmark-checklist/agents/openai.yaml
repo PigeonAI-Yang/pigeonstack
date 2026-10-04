@@ -1,0 +1,5 @@
+interface:
+  display_name: "Benchmark Checklist"
+  short_description: "Check benchmark setup and explain measured results"
+policy:
+  allow_implicit_invocation: false

@@ -1,8 +1,8 @@
 ---
-name: reproduce-and-fix-issues
-description: Reproduce triaged Slack bugs through a configured app-control adapter, verify existing fixes, and open a bounded draft pull request only after before-and-after proof. Use only from the configured Benny repro automation.
-disable-model-invocation: true
+name: "reproduce-and-fix-issues"
+description: "Reproduce triaged Slack bugs through a configured app-control adapter, verify existing fixes, and open a bounded draft pull request only after before-and-after proof. Use only from the configured Benny repro automation."
 ---
+> Codex host: Read [../../../../CODEX.md](../../../../CODEX.md) before execution and [../../../../MODELS.md](../../../../MODELS.md) before assigning roles. Apply the upstream procedure below within that host contract.
 
 # Reproduce and fix issues
 

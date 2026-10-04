@@ -1,0 +1,5 @@
+interface:
+  display_name: "Principle Explain The Number"
+  short_description: "Explain what a measurement actually proves"
+policy:
+  allow_implicit_invocation: false

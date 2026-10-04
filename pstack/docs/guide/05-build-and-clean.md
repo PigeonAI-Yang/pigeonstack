@@ -1,3 +1,5 @@
+> Codex adapter: This is the upstream guide. Apply [../../CODEX.md](../../CODEX.md) for installation, GPT routing, permissions, and supported host tools. Cursor-specific commands are reference examples.
+
 # Build the change and clean the diff
 
 The build playbooks share one discipline. Say what you observed, let the playbook demand the evidence. This page shows what to put in the prompt for each common build task, then the cleanup habit that keeps diffs reviewable.

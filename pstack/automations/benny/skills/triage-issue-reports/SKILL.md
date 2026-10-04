@@ -1,8 +1,8 @@
 ---
-name: triage-issue-reports
-description: Triage Slack issue reports with one thread-only verdict, evidence review, cause-aware routing, tracker dedupe, and fail-closed ticket creation. Use only from the configured Benny triage automation.
-disable-model-invocation: true
+name: "triage-issue-reports"
+description: "Triage Slack issue reports with one thread-only verdict, evidence review, cause-aware routing, tracker dedupe, and fail-closed ticket creation. Use only from the configured Benny triage automation."
 ---
+> Codex host: Read [../../../../CODEX.md](../../../../CODEX.md) before execution and [../../../../MODELS.md](../../../../MODELS.md) before assigning roles. Apply the upstream procedure below within that host contract.
 
 # Triage issue reports
 

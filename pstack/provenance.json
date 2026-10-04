@@ -2,9 +2,10 @@
   "upstream": {
     "url": "https://github.com/cursor/plugins",
     "pstack_path": "pstack",
-    "version": "0.15.2",
-    "commit": "f5bdd6826fd0a0d9cbc4347134c3a74a200b9d9d"
+    "version": "0.15.9",
+    "commit": "e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a"
   },
+  "hash_semantics": "sha256 is the original upstream file hash at the pinned commit. adapted_sha256 records a changed local file; adaptation_notes describe the host overlay.",
   "source_files": [
     {
       "source": "cursor-team-kit/LICENSE",
@@ -14,17 +15,39 @@
     {
       "source": "cursor-team-kit/skills/control-cli/SKILL.md",
       "destination": "skills/control-cli/SKILL.md",
-      "sha256": "e3aac9ccc7311fb3320538bcf85490da5930d7d0a62a85775ef076bf07577c7a"
+      "sha256": "e3aac9ccc7311fb3320538bcf85490da5930d7d0a62a85775ef076bf07577c7a",
+      "adapted_sha256": "7a1563101e8ae45854660083a7d9e3693d25b4f8112fd58f3028342ada083e1c",
+      "adaptation_notes": [
+        "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures."
+      ]
     },
     {
       "source": "cursor-team-kit/skills/control-ui/SKILL.md",
       "destination": "skills/control-ui/SKILL.md",
-      "sha256": "016b5f04f5f83979eb59944c24eab21101682887dfa932b1f19a161b3c068e86"
+      "sha256": "016b5f04f5f83979eb59944c24eab21101682887dfa932b1f19a161b3c068e86",
+      "adapted_sha256": "535eee68b81de2b22b287c3019e46881f53d3b99bd98843f34afdd5a6c6f7971",
+      "adaptation_notes": [
+        "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures."
+      ]
     },
     {
       "source": "cursor-team-kit/skills/deslop/SKILL.md",
       "destination": "skills/deslop/SKILL.md",
-      "sha256": "65c7b38325785572d2c7b974e9ac61be7131e501da9a45a34ab1e5c0587a43cc"
+      "sha256": "65c7b38325785572d2c7b974e9ac61be7131e501da9a45a34ab1e5c0587a43cc",
+      "adapted_sha256": "16d916bee99e85bd23712239e1d126fa9b8cced962289b38c0582b085df85e76",
+      "adaptation_notes": [
+        "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures."
+      ]
+    },
+    {
+      "source": "pstack/.cursor-plugin/plugin.json",
+      "destination": ".cursor-plugin/plugin.json",
+      "sha256": "fcbb2f1e226e47f7eb2a5f0f9a17c7d14a7b1d41b698f22ae4090e30a9107c3f"
+    },
+    {
+      "source": "pstack/.gitignore",
+      "destination": ".gitignore",
+      "sha256": "0830294583061ae7247737c82eb85c808ceed2252b712f0ad431df8bb98f47e7"
     },
     {
       "source": "pstack/LICENSE",
@@ -34,7 +57,11 @@
     {
       "source": "pstack/README.md",
       "destination": "UPSTREAM-README.md",
-      "sha256": "0fbbef17cece28697e1a2ff31e875157c3faf8ae5f4f71d16401be618bfbbab7"
+      "sha256": "5210721cec4197e96511008cd6fdfd32960b4a620a33781b8fea057dc6ff972f",
+      "adapted_sha256": "f6cfca30343e85c1baeac6b66141f57f02f0ee9717480b078c9952af8608a756",
+      "adaptation_notes": [
+        "Identify upstream Cursor examples and link the Codex host contract."
+      ]
     },
     {
       "source": "pstack/agents/comment-sicko.md",
@@ -44,12 +71,17 @@
     {
       "source": "pstack/agents/poteto-agent.md",
       "destination": "agents/poteto-agent.md",
-      "sha256": "059b98450294f8c0a2728c5d3207c7bbfbcfbde88c3de1c3244c1a254d9968a3"
+      "sha256": "51083ed7b0b3a556db2ea85a712f8699a010ca1d00ca25cd9eafe54059e269e7",
+      "adapted_sha256": "ea6573f2869669af353ca18f261c15f99f9312dcc057b6e99f4982051aa78c07",
+      "adaptation_notes": [
+        "Preserve upstream fresh-task change and strengthen returned-child retirement; identify host role authority."
+      ]
     },
     {
       "source": "pstack/assets/logo.png",
       "destination": "assets/logo.png",
-      "sha256": "672f6791589ef758b0ced2c4c477913fa2758623c438e265639a0d539ce90695"
+      "sha256": "672f6791589ef758b0ced2c4c477913fa2758623c438e265639a0d539ce90695",
+      "git_blob": "3754e87cb0e1362f17428bc84c661166ee145156"
     },
     {
       "source": "pstack/automations/benny/FOR_AGENTS.md",
@@ -64,7 +96,11 @@
     {
       "source": "pstack/automations/benny/skills/reproduce-and-fix-issues/SKILL.md",
       "destination": "automations/benny/skills/reproduce-and-fix-issues/SKILL.md",
-      "sha256": "bd9d688415cabee95247738f9ea927325ba0ead7796d0d18cb57cf82dd35df54"
+      "sha256": "bd9d688415cabee95247738f9ea927325ba0ead7796d0d18cb57cf82dd35df54",
+      "adapted_sha256": "fd4dab2e51068ce6de2bb864401d2eb0fab216fa5cfdb527c95ffa5ad0777fdb",
+      "adaptation_notes": [
+        "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures."
+      ]
     },
     {
       "source": "pstack/automations/benny/skills/reproduce-and-fix-issues/references/control-adapter.md",
@@ -84,12 +120,20 @@
     {
       "source": "pstack/automations/benny/skills/setup-benny/SKILL.md",
       "destination": "automations/benny/skills/setup-benny/SKILL.md",
-      "sha256": "1b8d0bae5265413a65b03c9b3b883f1d91efc0e7c1cb3a28e66c215b3a2094f7"
+      "sha256": "1b8d0bae5265413a65b03c9b3b883f1d91efc0e7c1cb3a28e66c215b3a2094f7",
+      "adapted_sha256": "3ee9a252bd28ec5e0b69e185d87de161244c9de70db2341c449a2c4a3e28de55",
+      "adaptation_notes": [
+        "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures."
+      ]
     },
     {
       "source": "pstack/automations/benny/skills/triage-issue-reports/SKILL.md",
       "destination": "automations/benny/skills/triage-issue-reports/SKILL.md",
-      "sha256": "8122f1c1e65062bf0f1103a587c08ed7d14779c64625643a9f488f262fd21ad8"
+      "sha256": "8122f1c1e65062bf0f1103a587c08ed7d14779c64625643a9f488f262fd21ad8",
+      "adapted_sha256": "4d1fd2a8f648caf54112481dccc3ff17cb57e7822d70867f5dee36e251e6a8e5",
+      "adaptation_notes": [
+        "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures."
+      ]
     },
     {
       "source": "pstack/automations/benny/skills/triage-issue-reports/references/routing.example.md",
@@ -114,97 +158,155 @@
     {
       "source": "pstack/docs/guide/01-setup.md",
       "destination": "docs/guide/01-setup.md",
-      "sha256": "53a16f24fb8b63a617699fab8a02d259885dbfbd5b3c08042b1eb57555305238"
+      "sha256": "3a8299e0c333864a60b9771aea448a340b0a89288b851607541a75ff6125201b",
+      "adapted_sha256": "4386ace99c6fa397e0b2f060a6f1ef94773f95882da931601f7e21c4ab8bc773",
+      "adaptation_notes": [
+        "Translate project skill output paths from .cursor/skills to .agents/skills.",
+        "Identify upstream Cursor examples and link the Codex host contract.",
+        "Resolve setup and parent inheritance through source MODELS.md instead of Cursor model rules or omitted arguments."
+      ]
     },
     {
       "source": "pstack/docs/guide/02-poteto-mode.md",
       "destination": "docs/guide/02-poteto-mode.md",
-      "sha256": "e0447eec1ce2d2b8165b36af094d3e78c41112ec253c15a380af7ee3d7b75a04"
+      "sha256": "e0447eec1ce2d2b8165b36af094d3e78c41112ec253c15a380af7ee3d7b75a04",
+      "adapted_sha256": "870f6c2e58fb37282a452700f8957a598deecfd2bd38d4157f0f54dba890905d",
+      "adaptation_notes": [
+        "Identify upstream Cursor examples and link the Codex host contract."
+      ]
     },
     {
       "source": "pstack/docs/guide/03-understand.md",
       "destination": "docs/guide/03-understand.md",
-      "sha256": "04f748ff42d4b8cf55deb0ceb3292277f483d53c6f31ca0b65157c0beb8ea17d"
+      "sha256": "04f748ff42d4b8cf55deb0ceb3292277f483d53c6f31ca0b65157c0beb8ea17d",
+      "adapted_sha256": "870c2cb97d7766c06b755dccf3ce92d8d45983d506ddb591e629ff1c80167272",
+      "adaptation_notes": [
+        "Identify upstream Cursor examples and link the Codex host contract."
+      ]
     },
     {
       "source": "pstack/docs/guide/04-design.md",
       "destination": "docs/guide/04-design.md",
-      "sha256": "6d3b013dfe5465b21178f5265aee942b3972630f313db2730e103ce2965fa110"
+      "sha256": "6d3b013dfe5465b21178f5265aee942b3972630f313db2730e103ce2965fa110",
+      "adapted_sha256": "c9aedfbeaf30e7e3b06234fac3dbd465123aa00bbf33d7a66e137736f118bc9f",
+      "adaptation_notes": [
+        "Identify upstream Cursor examples and link the Codex host contract."
+      ]
     },
     {
       "source": "pstack/docs/guide/05-build-and-clean.md",
       "destination": "docs/guide/05-build-and-clean.md",
-      "sha256": "1a70b66b1fbced7ced9645e57f567870085d241927740f4f1fb696ef30607ba7"
+      "sha256": "1a70b66b1fbced7ced9645e57f567870085d241927740f4f1fb696ef30607ba7",
+      "adapted_sha256": "026bdf73d2f12ccec65205c3e62c9f7f8c9fca1d23c01238ede6a054173ea2ee",
+      "adaptation_notes": [
+        "Identify upstream Cursor examples and link the Codex host contract."
+      ]
     },
     {
       "source": "pstack/docs/guide/06-verify-and-ship.md",
       "destination": "docs/guide/06-verify-and-ship.md",
-      "sha256": "55f5c1b9f07b6b43ad4cc3040a440f94ef0fd0639fe238747e7f2df4463e4c48"
+      "sha256": "55f5c1b9f07b6b43ad4cc3040a440f94ef0fd0639fe238747e7f2df4463e4c48",
+      "adapted_sha256": "4b91770da4db5106adbde00d5beee78561697bb3517b1478cd535cfcd3bfef2d",
+      "adaptation_notes": [
+        "Identify upstream Cursor examples and link the Codex host contract."
+      ]
     },
     {
       "source": "pstack/docs/guide/07-overnight.md",
       "destination": "docs/guide/07-overnight.md",
-      "sha256": "1871e755419a15b6e13ae107bca09c63b92d8eb673342228eaec5db4f16ea236"
+      "sha256": "6c67f72e8ab4932fde0b107a8af9e3f273934c210981af9d77e9ad995c834d54",
+      "adapted_sha256": "074ce05967138f7490758dc634a0ccdf197b4069cd829032c4dc1d2d7f2e3bc1",
+      "adaptation_notes": [
+        "Identify upstream Cursor examples and link the Codex host contract."
+      ]
     },
     {
       "source": "pstack/docs/guide/08-principles.md",
       "destination": "docs/guide/08-principles.md",
-      "sha256": "529bcdcacd622bc66f7b4add3a823ceca85879397ed4ef77c7de629a209f88b2"
+      "sha256": "c18af6441e53261029ac7b10cf37077709a7909c32fa2cc568ff4b3e7667ba2d",
+      "adapted_sha256": "8cf47707ed2659b837f49182376c01101ff82614a1c426aa95033a4b0ae7c041",
+      "adaptation_notes": [
+        "Identify upstream Cursor examples and link the Codex host contract."
+      ]
     },
     {
       "source": "pstack/docs/guide/09-make-it-yours.md",
       "destination": "docs/guide/09-make-it-yours.md",
-      "sha256": "d1dac4599693ff41ea2618172ca6f791f16179b4f075ba4900a89f2293f583bf"
+      "sha256": "d1dac4599693ff41ea2618172ca6f791f16179b4f075ba4900a89f2293f583bf",
+      "adapted_sha256": "14941706e111ba9fbe3c66f01612cf501140ea1a46fe8a11b0336fbc6541dc7e",
+      "adaptation_notes": [
+        "Identify upstream Cursor examples and link the Codex host contract."
+      ]
     },
     {
       "source": "pstack/docs/guide/10-recipes-and-pitfalls.md",
       "destination": "docs/guide/10-recipes-and-pitfalls.md",
-      "sha256": "cea2ebcddd83088d40942ec68e981b0a175c6f67bcf3f9fc8c5a7b82d6bf1435"
+      "sha256": "cea2ebcddd83088d40942ec68e981b0a175c6f67bcf3f9fc8c5a7b82d6bf1435",
+      "adapted_sha256": "d6c6230c8b71eda8b55a4b7b996ea968ece8b4e10d225bc7b02817be961ddbf0",
+      "adaptation_notes": [
+        "Identify upstream Cursor examples and link the Codex host contract.",
+        "Resolve setup and parent inheritance through source MODELS.md instead of Cursor model rules or omitted arguments."
+      ]
     },
     {
       "source": "pstack/docs/guide/README.md",
       "destination": "docs/guide/README.md",
-      "sha256": "b8ec0248818a32bbca7366319c1aaf5278d48234f8ef3e9caad3afcb43e5209e"
+      "sha256": "2a37b6bf86bf22ecf8a83e78e1748b6a27f813ea5039afaee9054e9001561390",
+      "adapted_sha256": "3d1f00ee8154613fc2a276f6a4d1495f70a4ee8c9da0d6a337b5bcdb0ada65cb",
+      "adaptation_notes": [
+        "Identify upstream Cursor examples and link the Codex host contract."
+      ]
     },
     {
       "source": "pstack/docs/guide/images/design.jpg",
       "destination": "docs/guide/images/design.jpg",
-      "sha256": "b8ed07427f6a0c37dd8ba97961fc0eb5071efeee6c4a230648bdb7547f6f2a8f"
+      "sha256": "b8ed07427f6a0c37dd8ba97961fc0eb5071efeee6c4a230648bdb7547f6f2a8f",
+      "git_blob": "f86909437f8b5a83da3cba7bc35a018c9d4887c8"
     },
     {
       "source": "pstack/docs/guide/images/overnight.jpg",
       "destination": "docs/guide/images/overnight.jpg",
-      "sha256": "4b4405e4df8925c5b3abbe702f681af0f3b1f5f32271b599f95717f578f1a0c8"
+      "sha256": "4b4405e4df8925c5b3abbe702f681af0f3b1f5f32271b599f95717f578f1a0c8",
+      "git_blob": "d64e1c63066c9f088da909160f5e136049e9a512"
     },
     {
       "source": "pstack/docs/guide/images/recipes.jpg",
       "destination": "docs/guide/images/recipes.jpg",
-      "sha256": "9fa2d51b476635712737795ddef81806efaa0086bb3bfa9f9f45695d9ab0f8e8"
+      "sha256": "9fa2d51b476635712737795ddef81806efaa0086bb3bfa9f9f45695d9ab0f8e8",
+      "git_blob": "69fe992fdb9fb8e7baacc144ea140f9c93b262fb"
     },
     {
       "source": "pstack/docs/guide/images/router.jpg",
       "destination": "docs/guide/images/router.jpg",
-      "sha256": "525843055a4efd2b10acc50a8652fd02b0834ea733a8a2f895c1eb89036017da"
+      "sha256": "525843055a4efd2b10acc50a8652fd02b0834ea733a8a2f895c1eb89036017da",
+      "git_blob": "c8fba6a266505caf406d5185d7a4cc6e34be98a4"
     },
     {
       "source": "pstack/docs/guide/images/understanding.jpg",
       "destination": "docs/guide/images/understanding.jpg",
-      "sha256": "b60587e9a9bbe2550e93be9819cf0cd4acf77d90fac769a0c43d82bd8e34e279"
+      "sha256": "b60587e9a9bbe2550e93be9819cf0cd4acf77d90fac769a0c43d82bd8e34e279",
+      "git_blob": "bb1b1ac15dd11da9ad047d203049a1a24abb2b46"
     },
     {
       "source": "pstack/docs/guide/images/verification.jpg",
       "destination": "docs/guide/images/verification.jpg",
-      "sha256": "2a76b52007a1cd2866ba67fd47d7d9ef3e1118bb5a09c4665eee8c3f161bd09a"
+      "sha256": "2a76b52007a1cd2866ba67fd47d7d9ef3e1118bb5a09c4665eee8c3f161bd09a",
+      "git_blob": "a252ae0b5e14cb6fcef2e3b806bbd66316242446"
     },
     {
       "source": "pstack/skills/architect/SKILL.md",
       "destination": "skills/architect/SKILL.md",
-      "sha256": "979027e2e529d60b6e79acb50f30a6b6f8b45049b7a5b77f7d7e26a650d26195"
+      "sha256": "85808e68ed53fb78469fa773f53e8d1a4525eef82151056ca82fd9d7989f0be0",
+      "adapted_sha256": "ffef04e102068a5bd35e6932f03bc25947a25637d2d58c3cf89e9cb141b5a54d",
+      "adaptation_notes": [
+        "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures.",
+        "Replace upstream model defaults and rejection fallbacks with the single MODELS.md responsibility mapping; preserve workflow phases and report actual independent evidence."
+      ]
     },
     {
       "source": "pstack/skills/architect/references/design-red-flags.md",
       "destination": "skills/architect/references/design-red-flags.md",
-      "sha256": "b695996d0acc3395d153bdc7abe5ee923ebdea6ad0a9ae4c8d1c75fba318cf1d"
+      "sha256": "cbe8bbf426a6bd1ce62a7474bdcfd6936ede82be4b82fc6301a26e94068015e1"
     },
     {
       "source": "pstack/skills/architect/references/rationale-template.md",
@@ -219,27 +321,69 @@
     {
       "source": "pstack/skills/arena/SKILL.md",
       "destination": "skills/arena/SKILL.md",
-      "sha256": "96f66976f675fb73eaa80d0ca35a88473ec5a9cf31d2427e49ca8430355db51e"
+      "sha256": "d2b74ce1ef5b24aad06c3097fb22eeb9780802baff10fa08b4aedaccdd63a76c",
+      "adapted_sha256": "1cde8f6290cea74973aa133279c5bc26baf28f6b8b03d6c4a379c4ade31ec7f6",
+      "adaptation_notes": [
+        "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures.",
+        "Replace upstream model defaults and rejection fallbacks with the single MODELS.md responsibility mapping; preserve workflow phases and report actual independent evidence."
+      ]
     },
     {
       "source": "pstack/skills/automate-me/SKILL.md",
       "destination": "skills/automate-me/SKILL.md",
-      "sha256": "7e6188266b44a3b27c80b74757d9bb576301ff9556e6e2ef776dcc0ebdd0552b"
+      "sha256": "7e6188266b44a3b27c80b74757d9bb576301ff9556e6e2ef776dcc0ebdd0552b",
+      "adapted_sha256": "76d2e39e9ec16d66fce220464622206d7e9b487c7d39e62d402de009bfa1c0d4",
+      "adaptation_notes": [
+        "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures.",
+        "Translate project skill output paths from .cursor/skills to .agents/skills."
+      ]
+    },
+    {
+      "source": "pstack/skills/benchmark-checklist/SKILL.md",
+      "destination": "skills/benchmark-checklist/SKILL.md",
+      "sha256": "9dfcf7fe716a078d1e6eb5cf45e2e4237268d28b9566562cb2ffafde062679d1",
+      "adapted_sha256": "2a7ef5e308cef74147c482f7e9b34e5dd1a5582f91b9e02773078c085cd92def",
+      "adaptation_notes": [
+        "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures."
+      ]
     },
     {
       "source": "pstack/skills/blast-radius/SKILL.md",
       "destination": "skills/blast-radius/SKILL.md",
-      "sha256": "cdc483bc0720f8c6d06d9051c7c0f9f180dce6f4452bcfbb458649cd0929ed4d"
+      "sha256": "52bf8db299453f647f977a1b1688f6eb108f7837cbbe35bae4cbe9f91ffd0da8",
+      "adapted_sha256": "f29789996a3dc9d0f2a4f2afa04693611285159bfe0d3297948eb1b011969522",
+      "adaptation_notes": [
+        "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures."
+      ]
     },
     {
       "source": "pstack/skills/bro/SKILL.md",
       "destination": "skills/bro/SKILL.md",
-      "sha256": "5803b79e1e6c444e3b3c2705f89a9f4ba98c502f9841fce906e61acf52af35ea"
+      "sha256": "5803b79e1e6c444e3b3c2705f89a9f4ba98c502f9841fce906e61acf52af35ea",
+      "adapted_sha256": "0c2c42e11753c577f11e485e6f8967deb5367e10e20f31c13b4dc0b930156cbb",
+      "adaptation_notes": [
+        "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures."
+      ]
+    },
+    {
+      "source": "pstack/skills/correct/SKILL.md",
+      "destination": "skills/correct/SKILL.md",
+      "sha256": "92f1742b48f38c05e750b7572a04f5614ff8ad6b4f668d8dac80be469f7307e0",
+      "adapted_sha256": "f33c642200f2488939f6802b3802b96af8bf19c59c2ed4f3e88dfc0cbf31f733",
+      "adaptation_notes": [
+        "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures.",
+        "Retain two observed occurrences and architecture/types/lint/tests/docs priority. Gate commits and full suites by authorization; a rule alone is not a second occurrence."
+      ]
     },
     {
       "source": "pstack/skills/create-verification-skill/SKILL.md",
       "destination": "skills/create-verification-skill/SKILL.md",
-      "sha256": "638e0560abfafd0571752930be244eed8cd46750667fe870c99ec6196b9ccebf"
+      "sha256": "638e0560abfafd0571752930be244eed8cd46750667fe870c99ec6196b9ccebf",
+      "adapted_sha256": "e0c1f07305d4a09da2d78856e2cb32130997bd02afbcb08ee44391840679a835",
+      "adaptation_notes": [
+        "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures.",
+        "Translate project skill output paths from .cursor/skills to .agents/skills."
+      ]
     },
     {
       "source": "pstack/skills/create-verification-skill/references/feature-map-example/README.md",
@@ -259,12 +403,22 @@
     {
       "source": "pstack/skills/figure-it-out/SKILL.md",
       "destination": "skills/figure-it-out/SKILL.md",
-      "sha256": "1d285501379abb82ac42580e83c70ed0b2e74fb1e19f6dd9f689665ca3d20ce3"
+      "sha256": "4aa7be613b4478b06dcfd7ca80190b249061e21eec4c5f0710de0725551a5c88",
+      "adapted_sha256": "3513171ec50d741c7bce26757521ddf1c10cebad8c30735c67a42507683ad4f1",
+      "adaptation_notes": [
+        "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures."
+      ]
     },
     {
       "source": "pstack/skills/how/SKILL.md",
       "destination": "skills/how/SKILL.md",
-      "sha256": "907ce34525831694d66e64f578972e2c9ba2d6a62c1cba2d623c5eec95637cdf"
+      "sha256": "ba20d3b58fa805e54629a3a70caa6c77c9555e608e4f9d0ac427227bb37ac9ab",
+      "adapted_sha256": "dc37c6a2559872da40102d22d8f5f6b35f12df90b44ba6619b7c05301bcf372b",
+      "adaptation_notes": [
+        "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures.",
+        "Replace upstream model defaults and rejection fallbacks with the single MODELS.md responsibility mapping; preserve workflow phases and report actual independent evidence.",
+        "Split prescribed collection from interpretation; Primary explains, Astra owns authoritative documents."
+      ]
     },
     {
       "source": "pstack/skills/how/references/explainer-prompt.md",
@@ -274,17 +428,22 @@
     {
       "source": "pstack/skills/how/references/explorer-prompt.md",
       "destination": "skills/how/references/explorer-prompt.md",
-      "sha256": "aa7b7b327c68a8d644063f54f34931fb8b21f92703d379e37030448121b07424"
+      "sha256": "ac2d4099e531aa52cd1cbc232a58bdc2358a6da4f6c2a52918d29a6ba1e06526"
     },
     {
       "source": "pstack/skills/interrogate/SKILL.md",
       "destination": "skills/interrogate/SKILL.md",
-      "sha256": "5351c94728f75cda8fbb96074d03f41772913780dc797314983eaaaf396487af"
+      "sha256": "14aa149383eb560ffa133dfe78463875ef14d90239cc145f5b9a69a8527bbc77",
+      "adapted_sha256": "1a3e6267211f77e06794e2ccd917229b6c17d767889806d049169f494b000143",
+      "adaptation_notes": [
+        "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures.",
+        "Replace upstream model defaults and rejection fallbacks with the single MODELS.md responsibility mapping; preserve workflow phases and report actual independent evidence."
+      ]
     },
     {
       "source": "pstack/skills/interrogate/references/code-quality-review.md",
       "destination": "skills/interrogate/references/code-quality-review.md",
-      "sha256": "7161ce4ef0dae994a958ab402973518d1848509ad5d37353b51009c2a1196a88"
+      "sha256": "577306c53cb4467b4fb1728b3f84f14f1d498b56c3d8fc6319dedffa12d4be01"
     },
     {
       "source": "pstack/skills/interrogate/references/lead-judgment.md",
@@ -294,32 +453,50 @@
     {
       "source": "pstack/skills/interrogate/references/reviewer-prompt.md",
       "destination": "skills/interrogate/references/reviewer-prompt.md",
-      "sha256": "3cf339a1f89eb726058912e8444e427b5f340355b6bb162d2ba2298deb8ab4e7"
+      "sha256": "fae7b46805532bf75be1b8171293cfa9443522413720d818485b9dd07f5c07ed"
     },
     {
       "source": "pstack/skills/interrogate/references/rubric.md",
       "destination": "skills/interrogate/references/rubric.md",
-      "sha256": "30e7f58c8d901743ac6d688b55e7d6ee88df4d7a50f8daddd687f8ad39d739c5"
+      "sha256": "d4b00eab2065dc5437842a69e2d69d413e8991d67dd3455c99b5b6c6baa984e6"
     },
     {
       "source": "pstack/skills/maintain-verification-skill/SKILL.md",
       "destination": "skills/maintain-verification-skill/SKILL.md",
-      "sha256": "38553f39e53fdbb1bac7357dd0550e4df1546e819dc9c48387b88d1fbcd5ef5c"
+      "sha256": "38553f39e53fdbb1bac7357dd0550e4df1546e819dc9c48387b88d1fbcd5ef5c",
+      "adapted_sha256": "a628f712cbd258d527e1a7ef8de0f92e23680a0c9f31bea21ccd14d6d17483b1",
+      "adaptation_notes": [
+        "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures.",
+        "Translate project skill output paths from .cursor/skills to .agents/skills."
+      ]
     },
     {
       "source": "pstack/skills/make-bot-ui/SKILL.md",
       "destination": "skills/make-bot-ui/SKILL.md",
-      "sha256": "c69729dedb2e8cafd924afc2be653770dab00f1fec20406414666b16797923fa"
+      "sha256": "c69729dedb2e8cafd924afc2be653770dab00f1fec20406414666b16797923fa",
+      "adapted_sha256": "577d822423b391e79f37265b4625cba57f0098119b474f3d192b5f902241174e",
+      "adaptation_notes": [
+        "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures."
+      ]
     },
     {
       "source": "pstack/skills/no-comments/SKILL.md",
       "destination": "skills/no-comments/SKILL.md",
-      "sha256": "7e1f72137e38aa3e1dbbf55c1224b928894751d96b2673003c81e4ba28e2cf96"
+      "sha256": "7e1f72137e38aa3e1dbbf55c1224b928894751d96b2673003c81e4ba28e2cf96",
+      "adapted_sha256": "58bc4b74003755322148d4f304904f0c4fa101b48513655d007222b70ec33be1",
+      "adaptation_notes": [
+        "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures."
+      ]
     },
     {
       "source": "pstack/skills/poteto-mode/SKILL.md",
       "destination": "skills/poteto-mode/SKILL.md",
-      "sha256": "bf1ba8e991e6cb78e22be493f3d6153845a61b990dcbd3f5081ca255b4bb1aa2"
+      "sha256": "f51bc4dfeee6f8180b2402f4ca6a061308cd3ac6ee1f867b313f2b32aa644e1d",
+      "adapted_sha256": "d28148c5be803a58735426289c4b0acc9fedd22b065dfa9f93645a9ce8ffaa44",
+      "adaptation_notes": [
+        "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures.",
+        "Keep upstream triggers and playbook catalog; apply host authorization, fresh-child ownership and role mapping without automatic panels or repair PRs. Reuse the existing task record."
+      ]
     },
     {
       "source": "pstack/skills/poteto-mode/playbooks/authoring-a-skill.md",
@@ -334,22 +511,27 @@
     {
       "source": "pstack/skills/poteto-mode/playbooks/autopilot-full.md",
       "destination": "skills/poteto-mode/playbooks/autopilot-full.md",
-      "sha256": "e22eb0e0409d12805fcbecdcd31a22a995e0c24f78ab1839efc2bd6b812f02eb"
+      "sha256": "f05efa2bb910ecbc9febb79b9a99875e08181863076c52bbf88be5e3207ce397"
     },
     {
       "source": "pstack/skills/poteto-mode/playbooks/autopilot-stack.md",
       "destination": "skills/poteto-mode/playbooks/autopilot-stack.md",
-      "sha256": "364126ee185f55ac21eab721ceff697737ee8e4350843c77a3210ac904ed3b64"
+      "sha256": "9b99dd44fc447e6199a34115065e7e1dd0905882979225003c6757a211b158d6"
     },
     {
       "source": "pstack/skills/poteto-mode/playbooks/babysit.md",
       "destination": "skills/poteto-mode/playbooks/babysit.md",
-      "sha256": "820bcaf83fc8ca5b28ebc2926079ad79363d8227b1e5667caa636cd2cb7c3346"
+      "sha256": "df985d061d0c0c4287c443336a434d5a24cf47fd3de4abb8e54672fe84fa42dd"
     },
     {
       "source": "pstack/skills/poteto-mode/playbooks/bug-fix.md",
       "destination": "skills/poteto-mode/playbooks/bug-fix.md",
-      "sha256": "99c8668f50cb0285aa751048a975b6b0f34757843a2907840c20ce94093a2eca"
+      "sha256": "0aba55d737305bc93019eea13652ec837d195a4b62fc1434467e6fc7ce52e82a",
+      "adapted_sha256": "e44218093ef857338df9728e0779382f6fa2cb9417539c93676b0e807f431763",
+      "adaptation_notes": [
+        "Retain upstream phase order and new procedures; resolve delegate models through MODELS.md.",
+        "Split prescribed evidence collection from unresolved diagnosis before Luna dispatch."
+      ]
     },
     {
       "source": "pstack/skills/poteto-mode/playbooks/eval.md",
@@ -359,12 +541,21 @@
     {
       "source": "pstack/skills/poteto-mode/playbooks/feature.md",
       "destination": "skills/poteto-mode/playbooks/feature.md",
-      "sha256": "b14a3f7396b2045dd65e44b2020fe20d52d82261a8bd45adb25047ad5d50c65f"
+      "sha256": "d13f1e6a15e742220ef4536d604f0bd41103b269844ff38f3bb0435e50f68cd1",
+      "adapted_sha256": "e6f6fa9491400dd4537536baa3d95529250d84a8a17cc9f1a192a8072694ab38",
+      "adaptation_notes": [
+        "Retain upstream phase order and new procedures; resolve delegate models through MODELS.md.",
+        "An arena requires a selected comparison; retain design and verification phases without automatic panels."
+      ]
     },
     {
       "source": "pstack/skills/poteto-mode/playbooks/hillclimb.md",
       "destination": "skills/poteto-mode/playbooks/hillclimb.md",
-      "sha256": "2eff9487f5c69917a7842ed3e7ef826b7d1d4a100ab9e888af11bc8c9e0be12d"
+      "sha256": "bcbf22a0296ff45c2ac6bb73234de32ea362d5732916e4e22d06dd560c6ebb36",
+      "adapted_sha256": "5d8a6d9ee1b7bed1d9b1784494019d2d5a17e62dd6a89482e1e498863d5a5371",
+      "adaptation_notes": [
+        "Retain upstream phase order and new procedures; resolve delegate models through MODELS.md."
+      ]
     },
     {
       "source": "pstack/skills/poteto-mode/playbooks/investigation.md",
@@ -374,12 +565,16 @@
     {
       "source": "pstack/skills/poteto-mode/playbooks/multi-phase-plan.md",
       "destination": "skills/poteto-mode/playbooks/multi-phase-plan.md",
-      "sha256": "9432e2168e970a0a70a89b0574977c390ade806466b3dca3cdf4dbdde4d09ef8"
+      "sha256": "e1639882bba4f7d80ddd1409c747e9a8bd26f47c492921f71cfb38db15f2d9eb",
+      "adapted_sha256": "00a7da41779fbaaf35c83a74777fdd6080b1b2139d6e4988e63a550f0c039647",
+      "adaptation_notes": [
+        "Retain upstream phase order and new procedures; resolve delegate models through MODELS.md."
+      ]
     },
     {
       "source": "pstack/skills/poteto-mode/playbooks/opening-a-pr.md",
       "destination": "skills/poteto-mode/playbooks/opening-a-pr.md",
-      "sha256": "d12e86629de6b8303b31f49a60ef1017f140bcb070fb26298e4ecd4f0c7aa134"
+      "sha256": "ca9afad46b925448d843a05d6fe3af980245da4b610ddfba26284a50bd43e798"
     },
     {
       "source": "pstack/skills/poteto-mode/playbooks/orchestrate.md",
@@ -389,12 +584,16 @@
     {
       "source": "pstack/skills/poteto-mode/playbooks/pause-safely.md",
       "destination": "skills/poteto-mode/playbooks/pause-safely.md",
-      "sha256": "271767ee1bf4b29912d098ab2487313dd1fc0ad3f6e9d7a153a8d02f1de9cd20"
+      "sha256": "f2c7c53d90a0becde594a7d6d3c152f6ad8069edd6903fe6c2bbd4e5ff4243b4"
     },
     {
       "source": "pstack/skills/poteto-mode/playbooks/perf-issue.md",
       "destination": "skills/poteto-mode/playbooks/perf-issue.md",
-      "sha256": "abf1ebafc561409034a4ed28f5e98bd3f7b4a06616e9b8d2f6c5dfe47cd201ad"
+      "sha256": "52f5d05eeb71bce042e8416d9bba22a93de5dc3106ce8d708941c94004159155",
+      "adapted_sha256": "0416791d8d1a1e01c6f652a5bfbe4cfe103b573445f3eb1f72e0cf0b37fcfe53",
+      "adaptation_notes": [
+        "Retain upstream phase order and new procedures; resolve delegate models through MODELS.md."
+      ]
     },
     {
       "source": "pstack/skills/poteto-mode/playbooks/prototype.md",
@@ -404,7 +603,11 @@
     {
       "source": "pstack/skills/poteto-mode/playbooks/refactoring.md",
       "destination": "skills/poteto-mode/playbooks/refactoring.md",
-      "sha256": "238f6a858d94e8fe2f14e855f260b572f873107497eca4e2dc6dbea059d42d3e"
+      "sha256": "1c076f78a4cb05608ae3f38a66c72b79392a87a4fa488a6c850e4d8b9ff4d835",
+      "adapted_sha256": "4006cf8ac543279f157fb1d1de7ae628e608f08928d2db1172420bff6ea2bf64",
+      "adaptation_notes": [
+        "Retain upstream phase order and new procedures; resolve delegate models through MODELS.md."
+      ]
     },
     {
       "source": "pstack/skills/poteto-mode/playbooks/runtime-forensics.md",
@@ -419,7 +622,7 @@
     {
       "source": "pstack/skills/poteto-mode/playbooks/shipping.md",
       "destination": "skills/poteto-mode/playbooks/shipping.md",
-      "sha256": "2a89fd44cc4f114c505a3cd23c867af39db5d5f9bb832ec366e126df3847a351"
+      "sha256": "2a1c21f45dff680b917bbabadcff52145c14051cf51bfb8db45df944cf32e78c"
     },
     {
       "source": "pstack/skills/poteto-mode/playbooks/trace-forensics.md",
@@ -454,7 +657,7 @@
     {
       "source": "pstack/skills/poteto-mode/scripts/check-plan.mjs",
       "destination": "skills/poteto-mode/scripts/check-plan.mjs",
-      "sha256": "af4c1cce4c531035eb5b475996421e67e1ae16eda1201aa80630d9b090e56da7"
+      "sha256": "81814e891367939983ba69411c916b044c7c004dbab67babe30ce67dbe85c430"
     },
     {
       "source": "pstack/skills/poteto-mode/scripts/orch/orch.test.ts",
@@ -544,137 +747,256 @@
     {
       "source": "pstack/skills/principle-attack-the-premise/SKILL.md",
       "destination": "skills/principle-attack-the-premise/SKILL.md",
-      "sha256": "cb0ea916a7c5c747e3f32780766b069b39d347808b5fc69731bd913db770f335"
+      "sha256": "cb0ea916a7c5c747e3f32780766b069b39d347808b5fc69731bd913db770f335",
+      "adapted_sha256": "db24c4bada046f4b502c54dcf98a0b8ac04bf429dce50cbb688e5059664043e5",
+      "adaptation_notes": [
+        "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures."
+      ]
     },
     {
       "source": "pstack/skills/principle-boundary-discipline/SKILL.md",
       "destination": "skills/principle-boundary-discipline/SKILL.md",
-      "sha256": "99c74b6676a4ca8e55f17f5db1264244b97b58c953d32bd305744a193a995305"
+      "sha256": "99c74b6676a4ca8e55f17f5db1264244b97b58c953d32bd305744a193a995305",
+      "adapted_sha256": "fd7d3fde6c2f0df71a693feb5a344684fdc75dedbd634c681c9d9ad19d816535",
+      "adaptation_notes": [
+        "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures."
+      ]
     },
     {
       "source": "pstack/skills/principle-build-the-lever/SKILL.md",
       "destination": "skills/principle-build-the-lever/SKILL.md",
-      "sha256": "366f8de7377d1ff991edf4d8f135b16cb0c36f573816d4f70e2e52cae33bf57e"
+      "sha256": "366f8de7377d1ff991edf4d8f135b16cb0c36f573816d4f70e2e52cae33bf57e",
+      "adapted_sha256": "25db97ebd5801fcf3db5e003914de48d9bfdf995e07bd89151db2cd18921605a",
+      "adaptation_notes": [
+        "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures."
+      ]
     },
     {
       "source": "pstack/skills/principle-encode-lessons-in-structure/SKILL.md",
       "destination": "skills/principle-encode-lessons-in-structure/SKILL.md",
-      "sha256": "64c2752bfd1eeae654b17b9c87858f9b8503101aa4d0c51279cc182794057605"
+      "sha256": "64c2752bfd1eeae654b17b9c87858f9b8503101aa4d0c51279cc182794057605",
+      "adapted_sha256": "a1cfd702fbac68b1243e74d03fb81b7e35fd97950342f636bd8b2b5abfe14936",
+      "adaptation_notes": [
+        "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures."
+      ]
     },
     {
       "source": "pstack/skills/principle-exhaust-the-design-space/SKILL.md",
       "destination": "skills/principle-exhaust-the-design-space/SKILL.md",
-      "sha256": "4f971abbaf668014104985177607ab61a1128dc948d8b944f1f9772ec6afe37c"
+      "sha256": "4f971abbaf668014104985177607ab61a1128dc948d8b944f1f9772ec6afe37c",
+      "adapted_sha256": "5a44f506cb95790242adc826891da45896161b916640f3efa9b60b76fb7484d4",
+      "adaptation_notes": [
+        "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures."
+      ]
     },
     {
       "source": "pstack/skills/principle-experience-first/SKILL.md",
       "destination": "skills/principle-experience-first/SKILL.md",
-      "sha256": "e0ac62b729f0f15d541d4bd3a9b4403b6124d885dd1dd02a0aa4668404c41aad"
+      "sha256": "e0ac62b729f0f15d541d4bd3a9b4403b6124d885dd1dd02a0aa4668404c41aad",
+      "adapted_sha256": "5137f3a34acf150064df7bf81de348573b5fed15370529aebf6285f04183d714",
+      "adaptation_notes": [
+        "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures."
+      ]
+    },
+    {
+      "source": "pstack/skills/principle-explain-the-number/SKILL.md",
+      "destination": "skills/principle-explain-the-number/SKILL.md",
+      "sha256": "d8bb0c91d8685c06de34c0df02eabfc93705b5303b0c0037daa725b647effe5b",
+      "adapted_sha256": "c091e4d9688ca26dd2529d79afd55532ff9db385b4fc7eed6be20bf7c0482da7",
+      "adaptation_notes": [
+        "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures."
+      ]
     },
     {
       "source": "pstack/skills/principle-fix-root-causes/SKILL.md",
       "destination": "skills/principle-fix-root-causes/SKILL.md",
-      "sha256": "573d363206f66b6a684609125f25543b838e5809debd93df1fc7737383be5a20"
+      "sha256": "573d363206f66b6a684609125f25543b838e5809debd93df1fc7737383be5a20",
+      "adapted_sha256": "c3ab85261c040d4aecfee137771d68e91816e267c60f587afbfed25eeaffb588",
+      "adaptation_notes": [
+        "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures."
+      ]
     },
     {
       "source": "pstack/skills/principle-foundational-thinking/SKILL.md",
       "destination": "skills/principle-foundational-thinking/SKILL.md",
-      "sha256": "db9c5d2cb14e950b52f7b74baaee8e56e548d915ffd22c376f29f39d95e8fa50"
+      "sha256": "db9c5d2cb14e950b52f7b74baaee8e56e548d915ffd22c376f29f39d95e8fa50",
+      "adapted_sha256": "5af09246328f5059a0b03f540122bd0d011c6442e77179a9f58f4e9a63871b6c",
+      "adaptation_notes": [
+        "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures."
+      ]
     },
     {
       "source": "pstack/skills/principle-guard-the-context-window/SKILL.md",
       "destination": "skills/principle-guard-the-context-window/SKILL.md",
-      "sha256": "beacef360db301858d0c877e83a78d5e74f10300653759f7433607824a3f1ce0"
+      "sha256": "9d78c0dc559d634d6fc0fb0f9efb30b95258d4b2ddbb0527288be2d258d559d4",
+      "adapted_sha256": "7bc9cf1ce3f415a1a272bcbd9da09f5d4af0d058fc37db5ea0d67743f4a51110",
+      "adaptation_notes": [
+        "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures."
+      ]
     },
     {
       "source": "pstack/skills/principle-laziness-protocol/SKILL.md",
       "destination": "skills/principle-laziness-protocol/SKILL.md",
-      "sha256": "16f9bf5ad9ecdfde14a9457a675b117d3846e81face3d1252970dfbf5ce848d4"
+      "sha256": "16f9bf5ad9ecdfde14a9457a675b117d3846e81face3d1252970dfbf5ce848d4",
+      "adapted_sha256": "d61ba31b2f02f986df6b54ecfd8a6cbdceaffc5b5d24675588c93f61ef2750a9",
+      "adaptation_notes": [
+        "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures."
+      ]
     },
     {
       "source": "pstack/skills/principle-make-operations-idempotent/SKILL.md",
       "destination": "skills/principle-make-operations-idempotent/SKILL.md",
-      "sha256": "ed04e0247cfb4baa0d35d2e9d310f3427502477b72790331880701caca120d6f"
+      "sha256": "ed04e0247cfb4baa0d35d2e9d310f3427502477b72790331880701caca120d6f",
+      "adapted_sha256": "643167bead0053b00032c665ebc1ac740243e83243121151f4d3ac42421a8567",
+      "adaptation_notes": [
+        "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures."
+      ]
     },
     {
       "source": "pstack/skills/principle-migrate-callers-then-delete-legacy-apis/SKILL.md",
       "destination": "skills/principle-migrate-callers-then-delete-legacy-apis/SKILL.md",
-      "sha256": "295ac6b00c3888c596b53001b01749391ff74620c1066a658fea6495b22adf81"
+      "sha256": "295ac6b00c3888c596b53001b01749391ff74620c1066a658fea6495b22adf81",
+      "adapted_sha256": "97046044df8b2f3b9c820253dbc76cd119aa29967df5303970962991578da772",
+      "adaptation_notes": [
+        "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures."
+      ]
     },
     {
       "source": "pstack/skills/principle-minimize-reader-load/SKILL.md",
       "destination": "skills/principle-minimize-reader-load/SKILL.md",
-      "sha256": "2d29d3494ef4fb0c93583d599f31b5bc5542663ad655994a3fb204c23ce3a79a"
+      "sha256": "2d29d3494ef4fb0c93583d599f31b5bc5542663ad655994a3fb204c23ce3a79a",
+      "adapted_sha256": "864d7e553bb63d3359d747257206be3effa8a34b0b8641a7703b31bd2a3b5131",
+      "adaptation_notes": [
+        "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures."
+      ]
     },
     {
       "source": "pstack/skills/principle-model-the-domain/SKILL.md",
       "destination": "skills/principle-model-the-domain/SKILL.md",
-      "sha256": "7de67c97fe90d9e9551de333ee8a77a29162c551f55c24b256d0cd422933074d"
+      "sha256": "7de67c97fe90d9e9551de333ee8a77a29162c551f55c24b256d0cd422933074d",
+      "adapted_sha256": "cdef40acc3331bf55e78fd77ea54bca2580dab88265b48e033e2a735d0318a75",
+      "adaptation_notes": [
+        "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures."
+      ]
     },
     {
       "source": "pstack/skills/principle-never-block-on-the-human/SKILL.md",
       "destination": "skills/principle-never-block-on-the-human/SKILL.md",
-      "sha256": "6b153a598db43438f305e4abef0feed7ddefe949c891e4a55eff9207b3f585c0"
+      "sha256": "4c70825c3d01b824f3271b90caa53a60e8a43955e750a9adde99ea33f1525e53",
+      "adapted_sha256": "01850bf46737872f1317f2c113ec050bfe39d3d86c3c2f5a03a2189b5cfa798d",
+      "adaptation_notes": [
+        "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures."
+      ]
     },
     {
       "source": "pstack/skills/principle-outcome-oriented-execution/SKILL.md",
       "destination": "skills/principle-outcome-oriented-execution/SKILL.md",
-      "sha256": "f2991cc3d4b50460c8b76097b7ee03e50800b1e1c2a35c7d50000b8be3f29d9c"
+      "sha256": "db7d50f932a368dbb926d954c109288373466fe11dc9f3f61b5a1f152850eb4e",
+      "adapted_sha256": "a47935a1a195c09e4ee524b3e92a012c70b084730eb6479078c02bec8e65cb48",
+      "adaptation_notes": [
+        "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures."
+      ]
     },
     {
       "source": "pstack/skills/principle-prove-it-works/SKILL.md",
       "destination": "skills/principle-prove-it-works/SKILL.md",
-      "sha256": "26f891ee4964b2e767e5e5ea27f9e84a752b3bf9ca82e795e978345a4bac76b1"
+      "sha256": "06c9fc738540384e78fafc43c251e04d053f4e2dc5acef73245396da6cc8c60f",
+      "adapted_sha256": "7713ad3d7d711859b63f8557a54a4dd4677918948c691c81a88f1bd1f35d2c7d",
+      "adaptation_notes": [
+        "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures."
+      ]
     },
     {
       "source": "pstack/skills/principle-redesign-from-first-principles/SKILL.md",
       "destination": "skills/principle-redesign-from-first-principles/SKILL.md",
-      "sha256": "2f93203f3f7d2c584d316ba1c9cabd3a922bdb6a94ed4ab45ed045bb250e7a73"
+      "sha256": "2f93203f3f7d2c584d316ba1c9cabd3a922bdb6a94ed4ab45ed045bb250e7a73",
+      "adapted_sha256": "99c5df9990f6275a07f1e13d7a454ca3f2bc2e54329a2597c9d6337a03501655",
+      "adaptation_notes": [
+        "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures."
+      ]
     },
     {
       "source": "pstack/skills/principle-separate-before-serializing-shared-state/SKILL.md",
       "destination": "skills/principle-separate-before-serializing-shared-state/SKILL.md",
-      "sha256": "05cbc073c63c1d61cc3032a6d31b781b0d55337be8d51fa7b1259cbebe85957e"
+      "sha256": "05cbc073c63c1d61cc3032a6d31b781b0d55337be8d51fa7b1259cbebe85957e",
+      "adapted_sha256": "37df32ba2099cfabb812aa299513c3938f6abbb1e28d6bac52a9046c2a63e5b0",
+      "adaptation_notes": [
+        "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures."
+      ]
     },
     {
       "source": "pstack/skills/principle-sequence-verifiable-units/SKILL.md",
       "destination": "skills/principle-sequence-verifiable-units/SKILL.md",
-      "sha256": "a8322efbd8b226fd068245fd66da74774032ec5d4c9b07f3c4b1196017fe9414"
+      "sha256": "0b4407908c81a3368cc481ae835e04a71295810f918b45d16cbd1dbc2ba5734b",
+      "adapted_sha256": "a1faf7756a62725a62e9c48d599f277c0b8a48f802572acf1b6178380b71bbd9",
+      "adaptation_notes": [
+        "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures."
+      ]
     },
     {
       "source": "pstack/skills/principle-subtract-before-you-add/SKILL.md",
       "destination": "skills/principle-subtract-before-you-add/SKILL.md",
-      "sha256": "efa99ef0169b40e078c8aafada5f484fee65543cad5cf5feb9cd7c89116aa4cd"
+      "sha256": "efa99ef0169b40e078c8aafada5f484fee65543cad5cf5feb9cd7c89116aa4cd",
+      "adapted_sha256": "20d7d38048f4d5f789d18e965db3731b3f84126933acca3d142e93b9e1c9ab2b",
+      "adaptation_notes": [
+        "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures."
+      ]
     },
     {
       "source": "pstack/skills/principle-test-behavior-not-implementation/SKILL.md",
       "destination": "skills/principle-test-behavior-not-implementation/SKILL.md",
-      "sha256": "bd6ecea5b16ce30d79dc5918d80ddf40c681b244e40bdcdf709f821e1ae19c7e"
+      "sha256": "bd6ecea5b16ce30d79dc5918d80ddf40c681b244e40bdcdf709f821e1ae19c7e",
+      "adapted_sha256": "cd957e757c2cac908cdd4cfa0539571577bd9e5a7e6486f6d1b01357957411ba",
+      "adaptation_notes": [
+        "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures."
+      ]
     },
     {
       "source": "pstack/skills/principle-type-system-discipline/SKILL.md",
       "destination": "skills/principle-type-system-discipline/SKILL.md",
-      "sha256": "c5a6412532e017a6fbd2625e527711fad57d14a0a57bba3223eb0578036feebe"
+      "sha256": "c5a6412532e017a6fbd2625e527711fad57d14a0a57bba3223eb0578036feebe",
+      "adapted_sha256": "511b8e878d8abafccf168535a9934b139cdd9a96f78420329a0812e5ee09a4e8",
+      "adaptation_notes": [
+        "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures."
+      ]
     },
     {
       "source": "pstack/skills/recall/SKILL.md",
       "destination": "skills/recall/SKILL.md",
-      "sha256": "3787d00d17c197a6e021c331673d29740fb16d7ec83311bfe2d7f64bebc7c1a7"
+      "sha256": "3787d00d17c197a6e021c331673d29740fb16d7ec83311bfe2d7f64bebc7c1a7",
+      "adapted_sha256": "5db5bff0802eb543ff7690154ce4058e43f97cfd7ce96633a78d8caff7c1f2cb",
+      "adaptation_notes": [
+        "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures."
+      ]
     },
     {
       "source": "pstack/skills/reflect/SKILL.md",
       "destination": "skills/reflect/SKILL.md",
-      "sha256": "1890ab862ab9b07f4ae56d0c3b36d6ee0eb3b8255b8dd1f89f63cd85c2841b1b"
+      "sha256": "afed390a2fbb468d6b7d5d2d44aace5df33b3070d31798c6c03254e1ee9fbad8",
+      "adapted_sha256": "c3a8a7ca801d7cddd52839d2eea1cb8a0e1edb67fe9910e3256f8f16f6288b42",
+      "adaptation_notes": [
+        "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures.",
+        "Replace upstream model defaults and rejection fallbacks with the single MODELS.md responsibility mapping; preserve workflow phases and report actual independent evidence.",
+        "Preserve review lenses while splitting collection from judgment; external backlog writes require authorization and document edits follow authoritative ownership."
+      ]
     },
     {
       "source": "pstack/skills/reflect/references/divergent-reviewer.md",
       "destination": "skills/reflect/references/divergent-reviewer.md",
-      "sha256": "b15c8b62fac4e3a63372e19036afd7edf06685cc7a95fcff85a0addc8f68e7ad"
+      "sha256": "441c66df630e1cfe787dc30fb6d5303297e81754e91737a22abc9236ec184e82",
+      "adapted_sha256": "38cd59fddc393a3bf97845d06f85495b91ef863aafbf8155bcfcf5c1aa5e241d",
+      "adaptation_notes": [
+        "Translate project skill output paths from .cursor/skills to .agents/skills."
+      ]
     },
     {
       "source": "pstack/skills/reflect/references/judgment-reviewer.md",
       "destination": "skills/reflect/references/judgment-reviewer.md",
-      "sha256": "f791c6ac3d7dd5a8800b04f113f6f452dcd65e6c0085495dc415c8465bd4b5e1"
+      "sha256": "4a6abb8a5e7649c796371a8e91f219a1bf2de3513d447b6fb648b3f99d9c9915",
+      "adapted_sha256": "b2566cb33998807b7af0513a97fba219306517803f8a180b4bbc8463659529e3",
+      "adaptation_notes": [
+        "Translate project skill output paths from .cursor/skills to .agents/skills."
+      ]
     },
     {
       "source": "pstack/skills/reflect/references/synthesizer.md",
@@ -684,17 +1006,30 @@
     {
       "source": "pstack/skills/reflect/references/tooling-reviewer.md",
       "destination": "skills/reflect/references/tooling-reviewer.md",
-      "sha256": "0fd6154ae88227f5c0babd4aa87d78d1e71935f13818da30e72e71555774ca49"
+      "sha256": "e8795122c4f8fae6ee18119415ca083b82393e4788ca26d70856c038e12c94a7",
+      "adapted_sha256": "cb03a1ded207dca735f84ceeeacbfa988e6f6bdb7f70193e7e5018e7ca390ee7",
+      "adaptation_notes": [
+        "Translate project skill output paths from .cursor/skills to .agents/skills."
+      ]
     },
     {
       "source": "pstack/skills/setup-pstack/SKILL.md",
       "destination": "skills/setup-pstack/SKILL.md",
-      "sha256": "ccd5610ad6690715aedb9c1a4bfe49e433e47b510a834fe8f550cb4107d20e47"
+      "sha256": "6a8d9695a605c607ba904ec53a8c8c1007eeb459e5a8b455b2394f056042432f",
+      "adapted_sha256": "017f657dd6b439c8ba89eca52f3a0440bb7b50fa044863311b0428534da686d6",
+      "adaptation_notes": [
+        "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures.",
+        "Adapt discovery, configuration and verification steps to the existing GPT role mapping, explicit efforts and source/deployment boundary. Remove non-GPT budget presets and fallback activation."
+      ]
     },
     {
       "source": "pstack/skills/show-me-your-work/SKILL.md",
       "destination": "skills/show-me-your-work/SKILL.md",
-      "sha256": "f1e0e24b79ed3fd025b87eab7d9d660187212972060e8be8f4b7487abadf5e68"
+      "sha256": "53506f873ecb84c111baab64db3bd26ebae1a2721a3b88d8643097bb06b83813",
+      "adapted_sha256": "b918f94cec0f8b6001dc3ea2398e077960e2993efe6b0df8ae7295183886cd07",
+      "adaptation_notes": [
+        "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures."
+      ]
     },
     {
       "source": "pstack/skills/show-me-your-work/references/decision-log-template.tsv",
@@ -704,47 +1039,77 @@
     {
       "source": "pstack/skills/show-me-your-work/scripts/log.sh",
       "destination": "skills/show-me-your-work/scripts/log.sh",
-      "sha256": "b1de07e4b6ea42062151623d76b55cb2c8401d57937a7c0c14dcd5976cae384c"
+      "sha256": "edee4e84f4f8836bb712c5ae4c14c0928b5a3fe6a1cbcff7647c32e575991d8e"
     },
     {
       "source": "pstack/skills/swarm/SKILL.md",
       "destination": "skills/swarm/SKILL.md",
-      "sha256": "f634d8754da5503c2300e408c633e734469e148c453a0df3d037b99f9af4d00c"
+      "sha256": "4fdc706b72a57ef115f52b79f010b72410b08937dbaa6dc65be2bb46a98b2e21",
+      "adapted_sha256": "e587eaa11bcb18cb8c6ffd00fa114fdf17b9770c8960ed50f048c5c36c028995",
+      "adaptation_notes": [
+        "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures.",
+        "Replace upstream model defaults and rejection fallbacks with the single MODELS.md responsibility mapping; preserve workflow phases and report actual independent evidence."
+      ]
     },
     {
       "source": "pstack/skills/tdd/SKILL.md",
       "destination": "skills/tdd/SKILL.md",
-      "sha256": "ab4c4593da45a9496839ff29fe8b9f026948742847a6ff5265803935011737b4"
+      "sha256": "dc438d0d5e59482d88643eaffc2d85547a248aba2987c79ed74b3b2f280a2f11",
+      "adapted_sha256": "5df4b2924f012fa4296313b285e8e55a5d083869aedb7e9cbd71b5e81254dc26",
+      "adaptation_notes": [
+        "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures."
+      ]
     },
     {
       "source": "pstack/skills/teach/SKILL.md",
       "destination": "skills/teach/SKILL.md",
-      "sha256": "5849c4cdb9be7a84cddc8524273c53a1e4a1c09ea9e14592b94bc0ee2d3e0d09"
+      "sha256": "5849c4cdb9be7a84cddc8524273c53a1e4a1c09ea9e14592b94bc0ee2d3e0d09",
+      "adapted_sha256": "0aead5596780cadead9823577c17ce94c432998e1b3cf60e7ded97a07b01dd44",
+      "adaptation_notes": [
+        "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures."
+      ]
     },
     {
       "source": "pstack/skills/technical-writing/SKILL.md",
       "destination": "skills/technical-writing/SKILL.md",
-      "sha256": "bdf2aee17b739a03618904eb36866cafa2f46a928bfee5c36b6ad7f191ee4e90"
+      "sha256": "13a07db41433789c0b615b6601915817dad9ca0505b807f01bd9a696f782fbff",
+      "adapted_sha256": "5c6e6b4e61b81efae1be022782b258748821ebac6733b7e0367b2ac55720830f",
+      "adaptation_notes": [
+        "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures."
+      ]
     },
     {
       "source": "pstack/skills/typescript-best-practices/SKILL.md",
       "destination": "skills/typescript-best-practices/SKILL.md",
-      "sha256": "b371e973b788496d4aef5045219b1201909ec0b104a745d42788a80cb1fd2b9c"
+      "sha256": "b371e973b788496d4aef5045219b1201909ec0b104a745d42788a80cb1fd2b9c",
+      "adapted_sha256": "70964e460d6bc5a3e34813f03f17e5c28f3eecde9569bcbad46877e81939e2ae",
+      "adaptation_notes": [
+        "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures."
+      ]
     },
     {
       "source": "pstack/skills/typescript-best-practices/references/patterns.md",
       "destination": "skills/typescript-best-practices/references/patterns.md",
-      "sha256": "2c3914a5d68ff26927cf34bf24a423a107dfe50afa4fb70319bb2b3842a460b9"
+      "sha256": "13af3b136ac4f97e6e7d1dcc9a33953bd38cb81eca4456713e333d36956c22ed"
     },
     {
       "source": "pstack/skills/unslop/SKILL.md",
       "destination": "skills/unslop/SKILL.md",
-      "sha256": "e74639f4a5f6420a39ee7c1ce5a27bceee16778b4ec256ed115e2b226bffc007"
+      "sha256": "df32a08e7398e65e4458eab368deaad1da8dfc4e10a1f915571e2f243ab966ad",
+      "adapted_sha256": "042243d50a40ea3253a0b6078aa4d0949e0a7093b6d250b9ebea831318a036dc",
+      "adaptation_notes": [
+        "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures."
+      ]
     },
     {
       "source": "pstack/skills/why/SKILL.md",
       "destination": "skills/why/SKILL.md",
-      "sha256": "ec68df05647ee633fe051c1a38e651a17e6914434c50c3c45d518c28ea368596"
+      "sha256": "851d4cc92ca1820f8e0dbd9615ca3768f3de86fb5b9a165e06face77a7da524a",
+      "adapted_sha256": "9485b99b145c7b9a52f76886286ce5bd55a95176864e42520daf27fa86712027",
+      "adaptation_notes": [
+        "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures.",
+        "Replace upstream model defaults and rejection fallbacks with the single MODELS.md responsibility mapping; preserve workflow phases and report actual independent evidence."
+      ]
     },
     {
       "source": "pstack/skills/why/references/epistemics.md",
@@ -806,24 +1171,5 @@
       "destination": "skills/why/references/synthesizer-prompt.md",
       "sha256": "536866f82701a1bbcd0f61377075814bf0139022e3b6867ba2caecf7d8e22f69"
     }
-  ],
-  "skill_counts": {
-    "pstack": 47,
-    "cursor_team_kit_selected": 3,
-    "installed": 50
-  },
-  "adaptation_changes": [
-    "Normalize all installed skill names to their lower-case hyphenated directory names and retain each description.",
-    "Remove unsupported Cursor-only frontmatter keys; convert source disable-model-invocation:true to agents/openai.yaml policy.allow_implicit_invocation:false.",
-    "Add a short Codex entry after every installed skill frontmatter requiring CODEX.md and MODELS.md where relevant.",
-    "Change Markdown project skill output paths from .cursor/skills to .agents/skills.",
-    "Point pstack-models.mdc references at the plugin-root MODELS.md and adapt setup-pstack to the Codex CODEX/MODELS contract.",
-    "Keep recall's upstream transcript explanation while declaring the Codex history strategy in its entry."
-  ],
-  "known_limitations": [
-    "Upstream prose still names Cursor-specific tools and services where the requested exact-path adaptation did not apply; CODEX.md defines the host conversion.",
-    "The retained automations directory is dormant reference material and is not a Codex automation registration.",
-    "Upstream workflows retain external dependencies such as host agent tools, optional GitHub CLI/MCP integrations, browser or terminal harness runtimes, Grok webhook/Tailscale, and dormant Slack/tracker automation references.",
-    "One upstream placeholder link remains at skills/why/references/synthesizer-prompt.md: [PR #123](url)."
   ]
 }

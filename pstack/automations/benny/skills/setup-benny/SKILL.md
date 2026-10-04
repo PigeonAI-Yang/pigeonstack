@@ -1,8 +1,8 @@
 ---
-name: setup-benny
-description: Configure Benny and prepare its triage and repro automations. Use when installing Benny or changing its Slack, tracker, repository, routing, control, model, or budget settings.
-disable-model-invocation: true
+name: "setup-benny"
+description: "Configure Benny and prepare its triage and repro automations. Use when installing Benny or changing its Slack, tracker, repository, routing, control, model, or budget settings."
 ---
+> Codex host: Read [../../../../CODEX.md](../../../../CODEX.md) before execution and [../../../../MODELS.md](../../../../MODELS.md) before assigning roles. Apply the upstream procedure below within that host contract.
 
 # Set up Benny
 

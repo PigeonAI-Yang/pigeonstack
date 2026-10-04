@@ -1,19 +1,19 @@
 {
   "name": "pstack",
-  "version": "0.15.2+codex.20261004expertxhigh",
-  "description": "Lauren Tan's pstack v0.15.2 workflows packaged as a local Codex adapter.",
+  "version": "0.15.9+codex.20261004upstreamgpt",
+  "description": "Lauren Tan's pstack v0.15.9 workflows with a GPT-only Codex host adapter.",
   "author": {
     "name": "Lauren Tan (original pstack author)",
     "url": "https://github.com/poteto"
   },
-  "homepage": "https://github.com/cursor/plugins/tree/f5bdd6826fd0a0d9cbc4347134c3a74a200b9d9d/pstack",
-  "repository": "https://github.com/cursor/plugins/tree/f5bdd6826fd0a0d9cbc4347134c3a74a200b9d9d/pstack",
+  "homepage": "https://github.com/cursor/plugins/tree/e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a/pstack",
+  "repository": "https://github.com/cursor/plugins/tree/e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a/pstack",
   "license": "MIT",
   "skills": "./skills/",
   "interface": {
     "displayName": "Pstack for Codex",
     "shortDescription": "Lauren Tan's pstack workflows adapted for Codex",
-    "longDescription": "Upstream pstack v0.15.2 with 47 skills plus control-ui, control-cli, and deslop. CODEX.md defines host workflow activation and tools; MODELS.md defines model selection.",
+    "longDescription": "Upstream pstack v0.15.9 with 50 skills plus control-ui, control-cli, and deslop. CODEX.md translates host workflows and tools; MODELS.md owns GPT role assignments.",
     "developerName": "Lauren Tan / local Codex adapter",
     "category": "Productivity",
     "capabilities": [],

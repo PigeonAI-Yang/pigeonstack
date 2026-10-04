@@ -1,0 +1,3 @@
+interface:
+  display_name: "Setup Pstack"
+  short_description: "Configure pstack GPT roles and reasoning effort"

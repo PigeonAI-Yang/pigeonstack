@@ -1,0 +1,3 @@
+interface:
+  display_name: "Deslop"
+  short_description: "Remove AI-generated code slop and clean up code style"

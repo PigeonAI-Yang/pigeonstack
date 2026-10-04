@@ -1,0 +1,5 @@
+interface:
+  display_name: "Correct"
+  short_description: "Turn repeated mistakes into proven structural fixes"
+policy:
+  allow_implicit_invocation: false

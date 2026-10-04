@@ -1,10 +1,15 @@
 ### Bug fix
 
-The Primary owns diagnosis, repair design, decomposition and acceptance. Apply CODEX.md and global AGENTS.md before these steps.
+**You own this task. Plan, review, verify.** Delegate prescribed evidence collection and the selected fix under `MODELS.md`, stay in the lead. A bounded unresolved question uses its read-only investigation route.
 
-1. Obtain a reproduction or sufficient code, log or runtime evidence through the relevant existing entry point. Assign named independent read-only checks to Luna, or bounded investigation needing sustained judgment to Astra under CODEX.md. Record any reproduction gap.
-2. The Primary interprets decisive evidence, identifies the failing mechanism and rules out material alternatives. A specific unresolved question may go to the read-only Astra advisor. Luna does not choose the hypothesis or repair.
-3. Choose the smallest repair that covers the producer, caller and state transition. Identify the expected behavior and verification before changing code. Split independent defects into separate steps.
-4. Delegate implementation by default. Give Luna the complete CODEX.md execution brief for one chosen step; use Astra's supported general/default role with explicit model and effort only when the work needs sustained judgment, following CODEX.md boundaries. Dispatch independent ready steps as soon as each is specified and newly unlocked steps as results arrive; only real dependencies or resource, permission and tool limits serialize them. Work directly only when the user explicitly asks or a non-model capability/resource restriction prevents delegation, and state the reason. A subsystem goal or bundle of unexplained test failures is not a valid Luna assignment. Refuted assumptions or unexplained failures return to the Primary promptly.
-5. The Primary reviews the diff and decisive direct evidence. Assign any missing verification of the original failure through the relevant production entry point to an appropriate child. Preserve required identity, input release and user control. Do not repeat delegated checks without an evidence gap or contradiction. A build or helper test alone does not prove the user workflow.
-6. Report the change, actual checks and remaining gaps. Use the existing work record. Commit, PR and publication steps require their own task authorization.
+Be scientific. Every shipped line traces to runtime evidence. Belt-and-suspenders that "might help" is a hypothesis, not a fix. It does not ship. When evidence refutes a hypothesis, revert what it motivated. The smallest change the evidence justifies ships, nothing more.
+
+1. Reproduce it yourself on the matching surface via the control skill (Non-negotiables), even when a debug or instrumentation protocol says to ask the user to reproduce. Ask the user only with a stated, specific reason the control surface cannot reach the target, and only after driving it as far as it goes. If it won't reproduce directly, synthesize the trigger, tighten conditions, or instrument until it fires.
+2. Binary-search the cause. Form the candidate hypotheses, then rule them out until one survives. Seed them with `how` over the affected subsystem and the **why** skill for regression history. Each pass, take the split that cuts the most remaining problem space, get runtime evidence, eliminate. When program state is unclear, add instrumentation or logging and read it as the code runs. Don't guess. Drive a long or stubborn hunt with Cursor's `/loop` command. Confirm the surviving *mechanism* with runtime evidence before the step-3 architect/interrogate fan-out.
+3. Plan the fix. If it crosses a function boundary, `architect` first. Delegate implementation to a subagent using your configured bug-fix model (see `MODELS.md`) with a specific scope.
+4. Verify on the same surface. The original repro now passes. "Inconclusive" or wrong-surface is not a pass. Flag it. Unit tests show branch behavior, not bug absence.
+5. Stage the commits so the failing repro lands before the fix in git history. See the **tdd** skill for the failing-test-first cadence when the bug has a cheap local test path. Skip it when the test would be expensive, integration-heavy, or unclear.
+   This is the canonical **sequence-verifiable-units** principle skill, the failing test first and the fix on top.
+6. Run **Opening a PR**.
+
+**Reply:** what was broken, root cause, fix, how you verified. Paste failing-then-passing repro output verbatim.

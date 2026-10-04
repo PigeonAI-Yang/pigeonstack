@@ -139,6 +139,8 @@ ComputerUse operations belong exclusively to the Primary because this host does 
 - Do not write tests for reversible, low-impact changes or that mirror the implementation. If you do choose to verify your work with tests, make sure that the tests are meaningful and necessary to verify implementation.
 - Run tests appropriate to the change and complete required checks. Once those pass, broaden or repeat testing only when new changes, failures, or unresolved concerns justify it; otherwise, continue toward completing the task.
 
+For pstack, preserve the selected upstream workflow phases and resolve roles through its existing MODELS.md. Upstream model-family defaults, generic budget presets, fallback models, and omitted model arguments do not override the user's GPT configuration or prove parent inheritance. Follow CODEX.md for supported host arguments and permission boundaries.
+
 # Using skills
 
 A skill is a set of instructions provided through a `SKILL.md` source. Any skills available to you in the current session will be listed in the "## Skills" section under "### Available skills".

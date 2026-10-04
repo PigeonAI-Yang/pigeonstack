@@ -1,16 +1,16 @@
 # Pstack Codex adapter
 
-This local plugin packages Lauren Tan's pstack v0.15.2 from the fixed upstream checkout.
+This source adapter imports Lauren Tan's pstack v0.15.9 from the pinned upstream checkout. Historical entries below describe earlier revisions; the final integration entry records the current source state.
 
-- Upstream: https://github.com/cursor/plugins/tree/f5bdd6826fd0a0d9cbc4347134c3a74a200b9d9d/pstack
-- Upstream commit: `f5bdd6826fd0a0d9cbc4347134c3a74a200b9d9d`
-- Upstream version: `0.15.2`
-- Contents: 47 pstack skills plus `control-ui`, `control-cli`, and `deslop` from the same checkout (50 installed skills).
+- Upstream: https://github.com/cursor/plugins/tree/e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a/pstack
+- Upstream commit: `e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a`
+- Upstream version: `0.15.9`
+- Contents: 50 pstack skills plus `control-ui`, `control-cli`, and `deslop` from the same checkout (53 source skills).
 - `CURSOR-TEAM-KIT-LICENSE` preserves the selected Team Kit source license separately.
 
 Adapter changes are intentionally narrow: Codex-compatible skill names/frontmatter; a short entry in each installed `SKILL.md` requiring the plugin-root `CODEX.md` and, for model work, `MODELS.md`; `disable-model-invocation: true` moved to each skill's `agents/openai.yaml` policy; project skill output paths changed from `.cursor/skills` to `.agents/skills`; pstack model-rule references point to the plugin-root `MODELS.md`; and `setup-pstack` states that Codex follows the `CODEX.md`/`MODELS.md` contract instead of writing a Cursor rule. The upstream `recall` transcript explanation remains in place with an explicit Codex history entry.
 
-The dormant upstream `automations/` files are retained as reference material but are not registered or enabled by this plugin. No hooks, MCP servers, or apps are declared. `CODEX.md` and `MODELS.md` are supplied by the parent integration task.
+The dormant upstream `automations/` files are retained as reference material but are not registered or enabled by this plugin. No hooks, MCP servers, or apps are declared. `CODEX.md` and `MODELS.md` are the maintained Codex host contract.
 
 Known upstream external dependencies remain explicit in the copied instructions. The workflows refer to host agent tools and model routing through `CODEX.md`/`MODELS.md`, optional GitHub CLI and MCP integrations, Playwright/Chromium/CDP or tmux/PTY/Node/Bun for the control skills, and a Grok webhook plus Tailscale for `make-bot-ui`. The dormant Benny pack refers to Slack, a tracker, and the host automation editor. The source contains one existing placeholder link, `[PR #123](url)`, in `skills/why/references/synthesizer-prompt.md`.
 
@@ -93,3 +93,85 @@ This revision removes repeated policy text across the global AGENTS.md and host 
 ## Automatic Expert escalation cap on 2026-10-04
 
 The user caps automatic Astra Expert escalation at `xhigh`. An unresolved `high` attempt transfers to a fresh `xhigh` child. If that child cannot resolve the problem or remains unresolved at its 30-minute assessment, stop escalation and report the actual limit or evidence gap. Do not automatically escalate Astra to `max` or `ultra`, or restart the cycle. This supersedes the earlier escalation sequences recorded above. Explicit task-specific user model and effort selections remain authoritative. Luna stays at `max`, the Sol Senior Executor stays at `gpt-6.1-sol` and `xhigh`, and the active Primary and initial Astra `high` defaults remain unchanged. Global rules, the base prompt, injected developer instructions, MODELS.md, bilingual introductions, and workflow diagrams now state this cap. These are source instruction changes; deployment and behavior in a new session require separate verification.
+
+## Full upstream 0.15.9 integration on 2026-10-04
+
+The user selected upstream workflows as the new base while retaining the GPT ecosystem and host permissions. All upstream pstack paths at `e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a` are represented in `provenance.json`. The three Team Kit skills and their license remain imported. Original hashes are separate from `adapted_sha256` and per-file adaptation notes. The unchanged logo and six guide images were checked against Git blob IDs without image viewing or transfer. The Cursor manifest and `.gitignore` are preserved as upstream material; only `.codex-plugin/plugin.json` is the Codex manifest.
+
+The upstream comparison contains 50 modified paths, three additions, and no deletions. The additions are `correct`, `benchmark-checklist`, and `principle-explain-the-number`. Feature and bug-fix playbooks now retain the latest upstream phase structure rather than the previous local replacements. Upstream scripts were copied verbatim. The import also refreshes unchanged upstream material, so the integration does not depend on a cherry-picked subset of changes.
+
+`CODEX.md` now translates workflow activation, tools, history, permissions, and assignment mechanics. It no longer replaces the upstream playbook phases. `MODELS.md` maps every upstream role to the existing GPT responsibilities and exact model/effort table. Combined investigation/design/implementation roles are split before dispatch. Required-model failures stop the affected assignment without model substitution or automatic repair PRs. `auto` and `inherit-parent` preserve the actual parent's model and effort through supported arguments; omitting a model is not evidence of inheritance because the host's child default is Luna.
+
+The retired policies are upstream non-GPT defaults and generic budget rewrites, automatic model fallbacks, returned-child reuse exceptions, automatic panels, automatic external writes, and duplicated local feature/bug-fix workflows. Their procedures remain available where useful and authorized. The reasons are the user's GPT selection, fresh-child ownership, explicit action permissions, and the request to follow upstream phases. Global takeover tiers and thirty-minute assessments, authoritative-document ownership, Primary ComputerUse, serial images, ready parallel dispatch, and separate packaging/release/full-suite approvals remain intact. No new routing engine, gate framework, or timer was added.
+
+`/correct` still requires two observed occurrences, prioritizes architecture, types, lint, tests, then documentation, and proves a check against a real past mistake. Class-by-class commits obey current-task authorization. A rule's existence does not count as a second occurrence. Importing the skill does not run it or authorize repository-wide enforcement work.
+
+The prepared source manifest is `0.15.9+codex.20261004upstreamgpt`. Deployment, installation, runtime caches, commits, pushes, packaging, and full tests were not performed. Source checks and static role-case inspection do not establish behavior in a new session.
+
+### Coverage of the 53 upstream changes
+
+`Exact` means the local bytes equal the pinned upstream original. `Adapted` means the original hash, current local hash, and adaptation notes are recorded in `provenance.json`.
+
+| Change | Upstream path | Local destination | Treatment |
+| --- | --- | --- | --- |
+| M | `pstack/.cursor-plugin/plugin.json` | `.cursor-plugin/plugin.json` | Exact |
+| M | `pstack/README.md` | `UPSTREAM-README.md` | Adapted |
+| M | `pstack/agents/poteto-agent.md` | `agents/poteto-agent.md` | Adapted |
+| M | `pstack/docs/guide/01-setup.md` | `docs/guide/01-setup.md` | Adapted |
+| M | `pstack/docs/guide/07-overnight.md` | `docs/guide/07-overnight.md` | Adapted |
+| M | `pstack/docs/guide/08-principles.md` | `docs/guide/08-principles.md` | Adapted |
+| M | `pstack/docs/guide/README.md` | `docs/guide/README.md` | Adapted |
+| M | `pstack/skills/architect/SKILL.md` | `skills/architect/SKILL.md` | Adapted |
+| M | `pstack/skills/architect/references/design-red-flags.md` | `skills/architect/references/design-red-flags.md` | Exact |
+| M | `pstack/skills/arena/SKILL.md` | `skills/arena/SKILL.md` | Adapted |
+| A | `pstack/skills/benchmark-checklist/SKILL.md` | `skills/benchmark-checklist/SKILL.md` | Adapted |
+| M | `pstack/skills/blast-radius/SKILL.md` | `skills/blast-radius/SKILL.md` | Adapted |
+| A | `pstack/skills/correct/SKILL.md` | `skills/correct/SKILL.md` | Adapted |
+| M | `pstack/skills/figure-it-out/SKILL.md` | `skills/figure-it-out/SKILL.md` | Adapted |
+| M | `pstack/skills/how/SKILL.md` | `skills/how/SKILL.md` | Adapted |
+| M | `pstack/skills/how/references/explorer-prompt.md` | `skills/how/references/explorer-prompt.md` | Exact |
+| M | `pstack/skills/interrogate/SKILL.md` | `skills/interrogate/SKILL.md` | Adapted |
+| M | `pstack/skills/interrogate/references/code-quality-review.md` | `skills/interrogate/references/code-quality-review.md` | Exact |
+| M | `pstack/skills/interrogate/references/reviewer-prompt.md` | `skills/interrogate/references/reviewer-prompt.md` | Exact |
+| M | `pstack/skills/interrogate/references/rubric.md` | `skills/interrogate/references/rubric.md` | Exact |
+| M | `pstack/skills/poteto-mode/SKILL.md` | `skills/poteto-mode/SKILL.md` | Adapted |
+| M | `pstack/skills/poteto-mode/playbooks/autopilot-full.md` | `skills/poteto-mode/playbooks/autopilot-full.md` | Exact |
+| M | `pstack/skills/poteto-mode/playbooks/autopilot-stack.md` | `skills/poteto-mode/playbooks/autopilot-stack.md` | Exact |
+| M | `pstack/skills/poteto-mode/playbooks/babysit.md` | `skills/poteto-mode/playbooks/babysit.md` | Exact |
+| M | `pstack/skills/poteto-mode/playbooks/bug-fix.md` | `skills/poteto-mode/playbooks/bug-fix.md` | Adapted |
+| M | `pstack/skills/poteto-mode/playbooks/feature.md` | `skills/poteto-mode/playbooks/feature.md` | Adapted |
+| M | `pstack/skills/poteto-mode/playbooks/hillclimb.md` | `skills/poteto-mode/playbooks/hillclimb.md` | Adapted |
+| M | `pstack/skills/poteto-mode/playbooks/multi-phase-plan.md` | `skills/poteto-mode/playbooks/multi-phase-plan.md` | Adapted |
+| M | `pstack/skills/poteto-mode/playbooks/opening-a-pr.md` | `skills/poteto-mode/playbooks/opening-a-pr.md` | Exact |
+| M | `pstack/skills/poteto-mode/playbooks/pause-safely.md` | `skills/poteto-mode/playbooks/pause-safely.md` | Exact |
+| M | `pstack/skills/poteto-mode/playbooks/perf-issue.md` | `skills/poteto-mode/playbooks/perf-issue.md` | Adapted |
+| M | `pstack/skills/poteto-mode/playbooks/refactoring.md` | `skills/poteto-mode/playbooks/refactoring.md` | Adapted |
+| M | `pstack/skills/poteto-mode/playbooks/shipping.md` | `skills/poteto-mode/playbooks/shipping.md` | Exact |
+| M | `pstack/skills/poteto-mode/scripts/check-plan.mjs` | `skills/poteto-mode/scripts/check-plan.mjs` | Exact |
+| A | `pstack/skills/principle-explain-the-number/SKILL.md` | `skills/principle-explain-the-number/SKILL.md` | Adapted |
+| M | `pstack/skills/principle-guard-the-context-window/SKILL.md` | `skills/principle-guard-the-context-window/SKILL.md` | Adapted |
+| M | `pstack/skills/principle-never-block-on-the-human/SKILL.md` | `skills/principle-never-block-on-the-human/SKILL.md` | Adapted |
+| M | `pstack/skills/principle-outcome-oriented-execution/SKILL.md` | `skills/principle-outcome-oriented-execution/SKILL.md` | Adapted |
+| M | `pstack/skills/principle-prove-it-works/SKILL.md` | `skills/principle-prove-it-works/SKILL.md` | Adapted |
+| M | `pstack/skills/principle-sequence-verifiable-units/SKILL.md` | `skills/principle-sequence-verifiable-units/SKILL.md` | Adapted |
+| M | `pstack/skills/reflect/SKILL.md` | `skills/reflect/SKILL.md` | Adapted |
+| M | `pstack/skills/reflect/references/divergent-reviewer.md` | `skills/reflect/references/divergent-reviewer.md` | Adapted |
+| M | `pstack/skills/reflect/references/judgment-reviewer.md` | `skills/reflect/references/judgment-reviewer.md` | Adapted |
+| M | `pstack/skills/reflect/references/tooling-reviewer.md` | `skills/reflect/references/tooling-reviewer.md` | Adapted |
+| M | `pstack/skills/setup-pstack/SKILL.md` | `skills/setup-pstack/SKILL.md` | Adapted |
+| M | `pstack/skills/show-me-your-work/SKILL.md` | `skills/show-me-your-work/SKILL.md` | Adapted |
+| M | `pstack/skills/show-me-your-work/scripts/log.sh` | `skills/show-me-your-work/scripts/log.sh` | Exact |
+| M | `pstack/skills/swarm/SKILL.md` | `skills/swarm/SKILL.md` | Adapted |
+| M | `pstack/skills/tdd/SKILL.md` | `skills/tdd/SKILL.md` | Adapted |
+| M | `pstack/skills/technical-writing/SKILL.md` | `skills/technical-writing/SKILL.md` | Adapted |
+| M | `pstack/skills/typescript-best-practices/references/patterns.md` | `skills/typescript-best-practices/references/patterns.md` | Exact |
+| M | `pstack/skills/unslop/SKILL.md` | `skills/unslop/SKILL.md` | Adapted |
+| M | `pstack/skills/why/SKILL.md` | `skills/why/SKILL.md` | Adapted |
+
+### Source verification
+
+Targeted static checks confirmed all 161 upstream pstack paths plus the four Team Kit imports, all 53 comparison paths, the 165 original/local provenance hashes, 53 installed skill folders, and 56 skill entry frontmatters including dormant automation skills. Three upstream executable helpers remain byte-identical. JSON and source TOML parse, the configured Primary and child defaults are unchanged, and `git diff --check` passes. Local Markdown links resolve except the pre-existing `[PR #123](url)` illustration in the why synthesizer template and its historical mention above.
+
+The bundled `quick_validate.py` could not start because the available Python lacks PyYAML. A direct check of the generated JSON-quoted YAML fields verified names, allowed fields, string types, lengths, descriptions, and host-entry links instead. No dependency was installed for this check. This is a targeted metadata check, not a claim that the bundled validator passed.
+
+Static role-case inspection covers a known implementation (Luna with a concrete brief), prescribed evidence collection (Luna without diagnosis), unresolved judgment (bounded read-only Astra), authoritative document work (Astra), takeover progression and final cap, selected panels with actual count and models, unavailable models without substitution, both parent aliases, explicit model choices, and external/full-suite permission boundaries. No live model request, new-session behavior test, cloud workflow, or UI operation was performed.
