@@ -85,3 +85,7 @@ The user corrected the Sol model ID to `gpt-6.1-sol`. Current routing rules and 
 ## Approval before packaging, releases, and full test suites on 2026-10-03
 
 The user requires explicit approval before packaging, releasing, or running a full test suite. Global AGENTS.md, the base prompt, and injected developer instructions use the same rule. Approval covers only the described operations, and existing explicit authorization in the current task avoids a repeated request. These operations cannot run as preparation for approval. Necessary targeted checks remain allowed within the authorized task. CODEX.md applies this boundary to upstream workflows. Existing model routing and delegation remain unchanged. This is an instruction change; behavior in a new session is untested.
+
+## Instruction consolidation on 2026-10-04
+
+This revision removes repeated policy text across the global AGENTS.md and host CODEX.md/MODELS.md, keeping global policy authoritative, host mechanics in CODEX.md, and model identifiers and effort in MODELS.md. The accepted routing, authorization, takeover, and verification rules were clarified without changing active model defaults, runtime configuration, or adding runtime enforcement. Deployment and behavior in a new session require separate verification.
