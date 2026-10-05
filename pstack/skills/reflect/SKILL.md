@@ -54,7 +54,7 @@ Before applying any Accepted edit, present the synthesizer's full Accepted/Rejec
 
 File backlog items to an external tracker only when that action is authorized. Otherwise report them locally.
 
-For each approved Accepted item, preserve the Routing field's target skill and use the authoring procedure through the Codex `skill-creator`. Assign authoritative instructions to Astra and prescribed routine prose edits to Luna under `MODELS.md`. The Primary accepts the actual diff.
+For each approved Accepted item, preserve the Routing field's target skill and use the authoring procedure through the Codex `skill-creator`. Use Sol for routine adaptation of existing instructions and Luna for mechanical or exact accepted-content edits. Use Astra for new critical design decisions or an actual unresolved Sol attempt under `MODELS.md`. The instruction-file label alone does not require Astra. The Primary accepts the actual diff.
 
 If your environment ships a SKILL.md validator, run it on every touched skill before declaring done. Skip this step if it doesn't.
 

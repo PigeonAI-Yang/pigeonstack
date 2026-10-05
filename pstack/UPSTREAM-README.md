@@ -29,7 +29,7 @@ two steps:
 
 new here? the [pstack guide](./docs/guide/README.md) walks you through a first real task, from setup and prompting through verification and overnight runs. stuck, or unsure which skill fits? ask [`/poteto-help`](./skills/poteto-help/SKILL.md).
 
-the other skills are situational; the mode uses them as needed. on Codex, [MODELS.md](MODELS.md) owns GPT responsibilities. the Primary selects ordinary solutions, Luna executes concrete briefs, and Astra authors authoritative technical documents. unresolved work follows the configured takeover sequence. panels require an explicitly selected comparison; upstream model defaults do not apply.
+the other skills are situational; the mode uses them as needed. on Codex, [MODELS.md](MODELS.md) owns GPT responsibilities. the Primary owns scope and acceptance, Luna executes concrete briefs, and Sol handles ordinary technical plans, local designs, and routine rule adaptation. Astra handles new or substantively changed master or system architecture, key contracts, and consequential design tradeoffs. a document label alone does not require Astra. unresolved work follows the configured takeover sequence. panels require an explicitly selected comparison; upstream model defaults do not apply.
 
 ## usage
 

@@ -58,11 +58,12 @@
       "source": "pstack/README.md",
       "destination": "UPSTREAM-README.md",
       "sha256": "c16e2c9ec18d35effa03dc3c6ee559578c5e9644f2a0f7994647335b1bfebf59",
-      "adapted_sha256": "a750185f4d4f68a61f0a804c1338a16f6811c29aa8e680a6f85edaa058ca4bbf",
+      "adapted_sha256": "b84fe2e1c0cdd9b05c3c8f2fcd031a1acef50eff7d015489f883a40252292e36",
       "adaptation_notes": [
         "Identify upstream Cursor examples and link the Codex host contract.",
         "Preserve upstream v0.15.13 guidance with Codex GPT roles, actual host capabilities, and existing scope and permission boundaries.",
-        "Use the existing authoritative task record for phases, evidence, and material skip reasons without copying the playbook or requiring a new ledger for simple tasks."
+        "Use the existing authoritative task record for phases, evidence, and material skip reasons without copying the playbook or requiring a new ledger for simple tasks.",
+        "Route ordinary plans, local designs, and routine rule adaptation to Sol; reserve Astra for critical design decisions, an actual unresolved Sol attempt, or explicit user model selection. Document labels alone do not trigger Astra."
       ]
     },
     {
@@ -195,10 +196,11 @@
       "source": "pstack/docs/guide/04-design.md",
       "destination": "docs/guide/04-design.md",
       "sha256": "333683f203fa9c5428002430834a04cc2bdcf6df4be6cb89f4145b92b304d700",
-      "adapted_sha256": "5836e37a975a529bc4f95a33dc89262f32f28dc5539d32e059048cd0b3116585",
+      "adapted_sha256": "47a6a55282b0501836ba7c6c03e95e8a3e4e56a07da986ad7a998c072b6abc43",
       "adaptation_notes": [
         "Identify upstream Cursor examples and link the Codex host contract.",
-        "Preserve upstream v0.15.13 guidance with Codex GPT roles, actual host capabilities, and existing scope and permission boundaries."
+        "Preserve upstream v0.15.13 guidance with Codex GPT roles, actual host capabilities, and existing scope and permission boundaries.",
+        "Route ordinary plans, local designs, and routine rule adaptation to Sol; reserve Astra for critical design decisions, an actual unresolved Sol attempt, or explicit user model selection. Document labels alone do not trigger Astra."
       ]
     },
     {
@@ -314,10 +316,11 @@
       "source": "pstack/skills/architect/SKILL.md",
       "destination": "skills/architect/SKILL.md",
       "sha256": "85808e68ed53fb78469fa773f53e8d1a4525eef82151056ca82fd9d7989f0be0",
-      "adapted_sha256": "ffef04e102068a5bd35e6932f03bc25947a25637d2d58c3cf89e9cb141b5a54d",
+      "adapted_sha256": "2cf9159bbebed5c3ca01c4b5495e6522dece6aa961144ceb36aabf896257eb5a",
       "adaptation_notes": [
         "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures.",
-        "Replace upstream model defaults and rejection fallbacks with the single MODELS.md responsibility mapping; preserve workflow phases and report actual independent evidence."
+        "Replace upstream model defaults and rejection fallbacks with the single MODELS.md responsibility mapping; preserve workflow phases and report actual independent evidence.",
+        "Route ordinary plans, local designs, and routine rule adaptation to Sol; reserve Astra for critical design decisions, an actual unresolved Sol attempt, or explicit user model selection. Document labels alone do not trigger Astra."
       ]
     },
     {
@@ -430,11 +433,12 @@
       "source": "pstack/skills/how/SKILL.md",
       "destination": "skills/how/SKILL.md",
       "sha256": "ba20d3b58fa805e54629a3a70caa6c77c9555e608e4f9d0ac427227bb37ac9ab",
-      "adapted_sha256": "dc37c6a2559872da40102d22d8f5f6b35f12df90b44ba6619b7c05301bcf372b",
+      "adapted_sha256": "8a5eaeaa4ac4de30d77b29955d2e4bea18e0f69544e7339b42a49355dfd07da6",
       "adaptation_notes": [
         "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures.",
         "Replace upstream model defaults and rejection fallbacks with the single MODELS.md responsibility mapping; preserve workflow phases and report actual independent evidence.",
-        "Split prescribed collection from interpretation; Primary explains, Astra owns authoritative documents."
+        "Split prescribed collection from interpretation; Primary explains, Sol handles ordinary technical work, and Astra handles critical design decisions.",
+        "Route ordinary plans, local designs, and routine rule adaptation to Sol; reserve Astra for critical design decisions, an actual unresolved Sol attempt, or explicit user model selection. Document labels alone do not trigger Astra."
       ]
     },
     {
@@ -509,10 +513,11 @@
       "source": "pstack/skills/poteto-help/SKILL.md",
       "destination": "skills/poteto-help/SKILL.md",
       "sha256": "5fc65e4c30c52edcde690d18904e3a8cf6ba6c2424c672d1a5cb6d29ab28645c",
-      "adapted_sha256": "814f5a7554effe6f1f8c82864071afac0e5462259f742d75b452d3ea20015125",
+      "adapted_sha256": "5543e2aa46e73c624c3ddbe75de3a40ad8f6c491abf2f2ba209e0b4c31125758",
       "adaptation_notes": [
         "Translate explicit-only help metadata to agents/openai.yaml, map local source links, preserve read-only usage help, and route actual work through the Codex contract.",
-        "Use the existing authoritative task record for phases, evidence, and material skip reasons without copying the playbook or requiring a new ledger for simple tasks."
+        "Use the existing authoritative task record for phases, evidence, and material skip reasons without copying the playbook or requiring a new ledger for simple tasks.",
+        "Route ordinary plans, local designs, and routine rule adaptation to Sol; reserve Astra for critical design decisions, an actual unresolved Sol attempt, or explicit user model selection. Document labels alone do not trigger Astra."
       ]
     },
     {
@@ -537,10 +542,11 @@
       "source": "pstack/skills/poteto-mode/SKILL.md",
       "destination": "skills/poteto-mode/SKILL.md",
       "sha256": "f51bc4dfeee6f8180b2402f4ca6a061308cd3ac6ee1f867b313f2b32aa644e1d",
-      "adapted_sha256": "d28148c5be803a58735426289c4b0acc9fedd22b065dfa9f93645a9ce8ffaa44",
+      "adapted_sha256": "22a47bfdfda243bdc576d59b11ea549578e96e7b8b70bb4ff6f99d46308ffa33",
       "adaptation_notes": [
         "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures.",
-        "Keep upstream triggers and playbook catalog; apply host authorization, fresh-child ownership and role mapping without automatic panels or repair PRs. Reuse the existing task record."
+        "Keep upstream triggers and playbook catalog; apply host authorization, fresh-child ownership and role mapping without automatic panels or repair PRs. Reuse the existing task record.",
+        "Route ordinary plans, local designs, and routine rule adaptation to Sol; reserve Astra for critical design decisions, an actual unresolved Sol attempt, or explicit user model selection. Document labels alone do not trigger Astra."
       ]
     },
     {
@@ -1018,11 +1024,12 @@
       "source": "pstack/skills/reflect/SKILL.md",
       "destination": "skills/reflect/SKILL.md",
       "sha256": "afed390a2fbb468d6b7d5d2d44aace5df33b3070d31798c6c03254e1ee9fbad8",
-      "adapted_sha256": "c3a8a7ca801d7cddd52839d2eea1cb8a0e1edb67fe9910e3256f8f16f6288b42",
+      "adapted_sha256": "5faf33687c7e8c6ed7aea44ccc860ab2a1d90e76861e11258b813f56dd101ee2",
       "adaptation_notes": [
         "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures.",
         "Replace upstream model defaults and rejection fallbacks with the single MODELS.md responsibility mapping; preserve workflow phases and report actual independent evidence.",
-        "Preserve review lenses while splitting collection from judgment; external backlog writes require authorization and document edits follow authoritative ownership."
+        "Preserve review lenses while splitting collection from judgment; external backlog writes require authorization and document edits follow authoritative ownership.",
+        "Route ordinary plans, local designs, and routine rule adaptation to Sol; reserve Astra for critical design decisions, an actual unresolved Sol attempt, or explicit user model selection. Document labels alone do not trigger Astra."
       ]
     },
     {

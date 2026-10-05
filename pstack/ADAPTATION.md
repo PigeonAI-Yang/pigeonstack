@@ -218,3 +218,32 @@ All 168 original source records match the pinned Git source content, and every l
 The installed skill-creator `quick_validate.py` passed for `poteto-help`; PyYAML is available in this session and no dependency was installed. Targeted YAML checks confirmed the new frontmatter and explicit-only metadata. Both manifests parse and carry the intended versions. All 309 local file links in the affected guide, help, README, and host-entry Markdown resolved, and `git diff --check -- pstack` passed. The focused checks are reproducible with `python work/upstream-absorb-20261006/check_source.py` in this working tree; that scratch verifier is not part of the plugin. Git reported only the existing checkout policy that may convert LF text to CRLF.
 
 Static review confirmed that a usage question only reads the needed source, an explicit work request uses the existing workflow, a bare invocation does not execute a suggested example, and model questions resolve through local `MODELS.md`. These are source checks, not a new-session behavior evaluation. This phase did not deploy, install, commit, push, package, release, run a full test suite, invoke an evaluation, or change a live model configuration. Deployment and fresh-session behavior remain separate acceptance evidence.
+
+## Narrow Astra routing on 2026-10-06
+
+This revision supersedes the earlier broad routing of authoritative technical documents and ordinary unresolved consultations to Astra. The user approved Sol as the direct default for ordinary technical judgment after reviewing recent child assignments. The supplied audit counted 30 requested child calls: 23 Luna, seven Astra, and no Sol. All seven Astra calls concerned rules, documents, or adaptation rather than an unresolved Sol attempt. Those counts describe the supplied audit sample, not cost or a quota prediction.
+
+Global AGENTS.md now routes ordinary proposals, implementation plans, local designs, routine adaptation of existing rules or upstream material, and ordinary unresolved questions directly to Sol at `xhigh`. No failed Luna attempt is required. Astra at `high` remains responsible for new or substantively changed master or system architecture, key interface or data contracts, consequential design tradeoffs, a problem unresolved after an actual Sol attempt, or an explicit task-specific model request. A technical-document label or Primary uncertainty alone does not qualify. Critical design work has no mandatory Sol prerequisite.
+
+Luna keeps specified implementation, routine operations, prescribed evidence collection, and mechanical or exact accepted-content edits that preserve meaning, including edits to critical documents. Luna does not settle design decisions or alter contracts. After an Expert finishes and its conclusion is accepted, straightforward bounded follow-ups use Luna and new ordinary technical choices use Sol. An active takeover remains with its owner through diagnosis, implementation, and verification. Direct Sol assignments receive the existing thirty-minute assessment. The failure sequence, final automatic Astra `xhigh` cap, external-blocker rules, ownership, explicit selections, permissions, and host tool boundaries remain unchanged.
+
+The source overlay updates AGENTS.md, the injected developer instructions and base prompt, the three existing role definitions, CODEX.md, MODELS.md, and the affected pstack help, how, architect, reflect, mode, guide, and introduction text. Role IDs, configured Primary and child defaults, the upstream workflow phases, and the plugin version remain unchanged. Existing provenance records keep their original hashes and the 145-snapshot CRLF convention. Seven edited imported files receive new exact local hashes and adaptation notes. Earlier entries in this log remain historical evidence.
+
+### Targeted source verification
+
+Four TOML files parse. A comparison against the preceding source revision confirms unchanged model defaults, role IDs and pinning, and configuration outside the routing instructions and advisor description. The injected and base-prompt routing paragraphs match. Seven unrelated global sections are unchanged, including authorization, normal business workflow, bug repair, ownership, and source management. The old blanket document trigger and renamed-heading references are absent from current operative text; earlier ADAPTATION.md entries retain the previous policy as history.
+
+The existing `work/upstream-absorb-20261006/check_source.py` verifier passes all 168 original and local hash pairs, including 145 historical CRLF snapshots, both unchanged manifest versions, and 309 guide and help links. A separate focused check resolves all 176 local file links in the edited pstack documents. The installed skill-creator `quick_validate.py` passes for all five changed skills: architect, how, poteto-help, poteto-mode, and reflect. The validator used the existing PowerShell Python environment; no dependency was installed. `git diff --check` passes.
+
+| Source case | Result |
+| --- | --- |
+| Ordinary technical proposal or implementation plan | Direct Sol at `xhigh`; no Luna failure required. |
+| New or substantively changed master or system architecture | Direct Astra at `high`; no Sol prerequisite. |
+| Routine help, existing-rule, or upstream adaptation | Sol; exact accepted wording uses Luna. |
+| Mechanical link, version, or wording edit in a critical document | Luna when meaning stays unchanged. |
+| Primary uncertainty about an ordinary question | Primary judgment or optional Sol consultation; uncertainty alone does not trigger Astra. |
+| Problem unresolved after an actual Sol attempt | Fresh Astra at `high` with the attempt's evidence. |
+| Active Senior Executor or Expert takeover | The owner completes diagnosis, implementation, and verification within scope. |
+| Credentials, access, permissions, or unavailable services | External blocker; no reasoning escalation. |
+
+These are source and static routing checks. This revision does not deploy, install, commit, push, package, release, run a full suite, invoke a model evaluation, or change instructions already loaded in the current chat. Installed behavior and new-session routing remain unverified.

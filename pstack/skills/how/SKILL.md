@@ -27,17 +27,17 @@ Decompose the question into 2 to 4 exploration angles, each a distinct slice of 
 - `model`: the `how explorer` line, resolved through `MODELS.md`
 - `readonly`: `true`
 
-Use `references/explorer-prompt.md` to frame the needed evidence. Before assigning Luna, turn each angle into named searches or observations. Keep unresolved interpretation with the Primary or a bounded read-only Astra investigation. Then go to Step 3.
+Use `references/explorer-prompt.md` to frame the needed evidence. Before assigning Luna, turn each angle into named searches or observations. Keep interpretation with the Primary or assign an ordinary unresolved question to a bounded read-only Sol investigation. Astra eligibility follows the critical-design and actual Sol-attempt boundaries in `MODELS.md`. Then go to Step 3.
 
 ## Step 2b. Direct Explain (simple questions)
 
-The Primary follows the direct explanation procedure. An authoritative architecture document uses Astra; a bounded unresolved question may use the read-only investigation route in `MODELS.md`.
+The Primary follows the direct explanation procedure. An ordinary technical explanation or local design uses Sol when delegated. Critical design decisions use Astra; bounded unresolved questions follow the Sol-first read-only route in `MODELS.md`.
 
 Build its prompt from `references/explainer-prompt.md` without the explorer-findings section. Go to Step 4.
 
 ## Step 3. Synthesize (complex questions only)
 
-Once collection is complete, the Primary synthesizes the evidence. Route an authoritative document to Astra under `MODELS.md`.
+Once collection is complete, the Primary synthesizes the evidence. Route ordinary technical document work to Sol and critical design decisions to Astra under `MODELS.md`. A document label alone does not require Astra.
 
 Build its prompt from `references/explainer-prompt.md` with every explorer's findings filled in.
 

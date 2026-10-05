@@ -30,7 +30,7 @@ Skip Phase A only when the work is genuinely greenfield with no surrounding syst
 
 Run the **arena** skill with the design-sketch task and the Phase A grounding artifacts. Pass `references/runner-prompt.md` as each runner's prompt. Each candidate produces a design package shaped per `references/rationale-template.md`.
 
-Resolve `architect runners` through `MODELS.md`. These candidates carry authoritative design decisions and use the technical-document role. Apply the selected comparison and host permission boundaries.
+Resolve `architect runners` through `MODELS.md`. Ordinary local designs and implementation plans use Sol. New or substantively changed master or system architecture, key contracts, and consequential design tradeoffs use Astra. The skill name and document format do not determine the model. Apply the selected comparison and host permission boundaries.
 
 Design it twice. Require at least two structurally distinct candidates before synthesis, even when the first looks sufficient. This is the **exhaust-the-design-space** principle skill made concrete. Whole-shape alternatives, not point fixes inside one shape.
 

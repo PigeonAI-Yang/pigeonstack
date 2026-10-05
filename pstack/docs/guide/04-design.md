@@ -88,7 +88,7 @@ The same idea scales up to a real design. Pair `/architect` with prototypes and 
 /poteto-mode we need rate limiting for external webhooks. /architect it first, and answer open questions with prototypes. let me review before proceeding.
 ```
 
-For speculative implementation alternatives, don't spend reviewers on an abstract plan. Authoritative technical plans and contracts still follow the Astra authorship and review policy in `MODELS.md`. `/interrogate` belongs on a diff. Point adversarial review at a plan with no code behind it and the reviewers invent theoretical risks and edge cases that will never happen. Let prototypes settle the questions, then review what got built.
+For speculative implementation alternatives, don't spend reviewers on an abstract plan. Ordinary plans and local designs use Sol under `MODELS.md`. New or substantively changed master or system architecture, key interface or data contracts, and consequential design tradeoffs use Astra, including substantive review. A technical-document label alone does not require Astra. `/interrogate` belongs on a diff. Point adversarial review at a plan with no code behind it and the reviewers invent theoretical risks and edge cases that will never happen. Let prototypes settle the questions, then review what got built.
 
 ## Write the README first for shared code
 
