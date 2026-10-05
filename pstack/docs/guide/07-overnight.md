@@ -1,10 +1,21 @@
-> Codex adapter: This is the upstream guide. Apply [../../CODEX.md](../../CODEX.md) for installation, GPT routing, permissions, and supported host tools. Cursor-specific commands are reference examples.
+> Codex adapter: This is the upstream guide with local host adaptations. Apply [../../CODEX.md](../../CODEX.md) for installation, GPT routing, permissions, and supported tools. Cursor Custom Modes, cloud agents, Projects, and `/loop` are reference examples, not configured Codex capabilities.
 
 # Run work while you sleep
 
-This is the payoff for everything before it. An agent you can trust to verify its own work is an agent you can leave alone with a hard task. What makes that safe isn't hope. It's a checkable finish condition, an isolated worktree, and a decision log you audit in the morning.
+This is the payoff for everything before it. An agent you can trust to verify its own work is an agent you can leave alone with a hard task. What makes that safe isn't hope. It's a checkable finish condition, an isolated worktree or cloud agent, and a decision log you audit in the morning.
 
 ![She waves goodnight from the door while robots keep the factory running, one updating a DECISION LOG wall board under a BUILD LOOP ACTIVE sign.](./images/overnight.jpg)
+
+## Earn the trust before the loop
+
+A loop you don't trust just produces unchecked work faster, and the mess compounds with every iteration. Before you leave one running, check that it has earned it:
+
+- You've done the task once by hand, or watched an agent do it, so you know what good looks like.
+- The agent has the tools and signals you'd use yourself: the verification skill, the profiler, the logs.
+- Every stage proves its work and can stop the line when the work misses the bar.
+- You've read a few transcripts and turned the repeated failures into tools, skills, or checks.
+
+These upstream checks describe evidence for unattended operation. On Codex, reuse relevant current evidence and address confirmed gaps in the existing workflow. Do not turn this list into new blanket gates or install a scheduler. Cursor `/loop` is unavailable; use supported operations and interruptible waits within the authorized task.
 
 ## The overnight contract
 
@@ -19,7 +30,7 @@ keep a decision log. don't ask me before committing.
 
 Walk through what each line buys you:
 
-- "im going to bed" is a session override. The agent stops asking and keeps going.
+- "im going to bed" is a session override. The agent continues authorized work. Explicit approval boundaries, user Stop, and unresolved-problem assessments still apply.
 - "done means..." turns the goal into checks every iteration can run.
 - "fresh worktree off `<base>`" keeps the run from colliding with anything else you have open.
 - "don't ask me before committing" pre-answers the permission the agent would otherwise block on.
@@ -27,6 +38,8 @@ Walk through what each line buys you:
 - The escape hatch lets it stop at a genuine dead end and write up why, which beats eight hours of creative goal reinterpretation.
 
 Because you'll review this work after stepping away, `/poteto-mode` routes it through [`/figure-it-out`](../../skills/figure-it-out/SKILL.md), which designs the run's phases before any code and wires in the decision log.
+
+To prepare for going offline or restarting, request the [Pause safely playbook](../../skills/poteto-mode/playbooks/pause-safely.md). On Codex, preserve current work and leave a resume note within the authorized pause scope. A checkpoint commit requires existing authorization in the current task. A user Stop takes effect immediately. Do not finish the step, roll back, commit, or make other mutations after Stop. Report the current state and next step in the reply. A fresh chat can resume from that handoff through the Session pickup playbook. Saying "keep going" never triggers a pause.
 
 ## What the loop does all night
 
@@ -54,7 +67,7 @@ When you're back, ask for the run in review form:
 /show-me-your-work catch me up on what you did last night
 ```
 
-Before the skill hands back its summary, it spawns a reviewer on a different model family to read the trail and the transcript, and the reply ends with an Attention section listing what deserves your scrutiny. Read that section first, then the log rows it points at. You're auditing decisions, not re-reading the whole night.
+The upstream skill calls for an independent review of the trail and transcript, followed by an Attention section. On Codex, resolve any selected review through `MODELS.md`; report a missing independent verdict and never claim different model families when all use GPT. Read that section first, then the log rows it points at. You're auditing decisions, not re-reading the whole night.
 
 ## When the night holds a queue, not a task
 
@@ -77,6 +90,32 @@ The contract above drives one task to one finish condition. Some nights hold mor
 ```text
 /poteto-mode orchestrate the store migration. own it until every package is converted and merged. i'll check in twice a day.
 ```
+
+## Run many projects in parallel
+
+A [Cursor Project](https://cursor.com/blog/projects) gives one coordinator agent a persistent thread. The coordinator doesn't write code. It directs subagents, which run in the cloud by default, so the work continues when your laptop is closed. That's the shape the Orchestrate playbook expects. Start your prompts to the coordinator with `/poteto-mode`, and the subagents it spawns follow the playbooks.
+
+A few habits help:
+
+- Give each body of work its own Project, such as a feature, a migration, a perf push, or a tech-debt cleanup. Several can run side by side.
+- Drag related chats into the Project, finished ones included. They become context for every agent in it.
+- Give each PR a verification swarm before it merges, and let Autopilot-stack or Autopilot-full carry the queue.
+- Ask the coordinator for a plan backed by data, and have it answer open questions with prototypes before it asks you.
+
+One prompt can carry a whole Project, from research through execution:
+
+```text
+/poteto-mode refactor this repo so its architecture is more agent friendly. use /correct and /architect on past commits and review comments to find the mistakes agents make most here. use /recall for context from past chats. answer open questions with prototypes instead of asking me. come back with a plan backed by real data. once i approve it, run it with autopilot-stack or autopilot-full, and ask me which.
+```
+
+## Let loops start themselves
+
+Every loop above still waits for you to start it. A scheduled or event-driven automation removes that step. Software maintenance splits into stages that suit this well: triage a report, reproduce it, fix it, verify the fix. Two rules keep such a line trustworthy:
+
+- Every stage can stop the line. Triage can decide the report is expected behavior, repro can fail to reproduce it, and the fixer can judge the change too risky. Each of those outcomes is useful, because it keeps bad work from reaching the next stage, where it costs more to undo.
+- Every stage hands over evidence. Repro attaches screenshots and video of the broken state, and the fix attaches before-and-after proof. A human can then check that the agent fixed the right thing before reading a line of code.
+
+pstack ships this as a dormant [automation pack](../../automations/benny/README.md) for Slack issue reports. Importing the guide does not activate it. Setup, schedules, remote services, and messages require the corresponding current-task authorization and actual supported tools. One automation triages each report. The other reproduces confirmed bugs and may prepare a small draft fix. Point an agent at its [`FOR_AGENTS.md`](../../automations/benny/FOR_AGENTS.md) and name the target repository to set it up.
 
 **Pitfall:** a duration is not a finish condition. "work on this for 4 hours" gives the agent nothing to check, and you'll wake up to four hours of motion instead of a result. Give `/loop` a predicate that can pass or fail.
 

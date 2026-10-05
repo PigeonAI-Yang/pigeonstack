@@ -1,11 +1,11 @@
 # Pstack Codex adapter
 
-This source adapter imports Lauren Tan's pstack v0.15.9 from the pinned upstream checkout. Historical entries below describe earlier revisions; the final integration entry records the current source state.
+This source adapter imports Lauren Tan's pstack v0.15.13 from the pinned upstream checkout. Historical entries below describe earlier revisions; the final integration entry records the current source state.
 
-- Upstream: https://github.com/cursor/plugins/tree/e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a/pstack
-- Upstream commit: `e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a`
-- Upstream version: `0.15.9`
-- Contents: 50 pstack skills plus `control-ui`, `control-cli`, and `deslop` from the same checkout (53 source skills).
+- Upstream: https://github.com/cursor/plugins/tree/77526ffa67f8dafc698d14b5356e6d4fc78c3127/pstack
+- Upstream commit: `77526ffa67f8dafc698d14b5356e6d4fc78c3127`
+- Upstream version: `0.15.13`
+- Contents: 51 pstack skills plus `control-ui`, `control-cli`, and `deslop` from the same checkout (54 source skills).
 - `CURSOR-TEAM-KIT-LICENSE` preserves the selected Team Kit source license separately.
 
 Adapter changes are intentionally narrow: Codex-compatible skill names/frontmatter; a short entry in each installed `SKILL.md` requiring the plugin-root `CODEX.md` and, for model work, `MODELS.md`; `disable-model-invocation: true` moved to each skill's `agents/openai.yaml` policy; project skill output paths changed from `.cursor/skills` to `.agents/skills`; pstack model-rule references point to the plugin-root `MODELS.md`; and `setup-pstack` states that Codex follows the `CODEX.md`/`MODELS.md` contract instead of writing a Cursor rule. The upstream `recall` transcript explanation remains in place with an explicit Codex history entry.
@@ -179,3 +179,42 @@ Static role-case inspection covers a known implementation (Luna with a concrete 
 ## Normal business workflow and confirmed bug repair on 2026-10-05
 
 The user clarified that authorized normal business work takes priority over speculative preventive prerequisites. The global rules now require evidence, scoped diagnosis and repair, and a rerun of the affected real workflow with targeted regression when an actual bug is encountered or reported. Only affected and dependent actions stop. A new mandatory validation gate requires a confirmed problem or an explicit current requirement, and a confirmed bug does not automatically require a gate. Existing required checks and safety, permission, and data-integrity boundaries remain in force before any bug occurs. CODEX.md refers to these global rules, and the bilingual introductions describe the same behavior. No runtime deployment or new-session behavior test was performed.
+
+## Upstream v0.15.13 help and guide integration on 2026-10-06
+
+This source revision absorbs all 16 pstack paths changed between `e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a` and the official snapshot `77526ffa67f8dafc698d14b5356e6d4fc78c3127`. The active Codex manifest is `0.15.13+codex.20261006potetohelp`. The upstream Cursor manifest retains `0.15.13` as provenance material. The import contains 164 upstream pstack files and four unchanged Team Kit files, with 54 exposed skills.
+
+`poteto-help` preserves the upstream question-to-skill, playbook, principle, and guide mapping. It reads the actual source before answering, gives at most one example prompt, and keeps usage help read-only. An explicit request to perform work routes through `poteto-mode` under the existing host contract. Its `agents/openai.yaml` preserves upstream explicit-only invocation through `allow_implicit_invocation: false`. Ambiguous help uses the available host clarification mechanism and its actual option limit. It does not copy Cursor tool arguments or force a five-option payload.
+
+The guide retains the new prompting, read-only investigation, prototype, benchmark, verification, overnight, correction, and customization material. Host adaptations explain the existing GPT responsibility split and parent aliases, distinguish Cursor Custom Modes, cloud agents, Projects, and `/loop` from configured Codex capabilities, and preserve current permission and ownership boundaries. Help and guide task starts use the existing authoritative record for applicable phases, evidence, and material skip reasons without a copied playbook or a new ledger for simple tasks. The pause guidance preserves work, requires existing authorization for checkpoint commits, and makes user Stop immediate with no subsequent mutations. Daily maintenance, new verification infrastructure, prototypes, and panels are not automatic prerequisites. Existing checks and confirmed requirements still apply. No new planner, gate, timer, schedule, service, or review panel was introduced.
+
+Local source links resolve against the adapted tree, including `UPSTREAM-README.md`. Public source links in help use the pinned upstream snapshot and identify Cursor documentation separately from local behavior. Global rules and `MODELS.md` are unchanged. The fresh-child lifecycle, thirty-minute takeover assessments, Luna to Sol to Astra progression, final automatic Astra `xhigh` cap, Primary-only ComputerUse, serial images, and separate packaging, release, and full-suite approval remain in force.
+
+### Coverage of the 16 upstream changes
+
+| Change | Upstream path under `pstack/` | Local destination | Treatment |
+| --- | --- | --- | --- |
+| M | `.cursor-plugin/plugin.json` | `.cursor-plugin/plugin.json` | Exact original |
+| M | `README.md` | `UPSTREAM-README.md` | Adapted host and model explanations |
+| M | `docs/guide/README.md` | `docs/guide/README.md` | Adapted host entry |
+| M | `docs/guide/01-setup.md` | `docs/guide/01-setup.md` | Adapted setup, cost, verification, and persistence |
+| M | `docs/guide/02-poteto-mode.md` | `docs/guide/02-poteto-mode.md` | Adapted persistence and isolation |
+| M | `docs/guide/03-understand.md` | `docs/guide/03-understand.md` | Adapted host entry |
+| M | `docs/guide/04-design.md` | `docs/guide/04-design.md` | Adapted comparison and document review boundaries |
+| M | `docs/guide/05-build-and-clean.md` | `docs/guide/05-build-and-clean.md` | Adapted bundled tooling and discovery |
+| M | `docs/guide/06-verify-and-ship.md` | `docs/guide/06-verify-and-ship.md` | Adapted verification scope, ownership, and maintenance |
+| M | `docs/guide/07-overnight.md` | `docs/guide/07-overnight.md` | Adapted unattended work, review, and automation limits |
+| M | `docs/guide/08-principles.md` | `docs/guide/08-principles.md` | Adapted host entry |
+| M | `docs/guide/09-make-it-yours.md` | `docs/guide/09-make-it-yours.md` | Adapted authoring and evidence-based correction |
+| M | `docs/guide/10-recipes-and-pitfalls.md` | `docs/guide/10-recipes-and-pitfalls.md` | Adapted inheritance and isolation |
+| A | `skills/poteto-help/SKILL.md` | `skills/poteto-help/SKILL.md` | Adapted explicit-only help and host routing |
+| A | `skills/poteto-help/references/prompting.md` | Same path | Adapted scope, design, and unattended-work advice |
+| A | `skills/poteto-help/references/recipes.md` | Same path | Adapted permissions and local continuation example |
+
+### Targeted source verification
+
+All 168 original source records match the pinned Git source content, and every local hash matches the current bytes. The inherited provenance records include 145 CRLF Windows snapshots. Their recorded hashes remain unchanged, and their contents match the pinned blobs after LF/CRLF normalization only. Updated originals use raw Git blob bytes. `hash_semantics` now states this convention instead of implying that all historical snapshot hashes are raw blob hashes. All four Team Kit imports are unchanged at the new pin.
+
+The installed skill-creator `quick_validate.py` passed for `poteto-help`; PyYAML is available in this session and no dependency was installed. Targeted YAML checks confirmed the new frontmatter and explicit-only metadata. Both manifests parse and carry the intended versions. All 309 local file links in the affected guide, help, README, and host-entry Markdown resolved, and `git diff --check -- pstack` passed. The focused checks are reproducible with `python work/upstream-absorb-20261006/check_source.py` in this working tree; that scratch verifier is not part of the plugin. Git reported only the existing checkout policy that may convert LF text to CRLF.
+
+Static review confirmed that a usage question only reads the needed source, an explicit work request uses the existing workflow, a bare invocation does not execute a suggested example, and model questions resolve through local `MODELS.md`. These are source checks, not a new-session behavior evaluation. This phase did not deploy, install, commit, push, package, release, run a full test suite, invoke an evaluation, or change a live model configuration. Deployment and fresh-session behavior remain separate acceptance evidence.

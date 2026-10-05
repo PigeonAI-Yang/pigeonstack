@@ -1,0 +1,5 @@
+interface:
+  display_name: "Poteto Help"
+  short_description: "Find the pstack skill or prompt for your task"
+policy:
+  allow_implicit_invocation: false

@@ -2,10 +2,10 @@
   "upstream": {
     "url": "https://github.com/cursor/plugins",
     "pstack_path": "pstack",
-    "version": "0.15.9",
-    "commit": "e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a"
+    "version": "0.15.13",
+    "commit": "77526ffa67f8dafc698d14b5356e6d4fc78c3127"
   },
-  "hash_semantics": "sha256 is the original upstream file hash at the pinned commit. adapted_sha256 records a changed local file; adaptation_notes describe the host overlay.",
+  "hash_semantics": "sha256 records original pinned upstream snapshot bytes. Legacy text snapshots retain Windows checkout CRLF; new or updated imports use raw Git blob bytes. Verify source content against the pinned blob allowing only LF/CRLF conversion. adapted_sha256 records exact changed local bytes; adaptation_notes describe the host overlay.",
   "source_files": [
     {
       "source": "cursor-team-kit/LICENSE",
@@ -42,7 +42,7 @@
     {
       "source": "pstack/.cursor-plugin/plugin.json",
       "destination": ".cursor-plugin/plugin.json",
-      "sha256": "fcbb2f1e226e47f7eb2a5f0f9a17c7d14a7b1d41b698f22ae4090e30a9107c3f"
+      "sha256": "a9b159535686ae6540778094b39f6af9bf4cd1f00e8f3efc0f9283547b9e09b7"
     },
     {
       "source": "pstack/.gitignore",
@@ -57,10 +57,12 @@
     {
       "source": "pstack/README.md",
       "destination": "UPSTREAM-README.md",
-      "sha256": "5210721cec4197e96511008cd6fdfd32960b4a620a33781b8fea057dc6ff972f",
-      "adapted_sha256": "f6cfca30343e85c1baeac6b66141f57f02f0ee9717480b078c9952af8608a756",
+      "sha256": "c16e2c9ec18d35effa03dc3c6ee559578c5e9644f2a0f7994647335b1bfebf59",
+      "adapted_sha256": "a750185f4d4f68a61f0a804c1338a16f6811c29aa8e680a6f85edaa058ca4bbf",
       "adaptation_notes": [
-        "Identify upstream Cursor examples and link the Codex host contract."
+        "Identify upstream Cursor examples and link the Codex host contract.",
+        "Preserve upstream v0.15.13 guidance with Codex GPT roles, actual host capabilities, and existing scope and permission boundaries.",
+        "Use the existing authoritative task record for phases, evidence, and material skip reasons without copying the playbook or requiring a new ledger for simple tasks."
       ]
     },
     {
@@ -158,103 +160,118 @@
     {
       "source": "pstack/docs/guide/01-setup.md",
       "destination": "docs/guide/01-setup.md",
-      "sha256": "3a8299e0c333864a60b9771aea448a340b0a89288b851607541a75ff6125201b",
-      "adapted_sha256": "4386ace99c6fa397e0b2f060a6f1ef94773f95882da931601f7e21c4ab8bc773",
+      "sha256": "6d1f73090752058b0a42a23395a09b57ac50be4a4ad6bf8d85e22764b8ad1cb3",
+      "adapted_sha256": "381c2682532df1166c348c5deb62a8509a45aecf0aca317756351c3e2efed3dc",
       "adaptation_notes": [
         "Translate project skill output paths from .cursor/skills to .agents/skills.",
         "Identify upstream Cursor examples and link the Codex host contract.",
-        "Resolve setup and parent inheritance through source MODELS.md instead of Cursor model rules or omitted arguments."
+        "Resolve setup and parent inheritance through source MODELS.md instead of Cursor model rules or omitted arguments.",
+        "Preserve upstream v0.15.13 guidance with Codex GPT roles, actual host capabilities, and existing scope and permission boundaries.",
+        "Use the existing authoritative task record for phases, evidence, and material skip reasons without copying the playbook or requiring a new ledger for simple tasks."
       ]
     },
     {
       "source": "pstack/docs/guide/02-poteto-mode.md",
       "destination": "docs/guide/02-poteto-mode.md",
-      "sha256": "e0447eec1ce2d2b8165b36af094d3e78c41112ec253c15a380af7ee3d7b75a04",
-      "adapted_sha256": "870f6c2e58fb37282a452700f8957a598deecfd2bd38d4157f0f54dba890905d",
+      "sha256": "979f61ca3d44cb8e68affda40327d32797e93fa9cc53ced7444c15e2600897e1",
+      "adapted_sha256": "8a6eb01d5732558b97146c2aa1c24e086c0dd2c06569e278af934818783c8d5b",
       "adaptation_notes": [
-        "Identify upstream Cursor examples and link the Codex host contract."
+        "Identify upstream Cursor examples and link the Codex host contract.",
+        "Preserve upstream v0.15.13 guidance with Codex GPT roles, actual host capabilities, and existing scope and permission boundaries.",
+        "Use the existing authoritative task record for phases, evidence, and material skip reasons without copying the playbook or requiring a new ledger for simple tasks."
       ]
     },
     {
       "source": "pstack/docs/guide/03-understand.md",
       "destination": "docs/guide/03-understand.md",
-      "sha256": "04f748ff42d4b8cf55deb0ceb3292277f483d53c6f31ca0b65157c0beb8ea17d",
-      "adapted_sha256": "870c2cb97d7766c06b755dccf3ce92d8d45983d506ddb591e629ff1c80167272",
+      "sha256": "0090afa9b8670adf175466a2a973ff4349e95ed67d2aa8cebdfc55ff4b7382c9",
+      "adapted_sha256": "f21e90acac2ad0e1fd12a30736a8bb00f4a3403276b43627ab96bccacd171a43",
       "adaptation_notes": [
-        "Identify upstream Cursor examples and link the Codex host contract."
+        "Identify upstream Cursor examples and link the Codex host contract.",
+        "Preserve upstream v0.15.13 guidance with Codex GPT roles, actual host capabilities, and existing scope and permission boundaries."
       ]
     },
     {
       "source": "pstack/docs/guide/04-design.md",
       "destination": "docs/guide/04-design.md",
-      "sha256": "6d3b013dfe5465b21178f5265aee942b3972630f313db2730e103ce2965fa110",
-      "adapted_sha256": "c9aedfbeaf30e7e3b06234fac3dbd465123aa00bbf33d7a66e137736f118bc9f",
+      "sha256": "333683f203fa9c5428002430834a04cc2bdcf6df4be6cb89f4145b92b304d700",
+      "adapted_sha256": "5836e37a975a529bc4f95a33dc89262f32f28dc5539d32e059048cd0b3116585",
       "adaptation_notes": [
-        "Identify upstream Cursor examples and link the Codex host contract."
+        "Identify upstream Cursor examples and link the Codex host contract.",
+        "Preserve upstream v0.15.13 guidance with Codex GPT roles, actual host capabilities, and existing scope and permission boundaries."
       ]
     },
     {
       "source": "pstack/docs/guide/05-build-and-clean.md",
       "destination": "docs/guide/05-build-and-clean.md",
-      "sha256": "1a70b66b1fbced7ced9645e57f567870085d241927740f4f1fb696ef30607ba7",
-      "adapted_sha256": "026bdf73d2f12ccec65205c3e62c9f7f8c9fca1d23c01238ede6a054173ea2ee",
+      "sha256": "a93cc7771f7b35c7b54d0120b6f66e8367794ce6791237e889a30e7585c190fa",
+      "adapted_sha256": "2e2f1dc151156df6a891d228288a665e75853c3f78f1ec8a581367180d069b6f",
       "adaptation_notes": [
-        "Identify upstream Cursor examples and link the Codex host contract."
+        "Identify upstream Cursor examples and link the Codex host contract.",
+        "Preserve upstream v0.15.13 guidance with Codex GPT roles, actual host capabilities, and existing scope and permission boundaries."
       ]
     },
     {
       "source": "pstack/docs/guide/06-verify-and-ship.md",
       "destination": "docs/guide/06-verify-and-ship.md",
-      "sha256": "55f5c1b9f07b6b43ad4cc3040a440f94ef0fd0639fe238747e7f2df4463e4c48",
-      "adapted_sha256": "4b91770da4db5106adbde00d5beee78561697bb3517b1478cd535cfcd3bfef2d",
+      "sha256": "3ef0eed5ea084dfbbaf1b1ae9e08d84f2c8a2b536ffb3ef5226710bf105f70e6",
+      "adapted_sha256": "29eececaca1bc6bda879b800c07a930002f43e3ef046fd18c7ade2e3084909ba",
       "adaptation_notes": [
-        "Identify upstream Cursor examples and link the Codex host contract."
+        "Identify upstream Cursor examples and link the Codex host contract.",
+        "Preserve upstream v0.15.13 guidance with Codex GPT roles, actual host capabilities, and existing scope and permission boundaries."
       ]
     },
     {
       "source": "pstack/docs/guide/07-overnight.md",
       "destination": "docs/guide/07-overnight.md",
-      "sha256": "6c67f72e8ab4932fde0b107a8af9e3f273934c210981af9d77e9ad995c834d54",
-      "adapted_sha256": "074ce05967138f7490758dc634a0ccdf197b4069cd829032c4dc1d2d7f2e3bc1",
+      "sha256": "d7bd33a3d880768688dff4c1c2b5481ca9f0f194f5d97e44b65c9f96624d3ff0",
+      "adapted_sha256": "6644206d3bac1545365a15359f1342ea41090e73114fae7cf2985cc6009c90d9",
       "adaptation_notes": [
-        "Identify upstream Cursor examples and link the Codex host contract."
+        "Identify upstream Cursor examples and link the Codex host contract.",
+        "Preserve upstream v0.15.13 guidance with Codex GPT roles, actual host capabilities, and existing scope and permission boundaries.",
+        "Preserve work on pause, require current-task authorization for checkpoint commits, and honor user Stop immediately without subsequent mutations."
       ]
     },
     {
       "source": "pstack/docs/guide/08-principles.md",
       "destination": "docs/guide/08-principles.md",
-      "sha256": "c18af6441e53261029ac7b10cf37077709a7909c32fa2cc568ff4b3e7667ba2d",
-      "adapted_sha256": "8cf47707ed2659b837f49182376c01101ff82614a1c426aa95033a4b0ae7c041",
+      "sha256": "73c3db659d356d4aa6d7674d30d0db46fab2bdd60152fca717c2d1772a042bdc",
+      "adapted_sha256": "27c3747b1b9872023265be51cea293d3ea96333e2491a7fb6580e23c66c6cf6e",
       "adaptation_notes": [
-        "Identify upstream Cursor examples and link the Codex host contract."
+        "Identify upstream Cursor examples and link the Codex host contract.",
+        "Preserve upstream v0.15.13 guidance with Codex GPT roles, actual host capabilities, and existing scope and permission boundaries."
       ]
     },
     {
       "source": "pstack/docs/guide/09-make-it-yours.md",
       "destination": "docs/guide/09-make-it-yours.md",
-      "sha256": "d1dac4599693ff41ea2618172ca6f791f16179b4f075ba4900a89f2293f583bf",
-      "adapted_sha256": "14941706e111ba9fbe3c66f01612cf501140ea1a46fe8a11b0336fbc6541dc7e",
+      "sha256": "157e0c20ad3c657857c2fbbea3afd26895b71b8f68475bc56f4c382dcdd0e118",
+      "adapted_sha256": "f8eb090bf31787dd7fffdb16ac13721ad5a30172028e9adbdbc772d389a7a27b",
       "adaptation_notes": [
-        "Identify upstream Cursor examples and link the Codex host contract."
+        "Identify upstream Cursor examples and link the Codex host contract.",
+        "Preserve upstream v0.15.13 guidance with Codex GPT roles, actual host capabilities, and existing scope and permission boundaries."
       ]
     },
     {
       "source": "pstack/docs/guide/10-recipes-and-pitfalls.md",
       "destination": "docs/guide/10-recipes-and-pitfalls.md",
-      "sha256": "cea2ebcddd83088d40942ec68e981b0a175c6f67bcf3f9fc8c5a7b82d6bf1435",
-      "adapted_sha256": "d6c6230c8b71eda8b55a4b7b996ea968ece8b4e10d225bc7b02817be961ddbf0",
+      "sha256": "c652474764b08da4a6364d85f5d03cf1fc1cf35e9d7c549348fb66e2d09f7b1f",
+      "adapted_sha256": "37cc2d03409e9858f6cf7c498b476ab2ac3480104ebdd0d69e85077aafc84e16",
       "adaptation_notes": [
         "Identify upstream Cursor examples and link the Codex host contract.",
-        "Resolve setup and parent inheritance through source MODELS.md instead of Cursor model rules or omitted arguments."
+        "Resolve setup and parent inheritance through source MODELS.md instead of Cursor model rules or omitted arguments.",
+        "Preserve upstream v0.15.13 guidance with Codex GPT roles, actual host capabilities, and existing scope and permission boundaries."
       ]
     },
     {
       "source": "pstack/docs/guide/README.md",
       "destination": "docs/guide/README.md",
-      "sha256": "2a37b6bf86bf22ecf8a83e78e1748b6a27f813ea5039afaee9054e9001561390",
-      "adapted_sha256": "3d1f00ee8154613fc2a276f6a4d1495f70a4ee8c9da0d6a337b5bcdb0ada65cb",
+      "sha256": "49d92cfe91e01c04bd1150e5b000ee4fd4dfda8ce789b66a9dda98f7e5456e00",
+      "adapted_sha256": "ac2667c33abec623c8636c312a7449245dddd8a3eefdb2a9e6a98ab514c0b676",
       "adaptation_notes": [
-        "Identify upstream Cursor examples and link the Codex host contract."
+        "Identify upstream Cursor examples and link the Codex host contract.",
+        "Preserve upstream v0.15.13 guidance with Codex GPT roles, actual host capabilities, and existing scope and permission boundaries.",
+        "Use the existing authoritative task record for phases, evidence, and material skip reasons without copying the playbook or requiring a new ledger for simple tasks."
       ]
     },
     {
@@ -486,6 +503,34 @@
       "adapted_sha256": "58bc4b74003755322148d4f304904f0c4fa101b48513655d007222b70ec33be1",
       "adaptation_notes": [
         "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures."
+      ]
+    },
+    {
+      "source": "pstack/skills/poteto-help/SKILL.md",
+      "destination": "skills/poteto-help/SKILL.md",
+      "sha256": "5fc65e4c30c52edcde690d18904e3a8cf6ba6c2424c672d1a5cb6d29ab28645c",
+      "adapted_sha256": "814f5a7554effe6f1f8c82864071afac0e5462259f742d75b452d3ea20015125",
+      "adaptation_notes": [
+        "Translate explicit-only help metadata to agents/openai.yaml, map local source links, preserve read-only usage help, and route actual work through the Codex contract.",
+        "Use the existing authoritative task record for phases, evidence, and material skip reasons without copying the playbook or requiring a new ledger for simple tasks."
+      ]
+    },
+    {
+      "source": "pstack/skills/poteto-help/references/prompting.md",
+      "destination": "skills/poteto-help/references/prompting.md",
+      "sha256": "463f450c44a60afd001a2f69fdf8a5dea174351f339369b12ec3c41515e564d3",
+      "adapted_sha256": "14220f9dce94e81884782f6412fbfdd02581f49195361c6fb6b866ba569b5aba",
+      "adaptation_notes": [
+        "Preserve upstream v0.15.13 guidance with Codex GPT roles, actual host capabilities, and existing scope and permission boundaries."
+      ]
+    },
+    {
+      "source": "pstack/skills/poteto-help/references/recipes.md",
+      "destination": "skills/poteto-help/references/recipes.md",
+      "sha256": "1872323419a3e5c7783b1933f7a180ca26c25a6e1f4ec83bd65e091ebbfb812b",
+      "adapted_sha256": "412823f3288d11acce4cc6d49aa12309aaafdfbfe2b779b4cea80ee5cae3478a",
+      "adaptation_notes": [
+        "Preserve upstream v0.15.13 guidance with Codex GPT roles, actual host capabilities, and existing scope and permission boundaries."
       ]
     },
     {

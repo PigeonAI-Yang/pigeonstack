@@ -6,6 +6,8 @@ Read the global `AGENTS.md` first: `J:/PigeonYang/pigeonstack/AGENTS.md` in the 
 
 Use pstack for substantive work. Start from `skills/poteto-mode/SKILL.md` and select the matching upstream playbook. Read the selected skill and references needed for the current phase. Keep upstream phase order, grounding, evidence requirements, and output structure. Casual conversation, direct factual answers, and an explicit user opt-out need no workflow.
 
+An explicit `poteto-help` invocation routes to `skills/poteto-help/SKILL.md`. Usage questions get grounded help, source links, and at most one example prompt without executing the example. An actual work request follows `poteto-mode` within the existing authorization. Cursor Custom Mode shortcuts do not establish persistence on Codex; this entry and the active global instructions determine activation.
+
 Use the existing task record for the selected phases, dependencies, and material evidence. A simple task needs no new ledger. Record a skipped or adapted phase when it affects the promised result. Do not copy a second playbook into another record. The upstream throughput checkpoint is a way to identify ready work, shared state, and dependencies in that record, not a new reporting system.
 
 An upstream trigger selects a procedure, not extra authorization or staffing. Apply these host adaptations at the point where the procedure calls for them:

@@ -1,6 +1,6 @@
 # PigeonStack · 鸽栈：Codex 多 Agent 协作工作流
 
-首先致敬并感谢 [Lauren Tan（poteto）](https://github.com/poteto)，[pstack](https://github.com/cursor/plugins/tree/e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a/pstack) 的原作者。PigeonStack 基于她的工作，为这套 Codex 协作流程做了定制适配。
+首先致敬并感谢 [Lauren Tan（poteto）](https://github.com/poteto)，[pstack](https://github.com/cursor/plugins/tree/77526ffa67f8dafc698d14b5356e6d4fc78c3127/pstack) 的原作者。PigeonStack 基于她的工作，为这套 Codex 协作流程做了定制适配。
 
 [English](README.md) | 简体中文
 
@@ -35,6 +35,8 @@ Sol 继续负责日常判断和最终验收。三个执行层级依次是 `max` 
 PigeonStack 将 Codex 全局规则、Agent 角色、配置和适配后的 pstack 插件保存在 Git 中，再同步到 Codex 宿主。
 
 首次检查时，先看[独立目录预览](#在独立目录中预览)，或阅读[快速开始指南](https://pigeonai-yang.github.io/pigeonstack/zh/getting-started/)。
+
+不确定当前任务适合哪个 pstack 技能？可以询问 `/poteto-help`。它会阅读已打包的指南，推荐相关技能，也可以提供一条示例提示词。单纯询问帮助不会开始执行推荐的工作。Codex 的模型选择和权限遵循本仓库的 GPT 配置。
 
 已验证的宿主是 Windows 与 PowerShell，同步脚本要求 Python 3.11 或更高版本。真正安装插件还需要兼容的 Codex CLI，以及已有的、能解析 `pstack@personal` 的本地插件市场注册。
 
@@ -246,9 +248,9 @@ PigeonStack 将 Lauren Tan 的 pstack 适配到 Codex，增加 Codex 专用全�
 
 ## 上游来源与许可
 
-PigeonStack 由 PigeonYang 维护，底层 pstack 工作流来自 Lauren Tan。仓库基于 pstack `0.15.9` 的[固定上游版本](https://github.com/cursor/plugins/tree/e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a/pstack)适配，对应提交 `e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a`。选入的控制与代码清理技能来自同一版本中的 Cursor Team Kit。
+PigeonStack 由 PigeonYang 维护，底层 pstack 工作流来自 Lauren Tan。仓库基于 pstack `0.15.13` 的[固定上游版本](https://github.com/cursor/plugins/tree/77526ffa67f8dafc698d14b5356e6d4fc78c3127/pstack)适配，对应提交 `77526ffa67f8dafc698d14b5356e6d4fc78c3127`。选入的控制与代码清理技能来自同一版本中的 Cursor Team Kit。
 
-基于 pstack 0.15.9，包含用于处理反复出现的 Agent 错误的 `/correct`、用于提供性能证据的 `/benchmark-checklist`，以及用于解释测量数据的 `/principle-explain-the-number`。上游工作流已适配到 Codex；模型选择和升级路径遵循本项目的 GPT 配置。
+基于 pstack 0.15.13，包含用于处理反复出现的 Agent 错误的 `/correct`、用于提供性能证据的 `/benchmark-checklist`，以及用于解释测量数据的 `/principle-explain-the-number`。上游工作流已适配到 Codex；模型选择和升级路径遵循本项目的 GPT 配置。
 
 [provenance.json](pstack/provenance.json) 记录导入文件及其源文件哈希，[ADAPTATION.md](pstack/ADAPTATION.md) 记录 Codex 适配及变更历史。原有许可声明保留在 [pstack/LICENSE](pstack/LICENSE) 和 [pstack/CURSOR-TEAM-KIT-LICENSE](pstack/CURSOR-TEAM-KIT-LICENSE)。
 
