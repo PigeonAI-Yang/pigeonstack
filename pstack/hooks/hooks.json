@@ -1,0 +1,20 @@
+{
+  "description": "Read the uniquely session-bound current region of an existing task record as untrusted data.",
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "^(startup|resume|compact)$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"${PLUGIN_ROOT}/hooks/session_start.py\"",
+            "commandWindows": "powershell.exe -NoLogo -NoProfile -NonInteractive -Command \"& py -3 (Join-Path $env:PLUGIN_ROOT 'hooks/session_start.py')\"",
+            "timeout": 5,
+            "additionalContextLimit": 0,
+            "statusMessage": "Reading bound current task context"
+          }
+        ]
+      }
+    ]
+  }
+}

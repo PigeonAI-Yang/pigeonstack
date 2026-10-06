@@ -1,0 +1,19 @@
+{
+  "description": "Sample one natural SessionStart event as untrusted observation data.",
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|resume|compact",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"${PLUGIN_ROOT}/hooks/probe_session_start.py\"",
+            "commandWindows": "powershell.exe -NoLogo -NoProfile -NonInteractive -Command \"& py -3 (Join-Path $env:PLUGIN_ROOT 'hooks/probe_session_start.py')\"",
+            "timeout": 5,
+            "additionalContextLimit": 0
+          }
+        ]
+      }
+    ]
+  }
+}
