@@ -27,7 +27,7 @@ Decompose the question into 2 to 4 exploration angles, each a distinct slice of 
 - `model`: the `how explorer` line, resolved through `MODELS.md`
 - `readonly`: `true`
 
-Use `references/explorer-prompt.md` to frame the needed evidence. Before assigning Luna, turn each angle into named searches or observations. Keep interpretation with the Primary or assign an ordinary unresolved question to a bounded read-only Sol investigation. Astra eligibility follows the critical-design and actual Sol-attempt boundaries in `MODELS.md`. Then go to Step 3.
+Use `references/explorer-prompt.md` to frame the needed evidence. Before assigning Luna, turn each angle into named searches or observations. Keep interpretation with the Primary or assign an ordinary unresolved question to a bounded read-only Sol investigation. Astra eligibility follows the critical-design and actual Sol `xhigh`-attempt boundaries in `MODELS.md`. Then go to Step 3.
 
 ## Step 2b. Direct Explain (simple questions)
 

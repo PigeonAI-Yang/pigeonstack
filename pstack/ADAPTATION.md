@@ -247,3 +247,23 @@ The existing `work/upstream-absorb-20261006/check_source.py` verifier passes all
 | Credentials, access, permissions, or unavailable services | External blocker; no reasoning escalation. |
 
 These are source and static routing checks. This revision does not deploy, install, commit, push, package, release, run a full suite, invoke a model evaluation, or change instructions already loaded in the current chat. Installed behavior and new-session routing remain unverified.
+
+## Start Sol at medium and upgrade effort in order on 2026-10-06
+
+This revision supersedes the preceding Sol `xhigh` starting default. The user explicitly selected Sol `medium` for direct ordinary technical work, local designs, routine rule or upstream adaptation, ordinary consultations, and Senior Executor takeovers after Luna cannot resolve a problem. The Default Sol Primary remains `gpt-6.1-sol` at `high`. Luna remains `gpt-6-luna` at `max`.
+
+On actual inability or an unresolved thirty-minute assessment, transfer the bounded problem to a fresh child in this order: Sol `medium`, Sol `high`, Sol `xhigh`, Astra `high`, then Astra `xhigh`. Ordinary work requires evidence of the preceding Sol attempts before Astra. Do not skip from Sol `medium` or `high` to Astra. Advance immediately when an attempt cannot resolve the problem and stop when successful. Automatic escalation uses neither Sol nor Astra at `max` or `ultra`.
+
+Each model-and-effort tier has thirty minutes from its first delegation. Same-tier replacements do not reset the deadline. A new tier receives its own window. Before each transfer, release the previous owner and its processes. Preserve a concise handoff with evidence, failed approaches, paths, missing evidence, total elapsed time, active owner, processes, and the tier deadline. Healthy long jobs continue their existing observation loop. Access, authentication, permissions, and unavailable services remain external blockers.
+
+Critical architecture, key contracts, and consequential design tradeoffs still qualify for direct Astra `high`. Explicit task-specific user model and effort selection remains authoritative. Optional consultations preserve read-only scope throughout every effort and model upgrade. After an Expert finishes and its conclusion is accepted, straightforward follow-ups use Luna and new ordinary technical choices start at fresh Sol `medium`. An active takeover retains the assigned problem through diagnosis, implementation, and verification. Authorization, business-workflow and bug-repair boundaries, Primary-only ComputerUse, serial image work, and fresh-child ownership rules remain unchanged.
+
+The source overlay changes AGENTS.md, the injected developer instructions, the base prompt, the existing Astra advisor description and instructions, CODEX.md, MODELS.md, and the affected how, poteto-help, and reflect skill instructions. Three imported skill files receive updated local hashes and a new adaptation note. Original upstream hashes and the historical 145-snapshot CRLF convention are preserved. Previous log entries remain historical evidence. No runtime deployment copy, manifest version, source script, live model configuration, timer, service, quota gate, or verification framework is changed.
+
+### Targeted source verification
+
+Four TOML files parse. Comparison with the preceding revision confirms unchanged Primary and child defaults, role IDs, and model pinning. The injected routing paragraphs match the base prompt. Focused assertions confirm direct Sol `medium`, Luna failure to Sol `medium`, Sol `medium` to `high`, Sol `high` to `xhigh`, Sol `xhigh` to Astra `high`, critical-design direct Astra, external-blocker handling, and read-only scope preservation. Current operative text has no old Sol `xhigh` starting rule or unrestricted earlier-Sol-attempt bypass to Astra.
+
+The existing `work/upstream-absorb-20261006/check_source.py` verifier passes all 168 source and local hash pairs, 145 historical CRLF snapshots, 54 exposed skills, unchanged manifest versions, and 309 guide and help links. Its older expected Codex manifest version was replaced with the actual unchanged source version only in the in-memory invocation. The verifier file was not edited. The installed skill-creator validator passes for all three changed skills. `git diff --check` passes.
+
+These are source and static routing checks. They do not demonstrate model request routing or a fresh session applying the policy. This revision does not deploy, install, commit, push, package, release, run a full test suite, or change instructions already loaded in the current chat.
