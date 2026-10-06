@@ -283,3 +283,9 @@ The source review found no conflicting lifecycle instructions in config/workflow
 The installed skill-creator validator passes for poteto-mode. The existing source verifier passes 168 source and local hash pairs, 145 historical CRLF snapshots, 54 exposed skills, unchanged manifest versions, and 309 guide and help links. Its old Codex version expectation is replaced with the actual unchanged source version only in memory. The verifier file is unchanged. Focused checks also resolve all CODEX.md and poteto-mode local links, preserve original upstream hash tuples, confirm unchanged model, prompt, role, and manifest files, and parse all four TOML files. `git diff --check` passes.
 
 A source-level review covers reuse of an existing CLI without a new gate, missing result feedback before escalation, a scoped improvement for a repeated confirmed bug, an unrelated finding recorded without cleanup, completion without an error report, and a read-only request without edit authorization. These are static instruction checks, not agent-behavior evaluations or evidence of a new session following the workflow. No deployment or full test suite is run.
+
+## Explicit Primary coordinator role entry on 2026-10-06
+
+The Primary reads `COORDINATOR.md` when the user says "你是总控代理" or clearly assigns the same role, and retains that role through later turns of the same task until the user changes it. `AGENTS.md` and `CODEX.md` index this single host guide; existing global rules, host instructions, model mappings, and selected upstream phases remain authoritative.
+
+This source adaptation adds one host guide and its indices, plus a local plugin version bump. It does not change upstream playbooks, model mappings, prompts, scripts, or provenance. Targeted source checks (`git diff --check`, manifest JSON and workflow TOML parsing, local links, and change-scope checks) passed. These are source checks; new-session behavior has not been exercised.

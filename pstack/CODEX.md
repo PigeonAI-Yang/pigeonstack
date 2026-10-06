@@ -6,6 +6,8 @@ Read the global `AGENTS.md` first: `J:/PigeonYang/pigeonstack/AGENTS.md` in the 
 
 Use pstack for substantive work. Start from `skills/poteto-mode/SKILL.md` and select the matching upstream playbook. Read the selected skill and references needed for the current phase. Keep upstream phase order, grounding, evidence requirements, and output structure. Casual conversation, direct factual answers, and an explicit user opt-out need no workflow.
 
+When the user says "你是总控代理" or clearly assigns the same role, read [COORDINATOR.md](COORDINATOR.md). Retain that role for subsequent turns of the same task until the user changes it. Preserve the active Primary and select the task's applicable upstream playbook. A coordinator role declaration alone does not select the Orchestrate playbook.
+
 An explicit `poteto-help` invocation routes to `skills/poteto-help/SKILL.md`. Usage questions get grounded help, source links, and at most one example prompt without executing the example. An actual work request follows `poteto-mode` within the existing authorization. Cursor Custom Mode shortcuts do not establish persistence on Codex; this entry and the active global instructions determine activation.
 
 At task start, use the current context to reuse verified scripts, CLIs, and business entry points for the selected workflow. Actual repeated deterministic manual or agent-tool steps can justify the smallest tool or configuration wiring for the current authorized need. Do not inventory the whole project, add a universal preflight, or require a new script.
