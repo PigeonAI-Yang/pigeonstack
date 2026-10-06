@@ -46,7 +46,7 @@ Read the leaf skill in full for any principle you apply. Each entry names when i
 - **Outcome-Oriented Execution** (**principle-outcome-oriented-execution**). Planned rewrites and migrations with explicit phase boundaries. Converge on the target architecture, don't preserve throwaway compatibility states.
 - **Experience First** (**principle-experience-first**). Product, UX, or feature-scope tradeoffs. Choose user delight over implementation convenience.
 - **Exhaust the Design Space** (**principle-exhaust-the-design-space**). A novel interaction or architectural decision with no precedent. Build 2-3 competing prototypes and compare before committing.
-- **Build the Lever** (**principle-build-the-lever**). Any non-trivial work. Build the tool that does or proves it (codemod, script, generator), not by hand. The tool is the artifact a reviewer reruns.
+- **Build the Lever** (**principle-build-the-lever**). Reuse verified tools at task start. Actual repeated deterministic steps can justify minimal tooling for the current authorized need under `CODEX.md`. Nontrivial work alone does not require a new script.
 
 **Architecture**
 
@@ -72,7 +72,7 @@ Read the leaf skill in full for any principle you apply. Each entry names when i
 
 **Meta**
 
-- **Encode Lessons in Structure** (**principle-encode-lessons-in-structure**). You catch yourself writing the same instruction a second time. Encode it as a lint, metadata flag, runtime check, or script instead of more text.
+- **Encode Lessons in Structure** (**principle-encode-lessons-in-structure**). Repeated actual errors appear in evidence already collected. At normal completion, judge the smallest authorized improvement under `CODEX.md`. A repeated instruction alone does not require a new gate or maintenance task.
 
 ## Autonomy
 
@@ -112,7 +112,7 @@ Comments follow the same rule as the reply. Write them clean as you go. Keep a c
 
 ## Playbooks
 
-Match the task to a playbook below and read it. Track its applicable phases in the existing task record. Record material skips or host adaptations with a reason; do not duplicate the playbook in a second ledger.
+Match the task to a playbook below and read it. Apply the normal task-start reuse, owner observation, and completion steps in [CODEX.md](../../CODEX.md) within its existing phases. Track its applicable phases in the existing task record. Record material skips or host adaptations with a reason; do not duplicate the playbook in a second ledger.
 
 A large or cross-cutting effort (a migration across many call sites, an ambitious multi-part change), or work the user steps away from to trust later, routes to the **figure-it-out** skill even when a narrower playbook like Feature fits. Use **figure-it-out** whenever no bundled playbook fits. It designs a bespoke, rigorous playbook for the task. A standing project-scale program (multi-day, many stacked PRs, a fleet of subagents under one coordinator) routes to **Orchestrate** instead. figure-it-out designs one bespoke run, orchestrate runs the program.
 

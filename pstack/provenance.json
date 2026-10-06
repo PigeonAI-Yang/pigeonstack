@@ -544,11 +544,12 @@
       "source": "pstack/skills/poteto-mode/SKILL.md",
       "destination": "skills/poteto-mode/SKILL.md",
       "sha256": "f51bc4dfeee6f8180b2402f4ca6a061308cd3ac6ee1f867b313f2b32aa644e1d",
-      "adapted_sha256": "22a47bfdfda243bdc576d59b11ea549578e96e7b8b70bb4ff6f99d46308ffa33",
+      "adapted_sha256": "907fe8286696d7ac34756e50e2d572a3043201d3e250aaa4fa673157ecc21c68",
       "adaptation_notes": [
         "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures.",
         "Keep upstream triggers and playbook catalog; apply host authorization, fresh-child ownership and role mapping without automatic panels or repair PRs. Reuse the existing task record.",
-        "Route ordinary plans, local designs, and routine rule adaptation to Sol; reserve Astra for critical design decisions, an actual unresolved Sol attempt, or explicit user model selection. Document labels alone do not trigger Astra."
+        "Route ordinary plans, local designs, and routine rule adaptation to Sol; reserve Astra for critical design decisions, an actual unresolved Sol attempt, or explicit user model selection. Document labels alone do not trigger Astra.",
+        "Integrate existing-tool reuse, owner result observation, and evidence-based recurrence handling into normal workflow phases under CODEX.md without automatic scans, new tools, gates, or review panels."
       ]
     },
     {
