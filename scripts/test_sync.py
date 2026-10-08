@@ -1,7 +1,41 @@
 import tomllib
+from pathlib import Path
+from tempfile import TemporaryDirectory
 import unittest
 
-from sync import patch_config
+from sync import patch_config, plugin_drift
+
+
+class PluginDriftTests(unittest.TestCase):
+    def test_bootstrap_dependencies_do_not_hide_source_or_unexpected_file_drift(self):
+        with TemporaryDirectory() as directory:
+            home = Path(directory)
+            source = home / 'source.ts'
+            source.write_text('export const value = 1;')
+            name = 'skills/poteto-mode/scripts/bootstrap.ts'
+            files = {'local-plugins/pstack/' + name: source}
+            installed = home / 'plugins/cache/personal/pstack/test'
+            target = installed / name
+            target.parent.mkdir(parents=True)
+            target.write_bytes(source.read_bytes())
+            generated = target.parent / 'node_modules/commander/package.json'
+            generated.parent.mkdir(parents=True)
+            generated.write_text('{"version": "14.0.0"}')
+
+            self.assertEqual(plugin_drift(home, 'test', files), (installed, []))
+
+            target.write_text('export const value = 2;')
+            unexpected = installed / 'skills/other/node_modules/unknown.txt'
+            unexpected.parent.mkdir(parents=True)
+            unexpected.write_text('unexpected')
+            (target.parent / 'unexpected.txt').write_text('unexpected')
+
+            _, drift = plugin_drift(home, 'test', files)
+            self.assertCountEqual(drift, [
+                'installed/' + name,
+                'installed/extra/skills/other/node_modules/unknown.txt',
+                'installed/extra/skills/poteto-mode/scripts/unexpected.txt',
+            ])
 
 
 class PatchConfigInsertionTests(unittest.TestCase):

@@ -215,8 +215,11 @@ def plugin_drift(home, version, files):
             drift.append('installed/' + name)
     if installed.exists():
         for path in installed.rglob('*'):
-            if path.is_file() and path.relative_to(installed).as_posix() not in expected:
-                drift.append('installed/extra/' + path.relative_to(installed).as_posix())
+            name = path.relative_to(installed).as_posix()
+            if name.startswith('skills/poteto-mode/scripts/node_modules/'):
+                continue
+            if path.is_file() and name not in expected:
+                drift.append('installed/extra/' + name)
     return installed, drift
 
 
