@@ -21,13 +21,17 @@ English | [简体中文](README.zh-CN.md)
   <a href="https://www.xiaohongshu.com/user/profile/689af6b90000000019016082"><img alt="小红书 Dibo" src="https://img.shields.io/badge/%E5%B0%8F%E7%BA%A2%E4%B9%A6-Dibo-ff2442?style=flat-square&amp;logo=xiaohongshu&amp;logoColor=white" /></a>
 </p>
 
-**A Codex workflow with Sol as Primary, Luna for routine work, Sol for ordinary technical design, and Astra for critical design or work unresolved through the Sol tiers.**
+**A Codex collaboration setup that keeps goals and acceptance with the Primary, gives specified execution to Luna, sends bounded ordinary judgment to Sol, and routes critical design or qualifying takeovers to Astra.**
 
-PigeonStack, or 鸽栈, is PigeonYang's maintained collection of global Codex rules, a customized version of Lauren Tan's pstack, agent-role definitions, selected configuration, and a local synchronization script. It brings those parts into one source repository so that model responsibilities and installed instructions stay consistent.
+PigeonStack, or 鸽栈, is PigeonYang's maintained Codex setup: global instructions, a customized version of Lauren Tan's pstack, agent-role definitions, selected host configuration, and a local synchronization script. It keeps the responsibilities and installed instructions reviewable from one source repository.
 
-Sol remains the Primary for day-to-day judgment and final acceptance. Luna handles routine execution. A fresh Sol Senior Executor starts ordinary technical proposals, plans, local designs, rule updates, upstream adaptations, bounded questions or consultations, and Luna-failure takeovers at `medium`. The same unresolved problem advances through Sol `high` and `xhigh`, then Astra `high` and `xhigh`. Critical architecture and design decisions can start directly with Astra.
+The active Primary retains the goal, constraints, routine judgments, coordination, and final acceptance. Luna is the default for execution under an accepted mechanism. When an ordinary question needs delegated judgment, a fresh Sol starts at `medium` and returns a decision with a concrete execution brief; after the Primary accepts it, a fresh Luna carries out the approved work. A genuine failure takeover keeps its Sol or Astra owner responsible for diagnosis, implementation, and verification through completion. Critical design decisions can go directly to Astra.
 
-This is a set of instructions, a packaged Codex plugin, and deployment tooling. It does not provide an MCP server or a separate autonomous scheduler. Installing it activates no timers, background agents, hooks, or remote services.
+This is a set of instructions, a packaged Codex plugin, and deployment tooling. It does not provide an MCP server or a separate autonomous scheduler, and it starts no background timers, resident agents, or remote services. The repository does bundle a bounded `SessionStart` hook; host configuration and trust govern whether it activates.
+
+## SessionStart context hook
+
+The hook reads only the current region of a saved task record whose session and workspace match the host event. On Windows, its wrapper returns reader failures through the standard `systemMessage`. Targeted diagnostic tests passed, but a natural host trigger and the original reported failure cause remain unconfirmed. Source inclusion or installation alone does not prove host activation or trust. The hook does not monitor later business state, intercept agent dispatch, or enforce coordinator reminders. See the [hook contract](pstack/hooks/README.md) and [Codex host adapter](pstack/CODEX.md).
 
 ## Start here
 
@@ -40,7 +44,7 @@ Not sure which pstack skill fits your task? Ask `/poteto-help`. It reads the bun
 The verified host is Windows with PowerShell, and the sync script requires Python 3.11 or newer. Real plugin installation also requires a compatible Codex CLI and an existing local marketplace registration for `pstack@personal`.
 
 - Maintain global Codex rules in Git and review them with the source.
-- Route routine execution to Luna, ordinary technical design and bounded consultations to Sol, and critical design directly to Astra.
+- Route specified execution under an accepted mechanism to Luna. Use a bounded Sol consultation when an ordinary question needs delegated judgment, then send accepted work to a fresh Luna. Route critical design directly to Astra.
 - Keep the maintained source, runtime files, and versioned plugin cache in sync.
 
 ## Why this division of work
@@ -49,33 +53,41 @@ Multi-agent work becomes expensive when every child rediscovers the problem, cho
 
 PigeonStack gives one Primary responsibility for decisions and final acceptance. Children receive enough context to complete a bounded assignment and return evidence. Independent work can run concurrently, while dependencies and shared resources keep a single owner. The workflow favors a complete, verifiable result with the fewest necessary changes.
 
-| Role | Responsibility | Local model and effort example |
-| --- | --- | --- |
-| Sol Primary | Own the goal, constraints, day-to-day decisions, coordination, and final acceptance. | `gpt-6.1-sol`, `high` |
-| Luna Executor | Handle routine implementation and operations, prescribed read-only evidence collection, assigned checks, and faithful updates to approved content. Return the result and evidence to the Primary. | `gpt-6-luna`, `max` |
-| Sol Senior Executor | Start direct ordinary technical proposals, plans, local designs, routine rule updates, upstream adaptations, and bounded consultations, as well as Luna-failure takeovers, at `medium`. For the same unresolved problem, move through `high` and `xhigh` before Astra. Choose, implement, and verify the solution as a fresh child without switching the active Primary. | `gpt-6.1-sol`, `medium` first |
-| Astra Expert | Directly handle master or system architecture, key interface and data-contract design, and consequential design tradeoffs. Take other work only after Sol `xhigh` reports failure or remains unresolved at its 30-minute assessment, or when the user explicitly selects Astra for the task. For a takeover, own diagnosis, solution selection, implementation, and verification through completion. Start at `high`. Unresolved work can transfer to a fresh Expert at `xhigh`, the automatic escalation limit. | `gpt-6-astra`, `high` first |
+### Coordinating multiple workstreams
 
-Optional read-only Astra consultation is available for a critical design question, a question that remains unresolved after Sol `xhigh` reports failure or reaches its 30-minute assessment, or an explicit task-specific user model request. Ordinary bounded consultations start with Sol at `medium`. The Primary dispatches every consultation and child. Takeovers use the general execution role with an explicit model and effort. This keeps the current role IDs and runtime permissions unchanged.
+Each workstream Main owns its assigned scope. The coordinator compares returned evidence with the original goal and carries out the authorized next step: accept and integrate a result, return a concrete correction, unblock missing evidence, or stop an unsupported direction. Passing along a report or changing models alone is not progress. See [COORDINATOR.md](pstack/COORDINATOR.md); these are instructions, not runtime enforcement.
+
+| Role | Responsibility | Recommended role model and effort |
+| --- | --- | --- |
+| Primary | Own the goal, constraints, routine judgments, coordination, and final acceptance. | `gpt-6.1-sol`, `high` recommended default |
+| Luna Executor | Handle routine implementation and operations, prescribed read-only evidence collection, assigned checks, and faithful updates to approved content. Return the result and evidence to the Primary. | `gpt-6-luna`, `max` |
+| Sol Senior Executor | Handle a bounded ordinary question or delegated judgment at `medium`, returning a decision and execution brief. Consultation is read-only; accepted implementation goes to a fresh Luna. A genuine failure takeover retains diagnosis, implementation, and verification. | `gpt-6.1-sol`, `medium` first |
+| Astra Expert | Directly handle master or system architecture, key interface and data-contract design, and consequential tradeoffs. Other takeovers start only after an actual Sol `xhigh` failure or an unresolved 30-minute assessment, or an explicit task-specific Astra selection. A takeover owns diagnosis, implementation, and verification. Start at `high`; unresolved work can move to a fresh Expert at `xhigh`, the automatic limit. | `gpt-6-astra`, `high` first |
+
+Read-only Astra consultation is available for critical design, a question still unresolved after an actual Sol `xhigh` failure or unresolved 30-minute assessment, or an explicit task-specific Astra selection. Ordinary bounded consultations start with Sol at `medium` and return a decision and execution brief; they do not implement the application. The Primary dispatches each consultation and child. Takeovers use the general execution role with an explicit model and effort.
 
 These names express this project's model strategy and local configuration. Availability, model IDs, supported effort, and cost depend on your account and Codex client. This repository makes no measured speed, savings, or benchmark-superiority claim.
 
-[MODELS.md](pstack/MODELS.md) and the checked-in [configuration](config/workflow.toml) select `gpt-6.1-sol` at `high` as the default Primary. An explicit task-specific user model and effort selection takes precedence over these defaults; the cap governs automatic escalation. A Senior Executor is a separate `gpt-6.1-sol` child that starts at `medium` and advances to `high` and `xhigh` only for the same unresolved problem. It does not switch the active Primary. Editing a file does not switch a running Primary, and a model label does not establish the server's internal model mapping.
+[MODELS.md](pstack/MODELS.md) recommends `gpt-6.1-sol` at `high` as the Primary role default. The checked-in [configuration](config/workflow.toml) records this checkout's explicit `gpt-6-astra` at `high` selection. These values serve different purposes: changing either file does not switch an already-running session, and a model label does not prove the server's internal model mapping. An explicit task-specific model and effort selection takes precedence over role defaults. A Sol Senior Executor is a separate child that starts at `medium`; the same unresolved problem may advance through Sol `high` and `xhigh`, then Astra `high` and `xhigh`.
 
 ## How a task moves through Codex
 
 ```mermaid
 flowchart TD
-	U["User goal and authorization"] --> P["Sol Primary: ordinary decisions and final acceptance"]
-	P -->|"Routine execution, operations, evidence, or approved-content updates"| L["Luna Executor: gpt-6-luna, max"]
-	P -->|"Ordinary proposals, plans, local design, rule changes, or bounded consultations"| M["Fresh Sol child: Senior Executor, gpt-6.1-sol, medium"]
+	U["User goal and authorization"] --> P["Active Primary: goals, routine judgment, and final acceptance"]
+	P -->|"Specified execution under an accepted mechanism"| L["Luna Executor: gpt-6-luna, max"]
+	P -->|"Bounded ordinary question or delegated judgment"| S["Fresh Sol consultation: gpt-6.1-sol, medium"]
+	S -->|"Decision and execution brief; read-only"| P
+	P -->|"Accepted work"| LF["Fresh Luna implements the accepted mechanism"]
 	P -->|"Critical design or explicit Astra selection"| A["Astra Expert: gpt-6-astra, high"]
-	L -->|"Unable to solve, or unresolved at this tier's 30-minute assessment"| M
-	M -->|"Unable to solve, or unresolved at this tier's 30-minute assessment"| SH["Fresh Sol child: Senior Executor, gpt-6.1-sol, high"]
+	L -->|"Unable to solve"| M["Fresh Sol failure takeover: gpt-6.1-sol, medium"]
+	S -->|"Unable to solve, or unresolved at this tier's 30-minute assessment"| SH["Fresh Sol child: gpt-6.1-sol, high"]
+	M -->|"Unable to solve, or unresolved at this tier's 30-minute assessment"| SH
 	SH -->|"Unable to solve, or unresolved at this tier's 30-minute assessment"| SX["Fresh Sol child: Senior Executor, gpt-6.1-sol, xhigh"]
 	SX -->|"Unable to solve, or unresolved at this tier's 30-minute assessment"| A
-	A -->|"Unable to solve, or unresolved at this tier's 30-minute assessment"| AX["Fresh Astra Expert child: xhigh, automatic limit"]
+	A -->|"Unable to solve, or unresolved at this tier's 30-minute assessment"| AX["Fresh Astra Expert child: gpt-6-astra, xhigh, automatic limit"]
 	L -->|"Completed result and evidence"| P
+	LF -->|"Result and evidence"| P
 	M -->|"Completed result and evidence"| P
 	SH -->|"Completed result and evidence"| P
 	SX -->|"Completed result and evidence"| P
@@ -88,7 +100,7 @@ flowchart TD
 	P -->|"Accepted result"| D["Deliver the result and remaining limits"]
 ```
 
-Route ordinary technical proposals, plans, local design, routine rule updates, upstream adaptations, and bounded consultations directly to a fresh Sol Senior Executor at `medium`. Luna-failure takeovers also start at Sol `medium`. For the same unresolved problem, proceed through Sol `high` and `xhigh` before Astra `high`; an ordinary Sol `medium` or `high` assignment does not skip to Astra. Send master or system architecture, key interface and data-contract design, and consequential tradeoffs to Astra directly. Explicit task-specific model and effort selections override defaults. Every consultation is dispatched by the Primary. Each new task starts at its role's default unless the user explicitly selects a model or effort. Only an escalation handoff for the same unresolved task advances to the next tier. A document label such as "technical document" or uncertainty from the Primary alone does not trigger Astra. Send routine follow-up to an accepted Astra decision to Luna, new ordinary design to Sol, and a new critical decision to Astra. Keep the active Sol Primary responsible for day-to-day decisions and final acceptance.
+Keep ordinary implementation and operations with Luna under an accepted mechanism. When the Primary needs delegated ordinary judgment, send one bounded question or decision to a fresh Sol at `medium`; it returns a decision and execution brief, then the Primary directs a fresh Luna to carry out accepted work. Consultation remains read-only. If Luna cannot complete an assigned task, a fresh Sol takeover at `medium` owns the same problem through diagnosis, implementation, and verification. For an unresolved question or takeover, follow Sol `medium`, `high`, and `xhigh` before Astra `high`; do not skip a tier. Send critical architecture, key interfaces and data contracts, or consequential tradeoffs directly to Astra. A technical-document label or Primary uncertainty alone does not trigger Astra. Explicit task-specific model and effort selections override role defaults. The Primary retains routine judgments and final acceptance.
 
 Use Luna at `max` for routine authorized ZIP uploads and publishing, Git operations, installation, repository creation, established platform procedures, routine implementation, and faithful updates to approved public prose or webpages. Provide an operation brief with the artifact, destination, authorized steps, success readback, and stop conditions. Keep core architecture decisions out of Luna's scope. Task size, visual complexity, a technical-document label, or uncertainty from the Primary alone do not trigger Astra. Publication, unfamiliar tools, or an operational failure alone do not change the assignment.
 
@@ -100,13 +112,13 @@ Before assigning implementation to Luna, the Primary supplies the following brie
 4. Exact checks and the observations that establish success.
 5. Assumptions or failures that require a prompt return to the Primary.
 
-A prescribed read-only collection task can precede diagnosis. It names the searches or observations to collect, and the Primary interprets the result. Luna does not receive open-ended architecture work or a batch of unexplained failures to repair. Assign ordinary technical proposals, plans, local design, routine updates to existing rules or upstream adaptations, and bounded ordinary questions directly to a fresh Sol Senior Executor at `medium`, without waiting for Luna to fail. Reserve direct Astra work for master or system architecture, key interface and data-contract design, and consequential tradeoffs.
+A prescribed read-only collection task can precede diagnosis. It names the searches or observations to collect, and the Primary interprets the result. Luna does not receive open-ended architecture work or a batch of unexplained failures to repair. Use a bounded Sol consultation for an ordinary question that needs delegated judgment; it returns a decision and execution brief, not application implementation. Reserve direct Astra work for master or system architecture, key interface and data-contract design, and consequential tradeoffs.
 
 For a takeover, give the Senior Executor or Expert the goal, constraints, evidence, scope, permissions, and acceptance criteria. They choose the technical solution, make the necessary changes, and verify a complete result without per-step Primary approval. They return early only for an external blocker, a genuine user decision, a required scope or permission change, or an urgent correctness or ownership issue.
 
 Scheduling follows actual readiness. Dispatch independent assignments together, then dispatch newly unblocked work as results arrive. Serialize conflicting writes, shared-instance operations, and real dependencies. Each assignment gets a fresh child; a completed child is retired. When no independent work remains, use the default 30-minute interruptible wait (`1800000` ms); it returns early on new input or child events. There are no mandatory model panels or tasks invented to fill slots. Keep image generation, editing, viewing, visual analysis, and related transfers serial across the Primary and its children.
 
-When an executor reports that it cannot solve the problem, advance immediately to the next tier. Otherwise, assess unresolved work 30 minutes after the first dispatch at that model and effort tier. A same-tier retry or replacement does not reset the clock. Carry evidence, failed attempts, and total elapsed time across upgrades. Routine work that starts at Luna follows Luna `max`, Sol `medium`, Sol `high`, Sol `xhigh`, Astra `high`, and a fresh Astra child at `xhigh`. Direct ordinary assignments start at Sol `medium`; critical design assignments start at Astra `high`. A successful tier ends the escalation path. Each new task starts at its role's default unless the user explicitly selects a model or effort. Only a handoff for the same unresolved task advances to the next tier; same-tier retries or replacements keep that tier and its clock. External blockers, including unavailable models or effort levels, credentials, access, permissions, or services, do not trigger reasoning escalation. A confirmed healthy long-running build, download, or training run is not a reasoning failure and continues through its existing observation loop. If Astra at `xhigh` cannot solve the problem or it remains unresolved at its 30-minute assessment, stop and report the actual limit or missing evidence. Do not automatically escalate Astra to `max` or `ultra`, or restart the cycle. These assessments use existing waits and task context; they are not automatic timers.
+When an executor reports that it cannot solve the problem, advance immediately to the next tier. Otherwise, assess unresolved work 30 minutes after the first dispatch at that model and effort tier. A same-tier retry or replacement does not reset the clock. Carry evidence, failed attempts, and total elapsed time across upgrades. Routine execution that starts at Luna follows Luna `max`, Sol `medium`, Sol `high`, Sol `xhigh`, Astra `high`, and a fresh Astra child at `xhigh` when it fails or remains unresolved. Bounded ordinary consultations start at Sol `medium` and keep their read-only scope through upgrades; a genuine failure takeover starts at Sol `medium` and owns the repair through verification. Critical design assignments start at Astra `high`. A successful tier ends the escalation path. Each new task starts at its role's default unless the user explicitly selects a model or effort. Only a handoff for the same unresolved task advances to the next tier; same-tier retries or replacements keep that tier and its clock. External blockers, including unavailable models or effort levels, credentials, access, permissions, or services, do not trigger reasoning escalation. A confirmed healthy long-running build, download, or training run is not a reasoning failure and continues through its existing observation loop. If Astra at `xhigh` cannot solve the problem or it remains unresolved at its 30-minute assessment, stop and report the actual limit or missing evidence. Do not automatically escalate Astra to `max` or `ultra`, or restart the cycle. These assessments use existing waits and task context; they are not automatic timers.
 
 ComputerUse actions stay with the Primary because child tools do not expose ComputerUse. Do not delegate actions requiring ComputerUse. A Senior Executor or Expert may request a named UI action and its observed result, then continue the same problem. The request asks for an observation, not a solution decision. Text, code, CLI, and API work remain delegable. This rule adds no tools or permission flow.
 
@@ -148,7 +160,7 @@ This repository reflects a working personal installation and needs path adaptati
 
 - `DEFAULT_HOME` in [scripts/sync.py](scripts/sync.py) currently points to `J:/Users/yangda01/.codex`.
 - [AGENTS.md](AGENTS.md), [CODEX.md](pstack/CODEX.md), and [poteto-agent.toml](agents/poteto-agent.toml) contain source or runtime paths for the owner's machine.
-- [config/workflow.toml](config/workflow.toml) selects model defaults, agent settings, role files, and plugin enablement. Decide which settings you want to adopt before deployment.
+- [config/workflow.toml](config/workflow.toml) records this checkout's explicit `gpt-6-astra` at `high` selection, agent settings, role files, and plugin enablement. Review the settings you want to adopt before deployment; source-file edits do not switch a running session.
 
 The script does not register a marketplace or provide a zero-configuration installer. A `--codex-home` override does not rewrite every path embedded in instructions. Adapt the maintained source and the existing local marketplace registration before a real installation elsewhere.
 
@@ -231,7 +243,7 @@ These are agent instructions and configuration conventions. They are not runtime
 
 Keep changes focused on an observed problem or current requirement. Use the existing source and verification entry points, preserve unrelated work, and describe the evidence for the change. Keep the English and Chinese introductions aligned.
 
-Global instructions, role definitions, and rule updates remain in English. The Chinese README is public documentation. Choose the role by decision scope, not file type. Assign ordinary technical proposals, plans, and local design to the Sol Senior Executor. Assign master or system architecture, key interface and data-contract design, and consequential tradeoffs to Astra. Preserve upstream attribution and record adapter changes in [ADAPTATION.md](pstack/ADAPTATION.md).
+Global instructions, role definitions, and rule updates remain in English. The Chinese README is public documentation. Choose the role by decision scope, not file type: Luna carries out accepted mechanisms; Sol provides bounded ordinary judgment and returns an execution brief; only a genuine failure takeover stays with its Sol or Astra owner through implementation and verification. Assign master or system architecture, key interface and data-contract design, and consequential tradeoffs to Astra. Preserve upstream attribution and record adapter changes in [ADAPTATION.md](pstack/ADAPTATION.md).
 
 <a id="faq"></a>
 
