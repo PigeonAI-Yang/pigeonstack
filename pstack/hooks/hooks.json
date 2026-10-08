@@ -8,7 +8,7 @@
           {
             "type": "command",
             "command": "python3 \"${PLUGIN_ROOT}/hooks/session_start.py\"",
-            "commandWindows": "powershell.exe -NoLogo -NoProfile -NonInteractive -Command \"& py -3 (Join-Path $env:PLUGIN_ROOT 'hooks/session_start.py')\"",
+            "commandWindows": "powershell.exe -NoLogo -NoProfile -NonInteractive -File \"${PLUGIN_ROOT}/hooks/windows_session_start.ps1\"",
             "timeout": 5,
             "additionalContextLimit": 0,
             "statusMessage": "Reading bound current task context"

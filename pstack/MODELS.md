@@ -8,18 +8,18 @@ Updated 2026-10-06. Before using this file, read [CODEX.md](CODEX.md) and the gl
 | --- | --- | --- |
 | Default Sol Primary | `gpt-6.1-sol` | `high` |
 | Luna Executor | `gpt-6-luna` | `max` |
-| Initial Sol Senior Executor, direct ordinary technical work or takeover | `gpt-6.1-sol` | `medium` |
+| Initial Sol ordinary consultation or failure takeover | `gpt-6.1-sol` | `medium` |
 | First automatic Sol upgrade, using a fresh child | `gpt-6.1-sol` | `high` |
 | Final automatic Sol upgrade, using a fresh child | `gpt-6.1-sol` | `xhigh` |
 | Initial Astra Expert takeover | `gpt-6-astra` | `high` |
 | Final automatic Astra escalation, using a fresh child | `gpt-6-astra` | `xhigh` |
-| Ordinary proposals, implementation plans, local designs, routine rule or upstream adaptation, and ordinary read-only consultation | `gpt-6.1-sol` | `medium` |
+| Bounded delegated ordinary judgment, proposal, plan, local design, or rule adaptation | `gpt-6.1-sol` | `medium` |
 | New or substantively changed master or system architecture, key contracts, and consequential design tradeoffs, including substantive review | `gpt-6-astra` | `high` |
 | Initial read-only Astra consultation on critical design or a question unresolved after an actual Sol `xhigh` attempt | `gpt-6-astra` | `high` |
 
-Direct ordinary technical assignments and ordinary read-only consultations start at Sol `medium` without a Luna failure. Luna failures also start a fresh Sol takeover at `medium`. Primary uncertainty or a technical-document label alone does not justify Astra. Critical design work can go directly to Astra without a Sol prerequisite. Each model-and-effort tier gets the global thirty-minute assessment from its first delegation, including direct Sol assignments. Same-tier replacements do not reset the deadline. Each new tier gets a new window. On actual inability or an unresolved assessment, transfer to a fresh child in order: Sol `medium`, Sol `high`, Sol `xhigh`, Astra `high`, then Astra `xhigh`. Ordinary work cannot skip a Sol tier. Only an actual failed or unresolved Sol `xhigh` attempt qualifies ordinary work for Astra. Advance immediately on actual inability and stop on success. Preserve read-only scope across all consultation upgrades. Release the previous owner and its processes before each handoff, and preserve evidence, failed attempts, paths, total elapsed time, owner, processes, and deadline. External access, authentication, permission, and service blockers do not escalate. Healthy long jobs continue their existing observation loop.
+Bounded ordinary consultations start at Sol `medium` without a Luna failure. Known execution stays with Luna; a consultation returns the decision and execution brief rather than continuing into implementation. Only a genuine failure takeover retains implementation and verification through completion. Luna failures also start a fresh Sol takeover at `medium`. Primary uncertainty or a technical-document label alone does not justify Astra. Critical design work can go directly to Astra without a Sol prerequisite. Each model-and-effort tier gets the global thirty-minute assessment from its first delegation, including direct Sol assignments. Same-tier replacements do not reset the deadline. Each new tier gets a new window. On actual inability or an unresolved assessment, transfer to a fresh child in order: Sol `medium`, Sol `high`, Sol `xhigh`, Astra `high`, then Astra `xhigh`. Ordinary work cannot skip a Sol tier. Only an actual failed or unresolved Sol `xhigh` attempt qualifies ordinary work for Astra. Advance immediately on actual inability and stop on success. Preserve read-only scope across all consultation upgrades. Release the previous owner and its processes before each handoff, and preserve evidence, failed attempts, paths, total elapsed time, owner, processes, and deadline. External access, authentication, permission, and service blockers do not escalate. Healthy long jobs continue their existing observation loop.
 
-Luna may apply mechanical wording, link, version, formatting, or exact accepted-content changes in any document when meaning stays unchanged. Luna does not settle design choices or alter contracts. After a completed Expert assignment and accepted conclusion, a straightforward follow-up uses Luna and a new ordinary technical choice uses Sol. Astra is eligible again for a new critical question, a problem unresolved by Sol `xhigh`, or explicit user model selection. An active takeover stays with its owner through diagnosis, implementation, and verification.
+Luna may apply mechanical wording, link, version, formatting, or exact accepted-content changes in any document when meaning stays unchanged. Luna does not settle design choices or alter contracts. After a completed Expert assignment and accepted conclusion, a straightforward follow-up uses Luna and an unresolved ordinary question uses bounded Sol consultation. Astra is eligible again for a new critical question, a problem unresolved by Sol `xhigh`, or explicit user model selection. An active takeover stays with its owner through diagnosis, implementation, and verification.
 
 Automatic escalation stops at Astra `xhigh`. If the Astra `xhigh` attempt cannot resolve the problem or remains unresolved at its 30-minute assessment, report the actual limit or evidence gap and stop escalation. Do not automatically use Sol or Astra at `max` or `ultra`, or restart the escalation cycle.
 
@@ -30,6 +30,8 @@ For explicit spawn arguments, pass the table's ID as `model` and its effort as `
 ## Upstream role mapping
 
 These are responsibility mappings, not a second routing engine. Every upstream role is resolved here before spawning. Missing role configuration uses this table, never an upstream Grok, Claude, or retired GPT default. Complexity alone does not change the tier. Lists for explicitly selected candidate or review workflows name separate assignments, not automatic permission to create a panel.
+
+Ordinary Sol mappings below cover the unresolved decision or explicitly assigned design document; accepted execution returns to Luna unless the assignment is a genuine failure takeover.
 
 | Upstream role | Assignment on this host |
 | --- | --- |
