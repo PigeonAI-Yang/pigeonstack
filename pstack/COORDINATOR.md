@@ -1,6 +1,6 @@
 # Coordinate the current task
 
-Read this guide when the user says "你是总控代理" or clearly assigns the Primary the same role. Keep that role through subsequent turns of the same task until the user changes it. The user states goals and gives feedback. The Primary manages assignments, dependencies, resource ownership, integration, and final acceptance.
+Read this guide when the user says "你是总控代理" or clearly assigns the Primary the same role. Keep that role through subsequent turns of the same task until the user changes it. The coordinator owns the user's original requested outcome and its completion evidence across assignments and workstreams. A local assignment, phase, handoff, report, temporary wait, or child exit does not by itself complete the goal. The coordinator manages assignments, dependencies, resource ownership, integration, and final acceptance, and continues ready authorized work without waiting for a new "continue".
 
 The global AGENTS.md identified by [CODEX.md](CODEX.md) owns authorization and ownership. CODEX.md owns host tools and assignment briefs. [MODELS.md](MODELS.md) owns model selection. The selected upstream playbook owns workflow phases. Apply this guide within those rules.
 
@@ -15,7 +15,16 @@ The global AGENTS.md identified by [CODEX.md](CODEX.md) owns authorization and o
 7. Direct integration and personally review the actual diff and decisive evidence. Use the integration method allowed by the current authorization. A PR is optional unless the selected authorized workflow requires it. For UI work that expands across pages, establish a coherent complete user workflow before distributing dependent page work. Reuse its accepted structure and components. Confirm resource release before transferring ownership.
 8. Verify the promised result through the real business workflow. Compare the actual artifact, measurement, or output against the latest accepted requirements and reference. Distinguish what a human actually observed, what the business entry point shows, and a tool's request receipt. A worker report, GREEN tests, a build receipt, or file existence alone does not prove acceptance. If the expected effect is absent, keep acceptance incomplete and return the concrete mismatch to its owner for correction. Repeated missing effects require narrowing the task and removing unnecessary prerequisites before forwarding more work. Report actual matches, mismatches, unverified promises, and required user action proportionately. Retain unmet items in the existing record. When a test oracle conflicts with governing production behavior, inspect minimal authoritative evidence before changing implementation or weakening assertions. Reuse credible prior RED, GREEN, and production evidence. Stop when completion criteria pass. Handle repeated actual errors only through the existing normal-completion rules.
 
-For each material result, compare the evidence with the original goal and decide what is accepted, what remains unresolved, and which authorized action follows. Route a ready result to integration, return a concrete mismatch to its Main, narrow a blocked question, request missing evidence, or stop an unsupported approach as the evidence requires. Carry out the authorized coordination decision without waiting for the user to prompt it. A forwarded report, recorded status, or model upgrade is not that decision. Before an upgrade, distinguish an unresolved technical problem from missing input, access, feedback, or resource ownership; preserve the existing takeover sequence for genuine reasoning failures.
+For each material result, verify the scoped result against its acceptance evidence and reconcile it with the original user goal. Then dispatch the next ready authorized action through its responsible Main, or identify the actual blocker. Use this table to decide whether to continue, wait for a result, request missing input, or close the task.
+
+| Evidence | Coordinator action |
+| --- | --- |
+| A phase is complete and authorized work remains ready. | Accept the phase against its evidence, then dispatch the next step through its responsible Main. |
+| An owner still has work in progress and an actual result-return route. | Keep the assignment with that owner and use the supported route. A temporary wait does not finish the goal or wake a closed turn. |
+| A required input, permission, resource, or result route is missing. | Block only dependent work, request the smallest missing item when the user must act, and continue independent authorized work. |
+| Final acceptance evidence meets the current authorized goal. | Close the task and report completion. |
+
+A forwarded report, recorded status, or model upgrade is not the next action. Before an upgrade, distinguish an unresolved technical problem from missing input, access, feedback, or resource ownership. Preserve the existing takeover sequence for genuine reasoning failures.
 
 ## Report agent communication to the user
 
@@ -26,6 +35,8 @@ State the verified effect or remaining evidence gap, your acceptance or continua
 Combine exchanges from one coherent communication round into one update when useful. Report a later material reply or change when it arrives. Use actual communication and new information as the triggers. Do not add timers, periodic polling, repeated unchanged reports, or a new notification system. Continue independent valid work within the existing scope and ownership rules.
 
 ## Keep the role within scope
+
+A COORDINATOR-IMPOSED restriction that limits work to one named assignment or phase, such as "no run in this assignment", stops applying when that named assignment or phase ends. This does not lift any independent human Stop, ongoing user constraint, or permission boundary; those remain binding. If the original user task is scoped to one assignment or phase, do not broaden it automatically when that boundary ends. At a phase boundary, compare the next action with the user's current authorization. A coordinator role or earlier workstream grant does not authorize an action outside its scope. A human Stop takes effect immediately. Do not invent a missing permission when the existing grant covers the action, and do not let an agent grant missing permission. Only a user-authorized scope change recorded in the existing task record can change the final goal. Do not redefine it around the easiest completed phase.
 
 Casual conversation and direct factual answers need no extra workflow. Preserve the active Primary and the user's explicit model selection. A coordinator role declaration does not authorize messages to other top-level chats, commits, pushes, PRs, merges, deployment, packaging, releases, or a full test suite. Apply current-task authorization to each action.
 

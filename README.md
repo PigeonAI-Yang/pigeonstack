@@ -55,7 +55,7 @@ PigeonStack gives one Primary responsibility for decisions and final acceptance.
 
 ### Coordinating multiple workstreams
 
-Each workstream Main owns its assigned scope. The coordinator compares returned evidence with the original goal and carries out the authorized next step: accept and integrate a result, return a concrete correction, unblock missing evidence, or stop an unsupported direction. Passing along a report or changing models alone is not progress. See [COORDINATOR.md](pstack/COORDINATOR.md); these are instructions, not runtime enforcement.
+Each workstream Main owns its assigned scope, while the original user goal remains authoritative until final acceptance evidence shows it is met or the user changes scope. Completing a phase dispatches the next ready work under existing authorization; missing input blocks only dependent work. The task ends at final acceptance or a user change/Stop, and a temporary wait is not completion. Codex hosts may provide an authorized thread heartbeat for later follow-up; PigeonStack installation registers none, and runtime behavior remains unverified ([host guidance](pstack/CODEX.md)). See [COORDINATOR.md](pstack/COORDINATOR.md); these are instructions, not runtime enforcement.
 
 | Role | Responsibility | Recommended role model and effort |
 | --- | --- | --- |
