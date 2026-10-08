@@ -80,7 +80,8 @@ flowchart TD
 	S -->|"Decision and execution brief; read-only"| P
 	P -->|"Accepted work"| LF["Fresh Luna implements the accepted mechanism"]
 	P -->|"Critical design or explicit Astra selection"| A["Astra Expert: gpt-6-astra, high"]
-	L -->|"Unable to solve"| M["Fresh Sol failure takeover: gpt-6.1-sol, medium"]
+	L -->|"Unable to solve, or unresolved at this tier's 30-minute assessment"| M["Fresh Sol failure takeover: gpt-6.1-sol, medium"]
+	LF -->|"Unable to solve, or unresolved at this tier's 30-minute assessment"| M
 	S -->|"Unable to solve, or unresolved at this tier's 30-minute assessment"| SH["Fresh Sol child: gpt-6.1-sol, high"]
 	M -->|"Unable to solve, or unresolved at this tier's 30-minute assessment"| SH
 	SH -->|"Unable to solve, or unresolved at this tier's 30-minute assessment"| SX["Fresh Sol child: Senior Executor, gpt-6.1-sol, xhigh"]
