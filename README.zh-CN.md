@@ -1,4 +1,4 @@
-# PigeonStack · 鸽栈：Codex 多 Agent 协作工作流
+# PigeonStack：Codex 多 Agent 协作工作流
 
 首先致敬并感谢 [Lauren Tan（poteto）](https://github.com/poteto)，[pstack](https://github.com/cursor/plugins/tree/77526ffa67f8dafc698d14b5356e6d4fc78c3127/pstack) 的原作者。PigeonStack 基于她的工作，为这套 Codex 协作流程做了定制适配。
 
