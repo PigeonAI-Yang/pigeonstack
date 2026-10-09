@@ -10,7 +10,7 @@ Global AGENTS.md owns permissions and ownership; [CODEX.md](CODEX.md) owns host 
 2. Give each responsible Main one complete outcome, scope, known constraints, acceptance criteria, and return address. Reuse existing context. Dispatch independent work concurrently; later-operation details do not delay ready work. Do not bypass an existing Main or create visible chats without the user's request.
 3. Leave diagnosis, solution selection, implementation, integration, verification, repair, and child routing with that Main. Ordinary failures stay in its loop. Do not prescribe commands or edits, approve phases, inspect every intermediate patch, or issue each next step.
 4. Reuse shared resource access. Resolve a missing operator or direct request/result route before the dependent operation. Keep one writer/operator; worktrees do not isolate shared services. Preserve Primary-only ComputerUse and serial image work. The Main remains responsible and obtains results directly; the coordinator does not relay each test and retry or make one specialty Main a universal test queue.
-5. Intervene only for a Main-raised external blocker or out-of-scope decision, actual cross-owner conflict, urgent material error, or human instruction. No status queries, acknowledgment loops, or incremental prerequisites. Ordinary additions wait until the whole assignment ends. Deliver Stop immediately; a no-contact instruction also prohibits test messages.
+5. Intervene for an external blocker or out-of-scope decision, actual cross-owner conflict, urgent material error, human instruction, or a confirmed premature Main turn ending under CODEX.md's continuation assessment. Restore the same Main's unfinished assignment with its available results. Do not send status queries or acknowledgments, approve internal phases, or disturb a normally active Main. Ordinary additions wait until the whole assignment ends. Deliver Stop immediately; a no-contact instruction also prohibits test messages.
 6. Accept the completed deliverable against the original goal using the decisive diff and credible evidence. Do not repeat every check. Return a concrete mismatch to the same Main as a complete correction assignment. Advance ready dependent work; retain all unmet parts of the original goal.
 
 ## Handle actual blockers
@@ -19,7 +19,7 @@ Mains report completed outcomes, external blockers they cannot resolve, or decis
 
 Resolve only the missing input, decision, access, or ownership conflict. Block only dependent actions; keep independent work moving. Record the blocker, resolver, and release condition in the existing checkpoint without copying logs or creating another queue. Uncertainty alone adds no gate.
 
-When only Main reports remain and no independent work is ready, use CODEX.md's 30-minute interruptible `clock.sleep`; a cross-chat report can wake it early. Process new input and due decisions before continuing. Do not replace reports with two-minute `wait_threads` loops, history polling, or re-investigation. Use bounded collection only for acceptance, a missing route, or a required assessment. Each Main manages its own children and tier timing. Healthy jobs and external gaps do not justify escalation. This waits in the current turn without installing a timer or scheduler.
+When only Main reports remain and no independent work is ready, follow CODEX.md's interruptible sleep and 30-minute continuation assessment. Keep its deadline, cursor, and recovered turn ID in the existing checkpoint. At the deadline, collect a compact snapshot of unfinished Mains. Leave active work alone, accept finished outcomes, resolve real blockers, and restore a confirmed unfinished idle Main once per ended turn. Process early reports immediately without postponing other due assessments. Do not substitute two-minute polling or repeated continue messages. Each Main manages its own children and tier timing; this check does not escalate healthy jobs or external gaps. It runs in the current turn without a timer service or scheduler.
 
 When evidence contradicts the checkpoint, correct the affected decision before dependent action. A stopped run invalidates its old next step. Repeated handoffs without delivery call for removing unnecessary dependencies and restoring whole-outcome ownership.
 
@@ -27,7 +27,7 @@ When evidence contradicts the checkpoint, correct the affected decision before d
 
 Skip redundant agent acknowledgments while keeping the user informed at meaningful boundaries. Combine related exchanges. State actual progress or result, your decision, the next action, and any remaining gap; distinguish reported results from verified effects.
 
-Use commentary while continuing work. A final response must contain a substantive result or blocker and any remaining next action and available continuation route. "No reply needed" never means empty output, invented waiting, or early completion.
+Answer side questions and status requests in commentary, then continue the original goal. Apply CODEX.md's turn-ending conditions; unfinished ready work or running children require action or a native wait, not a final summary of next steps. A real external blocker must name its missing input and actual continuation route. "No reply needed" never means empty output or early completion.
 
 ## Keep the role within scope
 

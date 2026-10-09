@@ -252,6 +252,12 @@ These are agent instructions and configuration conventions. They are not runtime
 
 ## Changelog
 
+### 2026-10-10 | `0.15.13+codex.20261010continuation`
+
+- Mains answer incidental questions in commentary and continue their original task. Running children use native waits; returned results are processed before ending the turn.
+- Coordinators assess unfinished Main assignments within 30 minutes. They leave active work alone and restore a confirmed premature ending once per ended turn, using the existing task record and available results.
+- Two controlled Desktop tests passed: continuing after an incidental question, and recovering an idle Main through one continuation message. The recovery test used a 15-second assessment deadline, not a full 30-minute interval. These instructions are not runtime enforcement.
+
 ### 2026-10-09 | `0.15.13+codex.20261009wait`
 
 - Coordinators awaiting Main reports now use an interruptible 30-minute `clock.sleep`, avoiding repeated two-minute `wait_threads` calls. Ready work and earlier action deadlines take precedence.
