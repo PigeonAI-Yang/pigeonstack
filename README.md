@@ -252,6 +252,11 @@ These are agent instructions and configuration conventions. They are not runtime
 
 ## Changelog
 
+### 2026-10-09 | `0.15.13+codex.20261009wait`
+
+- Coordinators awaiting Main reports now use an interruptible 30-minute `clock.sleep`, avoiding repeated two-minute `wait_threads` calls. Ready work and earlier action deadlines take precedence.
+- Verified an independent Desktop chat message interrupted a requested 180-second sleep after 41.223 seconds. Mains must send outcome or blocker reports; ending their own chat alone does not notify the coordinator. The 30-minute setting is supported by the tool range, but was not the duration used in this probe.
+
 ### 2026-10-09 | `0.15.13+codex.20261009lean`
 
 - Start ready work with the context needed for the next action. Reuse settled decisions and existing evidence instead of demanding exhaustive plans or later-step prerequisites.

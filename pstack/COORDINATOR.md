@@ -19,7 +19,7 @@ Mains report completed outcomes, external blockers they cannot resolve, or decis
 
 Resolve only the missing input, decision, access, or ownership conflict. Block only dependent actions; keep independent work moving. Record the blocker, resolver, and release condition in the existing checkpoint without copying logs or creating another queue. Uncertainty alone adds no gate.
 
-Do not replace messages with continuous history reads, polling, or re-investigation of an active Main. Use bounded collection for acceptance, a missing report route, or a required assessment. Each Main manages its own children and tier timing. Healthy jobs and external gaps do not justify reasoning escalation. Waiting installs no timer or future wakeup.
+When only Main reports remain and no independent work is ready, use CODEX.md's 30-minute interruptible `clock.sleep`; a cross-chat report can wake it early. Process new input and due decisions before continuing. Do not replace reports with two-minute `wait_threads` loops, history polling, or re-investigation. Use bounded collection only for acceptance, a missing route, or a required assessment. Each Main manages its own children and tier timing. Healthy jobs and external gaps do not justify escalation. This waits in the current turn without installing a timer or scheduler.
 
 When evidence contradicts the checkpoint, correct the affected decision before dependent action. A stopped run invalidates its old next step. Repeated handoffs without delivery call for removing unnecessary dependencies and restoring whole-outcome ownership.
 
