@@ -37,7 +37,7 @@ The `SessionStart` hook returns only the current region of a saved task record w
 
 The source also includes `pstack/hooks/task_context.py` for the existing record owner to read and update that same region. Updates use a whole-record SHA-256, preserve bytes outside the region, and archive the complete old body. Keep the current checkpoint concise, with 4–8 KiB as a soft target. The helper does not summarize history or judge semantic completeness, and it does not create or verify a SessionStart binding.
 
-The current body remains limited to 16 KiB. The Windows wrapper reports reader failures through `systemMessage`. Version `0.15.13+codex.20261009checkpoint` is deployed locally; installed-file checks and a temporary read/update/archive/readback workflow passed. Natural `SessionStart` behavior and live task-record migration remain unverified. See the [maintenance evidence](pstack/ADAPTATION.md#current-checkpoint-maintenance-2026-10-09) for verification details.
+The current body remains limited to 16 KiB. The Windows wrapper reports reader failures through `systemMessage`. Version `0.15.13+codex.20261009checkpoint` is deployed locally; installed-file checks and a live current-region read/update/archive/readback workflow passed against a real task record. The checkpoint went from 29,370 to 8,158 bytes; the complete previous body was archived and verified, the goal, permissions, and blockers were preserved, and history outside the region stayed unchanged. Natural `SessionStart` behavior remains unverified. See the [maintenance evidence](pstack/ADAPTATION.md#current-checkpoint-maintenance-2026-10-09) for verification details.
 
 The hook does not monitor later business state, intercept agent dispatch, or enforce coordinator reminders. See the [hook contract](pstack/hooks/README.md) and [Codex host adapter](pstack/CODEX.md).
 
@@ -255,7 +255,8 @@ These are agent instructions and configuration conventions. They are not runtime
 - Added a read and update CLI for an existing marked current checkpoint. Updates compare the whole-record SHA-256, preserve all bytes outside the region, archive the complete old body, and verify the replaced record.
 - Kept the hook's 16 KiB current-body limit. A 4–8 KiB checkpoint is a soft maintenance target, not a new gate; the helper does not summarize or judge semantic completeness.
 - Plugin-only deploy and installed-cache check returned `ok` for version `0.15.13+codex.20261009checkpoint`, with 243 managed files and no drift.
-- The installed helper completed a temporary read, update, archive, and readback cycle. Natural `SessionStart` behavior and live record migration remain unverified.
+- A live update against a real task record reduced the current checkpoint from 29,370 to 8,158 bytes. The complete previous body was archived and verified; the goal, permissions, and blockers were preserved, and history outside the region stayed unchanged. Natural `SessionStart` behavior remains unverified.
+- Owners read the short current checkpoint first and follow only relevant task and evidence references as needed.
 
 
 ### 2026-10-09 | `0.15.13+codex.20261009delivery`
