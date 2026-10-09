@@ -2,7 +2,7 @@
 
 First, credit and thanks to [Lauren Tan (poteto)](https://github.com/poteto), the original author of [pstack](https://github.com/cursor/plugins/tree/77526ffa67f8dafc698d14b5356e6d4fc78c3127/pstack). PigeonStack builds on her work and adapts it for this Codex workflow.
 
-English | [简体中文](README.zh-CN.md)
+English | [Simplified Chinese](README.zh-CN.md)
 
 [Documentation](https://pigeonai-yang.github.io/pigeonstack/) | [Getting started](https://pigeonai-yang.github.io/pigeonstack/getting-started/) | [FAQ](#faq) | [Issues](https://github.com/PigeonAI-Yang/pigeonstack/issues)
 
@@ -18,7 +18,7 @@ English | [简体中文](README.zh-CN.md)
   <a href="https://github.com/PigeonAI-Yang/pigeonstack/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/PigeonAI-Yang/pigeonstack?style=flat-square&amp;logo=github" /></a>
   <a href="https://github.com/PigeonAI-Yang"><img alt="GitHub followers" src="https://img.shields.io/github/followers/PigeonAI-Yang?style=flat-square&amp;logo=github&amp;label=Follow%20author" /></a>
   <a href="https://x.com/KimbomArtist"><img alt="X KimbomArtist" src="https://img.shields.io/badge/X-KimbomArtist-000000?style=flat-square&amp;logo=x&amp;logoColor=white" /></a>
-  <a href="https://www.xiaohongshu.com/user/profile/689af6b90000000019016082"><img alt="小红书 Dibo" src="https://img.shields.io/badge/%E5%B0%8F%E7%BA%A2%E4%B9%A6-Dibo-ff2442?style=flat-square&amp;logo=xiaohongshu&amp;logoColor=white" /></a>
+  <a href="https://www.xiaohongshu.com/user/profile/689af6b90000000019016082"><img alt="Xiaohongshu Dibo" src="https://img.shields.io/badge/Xiaohongshu-Dibo-ff2442?style=flat-square&amp;logo=xiaohongshu&amp;logoColor=white" /></a>
 </p>
 
 **A Codex collaboration setup that keeps goals and acceptance with the Primary, gives specified execution to Luna, sends bounded ordinary judgment to Sol, and routes critical design or qualifying takeovers to Astra.**
@@ -28,8 +28,6 @@ PigeonStack is PigeonYang's maintained Codex setup: global instructions, a custo
 The active Primary retains the goal, constraints, routine judgments, coordination, and final acceptance. Luna is the default for execution under an accepted mechanism. When an ordinary question needs delegated judgment, a fresh Sol starts at `medium` and returns a decision with a concrete execution brief; after the Primary accepts it, a fresh Luna carries out the approved work. A genuine failure takeover keeps its Sol or Astra owner responsible for diagnosis, implementation, and verification through completion. Critical design decisions can go directly to Astra.
 
 For multi-workstream tasks, the coordinator gives each Main an outcome-bounded deliverable. The Main owns ready authorized research, implementation, integration, and verification within that scope. It gives its Luna children concrete execution briefs and continues covered work without another coordinator dispatch. The coordinator reviews decisive diffs and final evidence and handles concrete acceptance gaps, cross-stream conflicts, or decisions beyond a Main's scope. Messages focus on material decisions, action changes, and input that releases a blocker.
-
-在多工作流任务中，协调者为每个 Main 明确以用户结果为中心的有界交付目标。Main 在授权范围内负责已就绪的研究、实现、集成和验证，并为自己的 Luna 子任务编写具体执行简报。范围内已授权的下一步无需协调者重新派发。协调者审查关键差异和最终证据，并处理具体验收缺口、跨工作流冲突或超出 Main 范围的决策。消息集中在重要决策、行动变化和解除阻塞所需的信息上。
 
 This is a set of instructions, a packaged Codex plugin, and deployment tooling. It does not provide an MCP server or a separate autonomous scheduler, and it starts no background timers, resident agents, or remote services. The repository does bundle a bounded `SessionStart` hook; host configuration and trust govern whether it activates.
 
@@ -250,7 +248,7 @@ A validation gate is a mandatory check that must pass before an action can proce
 
 These are agent instructions and configuration conventions. They are not runtime enforcement hooks. Keep disk synchronization, installed-plugin verification, instructions read in the current task, and behavior observed in a new session as separate claims.
 
-## 更新日志 / Changelog
+## Changelog
 
 ### 2026-10-09 | `0.15.13+codex.20261009checkpoint`
 
@@ -262,17 +260,17 @@ These are agent instructions and configuration conventions. They are not runtime
 
 ### 2026-10-09 | `0.15.13+codex.20261009delivery`
 
-- Main 的有界任务覆盖授权范围内已就绪的研究、实现、集成和验证。候选结果、报告或局部阶段完成后，范围内的下一步无需重新派发或申请协调者许可。
-- 协调者给 Main 提供结果导向的任务简报。Main 负责判断和集成，并给 Luna 子任务提供具体执行简报。
-- 对通过验收的结果推进下一项就绪工作。发现缺口时，把具体差异交回原 Main；回执、状态或转发本身不代表交付成功。
-- 未改变部分继续使用已接受的证据。只有相关代码变化、新失败或具体证据缺口才重新检查受影响范围。集成 Main 检查当前目标内容与冲突，协调者避免重复完整基线审查。
-- 阻塞只影响依赖该输入、资源或许可的行动。记录受阻行动、原因、解决方、解除条件和独立就绪工作。Host fixture 缺失不阻塞独立 Python 集成；部署许可缺失不阻塞独立源码集成。
-- 重复交接或检查且没有新交付证据时，先排查重复任务、责任人不清和无关前置条件，再调整实际工作。健康长任务和合理检查不属于重复错误；不自动升级模型，也不增加计时器或强制门禁。新会话中的实际协调行为仍待验证。
+- Each Main's bounded assignment covers ready research, implementation, integration, and verification within the authorized scope. Completing a candidate result, report, or local phase does not require a new dispatch or coordinator permission for the next in-scope step.
+- Coordinators give Mains outcome-oriented briefs. Each Main owns judgment and integration, and gives its Luna subtasks concrete execution briefs.
+- After a result passes acceptance, continue to the next ready item. If a gap appears, return the specific mismatch to the original Main. A receipt, status update, or forwarding action alone does not prove successful delivery.
+- Continue to use accepted evidence for unchanged parts. Recheck only the affected scope when related code changes, a new failure occurs, or a concrete evidence gap appears. The integrating Main reviews the current target content and conflicts. The coordinator avoids repeating a full baseline review.
+- A blocker affects only actions that depend on the input, resource, or permission it needs. Record the blocked action, cause, resolver, condition for clearing the blocker, and independent ready work. A missing host fixture does not block independent Python integration. Missing deployment permission does not block independent source integration.
+- If handoffs or checks repeat without new delivery evidence, first look for duplicate tasks, unclear ownership, and irrelevant prerequisites, then adjust the work. A healthy long-running task or a justified check does not count as a repeated error. Do not automatically upgrade the model or add timers or mandatory gates. Actual coordination behavior in a new session remains unverified.
 
 ### 2026-10-09 | `0.15.13+codex.20261009communication`
 
-- 协作规则抑制状态查询与确认往返；普通补充等到单元边界，当前动作纠正和解除阻塞所需输入仍立即处理。Main 按现有任务记录继续推进用户已授权目标；必要的 Main 完成、阻塞或决策报告可在协调者忙碌时发送。Desktop `send-now` 不保证排队。
-- SessionStart：完善 Windows 探针调用与错误诊断，支持 2 MiB 记录扫描和保留全局配置的 plugin-only 部署；实际 coordinator binding 与已安装插件的本地静态读取已验证，自然 reader 注入仍待验证。
+- The collaboration rules limit status queries and acknowledgment loops. Ordinary additions wait until the current unit boundary. Corrections to the active action and input needed to clear a blocker are handled immediately. Each Main continues the user-authorized goal through the existing task record. When needed, a Main can send a completion, blocker, or decision report while the coordinator is busy. Desktop `send-now` does not guarantee queueing.
+- For `SessionStart`, the Windows probe invocation and error diagnostics improved. The implementation supports 2 MiB record scans and plugin-only deployment that preserves global configuration. The actual coordinator binding and a local static read by the installed plugin were verified. Natural reader injection remains unverified.
 
 ## Contributing
 
