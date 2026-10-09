@@ -27,9 +27,9 @@ PigeonStack, or 鸽栈, is PigeonYang's maintained Codex setup: global instructi
 
 The active Primary retains the goal, constraints, routine judgments, coordination, and final acceptance. Luna is the default for execution under an accepted mechanism. When an ordinary question needs delegated judgment, a fresh Sol starts at `medium` and returns a decision with a concrete execution brief; after the Primary accepts it, a fresh Luna carries out the approved work. A genuine failure takeover keeps its Sol or Astra owner responsible for diagnosis, implementation, and verification through completion. Critical design decisions can go directly to Astra.
 
-For multi-workstream tasks, each Main continues ready work that the user has already authorized at natural unit boundaries, using the existing task record. The coordinator focuses messages on material decisions, changed actions, and input that releases a blocker.
+For multi-workstream tasks, the coordinator gives each Main an outcome-bounded deliverable. The Main owns ready authorized research, implementation, integration, and verification within that scope. It gives its Luna children concrete execution briefs and continues covered work without another coordinator dispatch. The coordinator reviews decisive diffs and final evidence and handles concrete acceptance gaps, cross-stream conflicts, or decisions beyond a Main's scope. Messages focus on material decisions, action changes, and input that releases a blocker.
 
-在多工作流任务中，各 Main 会在自然的工作单元边界依据现有任务记录，继续推进用户已授权且已就绪的工作。协调者把消息集中在重要决策、行动变化和解除阻塞所需的信息上。
+在多工作流任务中，协调者为每个 Main 明确以用户结果为中心的有界交付目标。Main 在授权范围内负责已就绪的研究、实现、集成和验证，并为自己的 Luna 子任务编写具体执行简报。范围内已授权的下一步无需协调者重新派发。协调者审查关键差异和最终证据，并处理具体验收缺口、跨工作流冲突或超出 Main 范围的决策。消息集中在重要决策、行动变化和解除阻塞所需的信息上。
 
 This is a set of instructions, a packaged Codex plugin, and deployment tooling. It does not provide an MCP server or a separate autonomous scheduler, and it starts no background timers, resident agents, or remote services. The repository does bundle a bounded `SessionStart` hook; host configuration and trust govern whether it activates.
 
@@ -59,7 +59,7 @@ PigeonStack gives one Primary responsibility for decisions and final acceptance.
 
 ### Coordinating multiple workstreams
 
-Each workstream Main owns its assigned scope, while the original user goal remains authoritative until final acceptance evidence shows it is met or the user changes scope. Completing a phase dispatches the next ready work under existing authorization; missing input blocks only dependent work. The task ends at final acceptance or a user change/Stop, and a temporary wait is not completion. Codex hosts may provide an authorized thread heartbeat for later follow-up; PigeonStack installation registers none, and runtime behavior remains unverified ([host guidance](pstack/CODEX.md)). See [COORDINATOR.md](pstack/COORDINATOR.md); these are instructions, not runtime enforcement.
+Each workstream Main owns its bounded assignment through ready authorized research, implementation, integration, and verification. A candidate, report, or local phase does not require coordinator dispatch or permission when the next ready action fits the assignment and current authorization. Only an actual owner transfer, dependency, or permission boundary requires a handoff. Missing input blocks only dependent work. The original goal stays open until final evidence meets it or the user changes scope or stops work. The coordinator accepts scoped evidence, returns a concrete mismatch to the same Main, and reviews the final diff and evidence. A temporary wait does not complete the goal. Codex hosts may provide an authorized thread heartbeat for later follow-up; PigeonStack installation registers none, and runtime behavior remains unverified ([host guidance](pstack/CODEX.md)). See [COORDINATOR.md](pstack/COORDINATOR.md); these are instructions, not runtime enforcement.
 
 | Role | Responsibility | Recommended role model and effort |
 | --- | --- | --- |
@@ -245,6 +245,15 @@ A validation gate is a mandatory check that must pass before an action can proce
 These are agent instructions and configuration conventions. They are not runtime enforcement hooks. Keep disk synchronization, installed-plugin verification, instructions read in the current task, and behavior observed in a new session as separate claims.
 
 ## 更新日志 / Changelog
+
+### 2026-10-09 | `0.15.13+codex.20261009delivery`
+
+- Main 的有界任务覆盖授权范围内已就绪的研究、实现、集成和验证。候选结果、报告或局部阶段完成后，范围内的下一步无需重新派发或申请协调者许可。
+- 协调者给 Main 提供结果导向的任务简报。Main 负责判断和集成，并给 Luna 子任务提供具体执行简报。
+- 对通过验收的结果推进下一项就绪工作。发现缺口时，把具体差异交回原 Main；回执、状态或转发本身不代表交付成功。
+- 未改变部分继续使用已接受的证据。只有相关代码变化、新失败或具体证据缺口才重新检查受影响范围。集成 Main 检查当前目标内容与冲突，协调者避免重复完整基线审查。
+- 阻塞只影响依赖该输入、资源或许可的行动。记录受阻行动、原因、解决方、解除条件和独立就绪工作。Host fixture 缺失不阻塞独立 Python 集成；部署许可缺失不阻塞独立源码集成。
+- 重复交接或检查且没有新交付证据时，先排查重复任务、责任人不清和无关前置条件，再调整实际工作。健康长任务和合理检查不属于重复错误；不自动升级模型，也不增加计时器或强制门禁。新会话中的实际协调行为仍待验证。
 
 ### 2026-10-09 | `0.15.13+codex.20261009communication`
 
