@@ -252,6 +252,12 @@ These are agent instructions and configuration conventions. They are not runtime
 
 ## Changelog
 
+### 2026-10-09 | `0.15.13+codex.20261009lean`
+
+- Start ready work with the context needed for the next action. Reuse settled decisions and existing evidence instead of demanding exhaustive plans or later-step prerequisites.
+- Resolve shared resource access before the operation that needs it; independent work can proceed. Main assignments specify acceptance criteria, and produce completion evidence during execution.
+- Cut the three instruction files by about 30%, including roughly half of the coordinator guide. Consolidated repeated preparation and completion instructions. Required permissions, exclusive resource ownership, and final acceptance remain; live agent behavior has not been retested.
+
 ### 2026-10-09 | `0.15.13+codex.20261009outcome`
 
 - Coordinators assign complete outcomes. Each Main owns diagnosis, implementation, integration, verification, and repair; coordinators review the finished deliverable rather than approving internal phases.
