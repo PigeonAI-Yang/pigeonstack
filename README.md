@@ -252,6 +252,12 @@ These are agent instructions and configuration conventions. They are not runtime
 
 ## Changelog
 
+### 2026-10-10 | `0.15.13+codex.20261010progress`
+
+- Thirty minutes is a progress checkpoint, not a task deadline. Agents with substantive progress and a concrete next step continue on the same model, including Astra xhigh.
+- Escalation requires evidence that the current agent cannot proceed. External blockers stay with their responsible owner; missing recent output alone does not prove a stall.
+- Aligned global rules, model routing, coordinator guidance, base prompts, and managed runtime instructions. The automatic model ceiling remains; it no longer acts as an execution time limit.
+
 ### 2026-10-10 | `0.15.13+codex.20261010continuation`
 
 - Mains answer incidental questions in commentary and continue their original task. Running children use native waits; returned results are processed before ending the turn.

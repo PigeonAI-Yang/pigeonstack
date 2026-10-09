@@ -44,7 +44,7 @@ A prompt states the intent and the check for done. The playbook supplies the ste
 - Ask for a fresh worktree off a named base.
 - Pre-answer what the agent would stop for, such as "don't ask me before committing".
 - Ask for a decision log to audit later.
-- Name external blockers and the required finish condition. The global thirty-minute unresolved-problem assessment and takeover cap still apply.
+- Name external blockers and the required finish condition. The global thirty-minute progress assessment and model ceiling still apply; unfinished productive work continues with its current owner.
 
 ## Steer in one line
 

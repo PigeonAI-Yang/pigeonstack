@@ -1,6 +1,6 @@
 # Pstack on Codex
 
-Read the global `AGENTS.md` first: `J:/PigeonYang/pigeonstack/AGENTS.md` in the source repository, or `J:/Users/yangda01/.codex/AGENTS.md` in the runtime installation. It owns authorization, delegation eligibility, takeover deadlines, ownership, and evidence standards. [MODELS.md](MODELS.md) owns model IDs, reasoning effort, and the upstream role mapping. This entry translates the upstream workflows to this host. Reuse unchanged instructions already read in this session.
+Read the global `AGENTS.md` first: `J:/PigeonYang/pigeonstack/AGENTS.md` in the source repository, or `J:/Users/yangda01/.codex/AGENTS.md` in the runtime installation. It owns authorization, delegation eligibility, takeover progress assessments, ownership, and evidence standards. [MODELS.md](MODELS.md) owns model IDs, reasoning effort, and the upstream role mapping. This entry translates the upstream workflows to this host. Reuse unchanged instructions already read in this session.
 
 ## Activate the upstream workflow
 
@@ -31,7 +31,7 @@ For internal assignments, use these briefs without inventing extra preparation:
 
 Choose the assignment boundary before its model. Routine Primary decisions do not need consultation. Accepted execution goes to Luna; established API, syntax, and command options within that mechanism remain execution. An accepted consultation returns execution to a fresh Luna child; an active takeover keeps ownership until completion.
 
-Name the expected effect and an existing observation/result route. Preserve applicable tier timing; an internal child's final handoff is sufficient. Let the owner act, observe, and correct. A request receipt is not the effect. Material contradictory evidence changes the dependent next action; a stopped run invalidates its old next action.
+Name the expected effect and an existing observation/result route. Preserve progress assessment times; they are not completion deadlines. Continue productive work with its current owner, including at Astra `xhigh`. An internal child's final handoff is sufficient. Let the owner act, observe, and correct. A request receipt is not the effect. Material contradictory evidence changes the dependent next action; a stopped run invalidates its old next action.
 
 For a confirmed external input gap, promptly ask for the smallest useful input and its collection/return path. Do available preparation and independent work without exhaustive investigation or model escalation for missing access. Follow global interruption, waiting, and assessment rules: no status queries, acknowledgment loops, repeated short waits, or invented wakeups. Reports follow the Desktop route below.
 
