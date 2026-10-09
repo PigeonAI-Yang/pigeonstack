@@ -27,7 +27,7 @@ PigeonStack is PigeonYang's maintained Codex setup: global instructions, a custo
 
 The active Primary retains the goal, constraints, routine judgments, coordination, and final acceptance. Luna is the default for execution under an accepted mechanism. When an ordinary question needs delegated judgment, a fresh Sol starts at `medium` and returns a decision with a concrete execution brief; after the Primary accepts it, a fresh Luna carries out the approved work. A genuine failure takeover keeps its Sol or Astra owner responsible for diagnosis, implementation, and verification through completion. Critical design decisions can go directly to Astra.
 
-For multi-workstream tasks, the coordinator gives each Main an outcome-bounded deliverable. The Main owns ready authorized research, implementation, integration, and verification within that scope. It gives its Luna children concrete execution briefs and continues covered work without another coordinator dispatch. The coordinator reviews decisive diffs and final evidence and handles concrete acceptance gaps, cross-stream conflicts, or decisions beyond a Main's scope. Messages focus on material decisions, action changes, and input that releases a blocker.
+For multi-workstream tasks, the coordinator assigns a complete outcome to each Main and reviews the finished deliverable. The Main independently owns diagnosis, implementation, integration, verification, and repair, and manages its own children. Shared operators exchange necessary requests and results directly with the responsible Main. The coordinator resolves external blockers and cross-owner conflicts without prescribing every command or approving each internal phase.
 
 This is a set of instructions, a packaged Codex plugin, and deployment tooling. It does not provide an MCP server or a separate autonomous scheduler, and it starts no background timers, resident agents, or remote services. The repository does bundle a bounded `SessionStart` hook; host configuration and trust govern whether it activates.
 
@@ -65,7 +65,7 @@ PigeonStack gives one Primary responsibility for decisions and final acceptance.
 
 The user's instruction to coordinate the development team covers internal assignments, reports, corrections, and handoffs for that task. The coordinator maintains the return address through handoffs. Mains report substantive results, blockers, and decisions without per-agent approvals or acknowledgment loops. Skipping a reply to another agent does not suppress the user's progress report: the agent explains what it handled and what happens next, rather than returning an empty answer. Related exchanges are combined into one useful update. Version `0.15.13+codex.20261009team` is deployed locally and installed files have been checked. Behavior in new sessions remains unverified. See the [communication changes and verification limits](pstack/ADAPTATION.md#team-communication-and-user-visible-reports-2026-10-09).
 
-Each workstream Main owns its bounded assignment through ready authorized research, implementation, integration, and verification. A candidate, report, or local phase does not require coordinator dispatch or permission when the next ready action fits the assignment and current authorization. Only an actual owner transfer, dependency, or permission boundary requires a handoff. Missing input blocks only dependent work. The original goal stays open until final evidence meets it or the user changes scope or stops work. The coordinator accepts scoped evidence, returns a concrete mismatch to the same Main, and reviews the final diff and evidence. A temporary wait does not complete the goal. Codex hosts may provide an authorized thread heartbeat for later follow-up; PigeonStack installation registers none, and runtime behavior remains unverified ([host guidance](pstack/CODEX.md)). See [COORDINATOR.md](pstack/COORDINATOR.md); these are instructions, not runtime enforcement.
+Each workstream Main owns a complete assignment through implementation and real verification. Ordinary failures stay in its repair loop. The coordinator does not repeatedly inspect intermediate patches, dictate test commands, or relay each retry. A Main reports its finished outcome or a blocker or decision it cannot resolve within scope; the coordinator reviews final evidence and returns any concrete acceptance gap to the same Main for correction. Human instructions, actual resource conflicts, and material errors requiring immediate intervention still take precedence. User-facing progress remains substantive, with no empty final responses. See [COORDINATOR.md](pstack/COORDINATOR.md); these are instructions, not runtime enforcement.
 
 | Role | Responsibility | Recommended role model and effort |
 | --- | --- | --- |
@@ -251,6 +251,12 @@ A validation gate is a mandatory check that must pass before an action can proce
 These are agent instructions and configuration conventions. They are not runtime enforcement hooks. Keep disk synchronization, installed-plugin verification, instructions read in the current task, and behavior observed in a new session as separate claims.
 
 ## Changelog
+
+### 2026-10-09 | `0.15.13+codex.20261009outcome`
+
+- Coordinators assign complete outcomes. Each Main owns diagnosis, implementation, integration, verification, and repair; coordinators review the finished deliverable rather than approving internal phases.
+- Shared operators return results directly to the responsible Main. Routine failures stay in its repair loop; coordinator intervention is reserved for real external blockers, cross-owner conflicts, urgent correctness issues, and human instructions.
+- Keep substantive user-facing progress while avoiding acknowledgment loops, unsolicited micro-instructions, and empty final responses. The user's stop-contact instruction remains in force; live team behavior has not been retested for this revision.
 
 ### 2026-10-09 | `0.15.13+codex.20261009checkpoint`
 
