@@ -35,7 +35,13 @@ This is a set of instructions, a packaged Codex plugin, and deployment tooling. 
 
 ## SessionStart context hook
 
-The hook reads only the current region of a saved task record whose session and workspace match the host event. It loads saved task context only; it does not queue or defer messages. On Windows, its wrapper returns reader failures through the standard `systemMessage`. Targeted diagnostic tests passed, but a natural host trigger and the original reported failure cause remain unconfirmed. Source inclusion or installation alone does not prove host activation or trust. The hook does not monitor later business state, intercept agent dispatch, or enforce coordinator reminders. See the [hook contract](pstack/hooks/README.md) and [Codex host adapter](pstack/CODEX.md).
+The `SessionStart` hook returns only the current region of a saved task record whose session and workspace match the host event. It loads saved task context only; it does not queue or defer messages.
+
+The source also includes `pstack/hooks/task_context.py` for the existing record owner to read and update that same region. Updates use a whole-record SHA-256, preserve bytes outside the region, and archive the complete old body. Keep the current checkpoint concise, with 4–8 KiB as a soft target. The helper does not summarize history or judge semantic completeness, and it does not create or verify a SessionStart binding.
+
+The hook keeps its 16 KiB current-body limit; a larger body yields no task context. On Windows, the hook wrapper returns reader failures through the standard `systemMessage`. Version `0.15.13+codex.20261009checkpoint` was deployed with `py -3 scripts/sync.py deploy --plugin-only`; the final plugin-only deploy and check returned `ok`, and the check found 243 managed files with no runtime, config, or installed drift. The installed helper completed a temporary read, update, archive, and readback cycle. The fixture record SHA-256 changed from `97b103d828a894c6b6531fe311f2400f18a710e3083f650da9474c17241635eb` to `13a8112af4aba8bc1f018931927a9020635873a7ed1b51e6011290232d738297`, and the archive SHA-256 was `71c4f9e532a185f7ea92b548cc2e960ce56688c40cca2cddb249fb76912a684c`. Runtime `config.toml` remained byte-identical at SHA-256 `1a10acaf3be44462719349d5f50dbedb294a7ea58911ba73bebcc9f0d4127035`. These checks verify local deployment and a temporary CLI workflow. They do not verify a natural `SessionStart` event or migration of a live task record.
+
+The hook does not monitor later business state, intercept agent dispatch, or enforce coordinator reminders. See the [hook contract](pstack/hooks/README.md) and [Codex host adapter](pstack/CODEX.md).
 
 ## Start here
 
@@ -245,6 +251,14 @@ A validation gate is a mandatory check that must pass before an action can proce
 These are agent instructions and configuration conventions. They are not runtime enforcement hooks. Keep disk synchronization, installed-plugin verification, instructions read in the current task, and behavior observed in a new session as separate claims.
 
 ## 更新日志 / Changelog
+
+### 2026-10-09 | `0.15.13+codex.20261009checkpoint`
+
+- Added a read and update CLI for an existing marked current checkpoint. Updates compare the whole-record SHA-256, preserve all bytes outside the region, archive the complete old body, and verify the replaced record.
+- Kept the hook's 16 KiB current-body limit. A 4–8 KiB checkpoint is a soft maintenance target, not a new gate; the helper does not summarize or judge semantic completeness.
+- Plugin-only deploy and installed-cache check returned `ok` for version `0.15.13+codex.20261009checkpoint`, with 243 managed files and no drift.
+- The installed helper completed a temporary read, update, archive, and readback cycle. Natural `SessionStart` behavior and live record migration remain unverified.
+
 
 ### 2026-10-09 | `0.15.13+codex.20261009delivery`
 

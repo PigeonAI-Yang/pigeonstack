@@ -163,7 +163,7 @@ def record_bindings(prefix):
     return data['bindings']
 
 
-def current_section(content, anchor):
+def current_span(content, anchor):
     start = ('<!-- pstack-current:' + anchor + ':start -->').encode('ascii')
     end = ('<!-- pstack-current:' + anchor + ':end -->').encode('ascii')
     if content.count(start) != 1 or content.count(end) != 1:
@@ -172,7 +172,12 @@ def current_section(content, anchor):
     end_match = re.search(rb'^' + re.escape(end) + rb'(?:\r?\n|$)', content, re.MULTILINE)
     if not start_match or not end_match or start_match.end() > end_match.start():
         raise ContextError('current section markers must be ordered standalone lines')
-    section = content[start_match.end():end_match.start()]
+    return start_match.end(), end_match.start()
+
+
+def current_section(content, anchor):
+    start, end = current_span(content, anchor)
+    section = content[start:end]
     if len(section) > MAX_SECTION_BYTES:
         raise ContextError('current section exceeds 16384 bytes; no truncation permitted')
     text = section.decode('utf-8')
