@@ -35,7 +35,7 @@ PigeonStack 是 PigeonYang 维护的一套 Codex 工作配置，包含全局指�
 
 源码还包含 `pstack/hooks/task_context.py`，供现有记录负责人读取并原位更新同一区域。更新使用整份记录的 SHA-256，保留区域外的字节，并归档完整旧正文。当前检查点建议保持简洁，以 4–8 KiB 为软目标。工具不会总结历史，也无法判断内容是否语义完整；它不会创建或验证 SessionStart 绑定。
 
-钩子的当前正文上限仍为 16 KiB，超限时不会返回任务上下文。Windows 包装器会通过标准 `systemMessage` 返回读取器故障。版本 `0.15.13+codex.20261009checkpoint` 已通过 `py -3 scripts/sync.py deploy --plugin-only` 部署。最终 plugin-only 部署和检查均返回 `ok`；检查覆盖 243 个托管文件，运行时文件、配置和已安装缓存均无漂移。已安装工具完成了临时记录的读取、更新、归档和读回流程。fixture 记录 SHA-256 从 `97b103d828a894c6b6531fe311f2400f18a710e3083f650da9474c17241635eb` 变为 `13a8112af4aba8bc1f018931927a9020635873a7ed1b51e6011290232d738297`，归档 SHA-256 为 `71c4f9e532a185f7ea92b548cc2e960ce56688c40cca2cddb249fb76912a684c`。运行时 `config.toml` 字节未变，SHA-256 为 `1a10acaf3be44462719349d5f50dbedb294a7ea58911ba73bebcc9f0d4127035`。这些结果验证了本地部署和临时 CLI 流程，但没有验证自然触发 `SessionStart`，也没有迁移任何真实任务记录。
+当前正文上限仍为 16 KiB。Windows 包装器通过 `systemMessage` 返回读取故障。版本 `0.15.13+codex.20261009checkpoint` 已完成本地部署，已安装文件核对与临时记录的读取、更新、归档、读回验证均通过。自然 `SessionStart` 行为和真实任务记录迁移仍未验证；验证细节见[维护证据](pstack/ADAPTATION.md#current-checkpoint-maintenance-2026-10-09)。
 
 钩子不会监控后续业务状态、拦截 Agent 派发或强制执行协调者提醒。详见[钩子契约](pstack/hooks/README.md)和[Codex 宿主适配](pstack/CODEX.md)。
 
