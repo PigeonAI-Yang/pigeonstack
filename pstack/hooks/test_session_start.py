@@ -8,10 +8,13 @@ import tempfile
 
 ROOT = Path(__file__).resolve().parents[2]
 HOOK = ROOT / 'pstack/hooks/session_start.py'
+WRAPPER = ROOT / 'pstack/hooks/windows_session_start.ps1'
 WORK = ROOT / 'work/session-context-20261006'
 WORK.mkdir(parents=True, exist_ok=True)
+RUN = Path(tempfile.mkdtemp(prefix='run-', dir=WORK))
 CONFIG = json.loads((ROOT / 'pstack/hooks/hooks.json').read_text(encoding='utf-8-sig'))
 HANDLER = CONFIG['hooks']['SessionStart'][0]['hooks'][0]
+SCAN_LIMIT = 2097152
 assert 'commandWindows' in HANDLER and 'command_windows' not in HANDLER
 assert HANDLER['additionalContextLimit'] == 0 and HANDLER['timeout'] == 5
 assert re.search(r'^MAX_OUTPUT_BYTES = 32768$', HOOK.read_text(encoding='utf-8-sig'), re.MULTILINE)
@@ -61,9 +64,12 @@ def invoke(cwd, event=None, raw=None, windows=False, runner=None):
     env['PSTACK_CONTEXT_SESSION_ID'] = 'session-one'
     command = ['py', '-3', str(runner or HOOK)]
     if windows:
-        command = ['powershell.exe', '-NoLogo', '-NoProfile', '-NonInteractive', '-Command',
-                   "& py -3 (Join-Path $env:PLUGIN_ROOT 'hooks/session_start.py')"]
-        assert subprocess.list2cmdline(command) == HANDLER['commandWindows']
+        assert HANDLER['commandWindows'] == (
+            'powershell.exe -NoLogo -NoProfile -NonInteractive -File '
+            '"${PLUGIN_ROOT}/hooks/windows_session_start.ps1"'
+        )
+        command = ['powershell.exe', '-NoLogo', '-NoProfile', '-NonInteractive',
+                   '-File', str(WRAPPER)]
     result = subprocess.run(command,
                             input=raw if raw is not None else json.dumps(event or event_for(cwd)).encode(),
                             capture_output=True, cwd=cwd, env=env, timeout=8)
@@ -74,6 +80,7 @@ def invoke(cwd, event=None, raw=None, windows=False, runner=None):
 
 
 def success(name, output, text=CURRENT, session='session-one', record='TASKS.md'):
+    assert 'hookSpecificOutput' in output, (name, output)
     context = output['hookSpecificOutput']['additionalContext']
     assert output['hookSpecificOutput']['hookEventName'] == 'SessionStart'
     assert 'UNTRUSTED TASK DATA' in context
@@ -95,7 +102,7 @@ def diagnostic(name, output, fragment):
     REPORT.append({'check': name, 'output': output})
 
 
-with tempfile.TemporaryDirectory(prefix='binding-fixture-', dir=WORK) as directory:
+with tempfile.TemporaryDirectory(prefix='binding-fixture-', dir=RUN) as directory:
     cwd = Path(directory)
     setup(cwd)
     for source in ['startup', 'resume', 'compact']:
@@ -104,8 +111,15 @@ with tempfile.TemporaryDirectory(prefix='binding-fixture-', dir=WORK) as directo
     success('legacy-env-cannot-override-bound-record', invoke(cwd))
     (cwd / 'AGENTS.md').unlink()
     diagnostic('legacy-env-cannot-create-selection', invoke(cwd), 'FileNotFoundError')
+    (cwd / 'AGENTS.md').write_text('# Existing workspace instructions\n', encoding='utf-8')
+    diagnostic('existing-plain-agents-without-index', invoke(cwd), 'must be the first block')
+    setup(cwd)
+    (cwd / 'TASKS.md').write_text('# Existing task notes\n', encoding='utf-8')
+    diagnostic('existing-plain-tasks-without-bindings', invoke(cwd), 'must be the first block')
     setup(cwd, bindings=[binding(cwd, session_id=None)])
     diagnostic('null-unbound', invoke(cwd), 'found 0')
+    setup(cwd, bindings=[])
+    diagnostic('missing-session-binding', invoke(cwd), 'found 0')
     setup(cwd, bindings=[binding(cwd, session_id='session-other')])
     diagnostic('unrelated-session', invoke(cwd), 'found 0')
     setup(cwd, bindings=[binding(cwd, workspace=str(cwd / 'different-worktree'))])
@@ -142,9 +156,10 @@ with tempfile.TemporaryDirectory(prefix='binding-fixture-', dir=WORK) as directo
     diagnostic('copied-binding-rejected', invoke(worktree), 'found 0')
     (worktree / 'AGENTS.md').unlink()
     diagnostic('no-upward-canonical-fallback', invoke(worktree), 'FileNotFoundError')
-    setup(cwd, history=(b'Historical: obsolete status and commands.\n' * 4500))
+    setup(cwd, history=(b'Historical: obsolete status and commands.\n' * 4500)
+          + b'h' * 1250000 + b'\n')
     success('large-record-bounded-current-at-end', invoke(cwd))
-    assert (cwd / 'TASKS.md').stat().st_size > 174000
+    assert (cwd / 'TASKS.md').stat().st_size > 1400000
     (cwd / 'AGENTS.md').write_bytes((cwd / 'AGENTS.md').read_bytes() + b'x' * 105000)
     success('large-agents-prefix-only', invoke(cwd))
     setup(cwd)
@@ -218,15 +233,21 @@ with tempfile.TemporaryDirectory(prefix='binding-fixture-', dir=WORK) as directo
         ('section-cap', region('x' * 16385 + '\n'), 'current section exceeds'),
         ('empty-section', region(' \n'), 'current section is empty'),
         ('invalid-section-utf8', region().replace(b'# Current checkpoint', b'\xff'), 'UnicodeDecodeError'),
-        ('scan-cap', region() + b'x' * 524288, 'scan limit'),
+        ('scan-cap', region() + b'x' * SCAN_LIMIT, 'scan limit'),
         ('anchor-mismatch', region(anchor='other-anchor'), 'one start and one end'),
     ]:
         setup(cwd, body=body)
         diagnostic(name, invoke(cwd), fragment)
     setup(cwd)
     boundary = (cwd / 'TASKS.md').read_bytes()
-    (cwd / 'TASKS.md').write_bytes(boundary + b'h' * (524288 - len(boundary)))
+    (cwd / 'TASKS.md').write_bytes(boundary + b'h' * (SCAN_LIMIT - len(boundary)))
     success('record-exact-scan-limit', invoke(cwd))
+    (cwd / 'TASKS.md').write_bytes(boundary + b'h' * (SCAN_LIMIT + 1 - len(boundary)))
+    diagnostic('record-over-scan-limit', invoke(cwd), f'{SCAN_LIMIT}-byte scan limit')
+    setup(cwd)
+    (cwd / 'TASKS.md').write_bytes((cwd / 'TASKS.md').read_bytes()
+                                  + b'h' * 600000 + b'\n' + region('Late duplicate\n'))
+    diagnostic('duplicate-section-after-old-scan-limit', invoke(cwd), 'one start and one end')
     setup(cwd, body=region('x' * 16383 + '\n'))
     success('section-exact-limit', invoke(cwd), 'x' * 16383 + '\n')
     nested = cwd / 'nested'
@@ -281,7 +302,7 @@ with tempfile.TemporaryDirectory(prefix='binding-fixture-', dir=WORK) as directo
         assert re.search(CONFIG['hooks']['SessionStart'][0]['matcher'], source)
     assert not re.search(CONFIG['hooks']['SessionStart'][0]['matcher'], 'clear')
 
-report_path = WORK / 'results.json'
+report_path = RUN / 'results.json'
 report_path.write_text(json.dumps(REPORT, ensure_ascii=False, indent=2), encoding='utf-8')
 print(json.dumps({'checks_passed': len(REPORT), 'report': str(report_path),
                   'windows_command': HANDLER['commandWindows'],

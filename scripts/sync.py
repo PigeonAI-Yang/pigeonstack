@@ -180,12 +180,14 @@ def contained(root, path):
     return path
 
 
-def source_files():
-    files = {'AGENTS.md': ROOT / 'AGENTS.md',
-             'prompts/codex-event-driven-base.md': ROOT / 'prompts/codex-event-driven-base.md'}
-    for role in ('worker', 'poteto-agent', 'astra-advisor'):
-        relative = 'agents/' + role + '.toml'
-        files[relative] = ROOT / relative
+def source_files(plugin_only=False):
+    files = {}
+    if not plugin_only:
+        files = {'AGENTS.md': ROOT / 'AGENTS.md',
+                 'prompts/codex-event-driven-base.md': ROOT / 'prompts/codex-event-driven-base.md'}
+        for role in ('worker', 'poteto-agent', 'astra-advisor'):
+            relative = 'agents/' + role + '.toml'
+            files[relative] = ROOT / relative
     plugin = ROOT / 'pstack'
     for path in sorted(plugin.rglob('*')):
         if path.is_file():
@@ -256,26 +258,32 @@ def main():
     parser.add_argument('command', choices=('check', 'deploy'))
     parser.add_argument('--codex-home', type=Path, default=DEFAULT_HOME)
     parser.add_argument('--skip-plugin-install', action='store_true', help='Skip installed-cache checks and installation for fixtures')
+    parser.add_argument('--plugin-only', action='store_true', help='Manage only the pstack plugin, skipping global files and configuration')
     args = parser.parse_args()
     home = args.codex_home.resolve()
     if home.is_relative_to(ROOT) or ROOT.is_relative_to(home):
         raise ValueError('Source and runtime paths must not overlap')
     if home != DEFAULT_HOME.resolve() and not args.skip_plugin_install:
         raise ValueError('A nondefault target requires --skip-plugin-install')
-    files, version = source_files()
-    workflow = read_toml(contained(ROOT, ROOT / 'config/workflow.toml'))
-    desired = dict(leaves(workflow))
-    for path, value in desired.items():
-        if path[-1] not in ALLOWED.get(path[:-1], set()):
-            raise ValueError('Unmanaged key in workflow.toml: ' + '.'.join(path))
-        scalar(value)
-    required = {(section + (key,)) for section, keys in ALLOWED.items() if section != ('plugins', 'pstack@personal') for key in keys}
-    if not required.issubset(desired):
-        raise ValueError('workflow.toml is missing required managed keys')
-    desired[('model_instructions_file',)] = str(home / 'prompts/codex-event-driven-base.md')
-    config = contained(home, home / 'config.toml')
-    config_before = config.read_bytes() if config.exists() else b''
-    config_after, config_drift = patch_config(config_before, desired)
+    files, version = source_files(args.plugin_only)
+    config = None
+    config_before = None
+    config_after = None
+    config_drift = []
+    if not args.plugin_only:
+        workflow = read_toml(contained(ROOT, ROOT / 'config/workflow.toml'))
+        desired = dict(leaves(workflow))
+        for path, value in desired.items():
+            if path[-1] not in ALLOWED.get(path[:-1], set()):
+                raise ValueError('Unmanaged key in workflow.toml: ' + '.'.join(path))
+            scalar(value)
+        required = {(section + (key,)) for section, keys in ALLOWED.items() if section != ('plugins', 'pstack@personal') for key in keys}
+        if not required.issubset(desired):
+            raise ValueError('workflow.toml is missing required managed keys')
+        desired[('model_instructions_file',)] = str(home / 'prompts/codex-event-driven-base.md')
+        config = contained(home, home / 'config.toml')
+        config_before = config.read_bytes() if config.exists() else b''
+        config_after, config_drift = patch_config(config_before, desired)
     plan = []
     for name, source in files.items():
         target = contained(home, home / name)
@@ -283,12 +291,12 @@ def main():
         previous = target.read_bytes() if target.exists() else None
         if previous != content:
             plan.append((target, previous, content))
-    if config_before != config_after:
+    if config is not None and config_before != config_after:
         plan.append((config, config_before if config.exists() else None, config_after))
     installed, cache_drift = plugin_drift(home, version, files) if not args.skip_plugin_install else (None, [])
     drift = [str(path.relative_to(home)) for path, _, _ in plan]
     if args.command == 'check':
-        print(json.dumps({'status': 'drift' if drift or cache_drift else 'ok', 'managed_files': len(files), 'runtime_drift': drift, 'config_drift': config_drift, 'plugin_version': version, 'installed_drift': cache_drift, 'plugin_skipped': args.skip_plugin_install}, indent=2))
+        print(json.dumps({'status': 'drift' if drift or cache_drift else 'ok', 'managed_files': len(files), 'runtime_drift': drift, 'config_drift': config_drift, 'plugin_version': version, 'installed_drift': cache_drift, 'plugin_skipped': args.skip_plugin_install, 'plugin_only': args.plugin_only}, indent=2))
         return 1 if drift or cache_drift else 0
     stamp = datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%S.%fZ')
     backup = contained(home, home / 'backups/pigeonstack' / stamp)
@@ -310,13 +318,13 @@ def main():
         install_plugin(installed, version)
     if any((home / name).read_bytes() != source.read_bytes() for name, source in files.items()):
         raise ValueError('Runtime file readback failed')
-    if config.read_bytes() != config_after:
+    if config is not None and config.read_bytes() != config_after:
         raise ValueError('Runtime configuration readback failed')
     if not args.skip_plugin_install:
         installed, cache_drift = plugin_drift(home, version, files)
         if cache_drift:
             raise ValueError('Installed plugin hash verification failed: ' + ', '.join(cache_drift))
-    print(json.dumps({'status': 'ok', 'managed_files': len(files), 'files_written': len(plan), 'backups': backups, 'backup_path': str(backup) if backups else None, 'plugin_version': version, 'installed_path': str(installed) if installed else None, 'plugin_skipped': args.skip_plugin_install}, indent=2))
+    print(json.dumps({'status': 'ok', 'managed_files': len(files), 'files_written': len(plan), 'backups': backups, 'backup_path': str(backup) if backups else None, 'plugin_version': version, 'installed_path': str(installed) if installed else None, 'plugin_skipped': args.skip_plugin_install, 'config_drift': config_drift, 'plugin_only': args.plugin_only}, indent=2))
     return 0
 
 

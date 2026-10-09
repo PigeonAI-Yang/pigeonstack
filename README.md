@@ -27,11 +27,15 @@ PigeonStack, or 鸽栈, is PigeonYang's maintained Codex setup: global instructi
 
 The active Primary retains the goal, constraints, routine judgments, coordination, and final acceptance. Luna is the default for execution under an accepted mechanism. When an ordinary question needs delegated judgment, a fresh Sol starts at `medium` and returns a decision with a concrete execution brief; after the Primary accepts it, a fresh Luna carries out the approved work. A genuine failure takeover keeps its Sol or Astra owner responsible for diagnosis, implementation, and verification through completion. Critical design decisions can go directly to Astra.
 
+For multi-workstream tasks, each Main continues ready work that the user has already authorized at natural unit boundaries, using the existing task record. The coordinator focuses messages on material decisions, changed actions, and input that releases a blocker.
+
+在多工作流任务中，各 Main 会在自然的工作单元边界依据现有任务记录，继续推进用户已授权且已就绪的工作。协调者把消息集中在重要决策、行动变化和解除阻塞所需的信息上。
+
 This is a set of instructions, a packaged Codex plugin, and deployment tooling. It does not provide an MCP server or a separate autonomous scheduler, and it starts no background timers, resident agents, or remote services. The repository does bundle a bounded `SessionStart` hook; host configuration and trust govern whether it activates.
 
 ## SessionStart context hook
 
-The hook reads only the current region of a saved task record whose session and workspace match the host event. On Windows, its wrapper returns reader failures through the standard `systemMessage`. Targeted diagnostic tests passed, but a natural host trigger and the original reported failure cause remain unconfirmed. Source inclusion or installation alone does not prove host activation or trust. The hook does not monitor later business state, intercept agent dispatch, or enforce coordinator reminders. See the [hook contract](pstack/hooks/README.md) and [Codex host adapter](pstack/CODEX.md).
+The hook reads only the current region of a saved task record whose session and workspace match the host event. It loads saved task context only; it does not queue or defer messages. On Windows, its wrapper returns reader failures through the standard `systemMessage`. Targeted diagnostic tests passed, but a natural host trigger and the original reported failure cause remain unconfirmed. Source inclusion or installation alone does not prove host activation or trust. The hook does not monitor later business state, intercept agent dispatch, or enforce coordinator reminders. See the [hook contract](pstack/hooks/README.md) and [Codex host adapter](pstack/CODEX.md).
 
 ## Start here
 
@@ -239,6 +243,13 @@ During normal task work, reuse existing scripts, CLIs, and business entry points
 A validation gate is a mandatory check that must pass before an action can proceed. Add a new gate only for an evidence-confirmed problem or an explicit current requirement. An unverified hypothesis or hypothetical future failure cannot become a new gate or prerequisite. A confirmed bug does not automatically require a gate. If needed, scope the gate to the affected action and boundary, and verify that it catches the failure or enforces the requirement without unnecessarily blocking valid work. Existing required checks, explicit current requirements, and safety, permission, and data-integrity boundaries remain in force before any bug occurs.
 
 These are agent instructions and configuration conventions. They are not runtime enforcement hooks. Keep disk synchronization, installed-plugin verification, instructions read in the current task, and behavior observed in a new session as separate claims.
+
+## 更新日志 / Changelog
+
+### 2026-10-09 | `0.15.13+codex.20261009communication`
+
+- 协作规则抑制状态查询与确认往返；普通补充等到单元边界，当前动作纠正和解除阻塞所需输入仍立即处理。Main 按现有任务记录继续推进用户已授权目标；必要的 Main 完成、阻塞或决策报告可在协调者忙碌时发送。Desktop `send-now` 不保证排队。
+- SessionStart：完善 Windows 探针调用与错误诊断，支持 2 MiB 记录扫描和保留全局配置的 plugin-only 部署；实际 coordinator binding 与已安装插件的本地静态读取已验证，自然 reader 注入仍待验证。
 
 ## Contributing
 

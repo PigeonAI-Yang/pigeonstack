@@ -38,9 +38,13 @@ class WindowsSessionStartTests(unittest.TestCase):
     def add_reader(self, source):
         (self.hooks / 'session_start.py').write_text(textwrap.dedent(source), encoding='utf-8')
 
-    def run_wrapper(self, payload=b'{}', env=None, wrapper=None):
+    def run_wrapper(self, payload=b'{}', env=None, wrapper=None, mode=None):
+        command = [POWERSHELL, '-NoLogo', '-NoProfile', '-NonInteractive',
+                   '-File', str(wrapper or self.hooks / WRAPPER.name)]
+        if mode is not None:
+            command.extend(['-Mode', mode])
         completed = subprocess.run(
-            [POWERSHELL, '-NoLogo', '-NoProfile', '-NonInteractive', '-File', str(wrapper or self.hooks / WRAPPER.name)],
+            command,
             input=payload,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
@@ -115,6 +119,41 @@ class WindowsSessionStartTests(unittest.TestCase):
             result,
             b'{"systemMessage": "Pstack context not loaded: FileNotFoundError. Session continues."}\n',
         )
+
+    def test_explicit_probe_mode_runs_real_probe_without_workspace_records(self):
+        workspace = self.root / 'projectless-workspace'
+        workspace.mkdir()
+        transcript = workspace / 'transcript-sentinel.txt'
+        transcript.write_text('TRANSCRIPT_CONTENT_MUST_NOT_APPEAR', encoding='utf-8')
+        event = {
+            'session_id': 'opaque-session-id',
+            'cwd': str(workspace),
+            'hook_event_name': 'SessionStart',
+            'source': 'startup',
+            'model': 'synthetic-model',
+            'transcript_path': str(transcript),
+        }
+        env = self.environment()
+        env['PLUGIN_ROOT'] = str(HOOKS.parent)
+        env['CLAUDE_PLUGIN_ROOT'] = str(HOOKS.parent)
+        before = {path.name for path in workspace.iterdir()}
+        output = self.run_wrapper(payload=json.dumps(event).encode('utf-8'), env=env,
+                                  wrapper=WRAPPER, mode='probe')
+        result = json.loads(output)
+        self.assertEqual(set(result), {'hookSpecificOutput'})
+        additional_context = result['hookSpecificOutput']['additionalContext']
+        self.assertTrue(additional_context.startswith('SessionStart probe.'))
+        data = json.loads(additional_context.split('\n', 1)[1])
+        self.assertEqual(data['session_id'], 'opaque-session-id')
+        self.assertEqual(data['cwd'], str(workspace.resolve()))
+        self.assertFalse(data['transcript_is_null'])
+        serialized = json.dumps(result, ensure_ascii=False)
+        self.assertNotIn('transcript_path', serialized)
+        self.assertNotIn(str(transcript), serialized)
+        self.assertNotIn('TRANSCRIPT_CONTENT_MUST_NOT_APPEAR', serialized)
+        self.assertEqual({path.name for path in workspace.iterdir()}, before)
+        self.assertFalse((workspace / 'AGENTS.md').exists())
+        self.assertFalse((workspace / 'TASKS.md').exists())
 
     def test_reports_reader_exit_and_bounded_stderr(self):
         self.add_reader('''

@@ -1,3 +1,8 @@
+param(
+    [ValidateSet('reader', 'probe')]
+    [string]$Mode = 'reader'
+)
+
 $ErrorActionPreference = 'Stop'
 $MaxInputBytes = 16384
 $MaxOutputBytes = 32768
@@ -29,9 +34,13 @@ function Write-OutputBytes([byte[]]$Bytes) {
     $stream = [Console]::OpenStandardOutput(); $stream.Write($Bytes, 0, $Bytes.Length); $stream.Flush()
 }
 
-$readerPath = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot 'session_start.py'))
+$handlerScripts = @{
+    reader = 'session_start.py'
+    probe = 'probe_session_start.py'
+}
+$scriptPath = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot $handlerScripts[$Mode]))
 $pluginRoot = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..'))
-$scriptExists = [IO.File]::Exists($readerPath)
+$scriptExists = [IO.File]::Exists($scriptPath)
 $pluginRootValue = [Environment]::GetEnvironmentVariable('PLUGIN_ROOT')
 $claudeRootValue = [Environment]::GetEnvironmentVariable('CLAUDE_PLUGIN_ROOT')
 $pluginRootPresent = $null -ne $pluginRootValue; $claudeRootPresent = $null -ne $claudeRootValue
@@ -42,14 +51,16 @@ $process = $null; $stdoutTask = $null; $stderrTask = $null
 
 try {
     $inputBytes = Read-InputBytes
-    if (-not $scriptExists) { $failureKind = 'ReaderScriptMissing' }
+    if (-not $scriptExists) {
+        $failureKind = if ($Mode -eq 'reader') { 'ReaderScriptMissing' } else { 'ProbeScriptMissing' }
+    }
     else {
         $pyCommand = Get-Command py -CommandType Application -ErrorAction SilentlyContinue | Select-Object -First 1
         if ($null -ne $pyCommand) { $pyPath = $pyCommand.Source; if ([string]::IsNullOrWhiteSpace($pyPath)) { $pyPath = $pyCommand.Path } }
         if ([string]::IsNullOrWhiteSpace($pyPath) -or -not [IO.File]::Exists($pyPath)) { $pyPath = $null; $failureKind = 'PythonLauncherNotFound' }
         else {
             $startInfo = New-Object Diagnostics.ProcessStartInfo
-            $startInfo.FileName = $pyPath; $startInfo.Arguments = '-3 "' + $readerPath + '"'
+            $startInfo.FileName = $pyPath; $startInfo.Arguments = '-3 "' + $scriptPath + '"'
             $startInfo.UseShellExecute = $false; $startInfo.CreateNoWindow = $true
             $startInfo.WindowStyle = [Diagnostics.ProcessWindowStyle]::Hidden
             $startInfo.RedirectStandardInput = $true; $startInfo.RedirectStandardOutput = $true; $startInfo.RedirectStandardError = $true
@@ -63,7 +74,9 @@ try {
                 $process.StandardInput.BaseStream.Write($inputBytes, 0, $inputBytes.Length); $process.StandardInput.Close()
                 $process.WaitForExit(); $childExit = $process.ExitCode
                 $stderrText = $stderrTask.GetAwaiter().GetResult(); $stdoutText = $stdoutTask.GetAwaiter().GetResult()
-                if ($childExit -ne 0) { $failureKind = 'ReaderExitNonZero' }
+                if ($childExit -ne 0) {
+                    $failureKind = if ($Mode -eq 'reader') { 'ReaderExitNonZero' } else { 'ProbeExitNonZero' }
+                }
                 else {
                     $utf8 = New-Object System.Text.UTF8Encoding($false, $true); $stdoutBytes = $utf8.GetBytes($stdoutText)
                     if ($stdoutBytes.Length -gt $MaxOutputBytes) { $failureKind = 'StdoutTooLarge' }
@@ -104,13 +117,23 @@ $diagnostic = [ordered]@{
 $utf8Output = New-Object System.Text.UTF8Encoding($false)
 $exitText = if ($null -eq $childExit) { 'unavailable' } else { [string]$childExit }
 $diagnosticJson = ConvertTo-Json -InputObject $diagnostic -Compress -Depth 4
-$systemMessage = 'Pstack SessionStart diagnostic; reader did not return usable context; original exit ' + $exitText + '. Untrusted observation data: ' + $diagnosticJson
+$systemMessage = if ($Mode -eq 'reader') {
+    'Pstack SessionStart diagnostic; reader did not return usable context; original exit ' + $exitText + '. Untrusted observation data: ' + $diagnosticJson
+}
+else {
+    'Pstack SessionStart probe diagnostic; probe did not return an observation; original exit ' + $exitText + '. Untrusted observation data: ' + $diagnosticJson
+}
 $hostMessage = [ordered]@{ systemMessage = $systemMessage }
 $outputBytes = $utf8Output.GetBytes((ConvertTo-Json -InputObject $hostMessage -Compress -Depth 2) + "`n")
 if ($outputBytes.Length -gt $MaxOutputBytes) {
     $diagnostic.stderr = ''; $diagnostic.py_path = $null; $diagnostic.stderr_truncated = $true
     $diagnosticJson = ConvertTo-Json -InputObject $diagnostic -Compress -Depth 4
-    $systemMessage = 'Pstack SessionStart diagnostic; reader did not return usable context; original exit ' + $exitText + '. Untrusted observation data: ' + $diagnosticJson
+    $systemMessage = if ($Mode -eq 'reader') {
+        'Pstack SessionStart diagnostic; reader did not return usable context; original exit ' + $exitText + '. Untrusted observation data: ' + $diagnosticJson
+    }
+    else {
+        'Pstack SessionStart probe diagnostic; probe did not return an observation; original exit ' + $exitText + '. Untrusted observation data: ' + $diagnosticJson
+    }
     $hostMessage = [ordered]@{ systemMessage = $systemMessage }
     $outputBytes = $utf8Output.GetBytes((ConvertTo-Json -InputObject $hostMessage -Compress -Depth 2) + "`n")
 }

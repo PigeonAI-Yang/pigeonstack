@@ -8,7 +8,7 @@ import sys
 
 MAX_INPUT_BYTES = 16384
 MAX_PREFIX_BYTES = 16384
-MAX_SCAN_BYTES = 524288
+MAX_SCAN_BYTES = 2097152
 MAX_SECTION_BYTES = 16384
 MAX_OUTPUT_BYTES = 32768
 SOURCES = {'startup', 'resume', 'compact'}
@@ -109,14 +109,14 @@ def read_snapshot(root, selection, limit, complete=False):
         if not stat.S_ISREG(before.st_mode):
             raise ContextError('record is not a regular file')
         if complete and before.st_size > limit:
-            raise ContextError('selected record exceeds 524288-byte scan limit')
+            raise ContextError(f'selected record exceeds {limit}-byte scan limit')
         content = stream.read(limit + 1 if complete else limit)
         after = os.fstat(stream.fileno())
     current = selected_record(root, selection).stat()
     if identity(before) != identity(after) or identity(after) != identity(current):
         raise ContextError('record changed during read; context not loaded')
     if complete and len(content) > limit:
-        raise ContextError('selected record exceeds 524288-byte scan limit')
+        raise ContextError(f'selected record exceeds {limit}-byte scan limit')
     return content, identity(after)
 
 
