@@ -21,7 +21,14 @@ Bundled Cursor guides, agent descriptions, and dormant automations do not instal
 
 ## Prepare the assignment
 
-Give a workstream Main one complete outcome, the user's constraints, available authorized resources, acceptance criteria, and return address. Reference existing context. The Main owns diagnosis through implementation, integration, verification, and repair; the coordinator accepts the result under COORDINATOR.md. Do not narrow the assignment to a method or phase unless a concrete dependency requires it. The assigning owner removes an obsolete self-imposed restriction when it obstructs the authorized outcome. Reuse resource access; resolve a missing operator or result route at the operation that needs it.
+Use four fields for each workstream Main assignment:
+
+1. **Goal:** One complete outcome to deliver.
+2. **Completion condition:** An observable result that determines whether the outcome is complete.
+3. **Evidence:** The actual output, observation, or check that will demonstrate completion.
+4. **Constraints:** Applicable human instructions and necessary technical, resource, and ownership limits; reuse existing authorization.
+
+Keep each field brief and link to existing context. Attach the owner and return address as routing information, not extra prerequisites. The Main owns diagnosis, implementation, integration, verification, and correction through the outcome. Internal phases need no new dispatch or approval. The coordinator removes its own obsolete method restrictions and continues the remaining outcome after partial delivery. Human Stop and required operation-specific approvals still apply.
 
 For internal assignments, use these briefs without inventing extra preparation:
 

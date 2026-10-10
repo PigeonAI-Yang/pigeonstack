@@ -252,6 +252,12 @@ These are agent instructions and configuration conventions. They are not runtime
 
 ## Changelog
 
+### 2026-10-10 | `0.15.13+codex.20261010brief`
+
+- Consolidated workstream Main assignments into four fields: goal, observable completion condition, acceptance evidence, and necessary constraints.
+- Global rules, coordinator guidance, and base instructions now reference the single template in CODEX.md. Owner and return address remain routing information, not extra prerequisites.
+- Internal execution briefs and model routing are unchanged. Source checks passed; behavior in a new session remains unverified.
+
 ### 2026-10-10 | `0.15.13+codex.20261010outcome`
 
 - Coordinators remove their own obsolete method restrictions and return unfinished outcomes to the responsible Main in the same turn.
