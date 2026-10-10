@@ -252,6 +252,13 @@ These are agent instructions and configuration conventions. They are not runtime
 
 ## Changelog
 
+### 2026-10-10 | `0.15.13+codex.20261010outcome`
+
+- Coordinators remove their own obsolete method restrictions and return unfinished outcomes to the responsible Main in the same turn.
+- Missing evidence is tied to acceptance: arrange necessary investigation or collection, and keep optional unknowns from blocking supported work.
+- A source gap, exhausted method, or recorded partial handoff alone does not justify ending. Outside dependencies require a specific missing contribution and no remaining ready work.
+- Source and configuration checks passed; behavior in a new session remains unverified.
+
 ### 2026-10-10 | `0.15.13+codex.20261010progress`
 
 - Thirty minutes is a progress checkpoint, not a task deadline. Agents with substantive progress and a concrete next step continue on the same model, including Astra xhigh.
