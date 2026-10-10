@@ -25,6 +25,8 @@
 
 PigeonStack 是 PigeonYang 维护的一套 Codex 工作配置，包含全局指令、Lauren Tan 的 pstack 定制版、Agent 角色定义、宿主配置和本地同步脚本。一个源码仓库让这些职责和已安装指令都能被一并审查。
 
+工程注意事项保留在开发者对话或文档中。只有用户明确要求时，Agent 才会在交付的界面或面向客户的后端响应中添加免责声明。实际状态、错误和功能限制都要具体说明。
+
 当前 Primary 保留任务目标、约束、日常判断、协同和最终验收。Luna 默认按已接受的机制执行常规工作。需要委派普通判断时，主控把一个范围明确的问题交给新的 Sol，从 `medium` 开始；Sol 返回判断结果和具体执行说明，主控接受后再交给新的 Luna 执行。真正的失败接管则由 Sol 或 Astra 负责诊断、实施和验证，直至完成。关键设计可以直接交给 Astra。
 
 仓库交付的是指令、打包好的 Codex 插件和部署工具，不提供 MCP 服务或独立的自动调度器，也不会启动后台定时任务、常驻 Agent 或远程服务。仓库包含一个范围受限的 `SessionStart` 钩子；是否激活由宿主配置和信任状态决定。
@@ -35,7 +37,11 @@ PigeonStack 是 PigeonYang 维护的一套 Codex 工作配置，包含全局指�
 
 源码还包含 `pstack/hooks/task_context.py`，供现有记录负责人读取并原位更新同一区域。更新使用整份记录的 SHA-256，保留区域外的字节，并归档完整旧正文。当前检查点建议保持简洁，以 4–8 KiB 为软目标。工具不会总结历史，也无法判断内容是否语义完整；它不会创建或验证 SessionStart 绑定。
 
-当前正文上限仍为 16 KiB。Windows 包装器通过 `systemMessage` 返回读取故障。版本 `0.15.13+codex.20261009checkpoint` 已完成本地部署；已安装文件核对，以及针对真实任务记录的当前区域读取、更新、归档和读回流程均已通过。检查点从 29,370 字节缩减至 8,158 字节；完整旧正文已归档并核验，目标、权限和阻塞项得到保留，区域外历史保持不变。自然 `SessionStart` 行为仍未验证。验证细节见[维护证据](pstack/ADAPTATION.md#current-checkpoint-maintenance-2026-10-09)。
+当前正文上限仍为 16 KiB。Windows 包装器通过 `systemMessage` 报告读取故障。
+
+2026-10-09 的检查点维护是版本 `0.15.13+codex.20261009checkpoint` 的历史证据。本地部署和安装文件核对均已通过，真实任务记录的读取、更新、归档和读回流程也已通过。该流程将当前区域从 29,370 字节缩减至 8,158 字节，并保留目标、权限、阻塞项及区域外历史。详见[历史检查点维护证据](pstack/ADAPTATION.md#current-checkpoint-maintenance-2026-10-09)。
+
+当前源码清单记录的版本为 `0.15.13+codex.20261011productcopy`。2026-10-11 钩子验证时安装的版本为 `0.15.13+codex.20261011copy`。native reader 返回了完全一致的绑定当前正文，包括现有 `Pending` 状态。新的 Desktop 聊天运行了一次 `SessionStart`，失败次数为 0；它报告 index 无效诊断后继续。native 测试验证了临时记录绑定；Desktop 观察验证了启动，但未建立 `oneirloom` 的任务绑定。历史 Desktop `exit 1` 的原因仍未查明。详见[产品文案规则及 SessionStart 验证](pstack/ADAPTATION.md#product-copy-rules-and-sessionstart-verification-2026-10-11)。
 
 钩子不会监控后续业务状态、拦截 Agent 派发或强制执行协调者提醒。详见[钩子契约](pstack/hooks/README.md)和[Codex 宿主适配](pstack/CODEX.md)。
 
@@ -249,6 +255,12 @@ J:/PigeonYang/pigeonstack
 这些机制是 Agent 指令和配置约定，不是运行时强制钩子。磁盘同步、插件安装验证、当前任务已读取的指令，以及新会话实际表现，需要分别说明。
 
 ## 更新日志
+
+### 2026-10-11 | `0.15.13+codex.20261011productcopy`
+
+- 将产品文案规则加入 `AGENTS.md` 和 `prompts/codex-event-driven-base.md`。工程注意事项保留在开发者对话或文档中。只有用户明确要求时，Agent 才会在交付的界面或面向客户的后端响应中添加免责声明。实际状态、错误和功能限制要具体说明。
+- 已安装版本 `0.15.13+codex.20261011copy` 的 native engine 在 1,204 毫秒内完成 `SessionStart`。它使用真实事件中的会话 ID 选择临时测试绑定，并返回完全一致的当前正文，保留原有 `Pending` 状态。新的 Desktop 聊天运行了一次 `SessionStart`（`runs=1`、`failed=0`），输出 index 无效诊断后继续。
+- 历史 Desktop `exit 1` 的原因仍未查明。本次没有修复钩子源码。详见[产品文案规则及 SessionStart 验证](pstack/ADAPTATION.md#product-copy-rules-and-sessionstart-verification-2026-10-11)。
 
 ### 2026-10-10 | `0.15.13+codex.20261010acceptance`
 

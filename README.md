@@ -25,6 +25,8 @@ English | [Simplified Chinese](README.zh-CN.md)
 
 PigeonStack is PigeonYang's maintained Codex setup: global instructions, a customized version of Lauren Tan's pstack, agent-role definitions, selected host configuration, and a local synchronization script. It keeps the responsibilities and installed instructions reviewable from one source repository.
 
+Agents keep engineering caveats in developer conversations or documentation. They add disclaimers to delivered interfaces or customer-facing backend responses only when the user explicitly requests them. Actual status, errors, and functional limits stay concrete.
+
 The active Primary retains the goal, constraints, routine judgments, coordination, and final acceptance. Luna is the default for execution under an accepted mechanism. When an ordinary question needs delegated judgment, a fresh Sol starts at `medium` and returns a decision with a concrete execution brief; after the Primary accepts it, a fresh Luna carries out the approved work. A genuine failure takeover keeps its Sol or Astra owner responsible for diagnosis, implementation, and verification through completion. Critical design decisions can go directly to Astra.
 
 For multi-workstream tasks, the coordinator assigns a complete outcome to each Main and reviews the finished deliverable. The Main independently owns diagnosis, implementation, integration, verification, and repair, and manages its own children. Shared operators exchange necessary requests and results directly with the responsible Main. The coordinator resolves external blockers and cross-owner conflicts without prescribing every command or approving each internal phase.
@@ -37,7 +39,11 @@ The `SessionStart` hook returns only the current region of a saved task record w
 
 The source also includes `pstack/hooks/task_context.py` for the existing record owner to read and update that same region. Updates use a whole-record SHA-256, preserve bytes outside the region, and archive the complete old body. Keep the current checkpoint concise, with 4–8 KiB as a soft target. The helper does not summarize history or judge semantic completeness, and it does not create or verify a SessionStart binding.
 
-The current body remains limited to 16 KiB. The Windows wrapper reports reader failures through `systemMessage`. Version `0.15.13+codex.20261009checkpoint` is deployed locally; installed-file checks and a live current-region read/update/archive/readback workflow passed against a real task record. The checkpoint went from 29,370 to 8,158 bytes; the complete previous body was archived and verified, the goal, permissions, and blockers were preserved, and history outside the region stayed unchanged. Natural `SessionStart` behavior remains unverified. See the [maintenance evidence](pstack/ADAPTATION.md#current-checkpoint-maintenance-2026-10-09) for verification details.
+The current body remains limited to 16 KiB. The Windows wrapper reports reader failures through `systemMessage`.
+
+The 2026-10-09 checkpoint maintenance is historical evidence for version `0.15.13+codex.20261009checkpoint`. Local deployment and installed-file checks passed, as did a read/update/archive/readback workflow against a real task record. The workflow reduced the current region from 29,370 to 8,158 bytes. It preserved the goal, permissions, blockers, and history outside the region. See the [historical checkpoint-maintenance evidence](pstack/ADAPTATION.md#current-checkpoint-maintenance-2026-10-09).
+
+The source manifest now records `0.15.13+codex.20261011productcopy`. During the 2026-10-11 hook verification, the installed version was `0.15.13+codex.20261011copy`. The native reader returned the exact bound current body, including its existing `Pending` qualification. A fresh Desktop chat completed `SessionStart` once with no failures, reported an invalid-index diagnostic, and continued. The native test verified the scratch binding. The Desktop observation verified startup; it did not establish a task binding in `oneirloom`. The cause of the historical Desktop `exit 1` remains unproven. See the [product-copy rules and SessionStart verification](pstack/ADAPTATION.md#product-copy-rules-and-sessionstart-verification-2026-10-11).
 
 The hook does not monitor later business state, intercept agent dispatch, or enforce coordinator reminders. See the [hook contract](pstack/hooks/README.md) and [Codex host adapter](pstack/CODEX.md).
 
@@ -251,6 +257,12 @@ A validation gate is a mandatory check that must pass before an action can proce
 These are agent instructions and configuration conventions. They are not runtime enforcement hooks. Keep disk synchronization, installed-plugin verification, instructions read in the current task, and behavior observed in a new session as separate claims.
 
 ## Changelog
+
+### 2026-10-11 | `0.15.13+codex.20261011productcopy`
+
+- Added the product-copy rule to `AGENTS.md` and `prompts/codex-event-driven-base.md`. Engineering caveats stay in developer conversations or documentation. Agents add disclaimers to delivered interfaces or customer-facing backend responses only at the user's explicit request. They state actual status, errors, and functional limits concretely.
+- With installed version `0.15.13+codex.20261011copy`, the native engine completed `SessionStart` in 1,204 ms. It used the observed event session ID to select a temporary scratch binding. It returned the exact current body, including its existing `Pending` qualification. A fresh Desktop chat completed `SessionStart` once (`runs=1`, `failed=0`), emitted an invalid-index diagnostic, and continued.
+- The cause of the historical Desktop `exit 1` remains unproven. This update makes no hook-source repair. See the [product-copy rules and SessionStart verification](pstack/ADAPTATION.md#product-copy-rules-and-sessionstart-verification-2026-10-11).
 
 ### 2026-10-10 | `0.15.13+codex.20261010acceptance`
 

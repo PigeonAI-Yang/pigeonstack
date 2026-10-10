@@ -445,3 +445,15 @@ Version `0.15.13+codex.20261010progress` removes the automatic unresolved-at-thi
 The change covers AGENTS.md, MODELS.md, CODEX.md, COORDINATOR.md, the base prompt, managed developer instructions in config/workflow.toml, the read-only Astra role, and the prompting reference. The model ceiling remains unchanged. No new timer, scheduler, framework, or recurring status messages are introduced.
 
 Six read-only policy scenarios passed: productive Astra high at minute 31; productive Astra xhigh at minute 65; demonstrated Sol medium inability at minute 12; denied credentials with independent work available; a healthy build without recent chat output; and a genuinely exhausted Astra xhigh attempt. Targeted checks verified TOML parsing, unchanged model and other noninstruction settings, absence of the old time-only trigger in governing sources, and diff whitespace. These are source and scenario checks, not a new live 30-minute behavior test or a guarantee for already running sessions.
+
+## Product copy rules and SessionStart verification, 2026-10-11
+
+The source manifest records version `0.15.13+codex.20261011productcopy`. The installed plugin used for the observations below was `0.15.13+codex.20261011copy`.
+
+The product-copy rule is in `AGENTS.md` and `prompts/codex-event-driven-base.md`. Agents keep engineering caveats in developer conversations or documentation. They add disclaimers to delivered interfaces or customer-facing backend responses only when the user explicitly requests them. They state actual status, errors, and functional limits concretely.
+
+On 2026-10-11, the installed native engine completed `SessionStart` in 1,204 ms. The actual event supplied the session ID used for a temporary scratch-record binding. The reader returned the exact current body, preserving the existing `Pending` qualification. All isolated native diagnostic processes were closed, and temporary overrides were discarded. The observation wrote no persistent host configuration or trust settings and changed no model settings or hook source.
+
+A fresh Desktop chat in `oneirloom` completed `SessionStart` once (`runs=1`, `failed=0`). The hook emitted `pstack-context-index:v1 must be the first block`, then continued the session. This verifies startup, not successful task binding in `oneirloom`. The cause of the historical Desktop `exit 1` remains unproven. This update makes no hook-source repair.
+
+Evidence receipts are in `work/session-context-20261006/copy-deploy-20261011/deployment.json` and `work/session-context-20261006/hook-fix-20261011/{verdict.json,desktop-hook-proof.json,desktop-hook-proof.png}`.
