@@ -252,6 +252,13 @@ These are agent instructions and configuration conventions. They are not runtime
 
 ## Changelog
 
+### 2026-10-10 | `0.15.13+codex.20261010gates`
+
+- A prerequisite is a gate regardless of its label, including investigation, evidence collection, compatibility review, or acceptance.
+- New mandatory work needs a task requirement, an existing mandatory rule, or concrete evidence of a necessary dependency or fault. Uncertainty alone is insufficient.
+- Adaptation reuses established capabilities and credible evidence. Coordinators remove unsupported prerequisites without expanding the goal or raising acceptance standards.
+- Global and base instructions use the same rule; host and coordinator guidance reference it. Source checks passed; new-session behavior remains unverified.
+
 ### 2026-10-10 | `0.15.13+codex.20261010brief`
 
 - Consolidated workstream Main assignments into four fields: goal, observable completion condition, acceptance evidence, and necessary constraints.

@@ -1,6 +1,6 @@
 {
   "name": "pstack",
-  "version": "0.15.13+codex.20261010brief",
+  "version": "0.15.13+codex.20261010gates",
   "description": "Lauren Tan's pstack v0.15.13 workflows with a GPT-only Codex host adapter.",
   "author": {
     "name": "Lauren Tan (original pstack author)",
