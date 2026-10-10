@@ -252,6 +252,11 @@ These are agent instructions and configuration conventions. They are not runtime
 
 ## Changelog
 
+### 2026-10-10 | `0.15.13+codex.20261010acceptance`
+
+- Keep the user's original goal and completion condition separate from scoped Main assignments. After each Main delivery, accept supported parts and continue ready authorized work through its responsible Main before a final answer. If only assigned work is running, use the existing interruptible wait and process its result.
+- End only when evidence meets the user's completion condition, the user stops or changes scope, or an outside input or approval the team cannot supply leaves no authorized work ready. Source checks do not prove agent behavior; SessionStart does not intercept turn endings.
+
 ### 2026-10-10 | `0.15.13+codex.20261010gates`
 
 - A prerequisite is a gate regardless of its label, including investigation, evidence collection, compatibility review, or acceptance.
