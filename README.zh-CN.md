@@ -41,7 +41,7 @@ PigeonStack 是 PigeonYang 维护的一套 Codex 工作配置，包含全局指�
 
 2026-10-09 的检查点维护是版本 `0.15.13+codex.20261009checkpoint` 的历史证据。本地部署和安装文件核对均已通过，真实任务记录的读取、更新、归档和读回流程也已通过。该流程将当前区域从 29,370 字节缩减至 8,158 字节，并保留目标、权限、阻塞项及区域外历史。详见[历史检查点维护证据](pstack/ADAPTATION.md#current-checkpoint-maintenance-2026-10-09)。
 
-当前源码清单记录的版本为 `0.15.13+codex.20261011noreplay`。2026-10-11 钩子验证时安装的版本为 `0.15.13+codex.20261011copy`。native reader 返回了完全一致的绑定当前正文，包括现有 `Pending` 状态。新的 Desktop 聊天运行了一次 `SessionStart`，失败次数为 0；它报告 index 无效诊断后继续。native 测试验证了临时记录绑定；Desktop 观察验证了启动，但未建立 `oneirloom` 的任务绑定。历史 Desktop `exit 1` 的原因仍未查明。详见[产品文案规则及 SessionStart 验证](pstack/ADAPTATION.md#product-copy-rules-and-sessionstart-verification-2026-10-11)。
+当前源码清单记录的版本为 `0.15.13+codex.20261011mainownership`。2026-10-11 钩子验证时安装的版本为 `0.15.13+codex.20261011copy`。native reader 返回了完全一致的绑定当前正文，包括现有 `Pending` 状态。新的 Desktop 聊天运行了一次 `SessionStart`，失败次数为 0；它报告 index 无效诊断后继续。native 测试验证了临时记录绑定；Desktop 观察验证了启动，但未建立 `oneirloom` 的任务绑定。历史 Desktop `exit 1` 的原因仍未查明。详见[产品文案规则及 SessionStart 验证](pstack/ADAPTATION.md#product-copy-rules-and-sessionstart-verification-2026-10-11)。
 
 钩子不会监控后续业务状态、拦截 Agent 派发或强制执行协调者提醒。详见[钩子契约](pstack/hooks/README.md)和[Codex 宿主适配](pstack/CODEX.md)。
 
@@ -255,6 +255,12 @@ J:/PigeonYang/pigeonstack
 这些机制是 Agent 指令和配置约定，不是运行时强制钩子。磁盘同步、插件安装验证、当前任务已读取的指令，以及新会话实际表现，需要分别说明。
 
 ## 更新日志
+
+### 2026-10-11 | `0.15.13+codex.20261011mainownership`
+
+- 专项 Main 缺席、归档或不可用时，总控不能用自己的实施子代理顶替。已有 Main 直接复用；缺席专项的接续任务整批准备，其他可执行的协调工作继续推进。
+- 总控内部子代理仅辅助有界协调和最终验收。专项诊断、实现、修复及内部派工由对应 Main 负责。交接保留已有修改和证据，不重做已完成步骤。
+- 新建独立聊天仍遵守宿主要求的用户创建指令。本次修改指令，尚未实测新总控的行为。
 
 ### 2026-10-11 | `0.15.13+codex.20261011noreplay`
 

@@ -465,3 +465,9 @@ Version `0.15.13+codex.20261011noreplay` adds guidance for startup, resume, and 
 The rules prohibit Mains from messaging one another. The coordinator alone routes cross-workstream communication. Mains report only verified stage deliverables the next owner can use, completed outcomes, or real exceptions. They do not send fragments or acknowledgment loops. Teams reuse existing authorization without repeated requests.
 
 The SessionStart reminder covers startup, resume, and compaction. The existing targeted context-generation checks passed 101 cases, including a quoted historical Stop with a current resume and a genuinely new Stop after that resume. The receipt is `work/session-context-20261006/run-obktbgjc/results.json`. These checks do not establish live model compliance or message interception.
+
+## Missing Main ownership, 2026-10-11
+
+Version `0.15.13+codex.20261011mainownership` closes the coordinator fallback that assigned workstream implementation to internal children after the previous Mains were archived. COORDINATOR.md keeps workstream ownership separate from coordinator helpers even when a Main is missing or unavailable. CODEX.md applies that boundary when selecting a host tool. Available Mains are reused; missing successor assignments are prepared together under the existing visible-chat creation boundary. Only work needing the absent owner waits; other ready coordination continues. Authorized handoffs retain current changes and evidence without repeating completed steps.
+
+Coordinator children may support bounded coordination and final acceptance. Workstream diagnosis, implementation, repair, and child routing stay with the responsible Main. This instruction update changes no hook source, model settings, or host tool permissions. Source checks and installed-file readback do not establish live coordinator compliance.

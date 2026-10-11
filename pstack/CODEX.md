@@ -52,7 +52,7 @@ Apply the global completion rule to the current diff and collected evidence. Do 
 
 ## Translate host tools
 
-Choose the responsible owner before choosing the host tool. Use an authorized cross-chat route for an existing workstream Main. Use `collaboration.spawn_agent` for internal work within the current Main's scope or the coordinator's bounded scope defined in COORDINATOR.md. Use a visible task creation tool only if the user requests a visible new task. Spawn a fresh child for every internal assignment. Pass concise evidence and interfaces. Do not simulate independent roles.
+Choose the responsible owner before choosing the host tool. Use an authorized cross-chat route for an existing workstream Main. If that Main is missing, archived, or unavailable, follow COORDINATOR.md's ownership rule; do not replace it with a coordinator-owned child. Use `collaboration.spawn_agent` for internal work within the current Main's scope, or bounded coordination and final acceptance support within the coordinator's scope. Workstream implementation remains with its responsible Main. Use a visible task creation tool only if the user requests a visible new task; prepare missing Main assignments together instead of asking separately for each successor. Spawn a fresh child for every internal assignment. Pass existing changes and evidence through an authorized ownership handoff without restarting completed work. Do not simulate independent roles.
 
 | Upstream concept | Codex equivalent |
 | --- | --- |

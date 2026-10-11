@@ -43,7 +43,7 @@ The current body remains limited to 16 KiB. The Windows wrapper reports reader f
 
 The 2026-10-09 checkpoint maintenance is historical evidence for version `0.15.13+codex.20261009checkpoint`. Local deployment and installed-file checks passed, as did a read/update/archive/readback workflow against a real task record. The workflow reduced the current region from 29,370 to 8,158 bytes. It preserved the goal, permissions, blockers, and history outside the region. See the [historical checkpoint-maintenance evidence](pstack/ADAPTATION.md#current-checkpoint-maintenance-2026-10-09).
 
-The source manifest now records `0.15.13+codex.20261011noreplay`. During the 2026-10-11 hook verification, the installed version was `0.15.13+codex.20261011copy`. The native reader returned the exact bound current body, including its existing `Pending` qualification. A fresh Desktop chat completed `SessionStart` once with no failures, reported an invalid-index diagnostic, and continued. The native test verified the scratch binding. The Desktop observation verified startup; it did not establish a task binding in `oneirloom`. The cause of the historical Desktop `exit 1` remains unproven. See the [product-copy rules and SessionStart verification](pstack/ADAPTATION.md#product-copy-rules-and-sessionstart-verification-2026-10-11).
+The source manifest now records `0.15.13+codex.20261011mainownership`. During the 2026-10-11 hook verification, the installed version was `0.15.13+codex.20261011copy`. The native reader returned the exact bound current body, including its existing `Pending` qualification. A fresh Desktop chat completed `SessionStart` once with no failures, reported an invalid-index diagnostic, and continued. The native test verified the scratch binding. The Desktop observation verified startup; it did not establish a task binding in `oneirloom`. The cause of the historical Desktop `exit 1` remains unproven. See the [product-copy rules and SessionStart verification](pstack/ADAPTATION.md#product-copy-rules-and-sessionstart-verification-2026-10-11).
 
 The hook does not monitor later business state, intercept agent dispatch, or enforce coordinator reminders. See the [hook contract](pstack/hooks/README.md) and [Codex host adapter](pstack/CODEX.md).
 
@@ -257,6 +257,12 @@ A validation gate is a mandatory check that must pass before an action can proce
 These are agent instructions and configuration conventions. They are not runtime enforcement hooks. Keep disk synchronization, installed-plugin verification, instructions read in the current task, and behavior observed in a new session as separate claims.
 
 ## Changelog
+
+### 2026-10-11 | `0.15.13+codex.20261011mainownership`
+
+- Coordinator instructions prohibit replacing missing, archived, or unavailable workstream Mains with coordinator-owned implementation children. The coordinator reuses available Mains and prepares missing successor assignments together, while continuing other ready coordination.
+- Coordinator children support bounded coordination and final acceptance. Workstream diagnosis, implementation, repair, and child routing stay with the responsible Main. Handoffs preserve existing changes and evidence without restarting completed work.
+- Visible chat creation still follows the host's user-request boundary. This update changes instructions; live coordinator behavior has not been tested.
 
 ### 2026-10-11 | `0.15.13+codex.20261011noreplay`
 
