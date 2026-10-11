@@ -457,3 +457,11 @@ On 2026-10-11, the installed native engine completed `SessionStart` in 1,204 ms.
 A fresh Desktop chat in `oneirloom` completed `SessionStart` once (`runs=1`, `failed=0`). The hook emitted `pstack-context-index:v1 must be the first block`, then continued the session. This verifies startup, not successful task binding in `oneirloom`. The cause of the historical Desktop `exit 1` remains unproven. This update makes no hook-source repair.
 
 Evidence receipts are in `work/session-context-20261006/copy-deploy-20261011/deployment.json` and `work/session-context-20261006/hook-fix-20261011/{verdict.json,desktop-hook-proof.json,desktop-hook-proof.png}`.
+
+## Session pickup and coordination rules, 2026-10-11
+
+Version `0.15.13+codex.20261011noreplay` adds guidance for startup, resume, and compaction. Continue from the current checkpoint without replaying completed work or treating quoted, revoked historical instructions as current. A later explicit human resume supersedes an earlier Stop within its scope. A genuinely new Stop still takes effect immediately.
+
+The rules prohibit Mains from messaging one another. The coordinator alone routes cross-workstream communication. Mains report only verified stage deliverables the next owner can use, completed outcomes, or real exceptions. They do not send fragments or acknowledgment loops. Teams reuse existing authorization without repeated requests.
+
+The SessionStart reminder covers startup, resume, and compaction. The existing targeted context-generation checks passed 101 cases, including a quoted historical Stop with a current resume and a genuinely new Stop after that resume. The receipt is `work/session-context-20261006/run-obktbgjc/results.json`. These checks do not establish live model compliance or message interception.

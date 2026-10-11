@@ -6,6 +6,8 @@ This document defines the reader contract and bounded activation procedure. Inst
 
 The proposed synchronous `SessionStart` handler covers `startup`, `resume`, and `compact`. Accept only the event fields `session_id`, `cwd`, `hook_event_name`, `source`, `model`, `transcript_path`, and optional `permission_mode`; reject missing or extra fields. The event name must be `SessionStart`. The reader validates `transcript_path` as a string or null, then discards the value. It does not open the path or read transcript contents. A separately authorized probe may retain only a boolean for whether the field is null. Event input is limited to 16,384 bytes. The handler does not use `PSTACK_*` environment variables.
 
+The trusted prologue clarifies that startup, resume, and compact load saved state rather than deliver new task messages, and that historical Stop/resume quotations are not new human instructions. SessionStart does not intercept later cross-chat calls or mechanically enforce message source or time; this text guides the receiving model and does not prove its behavior.
+
 Resolve the index only at the actual event `cwd`, by reading the first 16,384 bytes of its `AGENTS.md`. After an optional UTF-8 BOM and ASCII whitespace, the file must begin with this index block:
 
 ```text

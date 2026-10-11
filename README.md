@@ -43,7 +43,7 @@ The current body remains limited to 16 KiB. The Windows wrapper reports reader f
 
 The 2026-10-09 checkpoint maintenance is historical evidence for version `0.15.13+codex.20261009checkpoint`. Local deployment and installed-file checks passed, as did a read/update/archive/readback workflow against a real task record. The workflow reduced the current region from 29,370 to 8,158 bytes. It preserved the goal, permissions, blockers, and history outside the region. See the [historical checkpoint-maintenance evidence](pstack/ADAPTATION.md#current-checkpoint-maintenance-2026-10-09).
 
-The source manifest now records `0.15.13+codex.20261011productcopy`. During the 2026-10-11 hook verification, the installed version was `0.15.13+codex.20261011copy`. The native reader returned the exact bound current body, including its existing `Pending` qualification. A fresh Desktop chat completed `SessionStart` once with no failures, reported an invalid-index diagnostic, and continued. The native test verified the scratch binding. The Desktop observation verified startup; it did not establish a task binding in `oneirloom`. The cause of the historical Desktop `exit 1` remains unproven. See the [product-copy rules and SessionStart verification](pstack/ADAPTATION.md#product-copy-rules-and-sessionstart-verification-2026-10-11).
+The source manifest now records `0.15.13+codex.20261011noreplay`. During the 2026-10-11 hook verification, the installed version was `0.15.13+codex.20261011copy`. The native reader returned the exact bound current body, including its existing `Pending` qualification. A fresh Desktop chat completed `SessionStart` once with no failures, reported an invalid-index diagnostic, and continued. The native test verified the scratch binding. The Desktop observation verified startup; it did not establish a task binding in `oneirloom`. The cause of the historical Desktop `exit 1` remains unproven. See the [product-copy rules and SessionStart verification](pstack/ADAPTATION.md#product-copy-rules-and-sessionstart-verification-2026-10-11).
 
 The hook does not monitor later business state, intercept agent dispatch, or enforce coordinator reminders. See the [hook contract](pstack/hooks/README.md) and [Codex host adapter](pstack/CODEX.md).
 
@@ -257,6 +257,12 @@ A validation gate is a mandatory check that must pass before an action can proce
 These are agent instructions and configuration conventions. They are not runtime enforcement hooks. Keep disk synchronization, installed-plugin verification, instructions read in the current task, and behavior observed in a new session as separate claims.
 
 ## Changelog
+
+### 2026-10-11 | `0.15.13+codex.20261011noreplay`
+
+- After startup, resume, or compaction, continue from the current checkpoint. Do not replay completed work or treat quoted, revoked historical instructions as current. A later explicit human resume supersedes an earlier Stop within its scope. A genuinely new Stop still takes effect immediately.
+- Mains do not message one another. Only the coordinator routes cross-workstream communication. Mains report only verified stage deliverables the next owner can use, completed outcomes, or real exceptions. They do not send fragments or acknowledgment loops. Reuse the task's existing authorization without repeated requests.
+- The SessionStart reminder covers startup, resume, and compaction. The 101 existing targeted context-generation checks passed, including a quoted historical Stop with a current resume and a genuinely newer Stop. These checks do not establish live model compliance or message interception. See the [session pickup and coordination rules](pstack/ADAPTATION.md#session-pickup-and-coordination-rules-2026-10-11).
 
 ### 2026-10-11 | `0.15.13+codex.20261011productcopy`
 
