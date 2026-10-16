@@ -86,9 +86,9 @@ Read the leaf skill in full for any principle you apply. Each entry names when i
 
 ## Subagents
 
-Resolve every role through `MODELS.md` and translate tool arguments through `CODEX.md`. The upstream playbooks name responsibilities, not permission for a single Luna agent to investigate, design, implement, and judge its own result. Split those responsibilities before dispatch.
+Resolve every role through `MODELS.md` and translate tool arguments through `CODEX.md`. Sol is the default executor for ordinary work. Luna is limited to simple repetitive mechanical steps with fixed inputs, a fixed procedure, and checkable results. Do not treat an accepted plan or short task as automatic Luna eligibility.
 
-Give implementation delegates the concrete brief from `CODEX.md`. The Primary reviews their diffs and acceptance evidence. Ordinary technical plans, local designs, and routine rule adaptation go directly to Sol. Critical design decisions use Astra under `MODELS.md`; a technical-document label alone does not determine the model. A harder task does not itself change models or add reviewers.
+Give Sol executors a bounded outcome and the constraints and evidence needed to complete it. Use CODEX.md's fixed-step brief for eligible Luna helpers. The Primary reviews final diffs and acceptance evidence. A separate consultation remains read-only. Critical design uses Astra under MODELS.md; task size, difficulty, or a document label alone does not change tiers or add reviewers.
 
 Use a fresh child for every assignment. A returned child is retired. Clarify an active assignment by message, but never resume a completed child for new work. Preserve one owner and release affected resources before takeover. Dispatch independent ready assignments together within actual capacity. ComputerUse remains with the Primary and all image operations remain serial.
 

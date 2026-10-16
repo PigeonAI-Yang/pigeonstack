@@ -38,7 +38,7 @@ Resolve each named role through the plugin-root `MODELS.md`. It defines responsi
 | Tooling | `reflect tooling` | `MODELS.md`: prescribed tooling collection | `references/tooling-reviewer.md` |
 | Divergent | `reflect judgment, divergent, synthesizer` | `MODELS.md`: scoped judgment review | `references/divergent-reviewer.md` |
 
-Use each template for its selected responsibility, substituting the transcript path or digest. Give Luna only the prescribed collection checklist, and keep judgment with the role defined in `MODELS.md`. Reviewers return findings in the `Task` response body.
+Use each template for its selected responsibility, substituting the transcript path or digest. Use Sol by default. Luna may collect only simple repetitive observations from a fixed checklist; judgment follows `MODELS.md`. Reviewers return findings in the `Task` response body.
 
 ### 3. Synthesize
 
@@ -54,7 +54,7 @@ Before applying any Accepted edit, present the synthesizer's full Accepted/Rejec
 
 File backlog items to an external tracker only when that action is authorized. Otherwise report them locally.
 
-For each approved Accepted item, preserve the Routing field's target skill and use the authoring procedure through the Codex `skill-creator`. Use Sol for routine adaptation of existing instructions and Luna for mechanical or exact accepted-content edits. Use Astra for new critical design decisions or an actual unresolved Sol `xhigh` attempt under `MODELS.md`. The instruction-file label alone does not require Astra. The Primary accepts the actual diff.
+For each approved Accepted item, preserve the Routing field's target skill and use the authoring procedure through the Codex `skill-creator`. Use Sol for ordinary rule adaptation and edits. Luna is eligible only for simple repetitive mechanical or exact accepted-content changes with fixed steps. Use Astra for new critical design decisions or an actual unresolved Sol `xhigh` attempt under `MODELS.md`. The instruction-file label alone does not require Astra. The Primary accepts the actual diff.
 
 If your environment ships a SKILL.md validator, run it on every touched skill before declaring done. Skip this step if it doesn't.
 

@@ -29,7 +29,7 @@ two steps:
 
 new here? the [pstack guide](./docs/guide/README.md) walks you through a first real task, from setup and prompting through verification and overnight runs. stuck, or unsure which skill fits? ask [`/poteto-help`](./skills/poteto-help/SKILL.md).
 
-the other skills are situational; the mode uses them as needed. on Codex, [MODELS.md](MODELS.md) owns GPT responsibilities. the Primary owns scope and acceptance, Luna executes concrete briefs, and Sol handles ordinary technical plans, local designs, and routine rule adaptation. Astra handles new or substantively changed master or system architecture, key contracts, and consequential design tradeoffs. a document label alone does not require Astra. unresolved work follows the configured takeover sequence. panels require an explicitly selected comparison; upstream model defaults do not apply.
+the other skills are situational; the mode uses them as needed. on Codex, [MODELS.md](MODELS.md) owns GPT responsibilities. the Primary owns scope and acceptance; Sol handles ordinary development, execution, plans, and rule adaptation. Luna handles only simple repetitive mechanical work with fixed steps and checkable results. Astra handles new or substantively changed master or system architecture, key contracts, and consequential design tradeoffs. a document label alone does not require Astra. unresolved work follows the configured takeover sequence. panels require an explicitly selected comparison; upstream model defaults do not apply.
 
 ## usage
 
@@ -257,7 +257,7 @@ type [`/automate-me`](./skills/automate-me/SKILL.md). it mines your recent trans
 
 models are configurable through [`/setup-pstack`](./skills/setup-pstack/SKILL.md). on Codex, it reads the maintained [MODELS.md](MODELS.md) and actual host configuration, then updates only requested GPT models and efforts. it preserves the active Primary and existing role responsibilities. missing configuration or unavailable models do not authorize upstream fallbacks.
 
-the upstream Cursor migration advice about deleting old model-rule lines does not apply to this adapter. preserve the configured roles and follow [CODEX.md](CODEX.md) for authorized source updates and deployment. `auto` and `inherit-parent` require actual parent model and effort resolution; omitted arguments can select Luna.
+the upstream Cursor migration advice about deleting old model-rule lines does not apply to this adapter. preserve the configured roles and follow [CODEX.md](CODEX.md) for authorized source updates and deployment. `auto` and `inherit-parent` require actual parent model and effort resolution; omitted arguments use the configured Sol child default, not parent inheritance.
 
 ## automations
 

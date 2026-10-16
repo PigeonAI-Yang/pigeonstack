@@ -34,11 +34,11 @@ Keep each field brief and link to existing context. Attach the owner and return 
 
 For internal assignments, use these briefs without inventing extra preparation:
 
-- **Luna implementation:** one defect or verifiable step, decisive evidence, chosen mechanism and concrete edits, allowed files and exclusions, checks and expected results, and assumptions requiring handoff. Keep coupled producer/caller/test changes together. A broad goal or failing-test list alone is insufficient.
-- **Luna collection or operations:** prescribed searches, observations, or commands and evidence to return; for operations include the artifact, destination, authorized steps, success readback, and stop conditions. The Primary interprets collected evidence.
+- **Sol execution:** assigned outcome, completion condition, evidence, constraints, allowed resources, and operation permissions. Sol owns ordinary diagnosis, local solution selection, implementation, repair, and verification within that scope.
+- **Luna mechanical work:** simple repetitive task only, with fixed inputs, exact steps, allowed files and exclusions, checks, expected results, and prompt return conditions. An accepted mechanism or small task alone does not qualify.
 - **Sol consultation, critical design, or takeover:** one unresolved objective or question, decisive evidence, attempts, scope and permitted resources, acceptance and return conditions. Consultations remain read-only, including upgrades. Takeovers own resolution through implementation and verification. Use global tier rules and MODELS.md; do not repeat the routing policy in each assignment.
 
-Choose the assignment boundary before its model. Routine Primary decisions do not need consultation. Accepted execution goes to Luna; established API, syntax, and command options within that mechanism remain execution. An accepted consultation returns execution to a fresh Luna child; an active takeover keeps ownership until completion.
+Choose the assignment boundary before its model. Sol at `medium` is the default executor. Luna is limited to simple repetitive mechanical work, not a mandatory implementation stage after a consultation. A separately assigned consultation remains read-only. A genuine takeover keeps ownership until completion. Do not split a coherent Sol task into Luna microtasks.
 
 Name the expected effect and an existing observation/result route. Preserve progress assessment times; they are not completion deadlines. Continue productive work with its current owner, including at Astra `xhigh`. An internal child's final handoff is sufficient. Let the owner act, observe, and correct. A request receipt is not the effect. Material contradictory evidence changes the dependent next action; a stopped run invalidates its old next action.
 
@@ -59,7 +59,7 @@ Choose the responsible owner before choosing the host tool. Use an authorized cr
 | `Task`, background subagent | `collaboration.spawn_agent`, already asynchronous |
 | Per-role rule, budget, default model | The role mapping and exact arguments in `MODELS.md` |
 | `generalPurpose` | General/default agent with an explicit scope |
-| `poteto-agent` code delegate | Luna execution role only after the concrete brief |
+| `poteto-agent` mechanical helper | Luna only for simple repetitive work with a fixed brief; use Sol for ordinary implementation |
 | Read-only flag | Explicit no-mutation assignment; no invented tool argument |
 | `AskQuestion` | Available user-input tool for missing facts or preferences, never an approval workaround |
 | Cursor `create-skill` | Installed `skill-creator` and its validator |
@@ -70,9 +70,9 @@ Choose the responsible owner before choosing the host tool. Use an authorized cr
 | `.cursor/skills` | Project `.agents/skills` |
 | Cursor transcripts | Available task tools or targeted Codex session records |
 
-Use `worker`, `poteto-agent`, or general/default for Luna execution. Use general/default with explicit model and effort for bounded Sol consultations, genuine failure takeovers, and critical design work. `astra-advisor` is optional and read-only, pinned to its initial effort. Its eligibility is critical design, a question unresolved after an actual Sol `xhigh` attempt, or explicit user model selection. It cannot write or take over. Use general/default for an authorized effort upgrade while preserving read-only scope when applicable.
+Use `worker` or general/default for Sol execution at `medium`. Use `poteto-agent` or general/default with explicit Luna arguments only for eligible simple repetitive mechanical work. Use general/default with explicit model and effort for consultations, takeovers, and critical design. `astra-advisor` remains read-only at its pinned initial effort; its eligibility follows global policy. Do not use a pinned role for a different model or effort.
 
-When setting model or effort explicitly, use `fork_turns: "none"` or necessary finite history. Full-history inheritance does not accept overrides. Role configuration can override spawn arguments, so do not use a pinned role for a different model. Resolve `auto` and `inherit-parent` using `MODELS.md`; omitted model arguments can select the configured Luna child default and are not proof of inheritance.
+When setting model or effort explicitly, use `fork_turns: "none"` or necessary finite history. Full-history inheritance does not accept overrides. Role configuration can override spawn arguments, so do not use a pinned role for a different model. Resolve `auto` and `inherit-parent` using `MODELS.md`; omitted model arguments use the configured Sol child default and are not proof of parent inheritance. Luna requires an eligible task and explicit model and effort arguments.
 
 For history, narrow by project, topic, and time. Read actual session metadata instead of assuming Cursor schemas. Summaries locate evidence; they do not prove execution. Memory updates require an explicit user request and the host's memory-update mechanism. Prefer attached UI sessions and available PTYs, preserve existing sessions, and apply online-request stop rules.
 

@@ -18,7 +18,7 @@ Cursor confirms the plugin is installed.
 
 Run `/setup-pstack` to inspect the existing GPT role mapping in [MODELS.md](../../MODELS.md). Setup changes only requested roles and efforts in the maintained source. It preserves the active Primary and never restores upstream Grok or Claude defaults. Model IDs and reasoning efforts are separate host arguments.
 
-`auto` and `inherit-parent` resolve to the actual active parent's model and effort. Omitting a model can select the configured Luna child default on this host; it does not prove inheritance. `MODELS.md` defines supported resolution and missing-evidence behavior.
+`auto` and `inherit-parent` resolve to the actual active parent's model and effort. Omitting a model uses the configured Sol child default on this host; it does not prove inheritance. `MODELS.md` defines supported resolution and missing-evidence behavior.
 
 Source changes and deployment are separate. Follow [CODEX.md](../../CODEX.md) for installation and report routing verified in a new session separately.
 
@@ -36,10 +36,10 @@ After an authorized model configuration deployment, verify routing in a new chat
 
 Extra agents and selected review panels use more tokens. On Codex, preserve the responsibilities and efforts in [MODELS.md](../../MODELS.md).
 
-- Use Luna for specified execution and evidence collection, and reuse credible current evidence.
+- Default ordinary execution and investigation to Sol. Use Luna only for simple repetitive mechanical work; reuse credible current evidence.
 - Avoid redundant reviewers and panels that the task did not select.
 - Request any model or effort change explicitly through `/setup-pstack`; a generic budget preset does not override the GPT mapping.
-- Resolve `auto` and `inherit-parent` to the actual parent model and effort. Omitting model arguments can select Luna instead.
+- Resolve `auto` and `inherit-parent` to the actual parent model and effort. Omitting model arguments uses the configured Sol default, not parent inheritance.
 - Casual conversation and direct factual answers need no workflow.
 
 ## Run your first task

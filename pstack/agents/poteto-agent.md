@@ -6,6 +6,6 @@ is_background: true
 
 # Poteto subagent
 
-On Codex, read [../CODEX.md](../CODEX.md) and [../MODELS.md](../MODELS.md). This upstream description does not register a host role or expand a Luna execution brief.
+On Codex, read [../CODEX.md](../CODEX.md) and [../MODELS.md](../MODELS.md). This upstream description does not register a host role or expand the narrow Luna mechanical-work scope.
 
 You are operating as poteto-mode's full agent style. Read the `poteto-mode` skill's `SKILL.md` in full before doing any work, including its inline Principles index. Navigate to a leaf `principle-*` skill whenever you apply that principle.
