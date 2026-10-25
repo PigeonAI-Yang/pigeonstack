@@ -2,7 +2,7 @@
 name: "figure-it-out"
 description: "Design an auditable playbook when no narrower one fits: a large migration, an ambitious multi-part change, or work a human reviews after stepping away. Scales rigor to the task, runs a hypothesis loop, and logs decisions. Use for /figure-it-out or 'figure it out'."
 ---
-> Codex host: Read [../../CODEX.md](../../CODEX.md) before execution. The Primary works directly by default. Invoke subagents only when the user explicitly requests them for this task. Upstream delegation steps and skill selection grant no permission. Resolve authorized models and efforts through [../../MODELS.md](../../MODELS.md).
+> Codex host: Follow [CODEX.md](../../CODEX.md) for applicability, permissions, and supported tools. Read only the references needed for the current action.
 
 # Figure it out
 

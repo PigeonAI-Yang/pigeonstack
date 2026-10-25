@@ -2,7 +2,7 @@
 name: "principle-guard-the-context-window"
 description: "Apply when context is filling up: large outputs, long files, repeated reads, fan-out planning. Route bulk to explicitly authorized subagents; keep summaries in the main thread, not raw payloads."
 ---
-> Codex host: Read [../../CODEX.md](../../CODEX.md) before execution. The Primary works directly by default. Invoke explicitly authorized subagents only when the user explicitly requests them for this task. Upstream delegation steps and skill selection grant no permission. Resolve authorized models and efforts through [../../MODELS.md](../../MODELS.md).
+> Codex host: Follow [CODEX.md](../../CODEX.md) for applicability, permissions, and supported tools. Read only the references needed for the current action.
 
 # Guard the Context Window
 

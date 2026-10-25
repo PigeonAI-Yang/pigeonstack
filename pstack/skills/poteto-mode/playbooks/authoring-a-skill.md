@@ -1,13 +1,13 @@
 ### Authoring or modifying a skill
 
-> Codex execution: The Primary performs this playbook directly by default. Delegation and agent-based review steps apply only when the user explicitly requests subagents for this task. Follow [CODEX.md](../../../CODEX.md) for tool and permission boundaries. Do not claim an independent verdict from self-review.
+> Codex adaptation: Apply only task-relevant steps under [CODEX.md](../../../CODEX.md). Workflow text does not add authorization or universal prerequisites.
 
 **You own the skill's voice.**
 
 1. Use the **create-skill** skill (Cursor's built-in for authoring SKILL.md files).
 2. Validate the skill: frontmatter has `name` and `description`, referenced files exist, cross-skill links resolve.
 3. Test cases if structural. Skip if subjective.
-4. Run **Opening a PR**.
+4. Use **Opening a PR** only when an authorized PR is part of the requested outcome.
 
 When in doubt, delete. Keep only prose that changes a decision. Tell it to do the thing and skip the reason. Explain only when the rule is confusing without one. Match tone to scope. Point at structural sources (types, READMEs, config) per the **encode-lessons-in-structure** principle skill. Delegate to other skills by path. Don't restate. A workflow you keep hitting but isn't captured → propose a new skill.
 

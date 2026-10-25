@@ -1,6 +1,6 @@
 ### Pause safely
 
-> Codex execution: The Primary performs this playbook directly by default. Delegation and agent-based review steps apply only when the user explicitly requests subagents for this task. Follow [CODEX.md](../../../CODEX.md) for tool and permission boundaries. Do not claim an independent verdict from self-review.
+> Codex adaptation: Apply only task-relevant steps under [CODEX.md](../../../CODEX.md). Workflow text does not add authorization or universal prerequisites.
 
 **You own a clean stop. Leave a checkpoint a cold-start agent can resume from.** This is explicit only. On "keep going", "going to bed, keep going", or "don't stop", do not pause.
 

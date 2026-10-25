@@ -1,23 +1,19 @@
 ### Feature
 
-> Codex execution: The Primary performs this playbook directly by default. Delegation and agent-based review steps apply only when the user explicitly requests subagents for this task. Follow [CODEX.md](../../../CODEX.md) for tool and permission boundaries. Do not claim an independent verdict from self-review.
+> Codex adaptation: Apply only task-relevant steps under [CODEX.md](../../../CODEX.md). Workflow text does not add authorization or universal prerequisites.
 
 **You own the design, implementation, review, and verification.** Delegate only within an explicit user request.
 
-1. `how` over the affected subsystem.
-2. `architect` for parallel design exploration.
-3. Write the throughput checkpoint as four todo items. A dimension that genuinely does not apply (single file, no fan-out) keeps its item with `n/a: <reason>` rather than being dropped:
-   - **Blocking first steps.** Gates run before fan-out.
-   - **Independent workstreams.** Disjoint files, services, or layers parallelize. Shared writes serialize.
-   - **Shared mutable state.** Default to splitting the target (the **separate-before-serializing-shared-state** principle skill). Serialize only for real invariants.
-   - **Smallest safe decomposition.** If one worker is best, name why.
-4. Implement directly. If the user explicitly requests a subagent, use the feature model in `MODELS.md` with a specific scope (file paths, named data shape and its organizing structure per **principle-model-the-domain**, a state machine over scattered booleans, a table/registry over branching, a typed model over repeated shape assumptions, chosen before the delegate writes logic, and success criteria). When multiple valid shapes leave a material design decision unresolved, use the **arena** candidate procedure only within an explicitly selected comparison under `CODEX.md`. Otherwise the Primary selects the shape before the execution brief. Record any missing independent verdict instead of simulating review. A subagent forbidden to spawn satisfies this by owning the diff directly with the same review separation. No "standing by" reply that waits on a nested agent. Comments per **Comments**. Surgical edits, re-ground against the source for upstream-derived files. Port shared-primitive improvements to all consumers and verify each. Commit liberally.
+1. Read the affected implementation. Use how if the behavior or ownership remains unclear.
+2. Choose the local design. Use architect or a comparison only for a concrete unresolved choice within the user's scope.
+3. Keep a short checkpoint when dependencies or pickup require it. Describe actual blockers and shared resources; no fixed item count is required.
+4. Implement directly. If the user explicitly requests a subagent, use the feature model in `MODELS.md` with a specific scope (file paths, named data shape and its organizing structure per **principle-model-the-domain**, a state machine over scattered booleans, a table/registry over branching, a typed model over repeated shape assumptions, chosen before the delegate writes logic, and success criteria). When multiple valid shapes leave a material design decision unresolved, use the **arena** candidate procedure only within an explicitly selected comparison under `CODEX.md`. Otherwise the Primary selects the shape before the execution brief. Record any missing independent verdict instead of simulating review. A subagent forbidden to spawn satisfies this by owning the diff directly with the same review separation. No "standing by" reply that waits on a nested agent. Comments per **Comments**. Surgical edits, re-ground against the source for upstream-derived files. Port shared-primitive improvements to all consumers and verify each. Commit only within the authorized task.
 5. Verify on the matching surface. "Inconclusive" or wrong-surface is not a pass. Flag it.
-6. Rebase into small, ordered commits. Stack follow-ups.
+6. If commits or a stack are part of the authorized task, keep them small and ordered. Otherwise retain a reviewable patch.
    Use the **sequence-verifiable-units** principle skill, building, verifying, and committing each small unit before the next.
-7. If the design is contested, `interrogate` before shipping.
-8. Run **Opening a PR**.
+7. Use interrogate if an independent review is explicitly required. Otherwise resolve and verify the concrete design concern within the current task.
+8. Use **Opening a PR** only when PR creation is authorized and part of the requested outcome.
 
-Code-coupled work (one feature, one migration) goes to a single owner with the checkpoint inline. That owner fans out internally after the blocking phase. Parent-level fan-out is for slices that produce independent artifacts (audits, cross-subsystem investigations, competing experiments). Rewrite the checkpoint at phase boundaries. Spawn a fresh owner rather than chaining interrupts.
+For explicitly authorized multi-agent work, code-coupled changes (one feature, one migration) go to a single owner with the checkpoint inline. That owner fans out internally after the blocking phase. Parent-level fan-out is for slices that produce independent artifacts (audits, cross-subsystem investigations, competing experiments). Rewrite the checkpoint at phase boundaries. Spawn a fresh owner rather than chaining interrupts.
 
 **Reply:** what you built, what you chose and why, the throughput checkpoint, open decisions. Tables for design alternatives.

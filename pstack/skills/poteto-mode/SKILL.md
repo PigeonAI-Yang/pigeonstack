@@ -2,40 +2,27 @@
 name: "poteto-mode"
 description: "poteto's agent style for concise, detailed responses, deliberate subagents, unslopped prose, simple code, and verified work. Use for poteto, /poteto-mode, or requests to work in this style."
 ---
-> Codex host: Read [../../CODEX.md](../../CODEX.md) before execution. The Primary works directly by default. Invoke subagents only when the user explicitly requests them for this task. Upstream delegation steps and skill selection grant no permission. Resolve authorized models and efforts through [../../MODELS.md](../../MODELS.md).
+> Codex host: Follow [CODEX.md](../../CODEX.md) for applicability, permissions, and supported tools. Read only the references needed for the current action.
 
 # Poteto mode
 
 Bundled skills live at `../<name>/SKILL.md` from this file, so put this file's absolute path in every `poteto-agent` prompt.
 
-## Non-negotiables
+## Choose useful guidance
 
-The Principles section below grounds every trigger. Apply each relevant principle to the decision. Explain consequential choices without printing a principle catalog. Cite only principles whose leaf SKILL.md you read this session.
+Select guidance for a concrete need or an explicit user request. The chat receiving this skill owns the task. Its menu is not a required sequence.
 
-Remaining triggers:
-
-- Nontrivial change, architecture decision, or "are we sure?" → the **how** skill.
-- About to `AskQuestion` on a "which approach", "how should I", or "what should this do" fork → classify it before you ask. If the answer is a fact you could observe by running something (behavior, timing, layout, output, perf, even whether an eval separates), it is not the human's to answer. Sketch it via the Prototype playbook (`playbooks/prototype.md`) and let the result decide. If the task is a read-only Investigation whose deliverable is a cited answer, stay in it and answer from the evidence rather than building a sketch. Reserve the question for a genuine product or preference call no experiment can settle. Under a full-autonomy grant, decide a call the grant covers, act on it, and report it, with no reply word and no offer. Under the grant, for a call only the operator can make, apply a default, report it with a full explanation, and say in plain words what the operator could tell you to do instead. The operator answers in their own words. Never give a shorthand token to type back. Gates the operator named and the Always-pause list in Autonomy still need the operator.
-- Any code → name the data shape first, and choose its organizing structure per **principle-model-the-domain**.
-- Code crossing a function boundary → the **architect** skill for design exploration. The Primary performs it directly unless the user explicitly requests candidate agents.
-- Parallel fan-out → the **swarm** skill for coverage matrices, races, gauntlets, and exploration partitions. Use **arena** for design or code bakeoffs with base selection and grafting.
-- Contested design → the **interrogate** skill (multi-model adversarial) before shipping.
-- Nontrivial multi-step → write the throughput checkpoint (Feature step 3).
-- Any prose surface, your reply to the user included → the **unslop** skill. Write the reply per **Writing the reply**. Agent-facing prose also follows the **create-skill** skill (Cursor's built-in for authoring SKILL.md files).
-- Docs, RFCs, readmes, PR descriptions, or commit messages → the **technical-writing** skill (`/technical-writing`).
-- Before commit → the `deslop` skill from the `cursor-team-kit` plugin (`/deslop`).
-- Before review → the **no-comments** skill (`/no-comments`).
-- Shipping UI / IDE / CLI → the matching control skill. `cursor-team-kit` publishes `control-cli` (CLIs and TUIs) and `control-ui` (browser / Electron / web UIs). For bug fixes, reproduce first on the same surface yourself. Hand to the user only under the narrow Bug fix step 1 exception.
-- Running a benchmark, measuring perf yourself, or reporting a speedup or regression you measured → the **benchmark-checklist** skill before you report or act on the number.
-- Any PR-status request ("babysit this", "get it green", "address the bugbot comments", and most often "check on PR X" or "anything outstanding on X") → the **Babysit** playbook (`playbooks/babysit.md`), not Cursor's built-in babysit skill, whose description matches the same words. Never triggered by merely opening a PR. Declare its mode before polling. The playbook's step 1 owns the request-to-mode mapping. Reaching for `drive` inside a phase agent stops that agent finishing its turn.
-- Asked to land or ship a green stack → the **Shipping** playbook (`playbooks/shipping.md`). Green is not safe. Nothing gets armed before an independent per-PR verdict, and only the contiguous verified run from the root lands.
-- Bugbot or the agentic security review commented → skeptical posture. They catch real bugs and also file non-issues and nitpicks, so assess each on its merits and dismiss noise with a concrete reason instead of churning code. Triage fix / dismiss / ask per `references/bugbot-triage.md`.
-- Broken skill mid-task → report the concrete failure and finish reachable authorized work. Repair the skill or open a PR only when that action is in scope and authorized.
-- Long, autonomous, or multi-phase work, or any task the user steps away from to review later ("going to bed", "trust it when i'm back", "/loop until X") → a decision trail via the **show-me-your-work** skill. Commit it when stakes need an auditable record. Keep it local otherwise.
+- Read the affected implementation directly. Use how when runtime flow or ownership remains unclear, and why when history or rationale matters to the change.
+- Use architect or arena when an unresolved design choice needs exploration. Crossing a function boundary or finding several possible implementations does not by itself require a comparison.
+- Diagnose actual bugs on the relevant existing surface. Add a prototype, harness, benchmark, or other tool only when the current task needs it.
+- Use relevant prose or code-cleanup guidance when the changed material benefits from it. A reply, commit, or review alone does not require loading another skill.
+- Keep a concise checkpoint when work needs pickup or has real dependencies. A short task needs no four-part throughput checklist or separate plan record.
+- Explicitly requested independent reviews and parallel agents follow [MULTI_AGENT.md](../../MULTI_AGENT.md) and the unchanged [MODELS.md](../../MODELS.md). Do not invent independence or create agents from a skill trigger.
+- Choose a playbook below when its procedure helps. Apply relevant steps under CODEX.md. Fixed candidates, lanes, tests, and verification phases are not universal prerequisites.
 
 ## Principles
 
-Read the leaf skill in full for any principle you apply. Each entry names when it applies. Each leaf is the **principle-<title>** skill, with the title in kebab case, hyphens kept and other punctuation dropped, unless the entry gives its name.
+Read a leaf when its detailed procedure is useful to the current decision. The index adds no required phase. Each entry names when it applies. Each leaf is the **principle-<title>** skill, with the title in kebab case, hyphens kept and other punctuation dropped, unless the entry gives its name.
 
 **Core**
 
@@ -76,53 +63,15 @@ Read the leaf skill in full for any principle you apply. Each entry names when i
 
 - **Encode Lessons in Structure** (**principle-encode-lessons-in-structure**). Repeated actual errors appear in evidence already collected. At normal completion, judge the smallest authorized improvement under `CODEX.md`. A repeated instruction alone does not require a new gate or maintenance task.
 
-## Autonomy
+## Execution and communication
 
-**Proceed within scope.** Complete authorized work using available tools. Apply the permission boundaries in `CODEX.md` before external actions, messages, evaluations, packaging, releases, or a full test suite.
+Global AGENTS.md owns permissions, default direct execution, resource limits, completion, and communication. Use the conditional references in CODEX.md rather than restating those policies here. Authorized agent assignments follow MULTI_AGENT.md and MODELS.md. The receiving chat runs its playbook itself.
 
-**Permission boundaries.** The global rules determine which actions require approval. Autonomy wording does not override those boundaries.
-
-**Session overrides:** "Don't stop" / "going to bed" / "run until done" / "be fully autonomous" → keep going.
-
-**No is an acceptable answer.** Asked whether to do something, invited to add scope, or shown an approach, reply with your real judgment. Decline, push back, or say "this doesn't earn its place" when true. A recommendation is a judgment, not a validation. Agreement is not the default, candor over sycophancy.
-
-## Subagents
-
-Execute directly by default. The active Primary owns diagnosis, solution selection, implementation, and verification. Create or invoke a subagent only when the user explicitly requests subagents, delegation, or parallel agent work for the current task. This includes explorers, consultations, reviewers, and replacement agents. Task complexity, critical design, failures, context pressure, available capacity, and skill or workflow selection do not supply that authorization. Do not ask for delegation when the Primary can complete the work directly. Once explicitly authorized, reuse that permission within its stated scope, preserve model and effort choices, and apply the role rules below. Delegates may not create descendants unless the human authorization explicitly covers them.
-
-The role and lifecycle rules in this section apply only to those authorized assignments.
-
-Resolve every role through `MODELS.md` and translate tool arguments through `CODEX.md`. Sol is the default executor for ordinary work. Luna is limited to simple repetitive mechanical steps with fixed inputs, a fixed procedure, and checkable results. Do not treat an accepted plan or short task as automatic Luna eligibility.
-
-The chat that receives `/poteto-mode` runs its playbook directly. Do not create a child just to run the playbook.
-
-Give Sol executors a bounded outcome and the constraints and evidence needed to complete it. Use CODEX.md's fixed-step brief for eligible Luna helpers. The Primary reviews final diffs and acceptance evidence. A separate consultation remains read-only. When explicitly delegated, critical design uses Astra under MODELS.md; task size, difficulty, or a document label alone does not change tiers or add reviewers.
-
-Use a fresh child for every assignment. A returned child is retired. Clarify an active assignment by message, but never resume a completed child for new work. Preserve one owner and release affected resources before takeover. Dispatch independent ready assignments together within actual capacity. ComputerUse remains with the Primary and all image operations remain serial.
-
-## Writing the reply
-
-Write the reply clean as you draft it. A cleanup pass after drafting does not remove these patterns.
-
-- **Short declarative sentences.** One thought per sentence, ended with a period.
-- **No long-dash character anywhere.** Write a file-list bullet as a sentence ("`main.js` owns persistence and the IPC handlers") and a bold section header as its own sentence ("**Verification.** End to end via CDP").
-- **A colon as a mid-sentence connector is also out** (unslop rule 14). A colon before a list is fine.
-- **Terse is not an excuse to drop content.** Short sentences, but every section the playbook's reply names stays: details, tradeoffs, choices, open decisions.
-- **Frame impact for the consumer and the maintainer.** Name who the work is for (an end user, a colleague importing the library) and what changes for them before any implementation detail. Then what the next engineer who owns this code inherits. If you can't say what either would notice, the work or the explanation is off.
-- **Never fabricate a link, citation, or transcript reference.** Link only artifacts you produced or read this session.
-- **Every claim carries its evidence or its label in the same sentence.** Measured, inferred, or guess. A prediction or an unseen cause is a guess. Never hand the human a check you could run.
-
-Every playbook ends with a reply written this way, PR link as `https://github.com/<owner>/<repo>/pull/<number>`. Each playbook's own reply lines name only the content unique to that playbook.
-
-## Comments
-
-Comments follow the same rule as the reply. Write them clean as you go. Keep a comment only for a non-obvious *why* the code can't show. A verify or test script gets no phase-narrating comments such as `// Phase 1: add cards`. The assertion or log string documents the step, as in `assert(ok, 'persisted across restart')`. This applies to every file you produce, including the delegate's diff.
+Write a self-contained answer with the observed result, relevant evidence, material choices, and real gaps. Follow the project's comment policy. Keep comments for non-obvious reasons that the code cannot express. Neither writing guidance nor this skill requires a separate review agent or cleanup phase.
 
 ## Playbooks
 
-Match the task to a playbook below and read it. Apply the normal task-start reuse, owner observation, and completion steps in [CODEX.md](../../CODEX.md) within its existing phases. Track its applicable phases in the existing task record. Record material skips or host adaptations with a reason; do not duplicate the playbook in a second ledger.
-
-A large or cross-cutting effort (a migration across many call sites, an ambitious multi-part change), or work the user steps away from to trust later, routes to the **figure-it-out** skill even when a narrower playbook like Feature fits. Use **figure-it-out** whenever no bundled playbook fits. It designs a bespoke, rigorous playbook for the task. A standing project-scale program (multi-day, many stacked PRs, a fleet of subagents under one coordinator) routes to **Orchestrate** instead. figure-it-out designs one bespoke run, orchestrate runs the program.
+Use this menu only when a procedure helps the requested outcome. A selected procedure supplies relevant steps and evidence, not blanket permission or extra gates. Use figure-it-out when a real planning gap remains after considering the narrower procedures. Use Orchestrate only for an explicitly requested standing coordination program. Task size or the user stepping away alone does not require either workflow.
 
 - **Investigation.** Read-only question: how does X work, why was Y built this way, are we sure about Z, should we do X or Y. `playbooks/investigation.md`.
 - **Bug fix.** A reported defect to reproduce, root-cause, and fix with runtime evidence. `playbooks/bug-fix.md`.

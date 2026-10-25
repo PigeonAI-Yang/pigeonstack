@@ -1,140 +1,43 @@
 # Pstack on Codex
 
-Read the global `AGENTS.md` first: `J:/PigeonYang/pigeonstack/AGENTS.md` in the source repository, or `J:/Users/yangda01/.codex/AGENTS.md` in the runtime installation. It owns authorization, delegation eligibility, takeover progress assessments, ownership, and evidence standards. [MODELS.md](MODELS.md) owns model IDs, reasoning effort, and the upstream role mapping. This entry translates the upstream workflows to this host. Reuse unchanged instructions already read in this session.
+Use the global AGENTS.md already supplied by the host. Its maintained source is J:/PigeonYang/pigeonstack/AGENTS.md and its runtime copy is J:/Users/yangda01/.codex/AGENTS.md. It owns authorization, default direct execution, resource limits, completion, and communication. Reuse unchanged instructions already read.
 
-## Execute directly unless the user requests agents
+## Choose only useful steps
 
-Execute directly by default. The active Primary owns diagnosis, solution selection, implementation, and verification. Create or invoke a subagent only when the user explicitly requests subagents, delegation, or parallel agent work for the current task. This includes explorers, consultations, reviewers, and replacement agents. Task complexity, critical design, failures, context pressure, available capacity, and skill or workflow selection do not supply that authorization. Do not ask for delegation when the Primary can complete the work directly. Once explicitly authorized, reuse that permission within its stated scope, preserve model and effort choices, and apply the role rules below. Delegates may not create descendants unless the human authorization explicitly covers them.
+Use pstack when explicitly requested or when its procedure addresses a concrete investigation, design, implementation, or verification need. Ordinary changes may proceed directly. A nontrivial label, function boundary, document type, commit, or review does not trigger another skill or a complete playbook.
 
-Upstream steps that say to delegate, spawn, fan out, consult, or escalate apply only inside that permission. Otherwise the Primary performs the applicable investigation, implementation, synthesis, and checks directly. Preserve the selected phase order and evidence where possible. Independent reviewers and competing agents are separate observations. If a requested workflow requires them, report the missing independent result without inventing one or silently creating agents. An explicit request to use a skill alone does not authorize its subagents.
+When selecting a playbook from [poteto-mode](skills/poteto-mode/SKILL.md), use the steps relevant to the promised result and their real dependencies. Record a material adaptation only when it changes that promise. Do not copy skipped steps into a checklist or add a record for a simple task. Explicitly requested phases, established project checks, and evidence-backed dependencies still apply.
 
-## Activate the upstream workflow
+Upstream spawn, fan-out, consultation, and takeover steps are conditional on AGENTS.md's explicit delegation permission. Without it, investigate, implement, synthesize, and check directly where that satisfies the task. Do not perform every agent role yourself or claim independent review from self-review. Report a specifically required independent result that is unavailable.
 
-For substantive work, select the matching playbook through `skills/poteto-mode/SKILL.md`. Keep its phase order and applicable evidence requirements; load only material needed for the current phase. Casual conversation, direct factual answers, and explicit user opt-out need no workflow. Reuse instructions already read.
+Use existing entry points and credible evidence. A new harness, prototype, feature map, fixed candidate or lane count, benchmark, panel, or retrospective requires a current task requirement or a demonstrated need. Skill and playbook prose alone cannot create such a prerequisite. Permission-sensitive actions follow AGENTS.md regardless of workflow autonomy wording.
 
-An explicitly assigned coordinator reads [COORDINATOR.md](COORDINATOR.md) and keeps that role until the user changes it. The role alone does not select Orchestrate. An explicit `poteto-help` request uses `skills/poteto-help/SKILL.md`: answer with grounded links and at most one example, without executing it.
+## Load conditional references
 
-On pickup, apply the global no-replay rule: compaction is not a new task or message. Use the current checkpoint to recover the user's original goal and completion condition separately from scoped Main assignments, plus constraints, Stop, owners, permissions, unresolved corrections, and applicable tier timing. Preserve the current directive's human-message origin and scope in the existing checkpoint when available. Read history only for a concrete gap. For a bound region, `TASK_CONTEXT_HELPER_PATH` is `hooks/task_context.py` beside this CODEX.md; deployed example: `J:/Users/yangda01/.codex/local-plugins/pstack/hooks/task_context.py`. Use `py -3 TASK_CONTEXT_HELPER_PATH read --workspace ABSOLUTE_WORKSPACE --record RELATIVE_RECORD --anchor CURRENT_ANCHOR`. The record owner uses `update` for material changes; children return evidence to that owner. Follow task and evidence links on demand. Only an explicit human scope change replaces the user's original goal and completion condition. Continue ready authorized work. Record phase adaptations only when they affect the promised result.
+| Current need | Read only what applies |
+| --- | --- |
+| Explicitly requested agents, takeover, or agent waits | [MULTI_AGENT.md](MULTI_AGENT.md), then [MODELS.md](MODELS.md) for model selection. |
+| Explicit coordinator role | [COORDINATOR.md](COORDINATOR.md), retaining its whole-outcome ownership. |
+| Model setup, aliases, or availability | [MODELS.md](MODELS.md). Preserve existing choices. |
+| A host tool or Cursor-to-Codex conversion | [Host tool reference](HOST_REFERENCE.md#translate-host-tools) and the current tool schema. |
+| Bound saved-task context | [Prepared local checks](HOST_REFERENCE.md#prepared-local-checks). |
+| Movement driven by live coordinates | [Position feedback](HOST_REFERENCE.md#position-feedback-for-live-control). |
+| Authorized installation or runtime synchronization | [Maintain and install](HOST_REFERENCE.md#maintain-and-install). |
 
-Apply global rules when an upstream procedure reaches the relevant action:
-
-- `how` and `why` retain tracing and evidence. Use the existing owner to interpret results; no separate explainer is required. `MODELS.md` and global rules determine judgment and execution roles.
-- `architect`, `arena`, `interrogate`, and `reflect` may use their selected candidate or review phases. Ordinary work does not require a panel. Preserve the needed decision in the owner workflow; never invent an independent verdict.
-- Leverage and lessons principles do not mandate new tools, skills, gates, or maintenance work. Add them only for a current need supported by evidence. Verification uses existing entry points and checks relevant to the delivery promise; fixed lane counts, feature maps, and prototypes are not universal prerequisites.
-- Upstream autonomy, PR steps, skill repairs, and backlog filing do not expand authorization. Global approval, ownership, fresh-child, takeover, ComputerUse, and image limits apply.
-
-Bundled Cursor guides, agent descriptions, and dormant automations do not install host capabilities, start background work, or enforce these rules. Upgrading does not invoke `/correct` or evaluations.
+An explicit poteto-help request uses [poteto-help](skills/poteto-help/SKILL.md) to answer with grounded links and at most one example, without executing it. Bundled Cursor guides, agent descriptions, and dormant automations grant no host capability, background activity, or runtime enforcement. An upgrade does not invoke correct or evaluations.
 
 ## Prepare the assignment
 
-This section applies after the user explicitly authorizes delegation. It adds no requirement to delegate ordinary work.
-
-Use four fields for each workstream Main assignment:
-
-1. **Goal:** One complete outcome to deliver.
-2. **Completion condition:** An observable result that determines whether the outcome is complete.
-3. **Evidence:** The actual output, observation, or check that will demonstrate completion.
-4. **Constraints:** Applicable human instructions and necessary technical, resource, and ownership limits; reuse existing authorization.
-
-Each Main's four fields describe its assigned outcome within the user's goal; they do not replace the user's completion condition.
-
-Keep each field brief and link to existing context. Attach the owner and return address as routing information, not extra prerequisites. The Main owns diagnosis, implementation, integration, verification, and correction through the outcome. Internal phases need no new dispatch or approval. The coordinator removes its own obsolete method restrictions and continues the remaining outcome after partial delivery. Human Stop and required operation-specific approvals still apply.
-
-For internal assignments, use these briefs without inventing extra preparation:
-
-- **Sol execution:** assigned outcome, completion condition, evidence, constraints, allowed resources, and operation permissions. Sol owns ordinary diagnosis, local solution selection, implementation, repair, and verification within that scope.
-- **Luna mechanical work:** simple repetitive task only, with fixed inputs, exact steps, allowed files and exclusions, checks, expected results, and prompt return conditions. An accepted mechanism or small task alone does not qualify.
-- **Sol consultation, critical design, or takeover:** one unresolved objective or question, decisive evidence, attempts, scope and permitted resources, acceptance and return conditions. Consultations remain read-only, including upgrades. Takeovers own resolution through implementation and verification. Use global tier rules and MODELS.md; do not repeat the routing policy in each assignment.
-
-Within explicitly authorized delegation, choose the assignment boundary before its model. Sol at `medium` is the default child executor. Luna is limited to simple repetitive mechanical work, not a mandatory implementation stage after a consultation. A separately assigned consultation remains read-only. A genuine takeover keeps ownership until completion. Do not split a coherent Sol task into Luna microtasks.
-
-Name the expected effect and an existing observation/result route. Preserve progress assessment times; they are not completion deadlines. Continue productive work with its current owner, including at Astra `xhigh`. An internal child's final handoff is sufficient. Let the owner act, observe, and correct. A request receipt is not the effect. Material contradictory evidence changes the dependent next action; a stopped run invalidates its old next action.
-
-Apply the global gate and completion rules. Reuse established capabilities and credible evidence, and keep optional unknowns local. Request an outside contribution only for a demonstrated dependency the team cannot obtain. Follow the Desktop route below for reports and collection; do not add status queries, acknowledgment loops, repeated short waits, or invented wakeups.
-
-## Complete the normal workflow
-
-Compare the actual result with the relevant completion condition using existing evidence. A Main's completion condition covers its assigned outcome; the user's completion condition determines whether the overall task is complete. A build, test pass, file, or worker receipt proves only what it observed. Give the responsible owner any concrete mismatch for correction; keep unmet promises in the existing record. If a check conflicts with production behavior, inspect the relevant authoritative evidence before changing code or assertions.
-
-Apply the global completion rule to the current diff and collected evidence. Do not add a separate audit, repeat credible checks, or invoke a panel without a current need. Report the result and real gaps, then stop when acceptance passes. A read-only request remains read-only. These are normal workflow steps, not extra phases or approval gates.
+Only for authorized delegation, use the [four-field assignment template](MULTI_AGENT.md#prepare-the-assignment). A Main's completion condition covers its assigned outcome; the user's completion condition controls overall acceptance.
 
 ## Translate host tools
 
-Choose the responsible owner before choosing the host tool. Use an authorized cross-chat route for an existing workstream Main. If that Main is missing, archived, or unavailable, follow COORDINATOR.md's ownership rule; do not replace it with a coordinator-owned child. Use `collaboration.spawn_agent` for internal work within the current Main's scope, or bounded coordination and final acceptance support within the coordinator's scope. Workstream implementation remains with its responsible Main. Use a visible task creation tool only if the user requests a visible new task; prepare missing Main assignments together instead of asking separately for each successor. Spawn a fresh child for every internal assignment. Pass existing changes and evidence through an authorized ownership handoff without restarting completed work. Do not simulate independent roles.
-
-| Upstream concept | Codex equivalent |
-| --- | --- |
-| `Task`, background subagent | `collaboration.spawn_agent`, already asynchronous |
-| Per-role rule, budget, default model | The role mapping and exact arguments in `MODELS.md` |
-| `generalPurpose` | General/default agent with an explicit scope |
-| `poteto-agent` mechanical helper | Luna only for simple repetitive work with a fixed brief; use Sol for ordinary implementation |
-| Read-only flag | Explicit no-mutation assignment; no invented tool argument |
-| `AskQuestion` | Available user-input tool for missing facts or preferences, never an approval workaround |
-| Cursor `create-skill` | Installed `skill-creator` and its validator |
-| Cursor cloud VM | No configured equivalent; report the missing capability. |
-| `/loop` | For user-requested recurring or future follow-up, use `mcp__codex_app__automation_update` with `kind="heartbeat"`. The default heartbeat attaches to the current local thread, and the live tool schema governs authorization and arguments. A heartbeat is a scheduler, not an internal completion wait. Internal waits and authorized top-level report routes handle result-driven continuation while work is active. Waits do not wake a closed turn. Claim actual continuation only after the tool returns registration state and a real follow-up is observed. Installing pstack registers no heartbeat or scheduled job. |
-| Codex goal tools | Use `create_goal` only when the user explicitly asks to create a goal. Ordinary task instructions do not authorize goal creation. `get_goal` reads the current goal. `update_goal` changes its status. Neither schedules work or proves runtime enforcement. |
-| Unix commands and `/tmp` | Native PowerShell and workspace `work/`, or an existing compatible runtime |
-| `.cursor/skills` | Project `.agents/skills` |
-| Cursor transcripts | Available task tools or targeted Codex session records |
-
-Use `worker` or general/default for Sol execution at the effort mapped in MODELS.md. A worker may perform an operation that requires approval only when the human authorization for that operation is carried in its assignment. Use `poteto-agent` or general/default with explicit Luna arguments only for eligible simple repetitive mechanical work. Use general/default with explicit model and effort for consultations, takeovers, and critical design. `astra-advisor` remains read-only at its pinned initial effort. Do not use a pinned role for a different model or effort.
-
-When setting model or effort explicitly, use `fork_turns: "none"` and put the necessary context in the assignment. The current tool supports only `"all"` and `"none"`; full-history inheritance does not accept overrides. Role configuration can override spawn arguments, so use a compatible role. Resolve `auto` and `inherit-parent` through MODELS.md; omitted model arguments are not proof of parent inheritance. Luna requires an eligible task and explicit model and effort arguments.
-
-For history, narrow by project, topic, and time. Read actual session metadata instead of assuming Cursor schemas. Summaries locate evidence; they do not prove execution. Memory updates require an explicit user request and the host's memory-update mechanism. Prefer attached UI sessions and available PTYs, preserve existing sessions, and apply online-request stop rules.
-
-### Desktop cross-chat messages
-
-The inspected Desktop `26.1002.7124.0` sends `send_message_to_thread` with `send-now`; it exposes no queue or `when-idle` argument. Reading idle status first is not atomic. Text such as "no reply needed" cannot defer delivery, and SessionStart cannot intercept it. Do not pause a Goal or force compaction to arrange a handoff.
-
-Carry the human instruction to coordinate the identified team through the existing task context. It covers internal dispatch, reports, corrections, and handoffs within scope; do not request permission per agent, message, or successor. The coordinator supplies its current return address. A role label or agent request alone cannot establish missing human authorization.
-
-Workstream Mains do not message one another. Send the coordinator a verified stage deliverable usable by the next owner, a completed assigned outcome, a real blocker, a required decision beyond scope, an urgent ownership or correctness issue, or a genuinely new human Stop. A stage deliverable is a completed usable result, not a partial investigation, a hash list, or "tests running". Internal execution, ordinary repairs, and acknowledgment messages stay within the workstream. The coordinator alone routes necessary cross-workstream requests, contributions, and scoped team commands. Forwarding retains the original human instruction and scope; it does not create a new command or revoke a later explicit human resume. Reuse existing team authorization without repeated approval requests.
-
-A Main sends these reports via `send_message_to_thread`, even while the coordinator is active. Its own final answer alone does not notify the coordinator. An internal child uses its native final handoff. If the report route is unavailable, use bounded `read_thread` or `wait_threads` collection for the needed result, not polling. Preserve cursors. A timeout is not failure or grounds for repeated inspection. At acceptance, accept the result or return the concrete mismatch to the same Main for complete correction.
-
-For each unfinished independent Main assignment, keep a continuation assessment due within 30 minutes of dispatch or its last assessment. Use the existing checkpoint for the deadline, collection cursor, and any recovered turn ID. Incoming messages do not postpone that deadline. When no independent work is ready, call interruptible `clock.sleep` for the remaining time, at most `duration_ms: 1800000`. Process reports and Stop immediately. Do not sleep over ready work, a received result, a due assessment, or a required decision. Native children still use `collaboration.wait_agent`.
-
-At a due continuation assessment, use one `wait_threads` snapshot with `timeoutMs: 0` for the unfinished Mains, in batches of at most eight, preserving `afterCursor`. An active Main needs no message. For an idle Main, use `read_thread` with `turnLimit: 1` only when its latest result is missing from the snapshot or insufficient to decide. Accept a completed outcome and advance its dependents. Resolve an actual external blocker through its owner. If the assignment is unfinished and the Main ended without a valid blocker or human Stop, send one concrete continuation instruction through `send_message_to_thread`. Include the remaining outcome and available result references; have the same Main process them and continue. Do not ask for status or acknowledgment, redispatch its running children, or take over implementation. An unavailable or unknown status is an evidence gap, not confirmed idle.
-
-Record the recovered turn ID in the existing checkpoint and never resend for that same ended turn. At the next assessment, check whether the Main actually resumed. If a new turn ends prematurely again, inspect that failure and address its cause instead of repeating a generic continue message. A send receipt proves dispatch only. This due assessment permits bounded read-only collection even with no new report; elapsed time does not itself prove failure. Healthy work stays uninterrupted, and a user pause or known external dependency is not premature completion.
-
-Desktop `26.1002.7124.0` caps `wait_threads` at 120,000 ms; it is not the long-wait mechanism. Do not use repeated short waits, increase its parameter beyond the cap, or add terminal sleeps or a scheduler. The 30-minute continuation assessment above is the bounded fallback for missed reports and premature turn endings. If `clock.sleep` or the report route is unavailable, use a necessary bounded collection and report the missing capability. This sleep keeps the current turn open and needs no Goal pause or new automation. It does not wake a closed chat by itself or guarantee delivery across an app shutdown.
-
-Apply global AGENTS.md's communication and completion rules after each result. A child result appended after a closed parent turn does not prove that the parent resumed. Use the applicable wait or continuation route above while the task is active. Batch ordinary additions until the assignment boundary; deliver Stop and necessary current-action corrections immediately.
-
-## Position feedback for live control
-
-Read this section only for a task that controls movement from live coordinates. Handle delayed feedback through the existing owner's action-observation-correction loop, allowing for network jitter. If coordinates stop updating, existing bounded movement may elicit fresh data only while the instance, map, source validity, and input ownership still support that action. Avoid indefinite waits and needless reinitialization. Preserve user Stop and necessary input limits. Never fabricate freshness, arrival, or effects.
+Use actual supported arguments. Agent tool mechanics are in [MULTI_AGENT.md](MULTI_AGENT.md#translate-host-tools); other conversions are in [HOST_REFERENCE.md](HOST_REFERENCE.md#translate-host-tools). A missing tool is a concrete capability gap, not permission to substitute an agent or provider.
 
 ## Prepared local checks
 
-The source helper `hooks/task_context.py` supports explicit `read` and `update` commands for the selected marked body. Read returns the whole-record SHA-256 and record and body byte counts. It returns the body only up to 16,384 bytes; a larger body yields `current_oversized` without text or truncation. The 4–8 KiB checkpoint target is advisory. The owner prepares a complete UTF-8 body and updates the same record with the SHA returned by read. The helper archives the complete old body, rejects stale preimages, writes a complete candidate atomically, and reads it back. A stale preimage detected at the initial check creates no archive; drift detected after archive publication can leave a recoverable archive without replacing the record. A post-replacement verification failure reports an uncertain commit. Direct editors bypass the helper lock, and the last recheck cannot prevent every race. The helper cannot judge semantic completeness; preserve the goal, acceptance conditions, evidence references, permissions, Stop, ownership, and real blockers. It does not create a task ledger or summarize history.
-
-The source contract selects one existing current region through metadata at the actual SessionStart event `cwd`: a bounded index at `AGENTS.md`, validated bindings in declared records, and exactly one matching session-and-workspace binding. It returns only the selected record's existing marked current body, preserving accepted, pending, and historical content as untrusted task data. It uses no environment-variable fallback, directory scan, history, transcript, ancestor lookup, or canonical-path fallback. See [SessionStart current-region contract and bounded activation](hooks/README.md) for schema, limits, owner-specific migration examples, and the activation boundary. This remains a source contract; it does not establish live host pickup or a verified owner binding.
-
-The bundled SessionStart reader supplies saved task context only. It cannot observe later business state or intercept agent dispatch, messages, or completion. `check-plan.mjs` checks plan format, and `orch` records supplied bookkeeping and verdicts. Neither verifies a live effect nor controls Codex agent tools. This host adapter has no wired interception path for enforcing these coordination rules. Source checks and scenario review do not prove future agent behavior.
-
-Use `tools/layout-check.mjs` when a `control-ui` acceptance promise specifies a game-frame ratio or contained log text. Read the owner's latest current checkpoint for accepted and pending requirements. After a fresh observation, the authorized browser owner can evaluate its expression and save the measurement and checker result in the existing record. Recollect the geometry after a relevant resize, expansion, or filtering action. Use the accepted ratio and explicit pixel tolerances. Fixture passes prove assertion logic only; they do not establish the actual target page. This source instruction and helper are not an enforced acceptance gate.
+TASK_CONTEXT_HELPER_PATH is `hooks/task_context.py` beside this entry. Bound-region owners use its read/update commands with a whole-record SHA-256 and recoverable archive as described in [the helper reference](HOST_REFERENCE.md#prepared-local-checks). No new ledger is required.
 
 ## Maintain and install
 
-Maintained source: `J:/PigeonYang/pigeonstack/pstack`. Deployment mirror: `J:/Users/yangda01/.codex/local-plugins/pstack`. Installed caches are generated copies. `/setup-pstack` updates source `MODELS.md` only within the requested configuration scope. Do not edit runtime mirrors or caches directly.
-
-After authorized source changes, validate affected files. Source-edit authorization does not authorize deployment. Preview the chosen scope with `check` and use the same flags with `deploy` only after that scope is authorized. Run these commands from `J:/PigeonYang/pigeonstack`.
-
-| Approved change | Scope flag for `python scripts/sync.py check` and `deploy` |
-| --- | --- |
-| Only the global `AGENTS.md` | `--agents-only` |
-| Global instruction files, role files, and pstack, preserving `config.toml` | `--rules-only` |
-| Only the pstack plugin | `--plugin-only` |
-| All managed files and allowlisted configuration, including model settings | No scope flag. Requires authorization for those configuration changes. |
-
-The scope flags are mutually exclusive. `--agents-only` reads and copies only `AGENTS.md`; it does not inspect configuration or install the plugin. `--rules-only` skips configuration merging and checks that existing configuration bytes stay unchanged. It backs up the configuration before plugin installation and reports a change without overwriting it. `--plugin-only` skips all global files and configuration. All scopes retain backups, preimage checks, and file readback. Receipts identify the selected `scope`; an empty `config_drift` in a scope that skips configuration does not mean the full configuration matches the source.
-
-When the authorized scope includes changed plugin content, update the plugin version and existing marketplace cachebuster before deployment. The normal plugin installation and installed-cache hash verification apply to scopes that contain pstack. A global-rule-only update needs no plugin version change or installation. Never use a full deployment to work around a narrower approval. Preserve explicit model and effort choices; configuration differences can be intentional.
-
-After deployment, run the same scoped `check` and verify installed hashes where applicable. Distinguish source content, runtime files, installed artifacts, instructions read in this task, and behavior observed in a new session. Source edits do not refresh active sessions, and file checks do not prove future agent behavior.
-
-`provenance.json` records pinned original source hashes and local adaptations. `ADAPTATION.md` records the reasons and evidence. This adapter enables no timers, background agents, or remote services. Its bundled hook source does not grant trust or activation, and source edits do not affect active sessions.
+Edit maintained source, preview the narrowest authorized synchronization scope, preserve model settings, deploy, and read back the selected files and installed hashes. Exact commands and scope boundaries are in [the installation reference](HOST_REFERENCE.md#maintain-and-install).

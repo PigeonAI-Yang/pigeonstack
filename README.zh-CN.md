@@ -41,7 +41,7 @@ PigeonStack 是 PigeonYang 维护的一套 Codex 工作配置，包含全局指�
 
 2026-10-09 的检查点维护是版本 `0.15.13+codex.20261009checkpoint` 的历史证据。本地部署和安装文件核对均已通过，真实任务记录的读取、更新、归档和读回流程也已通过。该流程将当前区域从 29,370 字节缩减至 8,158 字节，并保留目标、权限、阻塞项及区域外历史。详见[历史检查点维护证据](pstack/ADAPTATION.md#current-checkpoint-maintenance-2026-10-09)。
 
-当前源码版本为 `0.15.32+codex.20261026optin`；本次仅修改源码，部署需另行授权。2026-10-11 钩子验证时安装的版本为 `0.15.13+codex.20261011copy`。native reader 返回了完全一致的绑定当前正文，包括现有 `Pending` 状态。新的 Desktop 聊天运行了一次 `SessionStart`，失败次数为 0；它报告 index 无效诊断后继续。native 测试验证了临时记录绑定；Desktop 观察验证了启动，但未建立 `oneirloom` 的任务绑定。历史 Desktop `exit 1` 的原因仍未查明。详见[产品文案规则及 SessionStart 验证](pstack/ADAPTATION.md#product-copy-rules-and-sessionstart-verification-2026-10-11)。
+当前源码版本为 `0.15.32+codex.20261026lean`；运行时同步和新会话行为分别核对。2026-10-11 钩子验证时安装的版本为 `0.15.13+codex.20261011copy`。native reader 返回了完全一致的绑定当前正文，包括现有 `Pending` 状态。新的 Desktop 聊天运行了一次 `SessionStart`，失败次数为 0；它报告 index 无效诊断后继续。native 测试验证了临时记录绑定；Desktop 观察验证了启动，但未建立 `oneirloom` 的任务绑定。历史 Desktop `exit 1` 的原因仍未查明。详见[产品文案规则及 SessionStart 验证](pstack/ADAPTATION.md#product-copy-rules-and-sessionstart-verification-2026-10-11)。
 
 钩子不会监控后续业务状态、拦截 Agent 派发或强制执行协调者提醒。详见[钩子契约](pstack/hooks/README.md)和[Codex 宿主适配](pstack/CODEX.md)。
 
@@ -111,7 +111,9 @@ flowchart TD
 | 源码位置 | 用途 |
 | --- | --- |
 | [AGENTS.md](AGENTS.md) | 全局范围、授权、委派、调度与验收规则。 |
-| [pstack/CODEX.md](pstack/CODEX.md) | Codex 工作流入口、工具转换、执行说明与部署约定。 |
+| [pstack/CODEX.md](pstack/CODEX.md) | 简短宿主入口，按当前需要选择步骤与参考资料。 |
+| [pstack/MULTI_AGENT.md](pstack/MULTI_AGENT.md) | 用户明确要求代理协作后，读取任务说明、交接、评估和等待程序。 |
+| [pstack/HOST_REFERENCE.md](pstack/HOST_REFERENCE.md) | 按需读取工具兼容、上下文、实时控制和部署细节。 |
 | [pstack/MODELS.md](pstack/MODELS.md) | 模型 ID、推理强度与子 Agent 创建约定。 |
 | [pstack/](pstack/) | 打包的 pstack 插件、选定技能、操作流程、上游资料和本地适配。 |
 | [agents/](agents/) | `worker`、`poteto-agent` 与供可选咨询使用的只读 `astra-advisor` 兼容角色。 |
@@ -218,6 +220,12 @@ J:/PigeonYang/pigeonstack
 这些机制是 Agent 指令和配置约定，不是运行时强制钩子。磁盘同步、插件安装验证、当前任务已读取的指令，以及新会话实际表现，需要分别说明。
 
 ## 更新日志
+
+### 2026-10-26 | `0.15.32+codex.20261026lean`
+
+- 集中重复规则，将多代理及宿主细节移至按需文档。
+- 取消按任务规模、函数边界、提交或审查自动启动额外流程的规则。
+- 授权条款、显式委派条件、模型映射和角色配置保持原文。
 
 ### 2026-10-26 | `0.15.32+codex.20261026optin`
 

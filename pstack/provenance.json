@@ -16,30 +16,33 @@
       "source": "cursor-team-kit/skills/control-cli/SKILL.md",
       "destination": "skills/control-cli/SKILL.md",
       "sha256": "e3aac9ccc7311fb3320538bcf85490da5930d7d0a62a85775ef076bf07577c7a",
-      "adapted_sha256": "602e275480aa0b91d10568d20da0592b64c0a4683fe5fedf28daba3b55be8614",
+      "adapted_sha256": "34cd29bd88e1cccb9a6c4e77d93fe123cedbfec807df046187748f4d1a779676",
       "adaptation_notes": [
         "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures.",
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
       "source": "cursor-team-kit/skills/control-ui/SKILL.md",
       "destination": "skills/control-ui/SKILL.md",
       "sha256": "016b5f04f5f83979eb59944c24eab21101682887dfa932b1f19a161b3c068e86",
-      "adapted_sha256": "74247714717517576b4504ad8344d09eec323dc4973a962a6f3369545e71223e",
+      "adapted_sha256": "5318e9568e161f5720272798f768357abe13b1ce359b5a5ca65fe59fca70c641",
       "adaptation_notes": [
         "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures.",
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
       "source": "cursor-team-kit/skills/deslop/SKILL.md",
       "destination": "skills/deslop/SKILL.md",
       "sha256": "65c7b38325785572d2c7b974e9ac61be7131e501da9a45a34ab1e5c0587a43cc",
-      "adapted_sha256": "0b732fad2c7c362bfdef822309c894a4d9799246a69513fb3af5d289e8aaa5e8",
+      "adapted_sha256": "f3b3afd24bdece55109be86fcb9145639204605a00dd67c53c62ff87ed4634cf",
       "adaptation_notes": [
         "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures.",
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
@@ -109,10 +112,11 @@
       "source": "pstack/automations/benny/skills/reproduce-and-fix-issues/SKILL.md",
       "destination": "automations/benny/skills/reproduce-and-fix-issues/SKILL.md",
       "sha256": "bd9d688415cabee95247738f9ea927325ba0ead7796d0d18cb57cf82dd35df54",
-      "adapted_sha256": "4c6ec920c3d84aeb95887a988f9d451035c5c45d38090ef4bb3672411b6df571",
+      "adapted_sha256": "1a26f61df387f8d690210d1247cbcc9a842179ccfbb3bf161e024ce497707b66",
       "adaptation_notes": [
         "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures.",
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
@@ -134,20 +138,22 @@
       "source": "pstack/automations/benny/skills/setup-benny/SKILL.md",
       "destination": "automations/benny/skills/setup-benny/SKILL.md",
       "sha256": "1b8d0bae5265413a65b03c9b3b883f1d91efc0e7c1cb3a28e66c215b3a2094f7",
-      "adapted_sha256": "b6b8d34607a6b6e99737613a16b2de7e06e20aafdcce88381da5d195de1c3c78",
+      "adapted_sha256": "2d14ec95071f60a16d843a4bcfe90bebeef87f7e20f1c4775852be364afc439e",
       "adaptation_notes": [
         "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures.",
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
       "source": "pstack/automations/benny/skills/triage-issue-reports/SKILL.md",
       "destination": "automations/benny/skills/triage-issue-reports/SKILL.md",
       "sha256": "8122f1c1e65062bf0f1103a587c08ed7d14779c64625643a9f488f262fd21ad8",
-      "adapted_sha256": "4d18b4d561b0a7d29f1c8333a04faf90b398542ea564258d88799494243f7bb5",
+      "adapted_sha256": "20551c5dbf48a51782656b727c05f6feba9f03aeb46d14090ffe3e0ffc17d033",
       "adaptation_notes": [
         "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures.",
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
@@ -344,21 +350,23 @@
       "source": "pstack/plugin.json",
       "destination": "plugin.json",
       "sha256": "ab571ad8d7065753b48f21ea3a6f79be3bab67005af3ed4b422af1dbee8e6205",
-      "adapted_sha256": "ac14c9768853eaa596dcb195b81f6a186692f751fa8d3d338b81728d30e98f2a",
+      "adapted_sha256": "23643a9ee50a844e27b76a40e02b3af25065d3bfb1d77a993a44b368ae346a6c",
       "adaptation_notes": [
-        "The current Codex installer reads root plugin.json before .codex-plugin/plugin.json. Keep both operational manifests on the Codex adapter version; retain the raw upstream manifest hash separately."
+        "The current Codex installer reads root plugin.json before .codex-plugin/plugin.json. Keep both operational manifests on the Codex adapter version; retain the raw upstream manifest hash separately.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
       "source": "pstack/skills/architect/SKILL.md",
       "destination": "skills/architect/SKILL.md",
       "sha256": "8f657a833d6dfe8608bbba3dcfb39e9e0be29803a0c0e88c6f0e0b11ceafda1d",
-      "adapted_sha256": "8b4db2e79fd83f29f0a166d57ced4880868e348dfe9fd0881bdbf5dcc0f3b08c",
+      "adapted_sha256": "74a781e27bf87e5a878ebcfc1f23586b3a0536f48fb3b91580fec0c01285b7e6",
       "adaptation_notes": [
         "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures.",
         "Replace upstream model defaults and rejection fallbacks with the single MODELS.md responsibility mapping; preserve workflow phases and report actual independent evidence.",
         "Route ordinary plans, local designs, and routine rule adaptation to Sol; reserve Astra for critical design decisions, an actual unresolved Sol attempt, or explicit user model selection. Document labels alone do not trigger Astra.",
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
@@ -380,83 +388,91 @@
       "source": "pstack/skills/arena/SKILL.md",
       "destination": "skills/arena/SKILL.md",
       "sha256": "cb5bec95ee0cc16171da9153261fa1685398a52391028293566c46fbf33b76b2",
-      "adapted_sha256": "ec42a74c01bd41a77d937b27772b801d079ca56b3b113970651dcf033a7cda10",
+      "adapted_sha256": "ed0a2dc033b6078aa18120d54a39bc1040f02b0c4bfa4cce098df0b4910591c9",
       "adaptation_notes": [
         "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures.",
         "Replace upstream model defaults and rejection fallbacks with the single MODELS.md responsibility mapping; preserve workflow phases and report actual independent evidence.",
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
       "source": "pstack/skills/automate-me/SKILL.md",
       "destination": "skills/automate-me/SKILL.md",
       "sha256": "605731d9bd297315add1d30333a6732f3002ef018f997c98bf917623b81c4af5",
-      "adapted_sha256": "62e9527a6b7be374aa871bc6825a92e3cc8fc83a4ddbf730ccdc20e1d617e419",
+      "adapted_sha256": "1a372f95e52718e5981fc1db9a71709c31cb914edc153fe7ff61bad133ba0171",
       "adaptation_notes": [
         "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures.",
         "Translate project skill output paths from .cursor/skills to .agents/skills.",
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
       "source": "pstack/skills/benchmark-checklist/SKILL.md",
       "destination": "skills/benchmark-checklist/SKILL.md",
       "sha256": "fad95c3db92afb627cf3e70d98a0d97009c25100ecfff3ccf9816a8f62a92bd4",
-      "adapted_sha256": "a0e9c570899bc717da0d3af6ae8a25b65db600c86d3fc687988d3165bc32b550",
+      "adapted_sha256": "e2f5c840c5e249e59f44735329311b715299248ffd2ee178f56150c525190d7e",
       "adaptation_notes": [
         "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures.",
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
       "source": "pstack/skills/blast-radius/SKILL.md",
       "destination": "skills/blast-radius/SKILL.md",
       "sha256": "051757390cf26aa9fbfaad4a6958473d0c287cc9201e0e8072b6ae9bcde880c2",
-      "adapted_sha256": "db77fe3043a80144544802c34cc2450a48aa99a7a65bca1b117d99f10fc82018",
+      "adapted_sha256": "cb42e34be0d3886a70466e589881a4da7ae5661abb679dfad9200a0954124df4",
       "adaptation_notes": [
         "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures.",
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
       "source": "pstack/skills/bro/SKILL.md",
       "destination": "skills/bro/SKILL.md",
       "sha256": "5803b79e1e6c444e3b3c2705f89a9f4ba98c502f9841fce906e61acf52af35ea",
-      "adapted_sha256": "f39aa71f87bdfc468d4c79f48507efae01ad2d521dc1dfdf783e03faa56bfbfa",
+      "adapted_sha256": "c1ea5c193c39c74fe84b7c74fb4e7137d2740f7bfca6f346e2c1581b67eae530",
       "adaptation_notes": [
         "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures.",
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
       "source": "pstack/skills/correct/SKILL.md",
       "destination": "skills/correct/SKILL.md",
       "sha256": "751860d7e5d0f1d2a6c1eced47fd3806539b692499b359ffcb9bf7e5202e0a7f",
-      "adapted_sha256": "33da1f0d7ff70edd3c035400997c384d1d7430cab64a2d940f8851205d4c9d71",
+      "adapted_sha256": "748d28cc7150cf5ce9ed856fe570e954a531530982699b2938c34b0166a07a3d",
       "adaptation_notes": [
         "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures.",
         "Retain two observed occurrences and architecture/types/lint/tests/docs priority. Gate commits and full suites by authorization; a rule alone is not a second occurrence.",
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
       "source": "pstack/skills/create-formal-verification-skill/SKILL.md",
       "destination": "skills/create-formal-verification-skill/SKILL.md",
       "sha256": "cdd8fa73af6e799fc034609c4f6f5a80e99785267b53a2df3ca977a379e6d591",
-      "adapted_sha256": "c8dbdca83255ae198e9b1aa240ab282aa44cc58f185f4dd841291336636eb2f5",
+      "adapted_sha256": "be6f753183f742d652302197b914335eaef24e1f2ea79626d050691ebf9dc318",
       "adaptation_notes": [
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
       "source": "pstack/skills/create-verification-skill/SKILL.md",
       "destination": "skills/create-verification-skill/SKILL.md",
       "sha256": "106cd3c3edb1409989629da69186fcc1f06f26f9b645eb11b380489b75c5b86e",
-      "adapted_sha256": "a9c2b8d0d6eb8c727e3b07c381cfc34c47746e32fcf3c032ceddcc90a982f5aa",
+      "adapted_sha256": "e45eb7902335e70a88642d25fa83f2724da838e9f94a2b8edabca1aa7723bb17",
       "adaptation_notes": [
         "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures.",
         "Translate project skill output paths from .cursor/skills to .agents/skills.",
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
@@ -478,24 +494,26 @@
       "source": "pstack/skills/figure-it-out/SKILL.md",
       "destination": "skills/figure-it-out/SKILL.md",
       "sha256": "9d30ba099f2125b4edfcf4742552263912fc467e4942127cddef206219d7ea63",
-      "adapted_sha256": "40cec7abec39378b682a013d4e721153ebc350a41882d49f0b77ace7ac4af128",
+      "adapted_sha256": "76d5b76031707fee58e04de605f41d74b974f1a266b3a0184d03db68bdaf0ad1",
       "adaptation_notes": [
         "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures.",
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
       "source": "pstack/skills/how/SKILL.md",
       "destination": "skills/how/SKILL.md",
       "sha256": "a1aedc4e3c22a74b192092d4b93fc731c469ab2310d538a7b48017a371c233fa",
-      "adapted_sha256": "ec390091972b99356b89c23477d60e5e1e7c3ccdccfd2ea9dfd1ae4f9e3212b2",
+      "adapted_sha256": "914728363be1b85a9684b62af79eb0c395d07ec001787b6ac39207d7468f711e",
       "adaptation_notes": [
         "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures.",
         "Replace upstream model defaults and rejection fallbacks with the single MODELS.md responsibility mapping; preserve workflow phases and report actual independent evidence.",
         "Split prescribed collection from interpretation; Primary explains, Sol handles ordinary technical work, and Astra handles critical design decisions.",
         "Route ordinary plans, local designs, and routine rule adaptation to Sol; reserve Astra for critical design decisions, an actual unresolved Sol attempt, or explicit user model selection. Document labels alone do not trigger Astra.",
         "Start ordinary Sol work and consultations at medium; require fresh high and xhigh Sol attempts before ordinary Astra eligibility, preserving critical-design and explicit-selection exceptions.",
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
@@ -512,20 +530,22 @@
       "source": "pstack/skills/in-your-own-words/SKILL.md",
       "destination": "skills/in-your-own-words/SKILL.md",
       "sha256": "5b7c7e430de4d165d019033db44cd9e4e5522e35dbb50ed5c04ac46c04711bb0",
-      "adapted_sha256": "a4ab5cd9909991116b70e256f231b9e568e273d0dc04128f4bd8f18e309faeb5",
+      "adapted_sha256": "bb50cd11d3dc794ad2e2b08f351669255c72ef1376dbdfc06ffdd475b2845c8a",
       "adaptation_notes": [
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
       "source": "pstack/skills/interrogate/SKILL.md",
       "destination": "skills/interrogate/SKILL.md",
       "sha256": "0bca2b0e2355a74f8f07f59c27ceb4feedd7e145e18d09430e636977a0a44ae9",
-      "adapted_sha256": "e846ed09e8d2c73ccc847955076c6f7fa6ebb78d26408efefdc44470d17238a6",
+      "adapted_sha256": "4b33744ea16b99aad0ccf62a524af0b6d9c7d5de775d752f008535283776d611",
       "adaptation_notes": [
         "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures.",
         "Replace upstream model defaults and rejection fallbacks with the single MODELS.md responsibility mapping; preserve workflow phases and report actual independent evidence.",
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
@@ -552,71 +572,78 @@
       "source": "pstack/skills/ketchup-video/SKILL.md",
       "destination": "skills/ketchup-video/SKILL.md",
       "sha256": "5bc5cd6a745fd93c17e0ec845665d05934d49f0e7f7dac92b4e4d14c14a7af33",
-      "adapted_sha256": "d7b09b526d3ff611e6317215af52073c54f22e03cfc70ab36aadef21c4e4e3b5",
+      "adapted_sha256": "273fea8339d7678d3d453af9a63162f681e60d814e216ce9096295eeefd06a07",
       "adaptation_notes": [
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
       "source": "pstack/skills/ketchup/SKILL.md",
       "destination": "skills/ketchup/SKILL.md",
       "sha256": "39c5bd21add4ba53609bcc75cfa39a79cd778c0c785afd7f0a4e0ab0f6282e3d",
-      "adapted_sha256": "7a15e8329210dbf7a7f5c2c0bcb4b2428cc9bd703a769b0ff7f52d697060061a",
+      "adapted_sha256": "b88a2223c1167d645072b8660c5c39786a6d3a28cce371438614ccd7ceb79403",
       "adaptation_notes": [
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
       "source": "pstack/skills/maintain-formal-verification-skill/SKILL.md",
       "destination": "skills/maintain-formal-verification-skill/SKILL.md",
       "sha256": "7eaf05ada44eb69f521f6b2e167291b2431f9818fc892c72f8dd330e70681142",
-      "adapted_sha256": "afa547088e0a311e6b84212a03f01f6a8b0acc26db3d6b9194283bac3d8eb1f8",
+      "adapted_sha256": "6e66c2af353484da88598233d7dddebacee7abfa73be53b6a117016f76d919e0",
       "adaptation_notes": [
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
       "source": "pstack/skills/maintain-verification-skill/SKILL.md",
       "destination": "skills/maintain-verification-skill/SKILL.md",
       "sha256": "38553f39e53fdbb1bac7357dd0550e4df1546e819dc9c48387b88d1fbcd5ef5c",
-      "adapted_sha256": "d4b48dd257c96181935fa06255be6b83785d90053145c52250a7ac0c96794cee",
+      "adapted_sha256": "3e5e22a1eef1a5975d3d51c2f1eee93b7c45f895a7f9315584f31a0ddc697ddc",
       "adaptation_notes": [
         "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures.",
         "Translate project skill output paths from .cursor/skills to .agents/skills.",
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
       "source": "pstack/skills/make-bot-ui/SKILL.md",
       "destination": "skills/make-bot-ui/SKILL.md",
       "sha256": "190887386552db7e265c02c6ac979a3089f2d846d3c734170353f96c718b0ed3",
-      "adapted_sha256": "9b3e9a498234be907655abb05e742ebd60b1a47e109949edbdef6b91131b5aa0",
+      "adapted_sha256": "c25efeb073d79db4678320f971667e286f67bff33ba9e2f16589baa26fd2ecae",
       "adaptation_notes": [
         "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures.",
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
       "source": "pstack/skills/no-comments/SKILL.md",
       "destination": "skills/no-comments/SKILL.md",
       "sha256": "7f3734cb84f51689f63d1de3e58d1a41e6fe575c3b6ce611073ba307f6ec4e8c",
-      "adapted_sha256": "378934df3b4d8550c2057620b0ae8408d1d37503a63fc481273c80336ad3b9c8",
+      "adapted_sha256": "4ef6364a67837e7ed9396bbc5e3c3323a3e76c94bd922e68f215a0d50f7a1819",
       "adaptation_notes": [
         "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures.",
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
       "source": "pstack/skills/poteto-help/SKILL.md",
       "destination": "skills/poteto-help/SKILL.md",
       "sha256": "5cdf747f973b2dfaa17b4bb16dbe2a5725b0d098318eade6e17c11389b3d4570",
-      "adapted_sha256": "3ec35844be1f94a6bcf1ad57cce035c4b8aed7b7c08d67e340fba8dc871599aa",
+      "adapted_sha256": "c4a1fda70637bd29bc9fad131f6d3f2daf1108e89007e2f602efa17f3d97e8f8",
       "adaptation_notes": [
         "Translate explicit-only help metadata to agents/openai.yaml, map local source links, preserve read-only usage help, and route actual work through the Codex contract.",
         "Use the existing authoritative task record for phases, evidence, and material skip reasons without copying the playbook or requiring a new ledger for simple tasks.",
         "Route ordinary plans, local designs, and routine rule adaptation to Sol; reserve Astra for critical design decisions, an actual unresolved Sol attempt, or explicit user model selection. Document labels alone do not trigger Astra.",
         "Start ordinary Sol work and consultations at medium; require fresh high and xhigh Sol attempts before ordinary Astra eligibility, preserving critical-design and explicit-selection exceptions.",
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
@@ -642,228 +669,252 @@
       "source": "pstack/skills/poteto-mode/SKILL.md",
       "destination": "skills/poteto-mode/SKILL.md",
       "sha256": "ae84eff9f31161ebf389daf7fd7b27045cf858f60897e7cb8152f91dd27ce765",
-      "adapted_sha256": "56bbbc5d0dbcad778452d90065d8670d2471957d385c31b8ac32ceb83deff8a0",
+      "adapted_sha256": "2186bbca48653fe41e6e52c4365e0f61cdf60473395f0dd6dc2db75e1b4a2a64",
       "adaptation_notes": [
         "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures.",
         "Keep upstream triggers and playbook catalog; apply host authorization, fresh-child ownership and role mapping without automatic panels or repair PRs. Reuse the existing task record.",
         "Route ordinary plans, local designs, and routine rule adaptation to Sol; reserve Astra for critical design decisions, an actual unresolved Sol attempt, or explicit user model selection. Document labels alone do not trigger Astra.",
         "Integrate existing-tool reuse, owner result observation, and evidence-based recurrence handling into normal workflow phases under CODEX.md without automatic scans, new tools, gates, or review panels.",
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
       "source": "pstack/skills/poteto-mode/playbooks/authoring-a-skill.md",
       "destination": "skills/poteto-mode/playbooks/authoring-a-skill.md",
       "sha256": "4ac3baa5fd02e1b7742a5ef96d22c20e3e7667fb12238b984e739f003357545a",
-      "adapted_sha256": "4d6c5ad9cfa3a0a68b57d833a2325bede8893eaffa8c95f7a25782b55af161b5",
+      "adapted_sha256": "7f6e1fe4364c6d199f85a31c5a560aeb443b9e3c772c7e38d998e116462ab2db",
       "adaptation_notes": [
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
       "source": "pstack/skills/poteto-mode/playbooks/autonomous-run.md",
       "destination": "skills/poteto-mode/playbooks/autonomous-run.md",
       "sha256": "fdeb00324eab9180e4ee19fa0531fa50c55d239ce4cd07387b585e414126b564",
-      "adapted_sha256": "b455ca6566cc67131849b656cc00b135a03004f39060df4d36fd776eaeef2d7a",
+      "adapted_sha256": "ff4f09fd13a05d20fc34b171682de88a446536025248b1c61958751f050cc534",
       "adaptation_notes": [
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
       "source": "pstack/skills/poteto-mode/playbooks/autopilot-full.md",
       "destination": "skills/poteto-mode/playbooks/autopilot-full.md",
       "sha256": "728b38a7aef47f0e7ef106e247f778905e3bd52f8369ce4529b15d6d815b6e0b",
-      "adapted_sha256": "60a11230967576347c79ad2096ca400ad20bb31fdb5d798772d6978f5b06b140",
+      "adapted_sha256": "0040c837415d8b2da036a67c4e16f0b31a9c4ab68ee707419bc336064f292de2",
       "adaptation_notes": [
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
       "source": "pstack/skills/poteto-mode/playbooks/autopilot-stack.md",
       "destination": "skills/poteto-mode/playbooks/autopilot-stack.md",
       "sha256": "87501c6d8e7214ae2c4aa1d98367efdf17478d6a7aecb5b03e34d05e3a8e234d",
-      "adapted_sha256": "1c79f1268336b1bb96cbb5ca09bda41e12b4b9c11e55f3cda02ff388edab1acb",
+      "adapted_sha256": "f29295d1f81076bda7f595e43fafaf4f2a2cf57499f17df3fadac9b3f1353b82",
       "adaptation_notes": [
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
       "source": "pstack/skills/poteto-mode/playbooks/babysit.md",
       "destination": "skills/poteto-mode/playbooks/babysit.md",
       "sha256": "deeac6e004b39e17192d76d993113cc0c2ec1557a216301188540d58abbb70f7",
-      "adapted_sha256": "48636c3ab39eb873de15168b167574bfe9feb0f477cc329271d7eb06fc219d3d",
+      "adapted_sha256": "d7594e1a5c2d2ec1543f9fb7cf7bb566d2cf46dd59afb54ea865d5e750159865",
       "adaptation_notes": [
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
       "source": "pstack/skills/poteto-mode/playbooks/bug-fix.md",
       "destination": "skills/poteto-mode/playbooks/bug-fix.md",
       "sha256": "4c5034e334d8771201deb9e34b928e1e8a8e9c3759e726b9a6d04e0a74dfd539",
-      "adapted_sha256": "54495837a51eb6cc1fd68ae00ce454cf580e8d1caadef1cf21e361c496b2255c",
+      "adapted_sha256": "ea6b2dc1cf8dfc8bbc7643599b32ba31f3a08e95eb330adf37fc02b963ddafd1",
       "adaptation_notes": [
         "Retain upstream phase order and new procedures; resolve delegate models through MODELS.md.",
         "Split prescribed evidence collection from unresolved diagnosis before Luna dispatch.",
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
       "source": "pstack/skills/poteto-mode/playbooks/eval.md",
       "destination": "skills/poteto-mode/playbooks/eval.md",
       "sha256": "52ed5bfa75d2bea129fe5dd803258944846145718a8e02b2b4602200e291ff4f",
-      "adapted_sha256": "817d55633ae9f52ed51c8fc95cc9ed2eacf341cf7b745cc1c131a34e609554bd",
+      "adapted_sha256": "ea66e02b42cfac6e2f15a3d4a38e01ff60c17754fe7b14efdfadd54bc297c36d",
       "adaptation_notes": [
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
       "source": "pstack/skills/poteto-mode/playbooks/feature.md",
       "destination": "skills/poteto-mode/playbooks/feature.md",
       "sha256": "d0ee05f979fcdaf942d029a0c259fb4276a5a4f45901e69ae3132344a37167fb",
-      "adapted_sha256": "27d1dbf41018696ba9e157580537886182eb330021372f91b43c790ec6055e1a",
+      "adapted_sha256": "1073e00e3110164411a04c6f20a73208def39b92fe06fa1e6a862043e09a69d9",
       "adaptation_notes": [
         "Retain upstream phase order and new procedures; resolve delegate models through MODELS.md.",
         "An arena requires a selected comparison; retain design and verification phases without automatic panels.",
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
       "source": "pstack/skills/poteto-mode/playbooks/hillclimb.md",
       "destination": "skills/poteto-mode/playbooks/hillclimb.md",
       "sha256": "a46d1cf9da504e38610f40a00697219428cb9604515591b7b7a75d462b524c34",
-      "adapted_sha256": "736f70bc00f8128162eb1df25479e945bdda1db2587ac0b53b546b0a0f7455d1",
+      "adapted_sha256": "e51edd038ac00e3fee85cbdc1c017bfe4246f7d0988e2b391c31cc4124a82b7e",
       "adaptation_notes": [
         "Retain upstream phase order and new procedures; resolve delegate models through MODELS.md.",
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
       "source": "pstack/skills/poteto-mode/playbooks/investigation.md",
       "destination": "skills/poteto-mode/playbooks/investigation.md",
       "sha256": "c6cf882d483d50243e06977fab28d25ccd25b525b39eb45d6af3e89c1b8dcf52",
-      "adapted_sha256": "2aa3a7760db56c5eaff06b027d89c90a0ee467be1646bca1b6ef2e8bb5e64f94",
+      "adapted_sha256": "e1380dfe7db81d1da0b36b30d61ab0a3b16d0b9bf31148285b03285e5ace5150",
       "adaptation_notes": [
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
       "source": "pstack/skills/poteto-mode/playbooks/multi-phase-plan.md",
       "destination": "skills/poteto-mode/playbooks/multi-phase-plan.md",
       "sha256": "1241c43becc36d38e93903a5aefee196200a022a9c1fe86b9dffd4d288d2b007",
-      "adapted_sha256": "a0180c097729a20418ae6e2a344b08966460279616f4d8ab9e1a8853095219bb",
+      "adapted_sha256": "ac5fbd979e551a5fbc5b6c1bf22279b51176924442e53fab494d8d648cd71936",
       "adaptation_notes": [
         "Retain upstream phase order and new procedures; resolve delegate models through MODELS.md.",
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
       "source": "pstack/skills/poteto-mode/playbooks/opening-a-pr.md",
       "destination": "skills/poteto-mode/playbooks/opening-a-pr.md",
       "sha256": "968a3298acac00a56caf5b1b10044986e4c4493cc47042a39e9b24ecccfe672d",
-      "adapted_sha256": "bdff9d55197c4565f6de455338bc6511bf4ec06d7db0d64a9995eae6ae875bc0",
+      "adapted_sha256": "c04cb3e5c882ffcf5b2983416ff2dc683ef848275556abdbbb2da30a9fcafe07",
       "adaptation_notes": [
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
       "source": "pstack/skills/poteto-mode/playbooks/orchestrate.md",
       "destination": "skills/poteto-mode/playbooks/orchestrate.md",
       "sha256": "583cc9b6e0c1e68b400c116433b38295002f62f24a1e8aa591b466988af4d36b",
-      "adapted_sha256": "c4d6d2dbfd273ea7bec6ec20f0b54878736f0346d5685afc89f2b61fe7518339",
+      "adapted_sha256": "0b210c777a82ca431e74479cef0d260eb817dbd2256f68920e6df175b7bd0a73",
       "adaptation_notes": [
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
       "source": "pstack/skills/poteto-mode/playbooks/pause-safely.md",
       "destination": "skills/poteto-mode/playbooks/pause-safely.md",
       "sha256": "f2c7c53d90a0becde594a7d6d3c152f6ad8069edd6903fe6c2bbd4e5ff4243b4",
-      "adapted_sha256": "a12209f77e6ec340c1ca23caaa245235aff9c9d450e70e40b79c50d612ad07f9",
+      "adapted_sha256": "2e3dfab9b8f47dcfcd26df2c41825c913cb06023818cb4f492c7bab72b9abf24",
       "adaptation_notes": [
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
       "source": "pstack/skills/poteto-mode/playbooks/perf-issue.md",
       "destination": "skills/poteto-mode/playbooks/perf-issue.md",
       "sha256": "8f765d0faf6cbd5cdbde82a0d03916044295d0341e18eaf7aa1544ce58c35f82",
-      "adapted_sha256": "a9730873af4f5beaffc39d745be4aaab66c9a285722752183942cb4fd6abc8cc",
+      "adapted_sha256": "ade8a9e83428a3d67527fc9f9a2423359b0265af26f3c65f61b5dc1bbd8a04a6",
       "adaptation_notes": [
         "Retain upstream phase order and new procedures; resolve delegate models through MODELS.md.",
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
       "source": "pstack/skills/poteto-mode/playbooks/prototype.md",
       "destination": "skills/poteto-mode/playbooks/prototype.md",
       "sha256": "524f466259adff554fec3f60091d80112a530c390a4d37237f0260e877d8fdb5",
-      "adapted_sha256": "4e3f0fdcef18b3198d0df3d09a9bc6601ce6422c488e0907b96768646597cd5f",
+      "adapted_sha256": "e0cf4c867c660cd87d6bedab2cb3bfcf0fdafb14bf60607c17493feb6e86b3a1",
       "adaptation_notes": [
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
       "source": "pstack/skills/poteto-mode/playbooks/refactoring.md",
       "destination": "skills/poteto-mode/playbooks/refactoring.md",
       "sha256": "e9909e42090923e391e31d8096de0402ecd9fb996abdc80923b1f8fc706af3a3",
-      "adapted_sha256": "5b9cf9623f20c80742342d54683f067917c2b2bd6915cf70494289c56e3e8e90",
+      "adapted_sha256": "f9c0d8ab667ad1fad29eb8c5771031e87ca42aaa724b47060f7e53cf1aff6354",
       "adaptation_notes": [
         "Retain upstream phase order and new procedures; resolve delegate models through MODELS.md.",
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
       "source": "pstack/skills/poteto-mode/playbooks/runtime-forensics.md",
       "destination": "skills/poteto-mode/playbooks/runtime-forensics.md",
       "sha256": "ce4bc4a9d9bb62217593e8d7cc68c7d54e317116abb468fc69e246d3fe57a851",
-      "adapted_sha256": "0c5c9e20f2cac0f51f6060b7540839dfbdcd9f96469824cec9c6a15c6e843068",
+      "adapted_sha256": "b59d173e6eb7eb788c436c1a45a3061be58c54acbc4d9211976393db7c49b2a5",
       "adaptation_notes": [
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
       "source": "pstack/skills/poteto-mode/playbooks/session-pickup.md",
       "destination": "skills/poteto-mode/playbooks/session-pickup.md",
       "sha256": "610d6a1a8b191f44fa8031074e1400b767f34ed6279545af6b3c0c1b5859b6d4",
-      "adapted_sha256": "5101f9ae8633f99292eeb18080360331ae0e2f0efe0e3121949734df235a2887",
+      "adapted_sha256": "71f42300cd7a4513ee9e67304ac58ceb7c9d3556459299c0816c051d17561657",
       "adaptation_notes": [
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
       "source": "pstack/skills/poteto-mode/playbooks/shipping.md",
       "destination": "skills/poteto-mode/playbooks/shipping.md",
       "sha256": "bdfd2644d35ab876eb5f37dc578f220f3b8c6a86a021357657bd5f6c13305f85",
-      "adapted_sha256": "32ff01c749e5a6bdaadf946d9684ba2eff15b392b24f958bc1af75f2988337ac",
+      "adapted_sha256": "6d7b866285a4880182805902353897825893a6b36c1d40037794d763d3a2a5b0",
       "adaptation_notes": [
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
       "source": "pstack/skills/poteto-mode/playbooks/trace-forensics.md",
       "destination": "skills/poteto-mode/playbooks/trace-forensics.md",
       "sha256": "8dd011fb4eeeb2d908bd7e6c8b3ea49d63b632fda671932d52cc36ccc3da756c",
-      "adapted_sha256": "8136cd661bc41387d1a3b1d23103b7d1ddf0c93f5fbb3fb991a0edd90d0f4c89",
+      "adapted_sha256": "c1b4ad372e3094a612944a5682e48fe7f0135a8e3525bf83d92a1283d4a3ba39",
       "adaptation_notes": [
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
       "source": "pstack/skills/poteto-mode/playbooks/visual-parity.md",
       "destination": "skills/poteto-mode/playbooks/visual-parity.md",
       "sha256": "95a4e5aea48ac667925918e2e2832b13ee1d4dad2a0923a3f8154d3057029d15",
-      "adapted_sha256": "baff370bd746825c1ed59969477fa43977eb69c062cb04fa4623e52e20088e0e",
+      "adapted_sha256": "f47dcb3605b4c130c01d847aa907118f2831cec65a6fe3059aa5b68c44e6986a",
       "adaptation_notes": [
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
       "source": "pstack/skills/poteto-mode/playbooks/worktree-cleanup.md",
       "destination": "skills/poteto-mode/playbooks/worktree-cleanup.md",
       "sha256": "f46f1d7d5c9905e013dd74569034c32f8c7063e97aa6658be9cd18dfacec4122",
-      "adapted_sha256": "0d756514bb2013113a4156cc0d46c75e7e5763a16cf33977df25ef1cafa2c1fa",
+      "adapted_sha256": "db1a1ca66b756905d6c06b56ee2689e23607c26ad53aa0d8258d4c991aac7809",
       "adaptation_notes": [
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
@@ -980,264 +1031,290 @@
       "source": "pstack/skills/principle-attack-the-premise/SKILL.md",
       "destination": "skills/principle-attack-the-premise/SKILL.md",
       "sha256": "ab9fbd16dd37a41b7dda9450c8d5de240be3db44c7a9933f41d2f8d69a993916",
-      "adapted_sha256": "52fa37e1581736ed809d4872b5833d669995954c929ac9c30c33b1f932836861",
+      "adapted_sha256": "74fe1f953c9f04b8e54b0453d34f71a54352e10277d6adbe02b025b092af9aa4",
       "adaptation_notes": [
         "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures.",
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
       "source": "pstack/skills/principle-boundary-discipline/SKILL.md",
       "destination": "skills/principle-boundary-discipline/SKILL.md",
       "sha256": "99c74b6676a4ca8e55f17f5db1264244b97b58c953d32bd305744a193a995305",
-      "adapted_sha256": "b2fc0228a05f908d7302c95ffc22d8668749f4fd4ecee333d2edc7468bd3b13d",
+      "adapted_sha256": "9e05c4a6e98d88435ac27cdfea90d63859fad3f6cb235cbe03a93771cdcc2dc1",
       "adaptation_notes": [
         "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures.",
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
       "source": "pstack/skills/principle-build-the-lever/SKILL.md",
       "destination": "skills/principle-build-the-lever/SKILL.md",
       "sha256": "d86bd7df14255cf6127b93f54ad88e26d04251e14f0ca3f0e95a8ba6882b92c4",
-      "adapted_sha256": "3565ae0e3cf77545b40ab02060e0d9cf5ac8539cfd85370b8d40f16bae80785f",
+      "adapted_sha256": "d51aef819b8be9ce6af8dc53e918c3ab9c5c4bd8a887bc096cad7616c8eab497",
       "adaptation_notes": [
         "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures.",
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
       "source": "pstack/skills/principle-encode-lessons-in-structure/SKILL.md",
       "destination": "skills/principle-encode-lessons-in-structure/SKILL.md",
       "sha256": "7d15a5c25fb162482c4e6aa00beeb0ecc46294fe9f30751e079dbfe0b599328a",
-      "adapted_sha256": "04b3ed220d35e34a8cf416858bc5a86984fdb8df50193266663e73edcfedf438",
+      "adapted_sha256": "ffb30d01661f55a11233a75dc41e015fa7d890776c4c0b2771b262e0d6f9c583",
       "adaptation_notes": [
         "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures.",
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
       "source": "pstack/skills/principle-exhaust-the-design-space/SKILL.md",
       "destination": "skills/principle-exhaust-the-design-space/SKILL.md",
       "sha256": "07bb407e31481401ce2e61c633e5cb7cdfb007af608f20bd3b370c05ca1c5111",
-      "adapted_sha256": "6031d21706f1c689901b1ef342781145654bea57012c4dd0e197e5234b4bea5c",
+      "adapted_sha256": "71781314827a299eea69cb63a6fa1948afd3b5c15ce0036afa61badb65ae61f6",
       "adaptation_notes": [
         "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures.",
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
       "source": "pstack/skills/principle-experience-first/SKILL.md",
       "destination": "skills/principle-experience-first/SKILL.md",
       "sha256": "e0ac62b729f0f15d541d4bd3a9b4403b6124d885dd1dd02a0aa4668404c41aad",
-      "adapted_sha256": "e10255dd5184bb7f76ea0631567a001a31e3c7819741f2ebf11d79160d680f63",
+      "adapted_sha256": "ef1fd941286eb0d93df1bd9ddc319841aa731d1e2b4be1c011a265f2356629db",
       "adaptation_notes": [
         "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures.",
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
       "source": "pstack/skills/principle-explain-the-number/SKILL.md",
       "destination": "skills/principle-explain-the-number/SKILL.md",
       "sha256": "1baa95f52d32c640c14d53443c20036a4e384620a2f484e74a67fe8175890e93",
-      "adapted_sha256": "8dee65022181ff53c0cbab9c52b5de4b60062cfb52f7dde898630202921a9cce",
+      "adapted_sha256": "a08dfe41518fdd351282689963938a439ddd3d83241b4887177d73700e04df13",
       "adaptation_notes": [
         "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures.",
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
       "source": "pstack/skills/principle-fix-root-causes/SKILL.md",
       "destination": "skills/principle-fix-root-causes/SKILL.md",
       "sha256": "4d44853e6f1450a9cdc5f63cef165d873020bd633b03d9527f730fb35f4c947b",
-      "adapted_sha256": "f4957bb7c88da89bb3bba5b39ee6102a834e45b8787f1ee1168aa818dabe8d0b",
+      "adapted_sha256": "6b18d9a3f7c3b67805849d0b83d01faa79366eb5a4b19d18112300f95bf0135b",
       "adaptation_notes": [
         "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures.",
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
       "source": "pstack/skills/principle-foundational-thinking/SKILL.md",
       "destination": "skills/principle-foundational-thinking/SKILL.md",
       "sha256": "db9c5d2cb14e950b52f7b74baaee8e56e548d915ffd22c376f29f39d95e8fa50",
-      "adapted_sha256": "90f406e524c4d6abc8fa7e43788e48c3011b064908903f0cf8a995d95d01dce7",
+      "adapted_sha256": "e251b991814d4351652b3b905901452cfc71cd715579f1e5e497b520ac553064",
       "adaptation_notes": [
         "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures.",
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
       "source": "pstack/skills/principle-guard-the-context-window/SKILL.md",
       "destination": "skills/principle-guard-the-context-window/SKILL.md",
       "sha256": "85ee5d22ec92696b24d70a8d030ceb722fea86ff3476c4351e4bb03480e69581",
-      "adapted_sha256": "6c644e320db8fbc045404d5555fc3a137838cd2a408c22acef762c20f6f21340",
+      "adapted_sha256": "3f979dfb9194c336542432a61341d7933ac744d8af999fb52ac3f5600a9397b5",
       "adaptation_notes": [
         "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures.",
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
       "source": "pstack/skills/principle-laziness-protocol/SKILL.md",
       "destination": "skills/principle-laziness-protocol/SKILL.md",
       "sha256": "a7fd58933078aee0076159c49ffc30e825f975d7b92633a5a15a84c5639fc402",
-      "adapted_sha256": "69f2042e71de3c24bc887d73b58fe8b5958456e03bff2368919c131db580f272",
+      "adapted_sha256": "0bae2e449af69615a9c3f206c6073e15a17faa102bde6dea02310c4c5e940eed",
       "adaptation_notes": [
         "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures.",
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
       "source": "pstack/skills/principle-make-operations-idempotent/SKILL.md",
       "destination": "skills/principle-make-operations-idempotent/SKILL.md",
       "sha256": "9097bea5ff9f56123a7c66ac9048b6e08acd06c15303be0ca9b5f1645d512cc0",
-      "adapted_sha256": "afd19a6bbba50861d89657a61e58c1a399910f0c7656140f572ae9c2be2c0b12",
+      "adapted_sha256": "4fec70190fa79dbdf6293622c60edf39f8d7d576bbe327b962e02a8d00f09790",
       "adaptation_notes": [
         "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures.",
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
       "source": "pstack/skills/principle-migrate-callers-then-delete-legacy-apis/SKILL.md",
       "destination": "skills/principle-migrate-callers-then-delete-legacy-apis/SKILL.md",
       "sha256": "e792dea6bb2341ce6b4217301216b8a50d837eb08a007416d2222f4edd6d68c8",
-      "adapted_sha256": "d3a2f541774b78505faa94988aae098cc9532908bdabe0b7c12b8e6a3e04814d",
+      "adapted_sha256": "fa4e4d3cd2b9708ce4deca8a5a5822df8f42e7b28d3d943a8727d78d7e14d480",
       "adaptation_notes": [
         "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures.",
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
       "source": "pstack/skills/principle-minimize-reader-load/SKILL.md",
       "destination": "skills/principle-minimize-reader-load/SKILL.md",
       "sha256": "3a11658f01781aac7d0eb821853f3a1bb1c9692032b6027a5331e0212e439d72",
-      "adapted_sha256": "d74d1a6f2eab40068736261733c4c8e52292a433b3de87de70281a81e37604d5",
+      "adapted_sha256": "04dfffabdf6fefdf4e43cb814d99faf6c106b7a431b0c5e7c871325fa9394ec6",
       "adaptation_notes": [
         "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures.",
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
       "source": "pstack/skills/principle-model-the-domain/SKILL.md",
       "destination": "skills/principle-model-the-domain/SKILL.md",
       "sha256": "3cd35fc4269b87edb3067cfd80a41c72d8f878328a7d87de183f9a31f3453c98",
-      "adapted_sha256": "df3d77bfce35d9d690e8a94b11321aa08e6082839c31f090733b70de0a032369",
+      "adapted_sha256": "8203daf5ee0e4c8dea6d03bf0767bb3147d54072b193620e866e29db43a9bf42",
       "adaptation_notes": [
         "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures.",
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
       "source": "pstack/skills/principle-never-block-on-the-human/SKILL.md",
       "destination": "skills/principle-never-block-on-the-human/SKILL.md",
       "sha256": "9ef6d0f25519585c5fb894b7cc8c69641e761d657b175a567a80ce489c5db524",
-      "adapted_sha256": "f21b64cf796f35c27ecde756f2550008169a2e566c8239ac12869b4d79ed23d4",
+      "adapted_sha256": "dd200311c87eb07fe80d82fbd49394254b83f204b0f8192ce8efdccfde20987a",
       "adaptation_notes": [
         "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures.",
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
       "source": "pstack/skills/principle-outcome-oriented-execution/SKILL.md",
       "destination": "skills/principle-outcome-oriented-execution/SKILL.md",
       "sha256": "db7d50f932a368dbb926d954c109288373466fe11dc9f3f61b5a1f152850eb4e",
-      "adapted_sha256": "7d95ade238d12caf087432505c84db5f45076492e7458d667177d462f5fe5798",
+      "adapted_sha256": "311010ac2279b4d0af25675618f95f7d6dddc3da5c4ee42a9ea99d6de6990fd1",
       "adaptation_notes": [
         "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures.",
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
       "source": "pstack/skills/principle-prove-it-works/SKILL.md",
       "destination": "skills/principle-prove-it-works/SKILL.md",
       "sha256": "06c9fc738540384e78fafc43c251e04d053f4e2dc5acef73245396da6cc8c60f",
-      "adapted_sha256": "e4e1d47607aa14eab1f5877f8a3178ce798ef6280b898d7503c3f86447cbeb18",
+      "adapted_sha256": "eb3cab9d33d11a0c2e642d057b398362d86eccc104e22ddf68b1f753e3f393ec",
       "adaptation_notes": [
         "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures.",
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
       "source": "pstack/skills/principle-redesign-from-first-principles/SKILL.md",
       "destination": "skills/principle-redesign-from-first-principles/SKILL.md",
       "sha256": "43b3b17dbab660576d55495ac021aa00e340836b3aff252ae7e0d14d78377771",
-      "adapted_sha256": "4ff8a1dc2218050ba505f2044dfce79aa351a12af38725f69a6f80ff4c6a770b",
+      "adapted_sha256": "59ee452a69bdc75f2a96511092f7fdc7c45ca3c4c94aaf9cfbe0723e950874e3",
       "adaptation_notes": [
         "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures.",
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
       "source": "pstack/skills/principle-separate-before-serializing-shared-state/SKILL.md",
       "destination": "skills/principle-separate-before-serializing-shared-state/SKILL.md",
       "sha256": "05cbc073c63c1d61cc3032a6d31b781b0d55337be8d51fa7b1259cbebe85957e",
-      "adapted_sha256": "a27bf50bcbfa6fd63a35031e813ae3e915f4e06eb9dbdb2dbf30e45454839767",
+      "adapted_sha256": "6aaddea6f9d5cb23160557be19d55c1fc521947e3fbb970e48e084aae493d0ff",
       "adaptation_notes": [
         "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures.",
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
       "source": "pstack/skills/principle-sequence-verifiable-units/SKILL.md",
       "destination": "skills/principle-sequence-verifiable-units/SKILL.md",
       "sha256": "0b4407908c81a3368cc481ae835e04a71295810f918b45d16cbd1dbc2ba5734b",
-      "adapted_sha256": "00b5972ed010726a782976b7d5dff8d403df3759cc05f1433019e0769cc20597",
+      "adapted_sha256": "f27343e29a1dfb6f554c9a74ba600ce2de797bc91324899bec3751ca7dc505af",
       "adaptation_notes": [
         "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures.",
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
       "source": "pstack/skills/principle-subtract-before-you-add/SKILL.md",
       "destination": "skills/principle-subtract-before-you-add/SKILL.md",
       "sha256": "27b8b45972f79938b661c5ac1c7b99777510935ac85fb8e948ebc25a2b1e55e1",
-      "adapted_sha256": "f1ecaa32bed0972b4fb134d1f623dd9bbfac2eee320bc1f45263f04abff98b2f",
+      "adapted_sha256": "667c5e14b1db49dcbb60e241c4118dd081ef8f5e0300f0454cabc44a922ceb78",
       "adaptation_notes": [
         "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures.",
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
       "source": "pstack/skills/principle-test-behavior-not-implementation/SKILL.md",
       "destination": "skills/principle-test-behavior-not-implementation/SKILL.md",
       "sha256": "1264277f8c486a4cdc9ef73f9cbe8271254758f8b6c78702abc29efa68280297",
-      "adapted_sha256": "5bcb5d8a894124b6c13bcf1ce4e53cb4aec59563b50a59756e3e935f5647b401",
+      "adapted_sha256": "1d0f51d358025febd13a388dc9159a4d3ee779f2f9656edfbdbe5c0fc51a2f46",
       "adaptation_notes": [
         "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures.",
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
       "source": "pstack/skills/principle-type-system-discipline/SKILL.md",
       "destination": "skills/principle-type-system-discipline/SKILL.md",
       "sha256": "a8348a5e6f6b855a348032a0204f77db64bb61f04470f7fe26db972bad4ee1b7",
-      "adapted_sha256": "c118ee8c96c8b77dcd5b5c6b63f8fe6475746c3dd53363d0d4dac5cee016d6d0",
+      "adapted_sha256": "e3b3c13add037204d74e648c6f83ccd21bcaa666d613c04feca6840b436c9ffb",
       "adaptation_notes": [
         "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures.",
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
       "source": "pstack/skills/recall/SKILL.md",
       "destination": "skills/recall/SKILL.md",
       "sha256": "a28fb6d4f68f057535cf6ab87b566f9db4d678e8e93ad2041e1656526669419b",
-      "adapted_sha256": "98853bfd6531e680eb47ca15510298a0bd163c30f9b86d82833fe1754972b603",
+      "adapted_sha256": "890727be44d82e3e783e37abae83569217652d3827f6f3cb8d994bac1fa983e6",
       "adaptation_notes": [
         "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures.",
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
       "source": "pstack/skills/reflect/SKILL.md",
       "destination": "skills/reflect/SKILL.md",
       "sha256": "c7d385ca08b639572e1daf99b39969a14195822328adde19d722d6cddceabcdc",
-      "adapted_sha256": "91fab367f96f312269831ca1395dc8109bedabe8ce3bc13328cd0f0bd80f636e",
+      "adapted_sha256": "7db6fe343f93b544789fad449e8f8d61503f85123cb87072cc213029ccebf691",
       "adaptation_notes": [
         "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures.",
         "Replace upstream model defaults and rejection fallbacks with the single MODELS.md responsibility mapping; preserve workflow phases and report actual independent evidence.",
         "Preserve review lenses while splitting collection from judgment; external backlog writes require authorization and document edits follow authoritative ownership.",
         "Route ordinary plans, local designs, and routine rule adaptation to Sol; reserve Astra for critical design decisions, an actual unresolved Sol attempt, or explicit user model selection. Document labels alone do not trigger Astra.",
         "Start ordinary Sol work and consultations at medium; require fresh high and xhigh Sol attempts before ordinary Astra eligibility, preserving critical-design and explicit-selection exceptions.",
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
@@ -1279,30 +1356,33 @@
       "source": "pstack/skills/setup-pstack/SKILL.md",
       "destination": "skills/setup-pstack/SKILL.md",
       "sha256": "b955b5e60eb59e6db4d7d5432dca82073d4bb899af48800f436db64d6f7e0ccc",
-      "adapted_sha256": "b90d00d542e7058b3815e774a1897e12e569c61f11e8ee7234f77eeb18afaa83",
+      "adapted_sha256": "11a7acab59b9c25d0713bc36b2b664147588cc7fc33e4fe2aef4389d189c8119",
       "adaptation_notes": [
         "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures.",
         "Adapt discovery, configuration and verification steps to the existing GPT role mapping, explicit efforts and source/deployment boundary. Remove non-GPT budget presets and fallback activation.",
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
       "source": "pstack/skills/sharpen/SKILL.md",
       "destination": "skills/sharpen/SKILL.md",
       "sha256": "5ab3f97f914a3a82fce606b0d2d65317f082692a3b91c0ba9c354d41cf0ca4a2",
-      "adapted_sha256": "4a108eeb8f92062ef82ea7b3352c5f1a14133ee126ab9c263b0c247f7a45b495",
+      "adapted_sha256": "9a0134653068ebdc1748dc95b94d8bd6532bf4df0cf238f99240217b06e160a6",
       "adaptation_notes": [
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
       "source": "pstack/skills/show-me-your-work/SKILL.md",
       "destination": "skills/show-me-your-work/SKILL.md",
       "sha256": "9b6208039066955b605ce7a1fe5be1afcb674789f686a7fd1d3e6f25d83950c1",
-      "adapted_sha256": "85a1e90d6123b4f0c3722f659657b6b6001c9e38a474e49c1c0794c5bbd6888b",
+      "adapted_sha256": "642dbf6601b5b0cae8cdddcf2ac33b7096bb05652845e451ba3e45c0c9f1161c",
       "adaptation_notes": [
         "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures.",
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
@@ -1319,9 +1399,10 @@
       "source": "pstack/skills/statechart/SKILL.md",
       "destination": "skills/statechart/SKILL.md",
       "sha256": "938311b537aa114841f91228661eac62311972e7970503a20445bd1bc87e7280",
-      "adapted_sha256": "db000bcdaaca6c09c73bf5dd289e2067fde98d6ba64fcf7e18637d45879325ec",
+      "adapted_sha256": "a37562fa4d599d87d3cfa0be3dfb3e7c6d610387be20cbb302190baf6006e1eb",
       "adaptation_notes": [
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
@@ -1458,51 +1539,56 @@
       "source": "pstack/skills/swarm/SKILL.md",
       "destination": "skills/swarm/SKILL.md",
       "sha256": "31921b50ae4bfdd3ddebb38855c757911fcdcda34e31db576863de1f3ed46062",
-      "adapted_sha256": "79e88ac370cea1ea7f74e173fde659900570323ee2ea87e4ac08863e1ed52aa0",
+      "adapted_sha256": "7637dbaa519ba1f794623c33c36bb3d0bc1d3acfab31a300e7de9cf3788b61b5",
       "adaptation_notes": [
         "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures.",
         "Replace upstream model defaults and rejection fallbacks with the single MODELS.md responsibility mapping; preserve workflow phases and report actual independent evidence.",
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
       "source": "pstack/skills/tdd/SKILL.md",
       "destination": "skills/tdd/SKILL.md",
       "sha256": "dc438d0d5e59482d88643eaffc2d85547a248aba2987c79ed74b3b2f280a2f11",
-      "adapted_sha256": "d8eee6c0e2e46430c4b2c543c852711a3e69ee5457b7844a2e4f5ef8bf7e9c67",
+      "adapted_sha256": "7ce764a69068dcb3d1357716387586436f67f05914ac1e05781cdd78ed66a2a7",
       "adaptation_notes": [
         "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures.",
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
       "source": "pstack/skills/teach/SKILL.md",
       "destination": "skills/teach/SKILL.md",
       "sha256": "5849c4cdb9be7a84cddc8524273c53a1e4a1c09ea9e14592b94bc0ee2d3e0d09",
-      "adapted_sha256": "effe122dbe8775506c5d5357212387b381d4d66cb87529f05d0fc4e5fe3362fb",
+      "adapted_sha256": "c428799f8f0f0bb3e8c347ae4dd451ccaefaa4da00a0ff311ea0e9b04691c5bb",
       "adaptation_notes": [
         "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures.",
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
       "source": "pstack/skills/technical-writing/SKILL.md",
       "destination": "skills/technical-writing/SKILL.md",
       "sha256": "3c1a00a006ba72b169e2a42533e1e4a55a8b39aa795ba0dc137556ccb02729d8",
-      "adapted_sha256": "6eaf16b5cbff1dcf5983f80dbc30f0c371dbe99b4ae6de31f52e2f6c0049a8ae",
+      "adapted_sha256": "0f2377c7ad734babbf0049e0ed619b433a3f8b7b5c14f2ce70fba6c9898398c8",
       "adaptation_notes": [
         "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures.",
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
       "source": "pstack/skills/typescript-best-practices/SKILL.md",
       "destination": "skills/typescript-best-practices/SKILL.md",
       "sha256": "3b895e480f067d9888ad1ebe6ec63e385dc39c463b6a6386dd7467fe92efffba",
-      "adapted_sha256": "4b1fb044b15ac0d77bbba7a628dd92b0a1f3f3aaf2806f3c02b2ed30ec61578b",
+      "adapted_sha256": "668a02b079a31d4b3a3171f15888944b2c25019b05dd9d585acff4ab2507a2cd",
       "adaptation_notes": [
         "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures.",
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
@@ -1514,21 +1600,23 @@
       "source": "pstack/skills/unslop/SKILL.md",
       "destination": "skills/unslop/SKILL.md",
       "sha256": "10c030ce08e1eb314cf9c4057323c482e82d2bea60f59ccc515722db87473635",
-      "adapted_sha256": "1c74c0680012fa9a9db6cce38d6fb7d9c35c79b660476ec4136141ebd645ed26",
+      "adapted_sha256": "f530de6688bddfa30ca934a55219636dd2888978afe7db158acb85effa5df7bd",
       "adaptation_notes": [
         "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures.",
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {
       "source": "pstack/skills/why/SKILL.md",
       "destination": "skills/why/SKILL.md",
       "sha256": "eec2d2b9d0a439dc937d357687b3cbbf2ac29d60e54d5bf628a7e6c6de12754a",
-      "adapted_sha256": "e6843b68a7fd49278458012b9e755099c5ec680778bf5cb341187d3b04f7bc6e",
+      "adapted_sha256": "0589d2a59c2f28bbf11735340420c4869b73729a6decd46d29bc71807250c406",
       "adaptation_notes": [
         "Normalize Codex skill frontmatter and load CODEX.md and MODELS.md before executing upstream procedures.",
         "Replace upstream model defaults and rejection fallbacks with the single MODELS.md responsibility mapping; preserve workflow phases and report actual independent evidence.",
-        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope."
+        "Integrate upstream 0.15.32 while preserving Codex host adaptations. The Primary executes directly by default; subagents require an explicit user request and use MODELS.md only within that scope.",
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
       ]
     },
     {

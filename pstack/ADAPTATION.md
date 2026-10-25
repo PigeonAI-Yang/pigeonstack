@@ -8,7 +8,7 @@ This source adapter imports Lauren Tan's pstack v0.15.32 from the pinned upstrea
 - Contents: 58 pstack skills plus `control-ui`, `control-cli`, and `deslop` from the same checkout, for 61 exposed skills. Three Benny automation skills remain dormant reference material.
 - `CURSOR-TEAM-KIT-LICENSE` preserves the selected Team Kit source license separately.
 
-Codex adaptations retain supported skill frontmatter, explicit-only metadata from upstream, local skill paths, GPT model mappings, host tool conversion, and the maintained-source deployment boundary. Every skill entry loads CODEX.md and states that the Primary executes directly by default. Subagents require an explicit user request. Upstream model defaults, effort presets, automatic fan-out, and independent-review steps grant no delegation permission.
+Codex adaptations retain supported skill frontmatter, explicit-only metadata from upstream, local skill paths, GPT model mappings, host tool conversion, and the maintained-source deployment boundary. Every skill entry points to the short CODEX.md entry. Global AGENTS.md defines default direct execution once, and conditional references supply agent and host details. Subagents require an explicit user request. Upstream model defaults, effort presets, automatic fan-out, and independent-review steps grant no delegation permission.
 
 The upstream Claude Code harness guide remains reference material for that host. The current Codex installer also reads the new root plugin.json, so its version matches .codex-plugin/plugin.json. The Cursor manifest retains the upstream version. Dormant automation files register no background work. The existing Codex SessionStart source and its activation limits are documented below. CODEX.md and MODELS.md remain the maintained host contract.
 
@@ -501,3 +501,15 @@ The source plugin version is `0.15.32+codex.20261026optin`. No commit, push, run
 ### Deployment follow-up: root manifest precedence
 
 After explicit deployment and push authorization, the first scoped installation produced cache version 0.15.32 because the new root plugin.json took precedence over the Codex-specific manifest. The readback rejected that unexpected path. Both operational manifest versions now match 0.15.32+codex.20261026optin. The sync command rejects a version mismatch before copying runtime files. A targeted regression checks rejection before mutation and acceptance of matching versions. Existing source and runtime model selections are preserved.
+
+## Rule consolidation and conditional loading, 2026-10-26
+
+The user authorized three changes: centralize repeated policy, move conditional material to references, and remove mechanical workflow triggers. Authorization boundaries and model strategy must remain unchanged. Direct implementation, relevant checks, local deployment, the necessary commit, and remote push are authorized for this revision.
+
+Global AGENTS.md retains the original welcome, full Scope and authority section, and explicit delegation condition. It owns scope, data protection, direct execution, evidence, continuation, resource limits, and communication. MODELS.md and all three host role files remain byte-identical to the previous revision. The configuration changes only developer_instructions, which becomes a short pointer to the applicable global rules rather than another policy copy.
+
+CODEX.md becomes a short applicability and reference index. MULTI_AGENT.md retains the existing assignment, ownership, takeover, assessment, and wait procedures for explicitly authorized agent work. HOST_REFERENCE.md retains tool conversion, historical compatibility observations, checkpoint helper details, live-coordinate handling, and scoped installation procedures. The coordinator guide points to these actual locations. Skill and playbook headers reference the entry rather than repeating the delegation policy.
+
+Poteto mode no longer invokes how for every nontrivial change, architect for every function boundary, a fixed throughput checklist for every multi-step task, or additional writing and comment-review skills for every reply, commit, or review. Common implementation playbooks use concrete uncertainty, actual dependencies, and required evidence to select those steps. Explicit user requirements, necessary project checks, authorization, real faults, and the existing model strategy remain binding. Optional steps are not simulated as agent roles during direct execution.
+
+The source plugin version is 0.15.32+codex.20261026lean in both operational manifests. The pinned upstream remains 0.15.32 at 99b609a72323b70204eab407c622f436e858e112. This changes instruction loading and workflow applicability, not the hook source, synchronization implementation, tool registrations, runtime models, timers, or services. Evidence is retained in work/rules-lean-20261026. Source and installed-file checks do not establish future agent behavior.
