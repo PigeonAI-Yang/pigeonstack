@@ -1,8 +1,8 @@
-> Codex adapter: This is the upstream guide with local host adaptations. Apply [../../CODEX.md](../../CODEX.md) for installation, GPT routing, permissions, and supported tools. Cursor Custom Modes, cloud agents, Projects, and `/loop` are reference examples, not configured Codex capabilities.
+> Codex adapter: This is the upstream guide with local host adaptations. Apply [../../CODEX.md](../../CODEX.md) for installation, GPT routing, permissions, and supported tools. The Primary executes directly by default. Subagents require an explicit user request; selecting a skill alone does not authorize them. Cursor Custom Modes, cloud agents, Projects, and `/loop` are reference examples, not configured Codex capabilities.
 
 # Build the change and clean the diff
 
-The build playbooks share one discipline. Say what you observed, let the playbook demand the evidence. This page shows what to put in the prompt for each common build task, then the cleanup habit that keeps diffs reviewable.
+The build playbooks share one discipline. Say what you observed, and let the playbook demand the evidence. This page shows what to put in the prompt for each common build task, then the cleanup habit that keeps diffs reviewable.
 
 ## Prompt each build playbook with what you know
 
@@ -24,7 +24,7 @@ A refactoring prompt pins behavior before structure moves:
 /poteto-mode move parsing into one module, zero behavior change. record the current output first and prove it's unchanged after.
 ```
 
-A perf prompt states the measurement, not a vibe:
+A perf prompt states the measurement, not an impression:
 
 ```text
 /poteto-mode startup takes 1.8s on this fixture. trace it, fix the measured cause, show me before and after.

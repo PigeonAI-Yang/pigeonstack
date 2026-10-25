@@ -2,7 +2,7 @@
 name: "principle-separate-before-serializing-shared-state"
 description: "Apply when concurrent actors might write to the same file, branch, key, or state object. Eliminate the sharing first; serialize structurally only when one shared writer is a real invariant."
 ---
-> Codex host: Read [../../CODEX.md](../../CODEX.md) before execution and [../../MODELS.md](../../MODELS.md) before assigning roles. Apply the upstream procedure below within that host contract.
+> Codex host: Read [../../CODEX.md](../../CODEX.md) before execution. The Primary works directly by default. Invoke subagents only when the user explicitly requests them for this task. Upstream delegation steps and skill selection grant no permission. Resolve authorized models and efforts through [../../MODELS.md](../../MODELS.md).
 
 # Separate Before Serializing Shared State
 

@@ -1,18 +1,18 @@
 # Pstack Codex adapter
 
-This source adapter imports Lauren Tan's pstack v0.15.13 from the pinned upstream checkout. Historical entries below describe earlier revisions; the final integration entry records the current source state.
+This source adapter imports Lauren Tan's pstack v0.15.32 from the pinned upstream Git tree. Historical entries below describe earlier revisions. The final integration entry records the current source state.
 
-- Upstream: https://github.com/cursor/plugins/tree/77526ffa67f8dafc698d14b5356e6d4fc78c3127/pstack
-- Upstream commit: `77526ffa67f8dafc698d14b5356e6d4fc78c3127`
-- Upstream version: `0.15.13`
-- Contents: 51 pstack skills plus `control-ui`, `control-cli`, and `deslop` from the same checkout (54 source skills).
+- Upstream: https://github.com/cursor/plugins/tree/99b609a72323b70204eab407c622f436e858e112/pstack
+- Upstream commit: `99b609a72323b70204eab407c622f436e858e112`
+- Upstream version: `0.15.32`
+- Contents: 58 pstack skills plus `control-ui`, `control-cli`, and `deslop` from the same checkout, for 61 exposed skills. Three Benny automation skills remain dormant reference material.
 - `CURSOR-TEAM-KIT-LICENSE` preserves the selected Team Kit source license separately.
 
-Adapter changes are intentionally narrow: Codex-compatible skill names/frontmatter; a short entry in each installed `SKILL.md` requiring the plugin-root `CODEX.md` and, for model work, `MODELS.md`; `disable-model-invocation: true` moved to each skill's `agents/openai.yaml` policy; project skill output paths changed from `.cursor/skills` to `.agents/skills`; pstack model-rule references point to the plugin-root `MODELS.md`; and `setup-pstack` states that Codex follows the `CODEX.md`/`MODELS.md` contract instead of writing a Cursor rule. The upstream `recall` transcript explanation remains in place with an explicit Codex history entry.
+Codex adaptations retain supported skill frontmatter, explicit-only metadata from upstream, local skill paths, GPT model mappings, host tool conversion, and the maintained-source deployment boundary. Every skill entry loads CODEX.md and states that the Primary executes directly by default. Subagents require an explicit user request. Upstream model defaults, effort presets, automatic fan-out, and independent-review steps grant no delegation permission.
 
-The dormant upstream `automations/` files are retained as reference material but are not registered or enabled by this plugin. No hooks, MCP servers, or apps are declared. `CODEX.md` and `MODELS.md` are the maintained Codex host contract.
+The upstream Claude Code harness guide remains reference material for that host. The current Codex installer also reads the new root plugin.json, so its version matches .codex-plugin/plugin.json. The Cursor manifest retains the upstream version. Dormant automation files register no background work. The existing Codex SessionStart source and its activation limits are documented below. CODEX.md and MODELS.md remain the maintained host contract.
 
-Known upstream external dependencies remain explicit in the copied instructions. The workflows refer to host agent tools and model routing through `CODEX.md`/`MODELS.md`, optional GitHub CLI and MCP integrations, Playwright/Chromium/CDP or tmux/PTY/Node/Bun for the control skills, and a Grok webhook plus Tailscale for `make-bot-ui`. The dormant Benny pack refers to Slack, a tracker, and the host automation editor. The source contains one existing placeholder link, `[PR #123](url)`, in `skills/why/references/synthesizer-prompt.md`.
+Known optional upstream dependencies remain explicit, including GitHub and tracker integrations, control harnesses, the Grok webhook used by `make-bot-ui`, and TLC/Java for statechart model checking. Importing their instructions does not invoke those tools or install dependencies. The existing `[PR #123](url)` in the why synthesizer template remains an example placeholder.
 
 ## Host rule consolidation on 2026-09-21
 
@@ -477,3 +477,27 @@ Coordinator children may support bounded coordination and final acceptance. Work
 Version `0.15.13+codex.20261016solfirst` follows the user's decision to narrow Luna to simple, highly repetitive mechanical work. Ordinary implementation, debugging, refactoring, integration, verification, operations, and prose now default to Sol at `medium`. Accepted plans, small task size, or routine commands do not independently qualify work for Luna. Do not split coherent Sol assignments to manufacture Luna work. Separate consultations remain read-only, and their accepted implementation defaults to Sol. Critical design and evidenced-inability takeover paths retain their existing Astra boundaries, permissions, and progress assessments.
 
 Global AGENTS.md, the base prompt, managed developer instructions, MODELS.md, CODEX.md, the worker role, and the adapted poteto-mode entry use the same routing. Source child defaults change from Luna `max` to Sol `medium`; poteto-agent remains an explicitly selected Luna mechanical helper. The active Primary and Astra role are unchanged. Deployment uses the existing plugin-only sync plus a scoped copy of the changed global instructions and role files and a scoped configuration patch. It changes only the child model and effort, worker descriptions, and managed developer instructions; other runtime configuration, including the active Primary, is preserved. Source checks, installed-file readback, and successful routing observed in a new session remain separate observations. Deployment receipts are retained in `work/sol-first-routing-20261016/deployment/`.
+
+## Global rule clarity and scoped synchronization, 2026-10-22
+
+The user requested direct Primary maintenance after reviewing the global rules. The positive welcome remains intact. The global rules now state initiative in terms of practical judgment, evidence, and authorized action. Repeated completion and failure-classification text is consolidated, Main chats are distinguished from internal children, document research is limited to the claims being changed, and coordinate-dependent controls move to a conditional CODEX section. The existing delegation, model, Stop, approval, ownership, and acceptance policies remain in force.
+
+The worker role now accepts commits, pushes, publication, deployment, and external messages only when the assignment carries the human authorization for that operation. This matches the existing global authorization policy and keeps final acceptance and human approvals outside the worker role. CODEX no longer advertises unsupported finite-history spawn arguments. MODELS distinguishes its recommended Primary from the maintained configuration and the user's live selection.
+
+The sync command adds mutually exclusive `--agents-only` and `--rules-only` scopes. The first copies only AGENTS.md without configuration or plugin access. The second updates instruction files, roles, and pstack while skipping configuration merging. It checks configuration bytes and retains a backup before plugin installation. Full deployment keeps its existing behavior, including configuration changes. The plugin source version for these changes is `0.15.13+codex.20261022rules`.
+
+Seven targeted checks passed for one-file copy and backup, idempotence, configuration preservation, missing configuration, installer-induced configuration changes, mutually exclusive scopes, existing plugin-only behavior, and existing full-deployment behavior. Source and fixture evidence does not establish a live deployment or new-session behavior. Deployment status belongs in the actual operation receipt.
+
+## Upstream 0.15.32 and explicit subagent requests, 2026-10-26
+
+The user requested upstream integration and direct Primary execution by default. Existing dirty source work was preserved before integration. The previous pin was `77526ffa67f8dafc698d14b5356e6d4fc78c3127`, version 0.15.13. The new upstream pin is `99b609a72323b70204eab407c622f436e858e112`, version 0.15.32.
+
+The three-way merge updates 104 existing imported files and adds 36 upstream files, with no upstream removals. It resolves 71 overlapping regions while retaining Codex permissions, GPT mapping, source ownership, fresh-child lifecycle, Primary-only ComputerUse, serial image work, and the existing scoped synchronization changes. The seven new exposed skills are `create-formal-verification-skill`, `maintain-formal-verification-skill`, `statechart`, `in-your-own-words`, `ketchup`, `ketchup-video`, and `sharpen`.
+
+Global AGENTS.md, the managed developer instructions, base prompt, host entry, model mapping, role definitions, skill entries, playbooks, and current public documentation now share the same explicit delegation condition. The Primary owns diagnosis, implementation, verification, synthesis, and critical design directly unless the user requests agents. Explorers, consultations, reviewers, and replacement agents all require that request. Skills, complexity, failures, and context pressure grant no permission. Within authorized delegation, existing Sol, Luna, and Astra IDs and efforts remain unchanged. The configured agent capability stays available for explicit requests. It is not an automatic dispatch rule.
+
+The source plugin version is `0.15.32+codex.20261026optin`. No commit, push, runtime deployment, packaging, release, or full test suite is part of this revision. Source checks and targeted imported-tool checks are recorded in `work/upstream-merge-20261026/`. New-session behavior remains unverified until an authorized deployment and fresh-session observation.
+
+### Deployment follow-up: root manifest precedence
+
+After explicit deployment and push authorization, the first scoped installation produced cache version 0.15.32 because the new root plugin.json took precedence over the Codex-specific manifest. The readback rejected that unexpected path. Both operational manifest versions now match 0.15.32+codex.20261026optin. The sync command rejects a version mismatch before copying runtime files. A targeted regression checks rejection before mutation and acceptance of matching versions. Existing source and runtime model selections are preserved.

@@ -1,4 +1,4 @@
-from contextlib import redirect_stdout
+from contextlib import redirect_stderr, redirect_stdout
 from io import StringIO
 import json
 import tomllib
@@ -154,12 +154,142 @@ config_file = "agents/astra-advisor.toml"
             self.write(source / 'config/workflow.toml', self.workflow)
         return source, home
 
-    def invoke(self, source, home, *arguments):
+    def invoke(self, source, home, *arguments, skip_plugin_install=True):
         output = StringIO()
-        argv = ['sync.py', *arguments, '--codex-home', str(home), '--skip-plugin-install']
+        argv = ['sync.py', *arguments, '--codex-home', str(home)]
+        if skip_plugin_install:
+            argv.append('--skip-plugin-install')
         with patch.object(sync, 'ROOT', source), patch.object(sys, 'argv', argv), redirect_stdout(output):
             status = sync.main()
         return status, json.loads(output.getvalue())
+
+    def test_plugin_manifest_versions_must_match_before_deploy(self):
+        with TemporaryDirectory() as directory:
+            source, home = self.create_fixture(Path(directory))
+            version = json.loads((source / 'pstack/.codex-plugin/plugin.json').read_text())['version']
+            self.write(source / 'pstack/plugin.json', json.dumps({'version': 'upstream-only'}))
+            with self.assertRaisesRegex(ValueError, 'must use the same version'):
+                self.invoke(source, home, 'deploy', '--rules-only')
+            self.assertFalse(home.exists())
+
+            self.write(source / 'pstack/plugin.json', json.dumps({'version': version}))
+            status, receipt = self.invoke(source, home, 'check', '--plugin-only')
+            self.assertEqual(status, 1)
+            self.assertEqual(receipt['plugin_version'], version)
+            self.assertFalse(home.exists())
+
+    def test_agents_only_copies_and_backs_up_one_file_without_plugin_or_config(self):
+        with TemporaryDirectory() as directory:
+            source = Path(directory) / 'source'
+            home = Path(directory) / 'home'
+            self.write(source / 'AGENTS.md', 'approved global rules')
+            self.write(home / 'AGENTS.md', 'previous global rules')
+            self.write(home / 'config.toml', b'untouched even if invalid TOML = [')
+            self.write(home / 'agents/worker.toml', 'untouched role')
+            before = {path.relative_to(home): path.read_bytes()
+                      for path in home.rglob('*') if path.is_file()}
+
+            with patch.object(sync, 'plugin_drift', side_effect=AssertionError('plugin inspected')), \
+                    patch.object(sync, 'install_plugin', side_effect=AssertionError('plugin installed')):
+                check_status, check = self.invoke(source, home, 'check', '--agents-only',
+                                                 skip_plugin_install=False)
+                self.assertEqual(check_status, 1)
+                self.assertEqual(check['runtime_drift'], ['AGENTS.md'])
+                self.assertEqual((home / 'AGENTS.md').read_bytes(), before[Path('AGENTS.md')])
+                status, receipt = self.invoke(source, home, 'deploy', '--agents-only',
+                                              skip_plugin_install=False)
+                self.assertEqual(status, 0)
+                self.assertEqual(receipt['scope'], 'agents')
+                self.assertEqual(receipt['managed_files'], 1)
+                self.assertEqual(receipt['files_written'], 1)
+                self.assertEqual(receipt['backups'], 1)
+                self.assertTrue(receipt['plugin_skipped'])
+                self.assertIsNone(receipt['plugin_version'])
+                self.assertEqual(receipt['config_drift'], [])
+                self.assertEqual((Path(receipt['backup_path']) / 'AGENTS.md').read_bytes(),
+                                 b'previous global rules')
+                self.assertEqual((home / 'AGENTS.md').read_bytes(), b'approved global rules')
+                for name in ('config.toml', 'agents/worker.toml'):
+                    self.assertEqual((home / name).read_bytes(), before[Path(name)])
+                self.assertFalse((home / 'local-plugins').exists())
+                again_status, again = self.invoke(source, home, 'deploy', '--agents-only',
+                                                  skip_plugin_install=False)
+                self.assertEqual(again_status, 0)
+                self.assertEqual(again['files_written'], 0)
+                self.assertEqual(again['backups'], 0)
+                self.assertEqual(self.invoke(source, home, 'check', '--agents-only',
+                                             skip_plugin_install=False)[0], 0)
+
+    def test_rules_only_updates_instruction_files_without_loading_workflow_or_changing_config(self):
+        with TemporaryDirectory() as directory:
+            source, home = self.create_fixture(Path(directory))
+            (source / 'config/workflow.toml').unlink()
+            original_config = (b'# user selection\r\nmodel = "user-model"\r\n'
+                               b'model_reasoning_effort = "max"\r\n'
+                               b'developer_instructions = "user instructions"\r\n')
+            self.write(home / 'config.toml', original_config)
+            self.write(home / 'AGENTS.md', 'old global rules')
+            self.write(home / 'agents/worker.toml', 'old role')
+
+            status, receipt = self.invoke(source, home, 'deploy', '--rules-only')
+
+            self.assertEqual(status, 0)
+            self.assertEqual(receipt['scope'], 'rules')
+            self.assertEqual(receipt['config_drift'], [])
+            self.assertEqual((home / 'config.toml').read_bytes(), original_config)
+            for name in ('AGENTS.md', 'prompts/codex-event-driven-base.md', 'agents/worker.toml'):
+                self.assertEqual((home / name).read_bytes(), (source / name).read_bytes())
+            self.assertEqual((home / 'local-plugins/pstack/README.md').read_text(),
+                             'updated plugin content')
+            backup = Path(receipt['backup_path'])
+            self.assertEqual((backup / 'AGENTS.md').read_text(), 'old global rules')
+            self.assertEqual((backup / 'agents/worker.toml').read_text(), 'old role')
+            self.assertFalse((backup / 'config.toml').exists())
+            self.assertEqual(self.invoke(source, home, 'check', '--rules-only')[0], 0)
+
+    def test_rules_only_does_not_create_missing_configuration(self):
+        with TemporaryDirectory() as directory:
+            source, home = self.create_fixture(Path(directory))
+            (source / 'config/workflow.toml').unlink()
+
+            status, receipt = self.invoke(source, home, 'deploy', '--rules-only')
+
+            self.assertEqual(status, 0)
+            self.assertEqual(receipt['config_drift'], [])
+            self.assertFalse((home / 'config.toml').exists())
+
+    def test_rules_only_reports_installer_config_changes_and_retains_original_backup(self):
+        with TemporaryDirectory() as directory:
+            source, home = self.create_fixture(Path(directory))
+            original = b'model = "user-model"\nmodel_reasoning_effort = "max"\n'
+            self.write(home / 'config.toml', original)
+
+            def change_config(*arguments):
+                (home / 'config.toml').write_bytes(b'model = "unexpected-model"\n')
+
+            with patch.object(sync, 'DEFAULT_HOME', home), \
+                    patch.object(sync, 'plugin_drift', return_value=(home / 'cache', [])), \
+                    patch.object(sync, 'install_plugin', side_effect=change_config), \
+                    self.assertRaisesRegex(ValueError, 'Configuration changed during scoped deployment'):
+                self.invoke(source, home, 'deploy', '--rules-only', skip_plugin_install=False)
+
+            backups = list((home / 'backups/pigeonstack').glob('*/config.toml'))
+            self.assertEqual(len(backups), 1)
+            self.assertEqual(backups[0].read_bytes(), original)
+            self.assertEqual((home / 'config.toml').read_bytes(), b'model = "unexpected-model"\n')
+
+    def test_deployment_scopes_are_mutually_exclusive(self):
+        with TemporaryDirectory() as directory:
+            source, home = self.create_fixture(Path(directory))
+            pairs = [('--agents-only', '--plugin-only'),
+                     ('--agents-only', '--rules-only'),
+                     ('--rules-only', '--plugin-only')]
+            for pair in pairs:
+                with self.subTest(pair=pair), redirect_stderr(StringIO()), \
+                        self.assertRaises(SystemExit) as error:
+                    self.invoke(source, home, 'deploy', *pair)
+                self.assertEqual(error.exception.code, 2)
+                self.assertFalse(home.exists())
 
     def test_plugin_only_preserves_config_and_global_instructions(self):
         with TemporaryDirectory() as directory:

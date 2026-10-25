@@ -1,5 +1,7 @@
 ### Visual parity
 
+> Codex execution: The Primary performs this playbook directly by default. Delegation and agent-based review steps apply only when the user explicitly requests subagents for this task. Follow [CODEX.md](../../../CODEX.md) for tool and permission boundaries. Do not claim an independent verdict from self-review.
+
 **You own pixel-exact equivalence. The baseline is the spec. You do not touch it.** Equivalence is verified by image diff, not by eye.
 
 1. Establish the baseline first, before any migration: a visual regression harness that screenshots the current component across its states, plus the target when matching two implementations. No baseline, no parity claim. A blocking prerequisite, not a follow-up.

@@ -2,49 +2,35 @@
 name: "how"
 description: "Use for \"how does X work\", code walkthroughs before changing something, and placement / ownership / layering questions (\"where should this live\", \"which package owns this\", \"is this the right layer\"). Explains subsystem architecture, runtime flow, onboarding mental models. Use why for motivation."
 ---
-> Codex host: Read [../../CODEX.md](../../CODEX.md) before execution and [../../MODELS.md](../../MODELS.md) before assigning roles. Apply the upstream procedure below within that host contract.
+> Codex host: Read [../../CODEX.md](../../CODEX.md) before execution. The Primary works directly by default. Invoke subagents only when the user explicitly requests them for this task. Upstream delegation steps and skill selection grant no permission. Resolve authorized models and efforts through [../../MODELS.md](../../MODELS.md).
 
 # How
 
 Explore the codebase to answer "how does X work?" questions. Produce architectural explanations at the level of a senior engineer onboarding onto a subsystem, enough to build a working mental model, not so much that it reads like annotated source code.
 
-Resolve each named role through the plugin-root `MODELS.md`. It defines responsibility splits, GPT models and efforts, parent aliases, and required-model failures. Do not substitute upstream defaults or create a repair PR when routing is unavailable.
+The Primary investigates and explains directly by default. An explicit user request may authorize scoped read-only explorers. Resolve their roles, models, and efforts through `MODELS.md` and supported tool arguments through `CODEX.md`.
 
-## Step 1. Assess Complexity
+## 1. Assess complexity
 
 If the scope is ambiguous, state your interpretation and explore. The user can redirect.
 
-- **Simple** (a single module, a small utility, a narrow question such as "how does function X work"): no explorers. The Primary uses the direct explanation procedure, with prescribed evidence collection if needed. Go to Step 2b.
-- **Complex** (a subsystem spanning multiple files or services, a cross-cutting feature, a full architectural overview): assign parallel prescribed evidence collection first, then synthesize through the role mapping. Go to Step 2a.
+- **Simple** (a single module, a small utility, a narrow question such as "how does function X work"): no explorers. The Primary explores and explains in one pass, built from `references/explainer-prompt.md` without the explorer-findings section. Go to step 4.
+- **Complex** (a subsystem spanning multiple files or services, a cross-cutting feature, a full architectural overview): go to step 2.
 
 When in doubt, take the simple path.
 
-## Step 2a. Explore (complex questions only)
+## 2. Explore (complex only)
 
-Decompose the question into 2 to 4 exploration angles, each a distinct slice of the subsystem. Spawn all explorers in a single message:
+Decompose the question into 2 to 4 angles, each a distinct slice of the subsystem. The Primary collects the evidence for each angle. If the user explicitly requested parallel explorers, give each authorized explorer `references/explorer-prompt.md` with its angle filled in.
 
-- `subagent_type`: `generalPurpose`
-- `model`: the `how explorer` line, resolved through `MODELS.md`
-- `readonly`: `true`
+## 3. Synthesize (complex only)
 
-Use `references/explorer-prompt.md` to frame the needed evidence. Use Sol for ordinary read-only investigation. Luna is eligible only for a simple repetitive collection checklist with fixed inputs and observations. Keep final interpretation with the Primary or the assigned Sol investigator. Astra eligibility follows the critical-design and actual Sol `xhigh`-attempt boundaries in `MODELS.md`. Then go to Step 3.
+The Primary synthesizes the collected evidence using `references/explainer-prompt.md`. Include any authorized explorer findings. A separate explainer is optional only within explicit user authorization.
 
-## Step 2b. Direct Explain (simple questions)
+## 4. Present
 
-The Primary follows the direct explanation procedure. An ordinary technical explanation or local design uses Sol when delegated. Critical design decisions use Astra; bounded unresolved questions follow the Sol-first read-only route in `MODELS.md`.
+Present the supported explanation, its evidence, and its gaps. The Primary owns synthesis and final acceptance.
 
-Build its prompt from `references/explainer-prompt.md` without the explorer-findings section. Go to Step 4.
-
-## Step 3. Synthesize (complex questions only)
-
-Once collection is complete, the Primary synthesizes the evidence. Route ordinary technical document work to Sol and critical design decisions to Astra under `MODELS.md`. A document label alone does not require Astra.
-
-Build its prompt from `references/explainer-prompt.md` with every explorer's findings filled in.
-
-## Step 4. Present
-
-Present the accepted explanation with its evidence and gaps. The Primary owns final acceptance and the user-facing answer.
-
-## Output Format
+## Output format
 
 The explanation uses the sections defined in `references/explainer-prompt.md`, dropping any that do not apply: Overview, Key Concepts, How It Works, Where Things Live, Gotchas.

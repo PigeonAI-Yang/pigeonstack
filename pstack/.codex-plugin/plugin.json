@@ -1,19 +1,19 @@
 {
   "name": "pstack",
-  "version": "0.15.13+codex.20261016solfirst",
-  "description": "Lauren Tan's pstack v0.15.13 workflows with a GPT-only Codex host adapter.",
+  "version": "0.15.32+codex.20261026optin",
+  "description": "Lauren Tan's pstack v0.15.32 workflows with a GPT-only Codex host adapter and user-requested subagents.",
   "author": {
     "name": "Lauren Tan (original pstack author)",
     "url": "https://github.com/poteto"
   },
-  "homepage": "https://github.com/cursor/plugins/tree/77526ffa67f8dafc698d14b5356e6d4fc78c3127/pstack",
-  "repository": "https://github.com/cursor/plugins/tree/77526ffa67f8dafc698d14b5356e6d4fc78c3127/pstack",
+  "homepage": "https://github.com/cursor/plugins/tree/99b609a72323b70204eab407c622f436e858e112/pstack",
+  "repository": "https://github.com/cursor/plugins/tree/99b609a72323b70204eab407c622f436e858e112/pstack",
   "license": "MIT",
   "skills": "./skills/",
   "interface": {
     "displayName": "Pstack for Codex",
     "shortDescription": "Lauren Tan's pstack workflows adapted for Codex",
-    "longDescription": "Upstream pstack v0.15.13 with 51 skills plus control-ui, control-cli, and deslop. CODEX.md translates host workflows and tools; MODELS.md owns GPT role assignments.",
+    "longDescription": "Upstream pstack v0.15.32 with 58 skills plus control-ui, control-cli, and deslop. The Primary executes directly by default. Subagents require an explicit user request. CODEX.md translates host tools and permissions; MODELS.md maps authorized GPT assignments.",
     "developerName": "Lauren Tan / local Codex adapter",
     "category": "Productivity",
     "capabilities": [],

@@ -1,12 +1,12 @@
 ---
 name: "principle-redesign-from-first-principles"
-description: "Apply when integrating a new requirement into an existing design. Redesign as if the requirement had been a foundational assumption from day one, instead of bolting it on."
+description: "Apply when integrating a new requirement into an existing design."
 ---
-> Codex host: Read [../../CODEX.md](../../CODEX.md) before execution and [../../MODELS.md](../../MODELS.md) before assigning roles. Apply the upstream procedure below within that host contract.
+> Codex host: Read [../../CODEX.md](../../CODEX.md) before execution. The Primary works directly by default. Invoke subagents only when the user explicitly requests them for this task. Upstream delegation steps and skill selection grant no permission. Resolve authorized models and efforts through [../../MODELS.md](../../MODELS.md).
 
 # Redesign From First Principles
 
-When integrating a change, don't bolt it onto the existing design. Redesign as if the requirement had been there from the start.
+When integrating a change, don't bolt it onto the existing design. Redesign as if the requirement had been a foundational assumption from the start.
 
 - Read all affected files and understand the current design
 - Ask: "if we were writing this from scratch with this new requirement, what would we build?"

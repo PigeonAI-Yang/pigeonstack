@@ -1,6 +1,6 @@
-# PigeonStack: Codex Multi-Agent Workflow
+# PigeonStack: Codex Workflow
 
-First, credit and thanks to [Lauren Tan (poteto)](https://github.com/poteto), the original author of [pstack](https://github.com/cursor/plugins/tree/77526ffa67f8dafc698d14b5356e6d4fc78c3127/pstack). PigeonStack builds on her work and adapts it for this Codex workflow.
+First, credit and thanks to [Lauren Tan (poteto)](https://github.com/poteto), the original author of [pstack](https://github.com/cursor/plugins/tree/99b609a72323b70204eab407c622f436e858e112/pstack). PigeonStack builds on her work and adapts it for this Codex workflow.
 
 English | [Simplified Chinese](README.zh-CN.md)
 
@@ -21,15 +21,15 @@ English | [Simplified Chinese](README.zh-CN.md)
   <a href="https://www.xiaohongshu.com/user/profile/689af6b90000000019016082"><img alt="Xiaohongshu Dibo" src="https://img.shields.io/badge/Xiaohongshu-Dibo-ff2442?style=flat-square&amp;logo=xiaohongshu&amp;logoColor=white" /></a>
 </p>
 
-**A Codex collaboration setup that keeps goals and acceptance with the Primary, defaults ordinary work to Sol, reserves Luna for simple repetitive mechanical tasks, and routes critical design or eligible takeovers to Astra.**
+**A Codex setup where the active Primary investigates, implements, and verifies directly. Subagents run only when the user explicitly requests them.**
 
 PigeonStack is PigeonYang's maintained Codex setup: global instructions, a customized version of Lauren Tan's pstack, agent-role definitions, selected host configuration, and a local synchronization script. It keeps the responsibilities and installed instructions reviewable from one source repository.
 
 Agents keep engineering caveats in developer conversations or documentation. They add disclaimers to delivered interfaces or customer-facing backend responses only when the user explicitly requests them. Actual status, errors, and functional limits stay concrete.
 
-The active Primary retains the goal, constraints, coordination, and final acceptance. Ordinary work defaults to Sol at `medium`, including diagnosis, implementation, and verification within scope. Luna at `max` handles only simple repetitive mechanical work with fixed steps and checkable results. Separate consultations remain read-only; critical design retains the Astra path.
+The active Primary diagnoses, implements, verifies, and accepts the result directly by default. Subagents require an explicit user request for the current task. Skill selection, complexity, failures, and context pressure do not grant that permission. Within authorized delegation, Sol starts ordinary work at `medium`, Luna at `max` handles only simple repetitive mechanical work, and Astra handles critical design or eligible takeovers. Existing model IDs and efforts remain unchanged.
 
-For multi-workstream tasks, the coordinator assigns a complete outcome to each Main and reviews the finished deliverable. The Main independently owns diagnosis, implementation, integration, verification, and repair, and manages its own children. Shared operators exchange necessary requests and results directly with the responsible Main. The coordinator resolves external blockers and cross-owner conflicts without prescribing every command or approving each internal phase.
+For explicitly requested multi-agent work, the coordinator assigns a complete outcome to each Main and reviews the finished deliverable. The Main owns diagnosis, implementation, integration, verification, and repair. Nested children require human authorization that covers them. The coordinator routes necessary cross-workstream requests and results, resolves external blockers, and handles ownership conflicts without prescribing every command or approving each internal phase.
 
 This is a set of instructions, a packaged Codex plugin, and deployment tooling. It does not provide an MCP server or a separate autonomous scheduler, and it starts no background timers, resident agents, or remote services. The repository does bundle a bounded `SessionStart` hook; host configuration and trust govern whether it activates.
 
@@ -43,7 +43,7 @@ The current body remains limited to 16 KiB. The Windows wrapper reports reader f
 
 The 2026-10-09 checkpoint maintenance is historical evidence for version `0.15.13+codex.20261009checkpoint`. Local deployment and installed-file checks passed, as did a read/update/archive/readback workflow against a real task record. The workflow reduced the current region from 29,370 to 8,158 bytes. It preserved the goal, permissions, blockers, and history outside the region. See the [historical checkpoint-maintenance evidence](pstack/ADAPTATION.md#current-checkpoint-maintenance-2026-10-09).
 
-The source manifest now records `0.15.13+codex.20261016solfirst`. During the 2026-10-11 hook verification, the installed version was `0.15.13+codex.20261011copy`. The native reader returned the exact bound current body, including its existing `Pending` qualification. A fresh Desktop chat completed `SessionStart` once with no failures, reported an invalid-index diagnostic, and continued. The native test verified the scratch binding. The Desktop observation verified startup; it did not establish a task binding in `oneirloom`. The cause of the historical Desktop `exit 1` remains unproven. See the [product-copy rules and SessionStart verification](pstack/ADAPTATION.md#product-copy-rules-and-sessionstart-verification-2026-10-11).
+The source manifest now records `0.15.32+codex.20261026optin`. This revision is source-only until deployment is separately authorized. During the 2026-10-11 hook verification, the installed version was `0.15.13+codex.20261011copy`. The native reader returned the exact bound current body, including its existing `Pending` qualification. A fresh Desktop chat completed `SessionStart` once with no failures, reported an invalid-index diagnostic, and continued. The native test verified the scratch binding. The Desktop observation verified startup; it did not establish a task binding in `oneirloom`. The cause of the historical Desktop `exit 1` remains unproven. See the [product-copy rules and SessionStart verification](pstack/ADAPTATION.md#product-copy-rules-and-sessionstart-verification-2026-10-11).
 
 The hook does not monitor later business state, intercept agent dispatch, or enforce coordinator reminders. See the [hook contract](pstack/hooks/README.md) and [Codex host adapter](pstack/CODEX.md).
 
@@ -58,16 +58,18 @@ Not sure which pstack skill fits your task? Ask `/poteto-help`. It reads the bun
 The verified host is Windows with PowerShell, and the sync script requires Python 3.11 or newer. Real plugin installation also requires a compatible Codex CLI and an existing local marketplace registration for `pstack@personal`.
 
 - Maintain global Codex rules in Git and review them with the source.
-- Default ordinary work to Sol. Reserve Luna for simple repetitive mechanical tasks; route critical design to Astra.
+- Execute directly by default. Use Sol, Luna, or Astra subagents only when the user explicitly requests delegation.
 - Keep the maintained source, runtime files, and versioned plugin cache in sync.
 
 ## Why this division of work
 
 Multi-agent work becomes expensive when every child rediscovers the problem, chooses its own repair, or asks another model to repeat the same review. It becomes unreliable when a successful build is treated as proof that the user's workflow works.
 
-PigeonStack gives one Primary responsibility for decisions and final acceptance. Children receive enough context to complete a bounded assignment and return evidence. Independent work can run concurrently, while dependencies and shared resources keep a single owner. The workflow favors a complete, verifiable result with the fewest necessary changes.
+PigeonStack gives one Primary responsibility for diagnosis, implementation, verification, decisions, and final acceptance. When explicitly requested, children receive enough context to complete a bounded assignment and return evidence. Independent work can run concurrently, while dependencies and shared resources keep a single owner. The workflow favors a complete, verifiable result with the fewest necessary changes.
 
 ### Coordinating multiple workstreams
+
+The following roles and coordination rules apply only within an explicit user request for delegation or an identified team. They do not require agents for ordinary work.
 
 The user's instruction to coordinate the development team covers internal assignments, reports, corrections, and handoffs for that task. The coordinator maintains the return address through handoffs. Mains report substantive results, blockers, and decisions without per-agent approvals or acknowledgment loops. Skipping a reply to another agent does not suppress the user's progress report: the agent explains what it handled and what happens next, rather than returning an empty answer. Related exchanges are combined into one useful update. Version `0.15.13+codex.20261009team` is deployed locally and installed files have been checked. Behavior in new sessions remains unverified. See the [communication changes and verification limits](pstack/ADAPTATION.md#team-communication-and-user-visible-reports-2026-10-09).
 
@@ -75,7 +77,7 @@ Each workstream Main owns a complete assignment through implementation and real 
 
 | Role | Responsibility | Recommended role model and effort |
 | --- | --- | --- |
-| Primary | Own the goal, constraints, routine judgments, coordination, and final acceptance. | `gpt-6.1-sol`, `high` recommended default |
+| Primary | Own the goal, diagnosis, implementation, verification, decisions, and final acceptance directly by default. | `gpt-6.1-sol`, `high` recommended default |
 | Luna mechanical helper | Simple repetitive tasks with fixed inputs, steps, and directly checkable results. | `gpt-6-luna`, `max` |
 | Sol executor | Default ordinary diagnosis, implementation, refactoring, integration, checks, operations, and prose within scope. Separate consultations remain read-only. | `gpt-6.1-sol`, `medium` first |
 | Astra Expert | Critical architecture, key contracts, consequential tradeoffs, actual Sol `xhigh` inability, or explicit task-specific selection. Productive owners continue; elapsed time alone does not trigger a handoff. | `gpt-6-astra`, `high` first |
@@ -88,33 +90,23 @@ These names express this project's model strategy and local configuration. Avail
 
 ## How a task moves through Codex
 
+The Primary reads the relevant evidence, chooses a solution, implements it, and verifies the promised result directly. It keeps its active model and effort. It does not create an explorer, executor, reviewer, or replacement agent unless the user explicitly requests agents for this task.
+
 ```mermaid
 flowchart TD
-    P["Primary: goal, constraints, coordination, acceptance"] -->|"Ordinary work"| S["Sol executor: gpt-6.1-sol, medium"]
-    P -->|"Simple repetitive mechanical task only"| L["Luna helper: gpt-6-luna, max"]
-    P -->|"Critical design or explicit selection"| A["Astra: high"]
-    L -->|"Evidenced inability"| S
-    S -->|"Evidenced inability"| H["Fresh Sol: high, then xhigh"]
-    H -->|"Actual xhigh inability"| A
-    A -->|"Evidenced inability"| X["Fresh Astra: xhigh, automatic ceiling"]
-    S -->|"Result and evidence"| P
-    L -->|"Result and evidence"| P
-    H -->|"Result and evidence"| P
-    A -->|"Result and evidence"| P
-    X -->|"Result, or concrete limit"| P
+    P["Active Primary"] --> D["Investigate, implement, verify, and deliver directly"]
+    P -->|"Explicit user request for agents"| G["Bounded delegated assignment"]
+    G --> S["Sol medium for ordinary work"]
+    G --> L["Luna max for simple repetitive steps"]
+    G --> A["Astra high for critical design or eligible takeover"]
+    S --> R["Result and evidence to Primary"]
+    L --> R
+    A --> R
 ```
 
-Sol handles ordinary implementation, debugging, refactoring, integration, verification, operations, and prose from `medium`. Within the assigned outcome and permissions, a Sol executor diagnoses, selects an ordinary local solution, implements, and verifies. The Primary keeps goals, constraints, resource coordination, and final acceptance. A separately assigned consultation remains read-only; it does not force a later Luna handoff.
+Authorized agents follow [MODELS.md](pstack/MODELS.md), exclusive ownership, fresh-child lifecycle, and existing evidence-based escalation. That sequence does not grant permission for additional agents. Consultations remain read-only. ComputerUse stays with the Primary, and image work remains serial.
 
-Luna is reserved for simple, highly repetitive mechanical work with fixed inputs, fixed steps, and directly checkable results. Examples include exact batch replacements, formatting, or repeating one established check across a fixed list. An accepted plan, a small task, a routine Git command, or an established platform alone does not make a task suitable for Luna. Do not split a coherent Sol assignment into Luna microtasks. A Luna brief names the inputs, exact steps, allowed paths, exclusions, checks, and return conditions. Unexpected failures or needed judgment return to the Primary for Sol routing.
-
-Keep critical architecture, key interfaces and data contracts, and consequential tradeoffs on the existing Astra route. Explicit task-specific model choices remain authoritative. After an accepted Expert conclusion, ordinary follow-up uses Sol; only simple repetitive mechanical steps qualify for Luna.
-
-Escalate only on evidenced inability to make progress, in order through Sol `medium`, `high`, `xhigh`, then Astra `high` and `xhigh`. An eligible Luna failure enters at Sol `medium`. Thirty minutes triggers an assessment, not a transfer or task deadline; productive owners continue. Access gaps and healthy long-running operations are not reasoning failures. Preserve existing permissions, ownership, read-only scopes, evidence, and total elapsed time.
-
-Dispatch independent ready work concurrently. Each internal assignment gets a fresh child; completed children are retired. Use the existing interruptible waits when only running work remains. ComputerUse stays with the Primary, and image operations remain serial. These rules add no scheduler or automatic timer.
-
-For example, a report-export defect normally goes to a Sol executor with the failure evidence, expected format, allowed scope, and checks. Sol diagnoses, repairs, and verifies it; no preliminary Luna attempt is required. A fixed batch of approved literal replacements can go to Luna. These are routing examples, not completed runtime tests.
+For example, the Primary diagnoses, fixes, and verifies a report-export defect itself. If the user explicitly asks for a Sol subagent, it receives the failure evidence, expected behavior, allowed scope, and checks. A fixed list of approved literal replacements can use Luna only under the same explicit delegation condition.
 
 ## What the repository contains
 
@@ -168,24 +160,33 @@ This preview skips plugin installation and installed-cache checks. It proves the
 
 ### Deploy on the configured host
 
-On the owner's current host, after reviewing the intended source changes and existing `pstack@personal` registration, use:
+On the owner's current host, preview the scope of the approved change. For instruction files, role files, and pstack updates that preserve the current configuration, use:
 
 ```powershell
 Set-Location J:/PigeonYang/pigeonstack
-python scripts/sync.py check
-python scripts/sync.py deploy
-python scripts/sync.py check
+python scripts/sync.py check --rules-only
+python scripts/sync.py deploy --rules-only
+python scripts/sync.py check --rules-only
 ```
 
-These commands target the configured live Codex home. Deployment can change global instructions and model settings. On another machine, complete the path and configuration review above before adopting this command sequence.
+These commands target the configured live Codex home. Deployment needs authorization for the chosen scope. On another machine, complete the path and configuration review above first.
 
-For a changed deployment, the script copies the managed files, merges the allowed configuration keys, and points `model_instructions_file` at the target's base prompt. When runtime or installed-cache drift exists, it invokes:
+| Scope | Files and configuration managed |
+| --- | --- |
+| `--agents-only` | Only global `AGENTS.md`. No configuration access or plugin installation. |
+| `--rules-only` | Global instruction files, agent roles, and pstack. Skips configuration merging and checks that existing `config.toml` bytes remain unchanged. |
+| `--plugin-only` | Only the pstack plugin. Skips global instruction files, roles, and configuration. |
+| No scope flag | All managed files and allowlisted configuration, including model and reasoning-effort settings. |
+
+The scope flags are mutually exclusive. Use `--agents-only` for a change confined to the global rules. The no-flag form retains the original full-deployment behavior and requires authorization for its model and configuration changes. A scope that skips configuration can pass while the host intentionally differs from `config/workflow.toml`.
+
+For scopes that contain pstack, the script checks the existing `pstack@personal` registration and installed files. When runtime or installed-cache drift exists, it invokes:
 
 ```powershell
 codex plugin add pstack@personal --json
 ```
 
-It then reads back the runtime files and configuration and compares installed plugin files with the source. A plugin installation failure can occur after runtime files were written; inspect the error and backup path instead of treating the operation as an automatic rollback.
+It then reads back the selected runtime files and compares installed plugin files with the source where applicable. Before a `--rules-only` plugin installation, it also backs up the existing configuration. A configuration change during that operation fails the readback check. The script does not overwrite a concurrent user change to restore the earlier bytes. Installation failures can occur after runtime files were written; inspect the error and backups instead of assuming an automatic rollback.
 
 `check` returns `0` for alignment and `1` for drift. Invalid input or an operational error returns `2`. A successful installation and matching files establish disk state. Verify instruction loading and actual model routing in a new Codex session before claiming the full collaboration behavior works on your host.
 
@@ -205,9 +206,9 @@ The normal maintenance sequence is:
 
 1. Edit the maintained source and validate the affected files.
 2. For plugin changes, follow `CODEX.md` to update the plugin version and any existing marketplace cachebuster.
-3. Run `python scripts/sync.py check` and review the expected drift.
-4. Deploy the authorized change. Changed existing files receive backups under `<codex-home>/backups/pigeonstack/`.
-5. Run `check` again, review the final diff and relevant behavior evidence, and commit when authorized.
+3. Run `python scripts/sync.py check` with the narrowest applicable scope flag and review the expected drift.
+4. Deploy the authorized change with the same scope flag. Changed existing files receive backups under `<codex-home>/backups/pigeonstack/`.
+5. Run the same scoped `check`, review the final diff and relevant behavior evidence, and commit when authorized.
 
 An unchanged deployment creates no managed writes or backups. Deployment preserves unrelated parsed configuration values and does not delete extra runtime files. The installed-plugin check does report unexpected extra cache files. Unsupported managed multiline or complex configuration values fail before runtime writes.
 
@@ -228,6 +229,12 @@ A validation gate is a mandatory check that must pass before an action can proce
 These are agent instructions and configuration conventions. They are not runtime enforcement hooks. Keep disk synchronization, installed-plugin verification, instructions read in the current task, and behavior observed in a new session as separate claims.
 
 ## Changelog
+
+### 2026-10-26 | `0.15.32+codex.20261026optin`
+
+- Integrate upstream pstack 0.15.32 at `99b609a72323b70204eab407c622f436e858e112`, including seven new skills.
+- Execute directly by default. Subagents, consultations, reviews, and replacements require an explicit user request. Preserve existing GPT models and efforts.
+- Source integration only. Deployment and new-session behavior are separate outcomes.
 
 ### 2026-10-16 | `0.15.13+codex.20261016solfirst`
 
@@ -358,9 +365,9 @@ No speed or cost benchmarks are published. Cost-efficient collaboration is a des
 
 ## Attribution and licenses
 
-PigeonStack is maintained by PigeonYang. The underlying pstack workflows are Lauren Tan's work. This repository adapts pstack `0.15.13` from [the pinned upstream source](https://github.com/cursor/plugins/tree/77526ffa67f8dafc698d14b5356e6d4fc78c3127/pstack), commit `77526ffa67f8dafc698d14b5356e6d4fc78c3127`. Selected control and cleanup skills come from Cursor Team Kit in that same checkout.
+PigeonStack is maintained by PigeonYang. The underlying pstack workflows are Lauren Tan's work. This repository adapts pstack `0.15.32` from [the pinned upstream source](https://github.com/cursor/plugins/tree/99b609a72323b70204eab407c622f436e858e112/pstack), commit `99b609a72323b70204eab407c622f436e858e112`. Selected control and cleanup skills come from Cursor Team Kit in that same checkout.
 
-Based on pstack 0.15.13, including `/correct` for recurring agent mistakes, `/benchmark-checklist` for performance evidence, and `/principle-explain-the-number` for explaining measurements. Upstream workflows are adapted to Codex; model selection and escalation follow this project's GPT configuration.
+Based on pstack 0.15.32, including `/correct` for recurring agent mistakes, `/benchmark-checklist` for performance evidence, and `/principle-explain-the-number` for explaining measurements. Upstream workflows are adapted to Codex; model selection and escalation follow this project's GPT configuration.
 
 [provenance.json](pstack/provenance.json) records imported files and source hashes. [ADAPTATION.md](pstack/ADAPTATION.md) records the Codex changes and their history. The original notices remain in [pstack/LICENSE](pstack/LICENSE) and [pstack/CURSOR-TEAM-KIT-LICENSE](pstack/CURSOR-TEAM-KIT-LICENSE).
 

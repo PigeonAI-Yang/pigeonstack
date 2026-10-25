@@ -1,4 +1,4 @@
-> Codex adapter: This is the upstream guide with local host adaptations. Apply [../../CODEX.md](../../CODEX.md) for installation, GPT routing, permissions, and supported tools. Cursor Custom Modes, cloud agents, Projects, and `/loop` are reference examples, not configured Codex capabilities.
+> Codex adapter: This is the upstream guide with local host adaptations. Apply [../../CODEX.md](../../CODEX.md) for installation, GPT routing, permissions, and supported tools. The Primary executes directly by default. Subagents require an explicit user request; selecting a skill alone does not authorize them. Cursor Custom Modes, cloud agents, Projects, and `/loop` are reference examples, not configured Codex capabilities.
 
 # Set up pstack
 
@@ -14,6 +14,8 @@ For Codex installation, follow [CODEX.md](../../CODEX.md). Source edits, deploym
 
 Cursor confirms the plugin is installed.
 
+In Claude Code, run `/plugin marketplace add cursor/plugins`, then `/plugin install pstack@cursor-plugins`. Claude Code prefixes plugin commands, so each command in this guide takes a `pstack:` prefix there, such as `/pstack:setup-pstack`, which writes its model rule to `~/.claude/rules/pstack-models.md`. The [Claude Code adapter](../harness/claude-code.md) covers the other differences.
+
 ## Pick your models on Codex
 
 Run `/setup-pstack` to inspect the existing GPT role mapping in [MODELS.md](../../MODELS.md). Setup changes only requested roles and efforts in the maintained source. It preserves the active Primary and never restores upstream Grok or Claude defaults. Model IDs and reasoning efforts are separate host arguments.
@@ -22,7 +24,7 @@ Run `/setup-pstack` to inspect the existing GPT role mapping in [MODELS.md](../.
 
 Source changes and deployment are separate. Follow [CODEX.md](../../CODEX.md) for installation and report routing verified in a new session separately.
 
-## Accept the verification offer, or don't
+## Accept the verification offers, or don't
 
 At the end of setup, `/setup-pstack` looks for a way to prove app behavior in your project, either a `verify-*` skill or an existing harness. If it finds neither, it offers once to generate one with [`/create-verification-skill`](../../skills/create-verification-skill/SKILL.md).
 
@@ -30,13 +32,15 @@ Say yes and it writes `.agents/skills/verify-<app>/`, a project-local skill that
 
 A reusable verification skill helps when existing commands and app entry points cannot prove the requested result. Reuse those capabilities first. A missing skill alone does not require a new harness, feature map, or setup gate.
 
+The optional [`/create-formal-verification-skill`](../../skills/create-formal-verification-skill/SKILL.md) can check a property of concurrency, retries, state machines, or parsers beyond selected test cases. Use it for a current requirement or observed gap. It is not a setup prerequisite.
+
 After an authorized model configuration deployment, verify routing in a new chat. A source edit alone does not change the active model.
 
 ## Keep the cost in check
 
 Extra agents and selected review panels use more tokens. On Codex, preserve the responsibilities and efforts in [MODELS.md](../../MODELS.md).
 
-- Default ordinary execution and investigation to Sol. Use Luna only for simple repetitive mechanical work; reuse credible current evidence.
+- Execute ordinary work directly. For explicitly requested agents, default ordinary execution and investigation to Sol. Use Luna only for simple repetitive mechanical work; reuse credible current evidence.
 - Avoid redundant reviewers and panels that the task did not select.
 - Request any model or effort change explicitly through `/setup-pstack`; a generic budget preset does not override the GPT mapping.
 - Resolve `auto` and `inherit-parent` to the actual parent model and effort. Omitting model arguments uses the configured Sol default, not parent inheritance.
@@ -52,6 +56,6 @@ Pick something real but small, and describe it the way you'd describe it to a co
 
 For this prompt, `/poteto-mode` follows the Feature playbook. On Codex, follow applicable phases and evidence in the existing authoritative task record. Material skips or adaptations include a reason. The agent does not copy the playbook into another record, and a simple task needs no new ledger.
 
-From here you can type normal follow-ups. On Codex, `CODEX.md` and the active global instructions govern activation; no Custom Mode shortcut is configured. In Cursor, to keep `/poteto-mode` on for the whole chat, pick it from the `/` menu with Option+Enter (Mac) or Alt+Enter (Windows) instead of Enter. That makes it a [Custom Mode](https://cursor.com/docs/skills), which stays in context on every turn until you exit it. Custom Modes are available in the Agents Window and the CLI. Plain Enter attaches the skill to one message, and it fades as the chat moves on.
+From here you can type normal follow-ups. On Codex, `CODEX.md` and the active global instructions govern activation; no Custom Mode shortcut is configured. In Cursor, to keep `/poteto-mode` on for the whole chat, pick it from the `/` menu with Option+Enter (Mac) or Alt+Enter (Windows) instead of Enter. That makes it a [Custom Mode](https://cursor.com/docs/skills#using-a-skill-as-a-custom-mode), which stays in context on every turn until you exit it. Custom Modes are available in the Agents Window and the CLI. Plain Enter attaches the skill to one message, and it fades as the chat moves on.
 
 Next: [Route work through `/poteto-mode`](./02-poteto-mode.md).

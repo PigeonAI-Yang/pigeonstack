@@ -1,6 +1,6 @@
-# PigeonStack：Codex 多 Agent 协作工作流
+# PigeonStack：Codex 工作流
 
-首先致敬并感谢 [Lauren Tan（poteto）](https://github.com/poteto)，[pstack](https://github.com/cursor/plugins/tree/77526ffa67f8dafc698d14b5356e6d4fc78c3127/pstack) 的原作者。PigeonStack 基于她的工作，为这套 Codex 协作流程做了定制适配。
+首先致敬并感谢 [Lauren Tan（poteto）](https://github.com/poteto)，[pstack](https://github.com/cursor/plugins/tree/99b609a72323b70204eab407c622f436e858e112/pstack) 的原作者。PigeonStack 基于她的工作，为这套 Codex 协作流程做了定制适配。
 
 [English](README.md) | 简体中文
 
@@ -21,13 +21,13 @@
   <a href="https://www.xiaohongshu.com/user/profile/689af6b90000000019016082"><img alt="小红书 Dibo" src="https://img.shields.io/badge/%E5%B0%8F%E7%BA%A2%E4%B9%A6-Dibo-ff2442?style=flat-square&amp;logo=xiaohongshu&amp;logoColor=white" /></a>
 </p>
 
-**一套 Codex 协作工作配置：主控保留目标、约束与最终验收；普通开发和执行默认使用 Sol，Luna 仅做简单重复的机械工作，Astra 负责关键设计或符合条件的接管。**
+**一套 Codex 工作配置：主代理默认亲自调查、实现和验证；只有用户明确要求时才调用子代理。**
 
 PigeonStack 是 PigeonYang 维护的一套 Codex 工作配置，包含全局指令、Lauren Tan 的 pstack 定制版、Agent 角色定义、宿主配置和本地同步脚本。一个源码仓库让这些职责和已安装指令都能被一并审查。
 
 工程注意事项保留在开发者对话或文档中。只有用户明确要求时，Agent 才会在交付的界面或面向客户的后端响应中添加免责声明。实际状态、错误和功能限制都要具体说明。
 
-当前 Primary 保留目标、约束、协调和最终验收。普通开发和执行默认使用 Sol `medium`，由其在任务范围内负责诊断、实现与验证。Luna `max` 仅处理简单重复、步骤固定、结果可直接核对的机械任务。单独派发的咨询仍保持只读，关键设计保留 Astra 路径。
+当前 Primary 默认亲自完成诊断、方案选择、实现、验证和最终验收，保留正在使用的模型与推理强度。子代理、咨询、审查和失败接管都需要用户在当前任务中明确要求。选择技能、任务复杂、失败或上下文压力都不会自动授权派发。获明确授权后，普通工作使用 Sol `medium`，Luna `max` 仅做简单重复的机械任务，关键设计和符合条件的接管保留 Astra 路径。
 
 仓库交付的是指令、打包好的 Codex 插件和部署工具，不提供 MCP 服务或独立的自动调度器，也不会启动后台定时任务、常驻 Agent 或远程服务。仓库包含一个范围受限的 `SessionStart` 钩子；是否激活由宿主配置和信任状态决定。
 
@@ -41,7 +41,7 @@ PigeonStack 是 PigeonYang 维护的一套 Codex 工作配置，包含全局指�
 
 2026-10-09 的检查点维护是版本 `0.15.13+codex.20261009checkpoint` 的历史证据。本地部署和安装文件核对均已通过，真实任务记录的读取、更新、归档和读回流程也已通过。该流程将当前区域从 29,370 字节缩减至 8,158 字节，并保留目标、权限、阻塞项及区域外历史。详见[历史检查点维护证据](pstack/ADAPTATION.md#current-checkpoint-maintenance-2026-10-09)。
 
-当前源码清单记录的版本为 `0.15.13+codex.20261016solfirst`。2026-10-11 钩子验证时安装的版本为 `0.15.13+codex.20261011copy`。native reader 返回了完全一致的绑定当前正文，包括现有 `Pending` 状态。新的 Desktop 聊天运行了一次 `SessionStart`，失败次数为 0；它报告 index 无效诊断后继续。native 测试验证了临时记录绑定；Desktop 观察验证了启动，但未建立 `oneirloom` 的任务绑定。历史 Desktop `exit 1` 的原因仍未查明。详见[产品文案规则及 SessionStart 验证](pstack/ADAPTATION.md#product-copy-rules-and-sessionstart-verification-2026-10-11)。
+当前源码版本为 `0.15.32+codex.20261026optin`；本次仅修改源码，部署需另行授权。2026-10-11 钩子验证时安装的版本为 `0.15.13+codex.20261011copy`。native reader 返回了完全一致的绑定当前正文，包括现有 `Pending` 状态。新的 Desktop 聊天运行了一次 `SessionStart`，失败次数为 0；它报告 index 无效诊断后继续。native 测试验证了临时记录绑定；Desktop 观察验证了启动，但未建立 `oneirloom` 的任务绑定。历史 Desktop `exit 1` 的原因仍未查明。详见[产品文案规则及 SessionStart 验证](pstack/ADAPTATION.md#product-copy-rules-and-sessionstart-verification-2026-10-11)。
 
 钩子不会监控后续业务状态、拦截 Agent 派发或强制执行协调者提醒。详见[钩子契约](pstack/hooks/README.md)和[Codex 宿主适配](pstack/CODEX.md)。
 
@@ -56,16 +56,18 @@ PigeonStack 将 Codex 全局规则、Agent 角色、配置和适配后的 pstack
 已验证的宿主是 Windows 与 PowerShell，同步脚本要求 Python 3.11 或更高版本。真正安装插件还需要兼容的 Codex CLI，以及已有的、能解析 `pstack@personal` 的本地插件市场注册。
 
 - 在 Git 中维护 Codex 全局规则，并与源码一起审查改动。
-- 普通工作默认交给 Sol；Luna 只做简单重复的机械任务；关键设计交给 Astra。
+- 默认由主代理直接执行；仅在用户明确要求代理协作时使用既有 Sol、Luna、Astra 分工。
 - 保持维护中的源码、运行时文件和带版本的插件缓存同步。
 
 ## 为什么这样分工
 
 如果每个子 Agent 都重新研究问题、自行决定修复方案，或者再找一个模型重复评审，多 Agent 协作就容易增加成本。如果把构建通过当成用户流程成功，交付结果也会失真。
 
-PigeonStack 让一个主控对关键决策和最终验收负责。子 Agent 获取完成当前任务所需的上下文，执行边界明确的工作，再带回证据。独立任务可以并行，存在依赖或共用资源的操作则保留单一负责人。目标是用必要的最少改动交付完整、可验证的结果。
+PigeonStack 让一个主控默认亲自诊断、实现、验证，并对决策和最终验收负责。用户明确要求后，子 Agent 获取完成当前任务所需的上下文，执行边界明确的工作，再带回证据。独立任务可以并行，存在依赖或共用资源的操作则保留单一负责人。目标是用必要的最少改动交付完整、可验证的结果。
 
 ### 协调多个工作流
+
+以下角色和协调规则仅适用于用户明确要求的代理协作或已指定团队，不要求普通任务使用子代理。
 
 用户要求总控组织开发团队后，同一任务内的派工、回报、纠正和交接不再逐个代理、逐条消息请示。总控负责维护回报地址并随交接更新，Main 主动报告实质结果、阻塞和待决事项，省掉确认往返。不给其他代理发确认，不等于不给用户汇报：代理仍应简短说明处理了什么、当前进展和下一步，不能输出空回复；相关交流合并成一次有内容的汇报。版本 `0.15.13+codex.20261009team` 已部署到本地并核对安装文件，新会话中的实际行为仍待验证。详见[通信改动与验证边界](pstack/ADAPTATION.md#team-communication-and-user-visible-reports-2026-10-09)。
 
@@ -73,7 +75,7 @@ PigeonStack 让一个主控对关键决策和最终验收负责。子 Agent 获�
 
 | 角色 | 职责 | 建议的角色模型与推理强度 |
 | --- | --- | --- |
-| Primary 主控 | 负责目标、约束、日常判断、协同和最终验收。 | 建议默认值：`gpt-6.1-sol`，`high` |
+| Primary 主控 | 默认亲自负责诊断、实现、验证、决策和最终验收。 | 建议默认值：`gpt-6.1-sol`，`high` |
 | Luna 机械助手 | 仅处理输入、步骤固定且结果可直接核对的简单重复任务。 | `gpt-6-luna`，`max` |
 | Sol 执行者 | 默认负责范围内的普通诊断、实现、重构、集成、检查、操作与文案；单独派发的咨询保持只读。 | `gpt-6.1-sol`，先用 `medium` |
 | Astra 专家 | 关键架构、接口与数据契约、重大取舍，Sol `xhigh` 实际无法解决的问题，或当前任务明确选择。进展正常时继续，耗时本身不触发交接。 | `gpt-6-astra`，先用 `high` |
@@ -86,33 +88,23 @@ PigeonStack 让一个主控对关键决策和最终验收负责。子 Agent 获�
 
 ## 一个任务如何完成
 
+主代理直接阅读相关证据、选择方案、实现修改，并验证约定结果，保留当前模型和推理强度。用户没有明确要求代理协作时，不创建探索、执行、审查或失败接管子代理。
+
 ```mermaid
 flowchart TD
-    P["Primary：目标、约束、协调与验收"] -->|"普通工作"| S["Sol 执行者：gpt-6.1-sol，medium"]
-    P -->|"仅简单重复的机械任务"| L["Luna 助手：gpt-6-luna，max"]
-    P -->|"关键设计或用户明确选择"| A["Astra：high"]
-    L -->|"有证据表明无法推进"| S
-    S -->|"有证据表明无法推进"| H["新的 Sol：high，再到 xhigh"]
-    H -->|"xhigh 实际无法解决"| A
-    A -->|"有证据表明无法推进"| X["新的 Astra：xhigh，自动升级上限"]
-    S -->|"成果与证据"| P
-    L -->|"成果与证据"| P
-    H -->|"成果与证据"| P
-    A -->|"成果与证据"| P
-    X -->|"成果或具体限制"| P
+    P["当前 Primary"] --> D["直接调查、实现、验证并交付"]
+    P -->|"用户明确要求代理协作"| G["范围明确的代理任务"]
+    G --> S["普通工作使用 Sol medium"]
+    G --> L["简单重复步骤使用 Luna max"]
+    G --> A["关键设计或符合条件的接管使用 Astra high"]
+    S --> R["成果和证据交回 Primary"]
+    L --> R
+    A --> R
 ```
 
-普通开发、排错、重构、集成、验证、操作和文案默认交给 Sol，从 `medium` 开始。Sol 执行者在任务范围和权限内负责诊断、选择普通局部方案、实现和验证。Primary 保留目标、约束、资源协调和最终验收。单独派发的咨询保持只读，咨询结束后不强制转交 Luna。
+获明确授权的代理遵循 [MODELS.md](pstack/MODELS.md)、单一资源负责人、新建子代理及既有证据驱动升级规则。升级顺序本身不会授权增加代理。咨询保持只读，ComputerUse 仍由主代理操作，图像工作继续串行。
 
-Luna 只处理简单、高度重复、输入和步骤固定、结果可直接核对的机械任务，例如按固定表批量替换、格式化，或对固定清单重复执行同一项已知检查。方案已确定、任务很小、Git 命令常见或平台流程成熟，都不足以单独构成使用 Luna 的理由。不把完整的 Sol 任务拆碎给 Luna。Luna 的任务说明必须列明输入、固定步骤、允许路径、排除范围、检查和交回条件；遇到异常或需要判断时交回 Primary，由 Sol 接续。
-
-主架构、关键接口和数据契约、重大设计取舍保留既有 Astra 路径。当前任务明确指定的模型优先。专家结论获接受后，普通后续工作默认交给 Sol；只有简单重复的机械步骤才使用 Luna。
-
-只有有证据表明无法继续推进时才升级，顺序为 Sol `medium`、`high`、`xhigh`，再到 Astra `high`、`xhigh`。符合范围的 Luna 任务失败后先进入 Sol `medium`。30 分钟只触发进展评估，不是转交或结束期限；有实质进展的负责人继续。访问缺口和健康的长时间运行不构成推理失败。保留权限、归属、只读范围、证据和累计耗时。
-
-独立就绪工作并行派发，每次内部任务创建新的子 Agent，完成后不再复用。仅剩运行中工作时使用既有可中断等待。ComputerUse 仍由 Primary 操作，图像操作继续串行；不新增调度器或自动计时服务。
-
-例如报表导出缺陷通常直接交给 Sol，附上失败证据、预期格式、允许范围和检查；Sol 负责诊断、修复和验证，不先让 Luna 尝试。按固定表批量落实已确认的字面替换可以交给 Luna。这些只是派工示例，并非实机测试结果。
+例如报表导出出错时，主代理亲自诊断、修复和验证。用户明确要求 Sol 子代理后，才向其交付失败证据、预期行为、允许范围和检查。已确认字面替换的固定清单可交给 Luna，但同样需要明确的委派要求。
 
 ## 仓库里有什么
 
@@ -226,6 +218,12 @@ J:/PigeonYang/pigeonstack
 这些机制是 Agent 指令和配置约定，不是运行时强制钩子。磁盘同步、插件安装验证、当前任务已读取的指令，以及新会话实际表现，需要分别说明。
 
 ## 更新日志
+
+### 2026-10-26 | `0.15.32+codex.20261026optin`
+
+- 合入上游 pstack 0.15.32，固定到提交 `99b609a72323b70204eab407c622f436e858e112`，新增七个技能。
+- 默认主代理直接执行；子代理、咨询、审查和替换代理需用户明确要求。保留既有模型和推理强度。
+- 本次为源码整合，部署和新会话行为验证单独处理。
 
 ### 2026-10-16 | `0.15.13+codex.20261016solfirst`
 
@@ -342,9 +340,9 @@ PigeonStack 将 Lauren Tan 的 pstack 适配到 Codex，增加 Codex 专用全�
 
 ## 上游来源与许可
 
-PigeonStack 由 PigeonYang 维护，底层 pstack 工作流来自 Lauren Tan。仓库基于 pstack `0.15.13` 的[固定上游版本](https://github.com/cursor/plugins/tree/77526ffa67f8dafc698d14b5356e6d4fc78c3127/pstack)适配，对应提交 `77526ffa67f8dafc698d14b5356e6d4fc78c3127`。选入的控制与代码清理技能来自同一版本中的 Cursor Team Kit。
+PigeonStack 由 PigeonYang 维护，底层 pstack 工作流来自 Lauren Tan。仓库基于 pstack `0.15.32` 的[固定上游版本](https://github.com/cursor/plugins/tree/99b609a72323b70204eab407c622f436e858e112/pstack)适配，对应提交 `99b609a72323b70204eab407c622f436e858e112`。选入的控制与代码清理技能来自同一版本中的 Cursor Team Kit。
 
-基于 pstack 0.15.13，包含用于处理反复出现的 Agent 错误的 `/correct`、用于提供性能证据的 `/benchmark-checklist`，以及用于解释测量数据的 `/principle-explain-the-number`。上游工作流已适配到 Codex；模型选择和升级路径遵循本项目的 GPT 配置。
+基于 pstack 0.15.32，包含用于处理反复出现的 Agent 错误的 `/correct`、用于提供性能证据的 `/benchmark-checklist`，以及用于解释测量数据的 `/principle-explain-the-number`。上游工作流已适配到 Codex；模型选择和升级路径遵循本项目的 GPT 配置。
 
 [provenance.json](pstack/provenance.json) 记录导入文件及其源文件哈希，[ADAPTATION.md](pstack/ADAPTATION.md) 记录 Codex 适配及变更历史。原有许可声明保留在 [pstack/LICENSE](pstack/LICENSE) 和 [pstack/CURSOR-TEAM-KIT-LICENSE](pstack/CURSOR-TEAM-KIT-LICENSE)。
 

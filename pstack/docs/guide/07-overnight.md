@@ -1,4 +1,4 @@
-> Codex adapter: This is the upstream guide with local host adaptations. Apply [../../CODEX.md](../../CODEX.md) for installation, GPT routing, permissions, and supported tools. Cursor Custom Modes, cloud agents, Projects, and `/loop` are reference examples, not configured Codex capabilities.
+> Codex adapter: This is the upstream guide with local host adaptations. Apply [../../CODEX.md](../../CODEX.md) for installation, GPT routing, permissions, and supported tools. The Primary executes directly by default. Subagents require an explicit user request; selecting a skill alone does not authorize them. Cursor Custom Modes, cloud agents, Projects, and `/loop` are reference examples, not configured Codex capabilities.
 
 # Run work while you sleep
 
@@ -69,11 +69,13 @@ When you're back, ask for the run in review form:
 
 The upstream skill calls for an independent review of the trail and transcript, followed by an Attention section. On Codex, resolve any selected review through `MODELS.md`; report a missing independent verdict and never claim different model families when all use GPT. Read that section first, then the log rows it points at. You're auditing decisions, not re-reading the whole night.
 
+For a quick status instead of an audit, run [`/ketchup`](../../skills/ketchup/SKILL.md) in the chat that ran the work. It reads only, and tells you in plain words what changed since your last message, with the screenshots and small diagrams the work produced. Then it lists each call waiting on you, such as a merge, an approval, or a choice between options, with its pick, the evidence, and the risk, so you can decide from the reply alone.
+
 ## When the night holds a queue, not a task
 
 The contract above drives one task to one finish condition. Some nights hold more, a queue of independent changes or a whole program. Three playbooks scale the same trust up.
 
-[Autopilot-full](../../skills/poteto-mode/playbooks/autopilot-full.md) runs a queue of independent PRs to merged. Each PR gets one owner agent that carries it from build through merge, and no owner merges on its own verdict. A swarm of fresh verifiers starts a round at the owner's code-ready head and again at every later push that changes the patch. Only a clean verdict on the patch that merges authorizes the merge:
+[Autopilot-full](../../skills/poteto-mode/playbooks/autopilot-full.md) runs a queue of independent PRs to merged. Each PR gets one owner agent that carries it from build through merge, and no owner merges on its own verdict. A swarm of fresh verifiers checks the owner's code-ready head. A later rebase or minor fix gets one fresh verifier, and only new behavior or a large new diff calls the full swarm again. Only a clean verdict on the patch that merges authorizes the merge:
 
 ```text
 /poteto-mode full autopilot on this queue. each item is independent. i want them merged by morning.

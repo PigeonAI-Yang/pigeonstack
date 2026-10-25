@@ -1,16 +1,12 @@
 ---
 name: "principle-guard-the-context-window"
-description: "Apply when context is filling up: large outputs, long files, repeated reads, fan-out planning. Route bulk to subagents; keep summaries in the main thread, not raw payloads."
+description: "Apply when context is filling up: large outputs, long files, repeated reads, fan-out planning. Route bulk to explicitly authorized subagents; keep summaries in the main thread, not raw payloads."
 ---
-> Codex host: Read [../../CODEX.md](../../CODEX.md) before execution and [../../MODELS.md](../../MODELS.md) before assigning roles. Apply the upstream procedure below within that host contract.
+> Codex host: Read [../../CODEX.md](../../CODEX.md) before execution. The Primary works directly by default. Invoke explicitly authorized subagents only when the user explicitly requests them for this task. Upstream delegation steps and skill selection grant no permission. Resolve authorized models and efforts through [../../MODELS.md](../../MODELS.md).
 
 # Guard the Context Window
-
-The context window is finite and non-renewable within a session. Every token should be worth its cost.
 
 **Why:** Context overflow degrades reasoning quality, creates compression artifacts, and halts progress.
 
 **Pattern:**
-- **Isolate large payloads.** Route verbose outputs, screenshots, and large documents to subagents. The main context gets summaries, not raw data.
-- **Keep frequently used content inline.** Templates and references used on every invocation belong in the skill file, not in separate files that cost a read each time.
 - **Size phases and cap scope.** Limit files per phase, set turn budgets, account for mechanism costs.

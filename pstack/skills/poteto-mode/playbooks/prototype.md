@@ -1,5 +1,7 @@
 ### Prototype
 
+> Codex execution: The Primary performs this playbook directly by default. Delegation and agent-based review steps apply only when the user explicitly requests subagents for this task. Follow [CODEX.md](../../../CODEX.md) for tool and permission boundaries. Do not claim an independent verdict from self-review.
+
 **You own the design decision, not the code. The prototype is a throwaway instrument. The real build follows Feature.**
 
 The one playbook where the Laziness Protocol's "smallest change" and the verification bar invert. Speed over polish, code quality does not matter, no planning. The rigor is in picking the right design cheaply. Propose variations the user didn't ask for, throw an approach away and try another.

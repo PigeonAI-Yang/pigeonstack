@@ -1,5 +1,7 @@
 ### Authoring or modifying a skill
 
+> Codex execution: The Primary performs this playbook directly by default. Delegation and agent-based review steps apply only when the user explicitly requests subagents for this task. Follow [CODEX.md](../../../CODEX.md) for tool and permission boundaries. Do not claim an independent verdict from self-review.
+
 **You own the skill's voice.**
 
 1. Use the **create-skill** skill (Cursor's built-in for authoring SKILL.md files).

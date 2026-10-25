@@ -2,11 +2,9 @@
 name: "swarm"
 description: "Fan out N parallel workers, drain them, and return one report. Use for /swarm, 'swarm this', or parallel coverage, races, gauntlets, and exploration."
 ---
-> Codex host: Read [../../CODEX.md](../../CODEX.md) before execution and [../../MODELS.md](../../MODELS.md) before assigning roles. Apply the upstream procedure below within that host contract.
+> Codex host: Read [../../CODEX.md](../../CODEX.md) before execution. The Primary works directly by default. Invoke subagents only when the user explicitly requests them for this task. Upstream delegation steps and skill selection grant no permission. Resolve authorized models and efforts through [../../MODELS.md](../../MODELS.md).
 
 # Swarm
-
-Fan out N parallel cloud workers. They may cover separate slices, race the same brief, or mix both. The parent waits, aggregates, and returns one report.
 
 ## Start
 
@@ -27,7 +25,7 @@ Open a todolist with one entry per phase before launching anything.
 
 ## Phase B: Fan out
 
-Spawn all N workers in one message with `subagent_type: generalPurpose`, `environment: "cloud"`, `run_in_background: true`, and the model and effort resolved in step 4, including explicit parent values for `auto` or `inherit-parent`. Use `environment: "local"` only when the worker needs access to something on the user's computer.
+When the user explicitly authorizes parallel agents, dispatch the selected workers through CODEX.md using the model and effort resolved in step 4. Use actual host arguments. Cloud environments and implicit parent inheritance are not available through an invented tool field.
 
 When a worker must start from a non-default pushed branch, pass `cloud_base_branch`.
 
@@ -39,8 +37,6 @@ If a worker drops out, proceed with N-1 and note it.
 
 Read the terminal results. Drop a result that does not record the SHAs and method its brief names, and respawn that worker once. After a second miss, record a gap. A gap does not count as a pass. For coverage, every required slice needs a result. For a race, apply the selection rule declared up front. Use first pass, rank all, or best-of. Do not paste raw worker dumps.
 
-Keep a compact result table, one-line evidenced issues, and explicit gaps or dropouts.
-
 ## Phase D: Report
 
-Return one consolidated in-chat report with the table, issue one-liners, gaps or dropouts, and the race rule when used.
+Return one consolidated in-chat report with a result table, issue one-liners, gaps or dropouts, and the race rule when used.

@@ -1,8 +1,10 @@
 # Coordinate the current task
 
-Use this guide when the user assigns the coordinator role; keep it until the user changes it. Preserve the user's original goal and completion condition in the existing task record, separately from scoped Main assignments. Replace them only for an explicit human scope change. A Main assignment may cover part of that goal; completion of all dispatched assignments does not establish completion of the user's goal. Own the overall outcome through final acceptance.
+Use this guide when the user assigns the coordinator role, and keep that role until the user changes it. Own the user's original outcome through final acceptance under global AGENTS.md. Main assignments are scoped contributions to that outcome; they do not replace it.
 
 Global AGENTS.md owns permissions and ownership; [CODEX.md](CODEX.md) owns host tools and workflow activation; [MODELS.md](MODELS.md) owns model routing. Reuse those rules rather than adding another checklist.
+
+A coordinator role label alone does not authorize subagents. Apply this multi-agent procedure only when the user explicitly requests delegation or coordination of an identified team. Otherwise the active Primary executes the task directly. Any authorization for Mains does not automatically authorize their nested children.
 
 ## Run the work
 
@@ -27,7 +29,7 @@ When evidence contradicts the checkpoint, correct the affected decision before d
 
 Skip redundant agent acknowledgments while keeping the user informed at meaningful boundaries. Combine related exchanges. State actual progress or result, your decision, the next action, and any remaining gap; distinguish reported results from verified effects.
 
-Answer side questions and status requests in commentary, then continue the original goal. End the outcome owned by this chat only when evidence satisfies its completion condition, the human stops or changes the scope, or every remaining action depends on a specific outside input or approval the team cannot supply and no authorized work remains ready. For a coordinator, this means the user's overall goal; a Main may finish its assigned outcome without declaring the overall goal complete. For an outside dependency, request that contribution and name the actual continuation route. Completed assignments, passed tests, a development candidate, a phase report, and a checkpoint update establish only their observed scope and are not independent reasons to end. Do not add acceptance requirements beyond the user's agreed outcome. "No reply needed" never means empty output.
+Apply the global communication and completion rules. Answer side questions and status requests in commentary, then continue the original goal. Compare every Main result with the user's overall completion condition. A phase report, passed check, or completed assignment proves its own scope only. "No reply needed" never means empty output.
 
 ## Keep the role within scope
 

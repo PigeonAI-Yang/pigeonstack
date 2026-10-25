@@ -2,7 +2,7 @@
 name: "reproduce-and-fix-issues"
 description: "Reproduce triaged Slack bugs through a configured app-control adapter, verify existing fixes, and open a bounded draft pull request only after before-and-after proof. Use only from the configured Benny repro automation."
 ---
-> Codex host: Read [../../../../CODEX.md](../../../../CODEX.md) before execution and [../../../../MODELS.md](../../../../MODELS.md) before assigning roles. Apply the upstream procedure below within that host contract.
+> Codex host: Read [../../../../CODEX.md](../../../../CODEX.md) before execution. The Primary works directly by default. Invoke subagents only when the user explicitly requests them for this task. Upstream delegation steps and skill selection grant no permission. Resolve authorized models and efforts through [../../../../MODELS.md](../../../../MODELS.md).
 
 # Reproduce and fix issues
 

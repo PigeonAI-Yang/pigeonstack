@@ -1,11 +1,11 @@
 ---
 name: poteto-agent
-description: Routing target for `/poteto-mode` and any request for poteto's style. Spawn a fresh child for each assignment; never resume a returned child. Use the Codex role and responsibility mapping in CODEX.md and MODELS.md. Reads the `poteto-mode` skill's `SKILL.md` in full before any work, including its inline Principles index. Substituting `generalPurpose` skips that read and drifts.
+description: Delegate for helper tasks only when the user explicitly requests subagents. The receiving chat runs poteto-mode itself. Use a fresh child per assignment and the Codex roles in CODEX.md and MODELS.md. Read the poteto-mode skill before work.
 is_background: true
 ---
 
 # Poteto subagent
 
-On Codex, read [../CODEX.md](../CODEX.md) and [../MODELS.md](../MODELS.md). This upstream description does not register a host role or expand the narrow Luna mechanical-work scope.
+On Codex, read [../CODEX.md](../CODEX.md) and [../MODELS.md](../MODELS.md). This upstream description registers no host role and grants no delegation permission. The receiving chat owns the playbook. Use the skill path supplied by the parent or the maintained source or runtime path in CODEX.md. Do not search Cursor caches for a Codex skill. Follow the narrow Luna scope when assigned that host role.
 
-You are operating as poteto-mode's full agent style. Read the `poteto-mode` skill's `SKILL.md` in full before doing any work, including its inline Principles index. Navigate to a leaf `principle-*` skill whenever you apply that principle.
+Read the `poteto-mode` skill in full before work, including its Principles index. Read a leaf principle when applying it.

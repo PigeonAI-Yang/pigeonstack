@@ -2,7 +2,7 @@
 name: "setup-pstack"
 description: "Configure the existing GPT model and effort mapping for pstack on Codex. Use for /setup-pstack or requested model changes. Preserve role responsibilities and the active Primary."
 ---
-> Codex host: Read [../../CODEX.md](../../CODEX.md) before execution and [../../MODELS.md](../../MODELS.md) before assigning roles. Apply the upstream procedure below within that host contract.
+> Codex host: Read [../../CODEX.md](../../CODEX.md) before execution. The Primary works directly by default. Invoke subagents only when the user explicitly requests them for this task. Upstream delegation steps and skill selection grant no permission. Resolve authorized models and efforts through [../../MODELS.md](../../MODELS.md).
 
 # Setup pstack
 
@@ -37,3 +37,5 @@ State changed roles, verified availability, and unresolved limits. Distinguish s
 ## 7. Offer verification only when needed
 
 Check for an existing way to drive the real app. If the current task needs reusable verification and none exists, offer `/create-verification-skill` once. Do not make it a setup prerequisite.
+
+For a current race, invariant, or other property that needs more than tests, offer `/create-formal-verification-skill` once if no suitable verification exists. An existing formal skill can use `/maintain-formal-verification-skill` when its covered code changes. Both are optional and add no setup prerequisite. Model validation does not authorize a trial subagent call.

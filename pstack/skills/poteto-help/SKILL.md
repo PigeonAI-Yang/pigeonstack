@@ -2,7 +2,7 @@
 name: "poteto-help"
 description: "Answer explicitly requested pstack usage questions about setup, skills, playbooks, principles, and prompts. Use when the user invokes poteto-help."
 ---
-> Codex host: Read [../../CODEX.md](../../CODEX.md) before execution and [../../MODELS.md](../../MODELS.md) before explaining or assigning roles. Apply the upstream help procedure below within that host contract.
+> Codex host: Read [../../CODEX.md](../../CODEX.md) before execution. The Primary works directly by default. Invoke subagents only when the user explicitly requests them for this task. Upstream delegation steps and skill selection grant no permission. Resolve authorized models and efforts through [../../MODELS.md](../../MODELS.md).
 
 # Poteto help
 
@@ -26,6 +26,7 @@ Check the state that changes the answer, and mention it only when it does:
 
 - For a model question, read [MODELS.md](../../MODELS.md). Inspect actual host configuration only when the answer depends on it. A missing Cursor rule says nothing about Codex setup, and disk configuration does not prove live routing.
 - For a verification question, inspect the existing app entry points, checks, and any `verify-*` skill. Missing a skill alone does not mean the app cannot be driven. Recommend `/create-verification-skill` only for a current need or observed gap.
+- For a race or invariant question, consider an existing formal verification skill or the new `/create-formal-verification-skill`. Recommend `/maintain-formal-verification-skill` when its recorded code coverage has drifted. Absence of a skill alone does not prove a verification gap.
 
 ## Get set up
 
@@ -38,6 +39,8 @@ Installing the plugin does not run its playbooks or enable its dormant automatio
 If cost is the worry, explain that extra agents and selected review panels use more tokens. Preserve the GPT responsibilities and efforts in `MODELS.md`; generic budget presets do not override them. Sol is the default for ordinary development, investigation, operations, prose, and plans. Luna handles only simple repetitive mechanical work with fixed steps and checkable results. Astra is reserved for critical design decisions, problems unresolved after an actual Sol `xhigh` attempt, or explicit user model selection. A technical-document label alone does not justify Astra. Avoid redundant panels and repeated evidence collection. A user may request model changes through `/setup-pstack`. `auto` and `inherit-parent` require the actual parent model and effort to be resolved and passed through supported host arguments. Omitted model arguments use the configured Sol default and do not prove parent inheritance or savings.
 
 pstack originated in Cursor. This adapter translates delegation through `collaboration.spawn_agent` and GPT roles through `MODELS.md`. Cursor Custom Modes, cloud VMs, and `/loop` have no configured equivalent here. Explain that limitation instead of claiming that a Cursor command is installed.
+
+Upstream also supports Claude Code. See the [Claude Code adapter](../../docs/harness/claude-code.md) for its installation and `pstack:` command prefix. Those instructions do not configure Codex.
 
 ## Start a task with `/poteto-mode`
 
@@ -58,10 +61,14 @@ The default answer is `/poteto-mode`, which runs most of the others when its ste
 | The user wants to | Skill |
 |---|---|
 | Do any non-trivial task with rigor | [`/poteto-mode`](../poteto-mode/SKILL.md) |
+| Check that the agent understood their goal and the problem before it starts | [`/in-your-own-words`](../in-your-own-words/SKILL.md) |
+| Get a prompt rewritten deeper, not bigger, before sending it: what a top professional would add, their raw material and methods, and an outside check. It returns the prompt and doesn't do the task | [`/sharpen`](../sharpen/SKILL.md) |
 | Know how code works now, or where new code should live | [`/how`](../how/SKILL.md) |
 | Know why code is shaped this way, or where a number came from | [`/why`](../why/SKILL.md) |
 | Understand a change or subsystem, explained plainly | [`/teach`](../teach/SKILL.md) |
 | Catch up on their own recent work on a topic | [`/recall`](../recall/SKILL.md) |
+| Catch up on what changed in this chat since their last message, in plain words and small visuals, with every item waiting on them listed and decidable from the reply alone | [`/ketchup`](../ketchup/SKILL.md) |
+| Catch up like `/ketchup`, in a short silent video of slides, with the waiting calls as text under it | [`/ketchup-video`](../ketchup-video/SKILL.md) |
 | Know what a small diff could break outside itself | [`/blast-radius`](../blast-radius/SKILL.md) |
 | Settle types and module shape before code that crosses a function boundary | [`/architect`](../architect/SKILL.md) |
 | Get several attempts at one brief, merged into the best one | [`/arena`](../arena/SKILL.md) |
@@ -75,6 +82,9 @@ The default answer is `/poteto-mode`, which runs most of the others when its ste
 | Hear the last reply again in plain words | [`/bro`](../bro/SKILL.md) |
 | Give agents a scripted way to drive the app and prove behavior | [`/create-verification-skill`](../create-verification-skill/SKILL.md) |
 | Bring a verification skill and its feature map back in line with the app | [`/maintain-verification-skill`](../maintain-verification-skill/SKILL.md) |
+| Formally verify a race, invariant, or other property that tests rarely reach | [`/create-formal-verification-skill`](../create-formal-verification-skill/SKILL.md) |
+| Bring a formal verification back in line after the code it covers changed, and learn whether a failure is drift or a bug | [`/maintain-formal-verification-skill`](../maintain-formal-verification-skill/SKILL.md) |
+| Show a PM or designer what the user sees as a chart checked by a model, with each bug drawn as a numbered path, turn an agreed chart into a TLA+ skeleton, or audit the code against its TLA+ spec | [`/statechart`](../statechart/SKILL.md) |
 | Vet a performance number before reporting or acting on it | [`/benchmark-checklist`](../benchmark-checklist/SKILL.md) |
 | Run a large or cross-cutting change, or one to review after stepping away | [`/figure-it-out`](../figure-it-out/SKILL.md) |
 | Keep a decision log during a run, and review it afterward | [`/show-me-your-work`](../show-me-your-work/SKILL.md) |
@@ -93,7 +103,7 @@ Close calls:
 - `/arena` gives every worker the same brief and merges the best parts. `/swarm` splits work into slices or a race and returns one report.
 - `/architect` proceeds to authorized implementation after the design. Add "with checkpoint" to review it first. Ordinary local design uses Sol; critical architecture, key contracts, and consequential design tradeoffs use Astra. Sol normally implements an accepted design; Luna is eligible only for simple repetitive mechanical steps.
 - `/interrogate` reviews the diff. `/blast-radius` looks for breakage outside the diff and proves the one fact that makes the change safe.
-- `/recall` rebuilds context across recent chats. Resuming one specific chat or branch is the Session pickup playbook.
+- `/recall` rebuilds context across recent chats. `/ketchup` covers only this chat since the user's last message. Resuming one specific chat or branch is the Session pickup playbook.
 - `/figure-it-out` designs one rigorous run. The Orchestrate playbook runs a program that spans days and many PRs. The Autonomous run playbook drives one task to a finish condition.
 
 Bundled tools and host limits:

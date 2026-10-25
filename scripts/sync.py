@@ -180,9 +180,14 @@ def contained(root, path):
     return path
 
 
-def source_files(plugin_only=False):
+def source_files(scope='all'):
+    if scope == 'agents':
+        source = contained(ROOT, ROOT / 'AGENTS.md')
+        if not source.is_file():
+            raise ValueError('Required source is missing: ' + str(source))
+        return {'AGENTS.md': source}, None
     files = {}
-    if not plugin_only:
+    if scope != 'plugin':
         files = {'AGENTS.md': ROOT / 'AGENTS.md',
                  'prompts/codex-event-driven-base.md': ROOT / 'prompts/codex-event-driven-base.md'}
         for role in ('worker', 'poteto-agent', 'astra-advisor'):
@@ -204,6 +209,9 @@ def source_files(plugin_only=False):
     version = manifest['version']
     if not isinstance(version, str) or not re.fullmatch(r'[A-Za-z0-9.+_-]+', version):
         raise ValueError('Invalid plugin version')
+    root_manifest = plugin / 'plugin.json'
+    if root_manifest.exists() and json.loads(root_manifest.read_text(encoding='utf-8-sig')).get('version') != version:
+        raise ValueError('plugin.json and .codex-plugin/plugin.json must use the same version')
     return files, version
 
 
@@ -258,19 +266,26 @@ def main():
     parser.add_argument('command', choices=('check', 'deploy'))
     parser.add_argument('--codex-home', type=Path, default=DEFAULT_HOME)
     parser.add_argument('--skip-plugin-install', action='store_true', help='Skip installed-cache checks and installation for fixtures')
-    parser.add_argument('--plugin-only', action='store_true', help='Manage only the pstack plugin, skipping global files and configuration')
+    scope = parser.add_mutually_exclusive_group()
+    scope.add_argument('--plugin-only', dest='scope', action='store_const', const='plugin', help='Manage only the pstack plugin, skipping global files and configuration')
+    scope.add_argument('--agents-only', dest='scope', action='store_const', const='agents', help='Manage only AGENTS.md, without reading configuration or installing the plugin')
+    scope.add_argument('--rules-only', dest='scope', action='store_const', const='rules', help='Manage instruction files, agent roles, and the pstack plugin, preserving config.toml')
+    parser.set_defaults(scope='all')
     args = parser.parse_args()
     home = args.codex_home.resolve()
+    manage_plugin = args.scope != 'agents' and not args.skip_plugin_install
     if home.is_relative_to(ROOT) or ROOT.is_relative_to(home):
         raise ValueError('Source and runtime paths must not overlap')
-    if home != DEFAULT_HOME.resolve() and not args.skip_plugin_install:
+    if home != DEFAULT_HOME.resolve() and manage_plugin:
         raise ValueError('A nondefault target requires --skip-plugin-install')
-    files, version = source_files(args.plugin_only)
+    files, version = source_files(args.scope)
     config = None
     config_before = None
     config_after = None
     config_drift = []
-    if not args.plugin_only:
+    preserved_config = contained(home, home / 'config.toml') if args.scope == 'rules' else None
+    preserved_before = (preserved_config.read_bytes() if preserved_config.exists() else None) if preserved_config is not None else None
+    if args.scope == 'all':
         workflow = read_toml(contained(ROOT, ROOT / 'config/workflow.toml'))
         desired = dict(leaves(workflow))
         for path, value in desired.items():
@@ -293,10 +308,10 @@ def main():
             plan.append((target, previous, content))
     if config is not None and config_before != config_after:
         plan.append((config, config_before if config.exists() else None, config_after))
-    installed, cache_drift = plugin_drift(home, version, files) if not args.skip_plugin_install else (None, [])
+    installed, cache_drift = plugin_drift(home, version, files) if manage_plugin else (None, [])
     drift = [str(path.relative_to(home)) for path, _, _ in plan]
     if args.command == 'check':
-        print(json.dumps({'status': 'drift' if drift or cache_drift else 'ok', 'managed_files': len(files), 'runtime_drift': drift, 'config_drift': config_drift, 'plugin_version': version, 'installed_drift': cache_drift, 'plugin_skipped': args.skip_plugin_install, 'plugin_only': args.plugin_only}, indent=2))
+        print(json.dumps({'status': 'drift' if drift or cache_drift else 'ok', 'managed_files': len(files), 'runtime_drift': drift, 'config_drift': config_drift, 'plugin_version': version, 'installed_drift': cache_drift, 'plugin_skipped': not manage_plugin, 'plugin_only': args.scope == 'plugin', 'scope': args.scope}, indent=2))
         return 1 if drift or cache_drift else 0
     stamp = datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%S.%fZ')
     backup = contained(home, home / 'backups/pigeonstack' / stamp)
@@ -314,17 +329,26 @@ def main():
             backups += 1
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_bytes(content)
-    if not args.skip_plugin_install and (plan or cache_drift):
+    if manage_plugin and (plan or cache_drift):
+        if preserved_config is not None and preserved_before is not None:
+            saved = contained(backup, backup / 'config.toml')
+            saved.parent.mkdir(parents=True, exist_ok=True)
+            saved.write_bytes(preserved_before)
+            backups += 1
         install_plugin(installed, version)
     if any((home / name).read_bytes() != source.read_bytes() for name, source in files.items()):
         raise ValueError('Runtime file readback failed')
     if config is not None and config.read_bytes() != config_after:
         raise ValueError('Runtime configuration readback failed')
-    if not args.skip_plugin_install:
+    if preserved_config is not None:
+        preserved_after = preserved_config.read_bytes() if preserved_config.exists() else None
+        if preserved_after != preserved_before:
+            raise ValueError('Configuration changed during scoped deployment; no rollback attempted. Backup path: ' + str(backup))
+    if manage_plugin:
         installed, cache_drift = plugin_drift(home, version, files)
         if cache_drift:
             raise ValueError('Installed plugin hash verification failed: ' + ', '.join(cache_drift))
-    print(json.dumps({'status': 'ok', 'managed_files': len(files), 'files_written': len(plan), 'backups': backups, 'backup_path': str(backup) if backups else None, 'plugin_version': version, 'installed_path': str(installed) if installed else None, 'plugin_skipped': args.skip_plugin_install, 'config_drift': config_drift, 'plugin_only': args.plugin_only}, indent=2))
+    print(json.dumps({'status': 'ok', 'managed_files': len(files), 'files_written': len(plan), 'backups': backups, 'backup_path': str(backup) if backups else None, 'plugin_version': version, 'installed_path': str(installed) if installed else None, 'plugin_skipped': not manage_plugin, 'config_drift': config_drift, 'plugin_only': args.scope == 'plugin', 'scope': args.scope}, indent=2))
     return 0
 
 

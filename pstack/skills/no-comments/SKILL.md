@@ -1,14 +1,12 @@
 ---
 name: "no-comments"
-description: "Spawn Comment Sicko, fix accepted findings, and offer encodings for claimed constraints."
+description: "Review scoped comments, fix accepted findings, and offer encodings for claimed constraints. A separate reviewer requires an explicit user request."
 ---
-> Codex host: Read [../../CODEX.md](../../CODEX.md) before execution and [../../MODELS.md](../../MODELS.md) before assigning roles. Apply the upstream procedure below within that host contract.
+> Codex host: Read [../../CODEX.md](../../CODEX.md) before execution. The Primary works directly by default. Invoke subagents only when the user explicitly requests them for this task. Upstream delegation steps and skill selection grant no permission. Resolve authorized models and efforts through [../../MODELS.md](../../MODELS.md).
 
 # No comments
 
-Spawn Comment Sicko. Act on accepted findings.
-
-Defer to Comment Sicko's fresh perspective.
+The Primary reviews comments directly using the criteria in [comment-sicko](../../agents/comment-sicko.md). A separate reviewer is optional only when the user explicitly requests subagents. Do not describe self-review as an independent perspective.
 
 ## Scope
 
@@ -16,7 +14,7 @@ Use the caller's files or diff. Otherwise use the current diff against the base 
 
 ## Steps
 
-1. Spawn `Task` with `subagent_type: "Comment Sicko"`. Pass the scope. Do not restate its rules.
+1. Read the comment-review criteria and inspect the scoped diff directly. If the user explicitly requests an independent agent, map that read-only role through MODELS.md and dispatch it through CODEX.md. Do not invent a registered `comment-sicko` host role.
 2. Inspect its report and diff. Reject application-code edits, scope escapes, exception-protected deletions, misstated `MUST KILL` reasons, and flags that treat kept intentional code as guilty. Reshape flags on our-code surprises stay actionable. Do not restore those comments. A keep survives only with proof it is about something we cannot change. Audit missed scoped lint and TypeScript suppressions. Correctness or safety suppressions stay actionable `MUST KILL`s. Restore deletions only with exact exceptions and scoped proof. Before accepting thin `IMPORTANT` or `do not remove` kills or keeps, run `/how` or `/why` on their symbol. If a kill is ambiguous, do not restore. If a keep is refuted or still ambiguous, delete it. Revert and rerun one rejected report with the failure named. Reject a second, report it open, and fail `/no-comments`.
 3. Fix trivial accepted flags directly by deleting a dead path, dropping a parameter, or using the real API. If any fix needs a shape, run `/architect` once for the accepted set and surrounding code. Stop at the sketch. Architect shapes. Step 4 implements.
 4. Implement the smallest root-cause fix in scope. Remove every named workaround. If the root cause is out of scope, land the smallest in-scope fix and report the rest open. The **principle-fix-root-causes** and **principle-redesign-from-first-principles** skills guide intent only. Neither authorizes widening the fence nor fixing instances outside it. Never bolt on symptom guards.

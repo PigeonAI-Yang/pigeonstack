@@ -1,6 +1,8 @@
 ### Feature
 
-**You own the design. Plan, review, verify.** Delegate implementation. Stay in the lead.
+> Codex execution: The Primary performs this playbook directly by default. Delegation and agent-based review steps apply only when the user explicitly requests subagents for this task. Follow [CODEX.md](../../../CODEX.md) for tool and permission boundaries. Do not claim an independent verdict from self-review.
+
+**You own the design, implementation, review, and verification.** Delegate only within an explicit user request.
 
 1. `how` over the affected subsystem.
 2. `architect` for parallel design exploration.
@@ -9,7 +11,7 @@
    - **Independent workstreams.** Disjoint files, services, or layers parallelize. Shared writes serialize.
    - **Shared mutable state.** Default to splitting the target (the **separate-before-serializing-shared-state** principle skill). Serialize only for real invariants.
    - **Smallest safe decomposition.** If one worker is best, name why.
-4. Delegate code-writing to a subagent using your configured feature model (see `MODELS.md`) with a specific scope (file paths, named data shape and its organizing structure per **principle-model-the-domain**, a state machine over scattered booleans, a table/registry over branching, a typed model over repeated shape assumptions, chosen before the delegate writes logic, and success criteria). When multiple valid shapes leave a material design decision unresolved, use the **arena** candidate procedure only within an explicitly selected comparison under `CODEX.md`. Otherwise the Primary selects the shape before the execution brief. Record any missing independent verdict instead of simulating review. A subagent forbidden to spawn satisfies this by owning the diff directly with the same review separation. No "standing by" reply that waits on a nested agent. Comments per **Comments**. Surgical edits, re-ground against the source for upstream-derived files. Port shared-primitive improvements to all consumers and verify each. Commit liberally.
+4. Implement directly. If the user explicitly requests a subagent, use the feature model in `MODELS.md` with a specific scope (file paths, named data shape and its organizing structure per **principle-model-the-domain**, a state machine over scattered booleans, a table/registry over branching, a typed model over repeated shape assumptions, chosen before the delegate writes logic, and success criteria). When multiple valid shapes leave a material design decision unresolved, use the **arena** candidate procedure only within an explicitly selected comparison under `CODEX.md`. Otherwise the Primary selects the shape before the execution brief. Record any missing independent verdict instead of simulating review. A subagent forbidden to spawn satisfies this by owning the diff directly with the same review separation. No "standing by" reply that waits on a nested agent. Comments per **Comments**. Surgical edits, re-ground against the source for upstream-derived files. Port shared-primitive improvements to all consumers and verify each. Commit liberally.
 5. Verify on the matching surface. "Inconclusive" or wrong-surface is not a pass. Flag it.
 6. Rebase into small, ordered commits. Stack follow-ups.
    Use the **sequence-verifiable-units** principle skill, building, verifying, and committing each small unit before the next.
