@@ -350,10 +350,11 @@
       "source": "pstack/plugin.json",
       "destination": "plugin.json",
       "sha256": "ab571ad8d7065753b48f21ea3a6f79be3bab67005af3ed4b422af1dbee8e6205",
-      "adapted_sha256": "23643a9ee50a844e27b76a40e02b3af25065d3bfb1d77a993a44b368ae346a6c",
+      "adapted_sha256": "72eb95dcb30f8079a397a54e81e7b78adb903fb156ce19389bd05576000243b0",
       "adaptation_notes": [
         "The current Codex installer reads root plugin.json before .codex-plugin/plugin.json. Keep both operational manifests on the Codex adapter version; retain the raw upstream manifest hash separately.",
-        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions."
+        "Consolidate policy references and apply task-relevant workflow steps without changing authorization, explicit delegation permission, upstream pin, model strategy, or role definitions.",
+        "Align the operational manifest with the 2026-10-27 workload model choices; preserve the pinned upstream bytes and original hash."
       ]
     },
     {

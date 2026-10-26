@@ -1,10 +1,42 @@
 # Model selection for this host
 
-Updated 2026-10-26. Before using this file, read [CODEX.md](CODEX.md) and the global `AGENTS.md` it identifies. Global policy determines assignment eligibility, takeover triggers, progress assessments, and authorization; `CODEX.md` supplies briefs and tool mechanics. This file owns exact model IDs, reasoning effort, configuration, and model-availability evidence. Reuse unchanged instructions already read in this session. Upstream role defaults do not apply.
+Updated 2026-10-27. Before using this file, read [CODEX.md](CODEX.md) and the global `AGENTS.md` it identifies. Global policy determines assignment eligibility, takeover triggers, progress assessments, and authorization; `CODEX.md` supplies briefs and tool mechanics. This file owns workload choices, exact model IDs, reasoning effort, configuration, and model-availability evidence. Reuse unchanged instructions already read in this session. Upstream role defaults do not apply.
+
+## Workload selection
+
+Execute directly in the active Primary by default. Model selection and delegation are separate decisions. This menu applies when the user selects a task model, asks for a model recommendation, or explicitly authorizes assignment routing. It does not switch the current Primary, change its reasoning effort, or create an agent. Preserve every explicit task-specific selection. An authorized delegation without a selected alternative retains the Sol defaults below.
+
+| Workload | Preferred model or candidate | Effort for a new selection |
+| --- | --- | --- |
+| Complex everyday development: diagnosis, implementation, integration, and verification | `gpt-6.1-sol` | `high` as a recommended coding Primary; `medium` as the ordinary delegated default. |
+| Visual and interface understanding, natural writing, supplied-material reports, defined computer workflows, and scoped code fixes | `gpt-6.1-terra` | Start a new ordinary task at `medium`; retain any explicit effort, including an existing Primary at `max`. |
+| Clearly scoped engineering, Python tools, offline pipelines, tests, and features within established interfaces | DeepSeek V4.1 Flash, using an exact route below | Use the selected route's current default, observed as `max` on 2026-10-27, unless the user specifies another supported effort. |
+| Image-and-text materials, screenshot-assisted interface work, document workflows, and clearly scoped development | GLM 5.3 Flash, using an exact route below | Use the selected route's current default, observed as `max` on 2026-10-27, unless the user specifies another supported effort. |
+| Key architecture, interface contracts, consequential tradeoffs, and eligible unresolved problems | `gpt-6-astra` | `high`, with the existing eligibility and escalation rules below. |
+| Simple repetitive work with fixed steps and directly checkable results | `gpt-6-luna` | `max`; preserve its existing narrow scope. |
+
+DeepSeek and GLM are candidates for complete, bounded engineering assignments, including diagnosis, implementation, and relevant checks within the brief. Their names do not restrict them to Luna's mechanical role. These workload choices are based on documented capabilities, not a measured ranking on this user's repositories. Keep the existing evidence-based takeover sequence; these candidates add no automatic intermediate tier or parallel panel.
+
+For native computer use, the selected model must be the Primary with the actual host capability. A child cannot inspect screens, click, type, or proxy computer use. Terra's visual capability grants no exception. Image viewing and analysis retain the shared serial resource rule. Terra accepts image input; direct audio or video input is not established by its API model specification. Reuse existing extraction or transcription workflows when those inputs are needed.
+
+### Exact third-party routes
+
+The host catalog exposed these entries on 2026-10-27. Preserve spelling and case; a route is a service channel, not a distinct model family or verified backend snapshot.
+
+| Model family | Exact exposed route IDs |
+| --- | --- |
+| DeepSeek V4.1 Flash | `auto/deepseek-v4.1-flash`, `opencode-go/deepseek-v4.1-flash`, `opendesign/deepseek-v4.1-flash`, `workbuddy/deepseek-v4.1-flash` |
+| GLM 5.3 Flash | `auto/GLM-5.3-Flash`, `zcode/GLM-5.3-Flash`, `zcode/GLM-5.3-Flash-Trial`, `workbuddy/glm-5.3-flash` |
+
+Those routes expose `low`, `high`, and `max`; do not pass `medium` by copying a GPT brief. For the GPT models, use only the current tool's accepted values. The official Terra API also supports `none`, while this host's inspected catalog did not expose it. API capabilities, host settings, and different providers' effort labels are separate facts.
+
+The inspected native subagent tool exposed Terra and other GPT models, but not these DeepSeek or GLM IDs. The existing-chat model-selection interface and model catalog exposed the third-party routes. Select only an entry supported by the intended interface; never pass an unsupported route to native spawn, fabricate a catalog entry, launch an external executor, or message or create another chat to work around that limit. Those operations need their own applicable human authorization. A catalog entry alone does not prove successful inference, backend model identity, latency, cost, or quota consumption.
+
+Official capability references: [OpenAI model selection](https://developers.openai.com/api/docs/guides/model-selection), [Terra model](https://developers.openai.com/api/docs/models/gpt-6.1-terra), [DeepSeek V4.1 Flash](https://api-docs.deepseek.com/news/news260910/), [DeepSeek 1017 update](https://api-docs.deepseek.com/news/news261017/), and [GLM models](https://autoclaw.z.ai/models/). DeepSeek's official `deepseek-flash` API alias currently points to V4.1-Flash-1017; the third-party route names above do not establish that same snapshot. Reuse credible task evidence and compare models only within an authorized scope. No trial request is required merely to document these choices.
 
 ## Model and effort mapping
 
-The active Primary executes directly by default, including diagnosis, implementation, verification, and critical design. This table applies to subagents only after an explicit user request authorizes delegation for the current task. Consultations, reviewers, and failure takeovers share that condition. Skill selection, role names, complexity, and failures grant no permission to create an agent or switch the Primary. Existing model IDs and efforts remain unchanged.
+The active Primary executes directly by default, including diagnosis, implementation, verification, and critical design. Apart from the recommended coding Primary row, this table retains the default assignments for subagents only after an explicit user request authorizes delegation for the current task. Consultations, reviewers, and failure takeovers share that condition. Skill selection, role names, complexity, and failures grant no permission to create an agent or switch the Primary. The workload menu adds explicitly selected alternatives; it does not change existing role configurations, the default Sol executor, or the existing takeover IDs and efforts.
 
 | Assignment | Model | Reasoning effort |
 | --- | --- | --- |
@@ -31,14 +63,14 @@ For explicit spawn arguments, pass the table's ID as `model` and its effort as `
 
 ## Upstream role mapping
 
-These are conditional responsibility mappings, not delegation permission or a second routing engine. Every upstream role is resolved here before spawning. Missing role configuration uses this table, never an upstream Grok, Claude, or retired GPT default. Complexity alone does not change the tier. Lists for explicitly selected candidate or review workflows name separate assignments, not automatic permission to create a panel.
+These are conditional responsibility mappings, not delegation permission or a second routing engine. Every upstream role is resolved here before spawning. Without an explicitly selected workload alternative, missing role configuration uses this table, never an upstream Grok, Claude, or retired GPT default. A selected Terra, DeepSeek, or GLM assignment retains the same scope, evidence, ownership, and read-only boundaries. Complexity alone does not change the tier. Lists for explicitly selected candidate or review workflows name separate assignments, not automatic permission to create a panel.
 
 Ordinary Sol mappings include scoped diagnosis, implementation, and verification. Read-only consultations remain read-only; accepted implementation defaults to Sol. The narrow Luna mechanical-work exception applies to every upstream role.
 
 | Upstream role | Assignment on this host |
 | --- | --- |
 | `feature, refactoring`, `bug-fix`, `perf-issue`, `hillclimb` | Sol owns assigned ordinary diagnosis, implementation, and checks; the Primary owns goals and final acceptance. Luna handles only simple repetitive mechanical steps. |
-| `judgment and prose` | Sol handles ordinary prose, plans, and document work. Luna may apply only simple repetitive exact changes. Astra handles critical design. |
+| `judgment and prose` | Terra is the preferred selectable candidate for natural writing and visual-material reports. Sol remains the default for ordinary planning and technical document work without another selection. Luna may apply only simple repetitive exact changes. Astra handles eligible critical design. |
 | `hardest tasks` | No difficulty-based model override. Apply the same responsibility split and evidence-triggered takeover sequence. |
 | `how explorer`, `why investigators` | Sol collects and interprets evidence or investigates the assigned question. Luna is limited to fixed repetitive collection. Astra eligibility follows global policy. |
 | `how explainer`, `why synthesizer` | Primary explains and synthesizes. Ordinary technical documents use Sol and critical design work uses Astra. Do not add a redundant agent merely for this label. |
@@ -55,13 +87,15 @@ Map combined upstream roles to the assigned scope. Sol may own ordinary diagnosi
 
 `auto` and `inherit-parent` mean the actual active parent's model and reasoning effort. Resolve both from the supported session configuration, then pass explicit `model` and `reasoning_effort` with compatible history arguments. A host-supported inheritance mode is also valid only when it demonstrably preserves both. Omitted model arguments alone are not inheritance on this host: ordinary children default to Sol at `medium`. Explicit Luna assignments require `gpt-6-luna` at `max` and an eligible simple repetitive task. If the actual parent values or a supported route cannot be established, report the gap before spawning that role.
 
+Those bare parent aliases are distinct from exact provider route IDs such as `auto/deepseek-v4.1-flash`, `auto/GLM-5.3-Flash`, and `auto/auto`. A provider's `auto` group is not parent inheritance and does not authorize switching model families or channels.
+
 Aliases select model values, not assignment permissions. They do not turn a Luna execution role into an investigator or authorize a panel. Preserve the active Primary. Setup does not restart it or claim that a disk edit changed its model.
 
 `/setup-pstack` reads this file and the actual host configuration, proposes only user-requested GPT model or effort changes, and writes accepted choices here. Do not restore upstream family defaults, parse effort from model-name suffixes, lower all roles with a generic budget preset, or erase a local role because upstream retired its label. Preserve explicit task-specific choices and the automatic escalation cap. Report unavailable required values without retries, substitution, or a repair PR. An unavailable requested target can be documented in an inactive profile as described below.
 
 ## Active configuration and availability
 
-The active `config.toml` and selected profile determine the configured Primary. The table recommends Sol at `high`; the maintained `config/workflow.toml` currently records an explicit Astra at `high` selection. These are different facts. The host may also retain a user-selected effort that differs from the source. Do not reconcile that difference during rule maintenance. Use CODEX.md's scoped deployment to preserve current configuration. Ordinary child defaults in the maintained configuration are Sol at `medium`; verify deployment before claiming the host uses them. Luna mechanical helpers, critical Astra work, and takeovers use explicit spawn arguments.
+The active `config.toml` and selected profile determine the configured Primary. The coding recommendation, checked-in `config/workflow.toml`, live configuration, and active session selection can differ intentionally. Do not reconcile them during rule maintenance. The 2026-10-27 inspection found the live configuration at `gpt-6.1-terra` / `max`; this revision preserves that file and does not switch a running session. Use CODEX.md's narrowest deployment scope, `--plugin-only` for this model-document update, and verify that configuration bytes are unchanged. Ordinary child defaults in the maintained configuration remain Sol at `medium`; verify the actual interface before claiming the host uses them. Luna mechanical helpers, critical Astra work, and takeovers retain their explicit arguments.
 
 Verify actual session routing before reporting model use. A disk edit, model label, cached catalog, or model self-identification does not prove a server-side model mapping. If the required model or effort is unavailable, report the limit under the global no-substitution rule.
 

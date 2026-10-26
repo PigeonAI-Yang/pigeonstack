@@ -1,7 +1,7 @@
 {
   "name": "pstack",
-  "version": "0.15.32+codex.20261026lean",
-  "description": "Lauren Tan's pstack v0.15.32 workflows with a GPT-only Codex host adapter and user-requested subagents.",
+  "version": "0.15.32+codex.20261027models",
+  "description": "Lauren Tan's pstack v0.15.32 workflows with a Codex host adapter, workload model choices, and user-requested subagents.",
   "author": {
     "name": "Lauren Tan (original pstack author)",
     "url": "https://github.com/poteto"
@@ -13,7 +13,7 @@
   "interface": {
     "displayName": "Pstack for Codex",
     "shortDescription": "Lauren Tan's pstack workflows adapted for Codex",
-    "longDescription": "Upstream pstack v0.15.32 with 58 skills plus control-ui, control-cli, and deslop. The Primary executes directly by default. Subagents require an explicit user request. CODEX.md translates host tools and permissions; MODELS.md maps authorized GPT assignments.",
+    "longDescription": "Upstream pstack v0.15.32 with 58 skills plus control-ui, control-cli, and deslop. The Primary executes directly by default. Subagents require an explicit user request. CODEX.md translates host tools and permissions; MODELS.md records GPT, DeepSeek, and GLM workload choices within actual host availability.",
     "developerName": "Lauren Tan / local Codex adapter",
     "category": "Productivity",
     "capabilities": [],
