@@ -233,6 +233,31 @@ def plugin_drift(home, version, files):
     return installed, drift
 
 
+def retired_plugin_files(home, files):
+    name = 'local-plugins/pstack/provenance.json'
+    previous_manifest = contained(home, home / name)
+    if name not in files or not previous_manifest.is_file():
+        return []
+    old = json.loads(previous_manifest.read_text(encoding='utf-8-sig'))
+    current = json.loads(files[name].read_text(encoding='utf-8-sig'))
+    retained = {entry['destination'] for entry in current['source_files']}
+    plugin_root = contained(home, home / 'local-plugins/pstack')
+    retired = []
+    for entry in old['source_files']:
+        destination = entry['destination']
+        if destination in retained or 'local-plugins/pstack/' + destination in files:
+            continue
+        target = contained(plugin_root, plugin_root / destination)
+        if not target.exists():
+            continue
+        content = target.read_bytes()
+        expected = entry.get('adapted_sha256', entry['sha256'])
+        if hashlib.sha256(content).hexdigest() != expected:
+            raise ValueError('Retired plugin file has local changes; preserved: ' + destination)
+        retired.append((target, content, None))
+    return retired
+
+
 def install_plugin(expected, version):
     command = shutil.which('codex.cmd') or shutil.which('codex')
     if not command:
@@ -306,6 +331,8 @@ def main():
         previous = target.read_bytes() if target.exists() else None
         if previous != content:
             plan.append((target, previous, content))
+    retired = retired_plugin_files(home, files) if args.scope != 'agents' else []
+    plan.extend(retired)
     if config is not None and config_before != config_after:
         plan.append((config, config_before if config.exists() else None, config_after))
     installed, cache_drift = plugin_drift(home, version, files) if manage_plugin else (None, [])
@@ -327,8 +354,11 @@ def main():
             saved.parent.mkdir(parents=True, exist_ok=True)
             saved.write_bytes(previous)
             backups += 1
-        target.parent.mkdir(parents=True, exist_ok=True)
-        target.write_bytes(content)
+        if content is None:
+            target.unlink()
+        else:
+            target.parent.mkdir(parents=True, exist_ok=True)
+            target.write_bytes(content)
     if manage_plugin and (plan or cache_drift):
         if preserved_config is not None and preserved_before is not None:
             saved = contained(backup, backup / 'config.toml')
@@ -338,6 +368,8 @@ def main():
         install_plugin(installed, version)
     if any((home / name).read_bytes() != source.read_bytes() for name, source in files.items()):
         raise ValueError('Runtime file readback failed')
+    if any(target.exists() for target, _, _ in retired):
+        raise ValueError('Retired plugin file remains after deployment')
     if config is not None and config.read_bytes() != config_after:
         raise ValueError('Runtime configuration readback failed')
     if preserved_config is not None:

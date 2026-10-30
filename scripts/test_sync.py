@@ -1,6 +1,7 @@
 from contextlib import redirect_stderr, redirect_stdout
 from io import StringIO
 import json
+import hashlib
 import tomllib
 from pathlib import Path
 import sys
@@ -177,6 +178,42 @@ config_file = "agents/astra-advisor.toml"
             self.assertEqual(status, 1)
             self.assertEqual(receipt['plugin_version'], version)
             self.assertFalse(home.exists())
+
+    def test_plugin_retirement_is_previewed_backed_up_and_preserves_unknown_files(self):
+        with TemporaryDirectory() as directory:
+            source, home = self.create_fixture(Path(directory), include_globals=False)
+            old_bytes = b'old tracked upstream script'
+            entry = {'source': 'pstack/old.ts', 'destination': 'old.ts',
+                     'sha256': hashlib.sha256(old_bytes).hexdigest()}
+            self.write(source / 'pstack/provenance.json', json.dumps({'source_files': []}))
+            self.write(home / 'local-plugins/pstack/provenance.json', json.dumps({'source_files': [entry]}))
+            retired = home / 'local-plugins/pstack/old.ts'
+            unknown = home / 'local-plugins/pstack/user-note.txt'
+            self.write(retired, old_bytes)
+            self.write(unknown, 'user content')
+            status, preview = self.invoke(source, home, 'check', '--plugin-only')
+            self.assertEqual(status, 1)
+            self.assertIn(str(retired.relative_to(home)), preview['runtime_drift'])
+            self.assertTrue(retired.exists())
+            status, receipt = self.invoke(source, home, 'deploy', '--plugin-only')
+            self.assertEqual(status, 0)
+            self.assertFalse(retired.exists())
+            self.assertEqual((Path(receipt['backup_path']) / retired.relative_to(home)).read_bytes(), old_bytes)
+            self.assertEqual(unknown.read_text(), 'user content')
+            self.assertEqual(self.invoke(source, home, 'check', '--plugin-only')[0], 0)
+
+    def test_plugin_retirement_refuses_changed_files_and_paths_outside_plugin(self):
+        with TemporaryDirectory() as directory:
+            source, home = self.create_fixture(Path(directory), include_globals=False)
+            self.write(source / 'pstack/provenance.json', json.dumps({'source_files': []}))
+            for destination, message in [('old.ts', 'has local changes'), ('../outside.ts', 'escapes')]:
+                entry = {'source': 'pstack/old.ts', 'destination': destination,
+                         'sha256': hashlib.sha256(b'original').hexdigest()}
+                self.write(home / 'local-plugins/pstack/provenance.json', json.dumps({'source_files': [entry]}))
+                self.write(home / 'local-plugins/pstack' / destination, b'changed')
+                with self.assertRaisesRegex(ValueError, message):
+                    self.invoke(source, home, 'deploy', '--plugin-only')
+                self.assertEqual((home / 'local-plugins/pstack' / destination).read_bytes(), b'changed')
 
     def test_agents_only_copies_and_backs_up_one_file_without_plugin_or_config(self):
         with TemporaryDirectory() as directory:

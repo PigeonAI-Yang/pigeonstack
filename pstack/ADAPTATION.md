@@ -1,10 +1,10 @@
 # Pstack Codex adapter
 
-This source adapter imports Lauren Tan's pstack v0.15.32 from the pinned upstream Git tree. Historical entries below describe earlier revisions. The final integration entry records the current source state.
+This source adapter imports Lauren Tan's pstack v0.15.36 from the pinned upstream Git tree. Historical entries below describe earlier revisions. The final integration entry records the current source state.
 
-- Upstream: https://github.com/cursor/plugins/tree/99b609a72323b70204eab407c622f436e858e112/pstack
-- Upstream commit: `99b609a72323b70204eab407c622f436e858e112`
-- Upstream version: `0.15.32`
+- Upstream: https://github.com/cursor/plugins/tree/4dd1d05818d19792e7cd6e818f1667f95f7e1dbe/pstack
+- Upstream commit: `4dd1d05818d19792e7cd6e818f1667f95f7e1dbe`
+- Upstream version: `0.15.36`
 - Contents: 58 pstack skills plus `control-ui`, `control-cli`, and `deslop` from the same checkout, for 61 exposed skills. Three Benny automation skills remain dormant reference material.
 - `CURSOR-TEAM-KIT-LICENSE` preserves the selected Team Kit source license separately.
 
@@ -519,3 +519,13 @@ The source plugin version is 0.15.32+codex.20261026lean in both operational mani
 The user authorized MODELS.md changes, relevant checks, deployment, and remote push while preserving default direct execution and the current Primary configuration. The menu adds Terra for visual, computer-use, and writing tasks, DeepSeek V4.1 Flash for bounded engineering, and GLM 5.3 Flash for multimodal and document workflows. Sol remains the general coding choice, Astra retains critical-design eligibility, and Luna retains its narrow mechanical role. Exact service routes, exposed efforts, native-child limits, and the difference between catalog and actual inference evidence are explicit. These choices create no automatic delegation, model switch, or new takeover tier.
 
 Both operational manifests use 0.15.32+codex.20261027models. The upstream pin and original source hashes are unchanged. Plugin-only synchronization and configuration readback preserve the live model and effort. No runtime configuration, role definition, global instruction, tool implementation, or skill source is changed. No model trial, new chat, packaging, release, or full test suite is part of this update.
+
+## Upstream 0.15.36 integration on 2026-10-31
+
+The user authorized checking upstream, merging available updates, deployment, and push. The integration advances the pin to `4dd1d05818d19792e7cd6e818f1667f95f7e1dbe` and the Codex plugin to `0.15.36+codex.20261031`. It imports 25 changed, 406 added, and 33 removed upstream paths, mostly the rewritten statechart implementation and its fixtures. It keeps 61 exposed skills. The old orchestration CLI and superseded review references are retired.
+
+Interrogate now emphasizes reproduced failures, while the Codex adapter retains direct Primary execution, read-only consultations, existing decisive evidence, and explicit delegation permission. Autopilot-stack now stacks only dependent PRs; orchestration uses the existing host record and tools. Upstream model fallbacks and fixed agent counts do not change local models, effort, or authorization.
+
+The upstream statechart CLI crashed on Windows with `spawn /bin/sh ENOENT`. The adapter uses hidden Windows child processes, taskkill for its owned process tree, and a Node cleanup watcher. A real violation run also exposed CRLF message parsing that lost TLC rule failures; the shared line reader now normalizes Windows line endings. The targeted tests cover missing-Java reporting, scratch cleanup, and streamed and string CRLF messages. All 69 selected graph, message, pipeline, and Windows tests pass. Two real TLC runs, one passing and one with invariant/deadlock failures, return the expected exit codes and exactly match the upstream charts and reports. These checks do not establish the entire upstream test suite or optional renderers.
+
+Scoped sync now previews and backs up upstream files removed from provenance, retiring them only when their bytes match the previous recorded hash. Unknown files and locally changed retired files remain protected. The targeted sync checks cover retirement, path containment, backups, and configuration preservation. Source MODELS.md, role definitions, and runtime config stay unchanged. Deployment receipts and test output are retained locally under `work/upstream-merge-20261031/`; deployment and remote identity are reported separately after verification. No new-session behavior is inferred from these checks.

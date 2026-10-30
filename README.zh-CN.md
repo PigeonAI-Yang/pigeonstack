@@ -1,6 +1,6 @@
 # PigeonStack：Codex 工作流
 
-首先致敬并感谢 [Lauren Tan（poteto）](https://github.com/poteto)，[pstack](https://github.com/cursor/plugins/tree/99b609a72323b70204eab407c622f436e858e112/pstack) 的原作者。PigeonStack 基于她的工作，为这套 Codex 协作流程做了定制适配。
+首先致敬并感谢 [Lauren Tan（poteto）](https://github.com/poteto)，[pstack](https://github.com/cursor/plugins/tree/4dd1d05818d19792e7cd6e818f1667f95f7e1dbe/pstack) 的原作者。PigeonStack 基于她的工作，为这套 Codex 协作流程做了定制适配。
 
 [English](README.md) | 简体中文
 
@@ -41,7 +41,7 @@ PigeonStack 是 PigeonYang 维护的一套 Codex 工作配置，包含全局指�
 
 2026-10-09 的检查点维护是版本 `0.15.13+codex.20261009checkpoint` 的历史证据。本地部署和安装文件核对均已通过，真实任务记录的读取、更新、归档和读回流程也已通过。该流程将当前区域从 29,370 字节缩减至 8,158 字节，并保留目标、权限、阻塞项及区域外历史。详见[历史检查点维护证据](pstack/ADAPTATION.md#current-checkpoint-maintenance-2026-10-09)。
 
-当前源码版本为 `0.15.32+codex.20261027models`；运行时同步和新会话行为分别核对。2026-10-11 钩子验证时安装的版本为 `0.15.13+codex.20261011copy`。native reader 返回了完全一致的绑定当前正文，包括现有 `Pending` 状态。新的 Desktop 聊天运行了一次 `SessionStart`，失败次数为 0；它报告 index 无效诊断后继续。native 测试验证了临时记录绑定；Desktop 观察验证了启动，但未建立 `oneirloom` 的任务绑定。历史 Desktop `exit 1` 的原因仍未查明。详见[产品文案规则及 SessionStart 验证](pstack/ADAPTATION.md#product-copy-rules-and-sessionstart-verification-2026-10-11)。
+当前源码版本为 `0.15.36+codex.20261031`；运行时同步和新会话行为分别核对。2026-10-11 钩子验证时安装的版本为 `0.15.13+codex.20261011copy`。native reader 返回了完全一致的绑定当前正文，包括现有 `Pending` 状态。新的 Desktop 聊天运行了一次 `SessionStart`，失败次数为 0；它报告 index 无效诊断后继续。native 测试验证了临时记录绑定；Desktop 观察验证了启动，但未建立 `oneirloom` 的任务绑定。历史 Desktop `exit 1` 的原因仍未查明。详见[产品文案规则及 SessionStart 验证](pstack/ADAPTATION.md#product-copy-rules-and-sessionstart-verification-2026-10-11)。
 
 钩子不会监控后续业务状态、拦截 Agent 派发或强制执行协调者提醒。详见[钩子契约](pstack/hooks/README.md)和[Codex 宿主适配](pstack/CODEX.md)。
 
@@ -221,6 +221,12 @@ J:/PigeonYang/pigeonstack
 
 ## 更新日志
 
+### 2026-10-31 | `0.15.36+codex.20261031`
+
+- 合并上游 0.15.36：强调复现证据的审查、带字幕的进度视频、简化的协调流程，以及重写的 TLA+ 状态图工具。
+- 保留 Codex 授权边界和模型设置，补齐状态图工具的 Windows 进程清理，并在定向部署中备份、移除上游已退役的文件。
+- 收入此前已授权的全局证据与结果验收规则修订。
+
 ### 2026-10-27 | `0.15.32+codex.20261027models`
 
 - 在 MODELS.md 中补充 Terra、DeepSeek V4.1 Flash、GLM 5.3 Flash 的可选分工、准确入口和宿主能力边界。
@@ -353,9 +359,9 @@ PigeonStack 将 Lauren Tan 的 pstack 适配到 Codex，增加 Codex 专用全�
 
 ## 上游来源与许可
 
-PigeonStack 由 PigeonYang 维护，底层 pstack 工作流来自 Lauren Tan。仓库基于 pstack `0.15.32` 的[固定上游版本](https://github.com/cursor/plugins/tree/99b609a72323b70204eab407c622f436e858e112/pstack)适配，对应提交 `99b609a72323b70204eab407c622f436e858e112`。选入的控制与代码清理技能来自同一版本中的 Cursor Team Kit。
+PigeonStack 由 PigeonYang 维护，底层 pstack 工作流来自 Lauren Tan。仓库基于 pstack `0.15.36` 的[固定上游版本](https://github.com/cursor/plugins/tree/4dd1d05818d19792e7cd6e818f1667f95f7e1dbe/pstack)适配，对应提交 `4dd1d05818d19792e7cd6e818f1667f95f7e1dbe`。选入的控制与代码清理技能来自同一版本中的 Cursor Team Kit。
 
-基于 pstack 0.15.32，包含用于处理反复出现的 Agent 错误的 `/correct`、用于提供性能证据的 `/benchmark-checklist`，以及用于解释测量数据的 `/principle-explain-the-number`。上游工作流已适配到 Codex；模型选择和升级路径遵循本项目的宿主模型规则。
+基于 pstack 0.15.36，包含用于处理反复出现的 Agent 错误的 `/correct`、用于提供性能证据的 `/benchmark-checklist`，以及用于解释测量数据的 `/principle-explain-the-number`。上游工作流已适配到 Codex；模型选择和升级路径遵循本项目的宿主模型规则。
 
 [provenance.json](pstack/provenance.json) 记录导入文件及其源文件哈希，[ADAPTATION.md](pstack/ADAPTATION.md) 记录 Codex 适配及变更历史。原有许可声明保留在 [pstack/LICENSE](pstack/LICENSE) 和 [pstack/CURSOR-TEAM-KIT-LICENSE](pstack/CURSOR-TEAM-KIT-LICENSE)。
 

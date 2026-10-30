@@ -30,7 +30,7 @@ The design isn't sacred once code starts. If implementation shows the same worka
 /arena take my prompt to the arena verbatim. i want to compare their proposals with yours.
 ```
 
-[`/arena`](../../skills/arena/SKILL.md) is the general tool underneath. N subagents attempt the same design or code brief in parallel, each writing to its own worktree or directory. A read-only judge, on a different model family when your configuration allows one, scores every candidate against a rubric. The coordinator reads each candidate end to end, picks a base, grafts in the best ideas from the losers, and verifies the result.
+[`/arena`](../../skills/arena/SKILL.md) is the general tool underneath. N subagents attempt the same design or code brief in parallel, each writing to its own worktree or directory. A read-only judge from a different model family scores every candidate against a rubric. When no model from another family can run, the coordinator skips the judge and picks the base itself. The coordinator reads each candidate end to end, picks a base, grafts in the best ideas from the losers, and verifies the result.
 
 ```mermaid
 flowchart LR
@@ -68,9 +68,9 @@ Reach for it when parallelism buys coverage or lets independent checks race. `/a
 /interrogate the whole branch, but skeptically. no nitpicks unless it's an actual bug or regression.
 ```
 
-[`/interrogate`](../../skills/interrogate/SKILL.md) sends the same diff, intent, and rubric to an explicitly selected independent review. Upstream uses different model families. This Codex adapter resolves assignments through [MODELS.md](../../MODELS.md) and reports the actual models and any missing independent verdict. Several GPT assignments do not establish cross-family diversity. The lead sorts findings into `Act on`, `Consider`, `Noted`, and `Dismissed`, with a reason for each dismissal, and applies nothing automatically.
+[`/interrogate`](../../skills/interrogate/SKILL.md) tries to break the change against its stated intent. On Codex the Primary reviews directly, or uses explicitly authorized reviewers resolved through [MODELS.md](../../MODELS.md). Rerun reproduction commands when needed, retain findings supported by decisive evidence, and report what was dropped and why. Report actual models without inventing cross-family diversity. The review applies no fixes.
 
-Read the dismissals too. The lead is a pragmatic senior engineer, not an oracle, and you can override it.
+Read the Dropped list too. You can override the verdict.
 
 ## Prototype instead of debating
 
@@ -88,7 +88,7 @@ The same idea scales up to a real design. Pair `/architect` with prototypes and 
 /poteto-mode we need rate limiting for external webhooks. /architect it first, and answer open questions with prototypes. let me review before proceeding.
 ```
 
-For speculative implementation alternatives, don't spend reviewers on an abstract plan. Ordinary plans and local designs use Sol under `MODELS.md`. New or substantively changed master or system architecture, key interface or data contracts, and consequential design tradeoffs use Astra, including substantive review. A technical-document label alone does not require Astra. `/interrogate` belongs on a diff. Point adversarial review at a plan with no code behind it and the reviewers invent theoretical risks and edge cases that will never happen. Let prototypes settle the questions, then review what got built.
+For speculative implementation alternatives, don't spend reviewers on an abstract plan. Ordinary plans and local designs use Sol under `MODELS.md`. New or substantively changed master or system architecture, key interface or data contracts, and consequential design tradeoffs use Astra, including substantive review. A technical-document label alone does not require Astra. `/interrogate` needs evidence that can resolve the question. A plan with no code behind it offers little to test. Use existing evidence when sufficient, or a small prototype for an unresolved behavioral claim, then review the result.
 
 ## Write the README first for shared code
 

@@ -53,4 +53,6 @@ When the authorized scope includes changed plugin content, update the plugin ver
 
 After deployment, run the same scoped `check` and verify installed hashes where applicable. Distinguish source content, runtime files, installed artifacts, instructions read in this task, and behavior observed in a new session. Source edits do not refresh active sessions, and file checks do not prove future agent behavior.
 
+For upstream retirements, scoped sync compares the previous runtime provenance with the new source. It previews removal, verifies the previous recorded bytes, and backs up each file before retiring it. Unknown files stay untouched; a modified retired file stops deployment for review. No directory-wide cleanup is implied.
+
 `provenance.json` records pinned original source hashes and local adaptations. `ADAPTATION.md` records the reasons and evidence. This adapter enables no timers, background agents, or remote services. Its bundled hook source does not grant trust or activation, and source edits do not affect active sessions.
